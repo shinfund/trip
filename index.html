@@ -8,1445 +8,812 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-/* ─────────────────────────────────────────────
-   TOKENS
-───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS  — 로또앱 라이트 계열
+═══════════════════════════════════════════ */
 :root {
-  --ink:      #0D1A14;
-  --ink-2:    #1A2D22;
-  --ink-3:    #243B2E;
-  --pine:     #2E4D3A;
-  --forest:   #3D6B52;
-  --moss:     #7EC49A;   /* ↑ 밝게 */
-  --sage:     #B8DEC8;   /* ↑ 밝게 */
-  --mist:     #DDF0E6;   /* ↑ 밝게 */
-  --dew:      #E8F2EC;
-  --cream:    #F5EFE4;
-  --parchment:#EDE4D3;
-  --gold:     #D9A85A;   /* ↑ 밝게 */
-  --gold-lt:  #EDCC8E;   /* ↑ 밝게 */
-  --gold-pale:#F5E4C8;
-  --star:     #F2D98C;
-  --white:    #FDFAF6;
+  /* 베이스 */
+  --bg:        #F7F7F3;
+  --surface:   #FFFFFF;
+  --surface-2: #F4F4F0;
+  --border:    #E8E8E0;
+  --border-lt: #F0F0EA;
 
-  --r-sm: 10px;
-  --r-md: 16px;
-  --r-lg: 24px;
-  --r-xl: 32px;
+  /* 텍스트 */
+  --tx-1: #1A1A1A;
+  --tx-2: #555555;
+  --tx-3: #999999;
+  --tx-4: #BBBBBB;
 
-  --shadow-sm: 0 2px 12px rgba(13,26,20,0.10);
-  --shadow-md: 0 6px 28px rgba(13,26,20,0.16);
-  --shadow-lg: 0 16px 56px rgba(13,26,20,0.22);
+  /* 포인트 — 초록(자연) */
+  --green:     #2E7D52;
+  --green-mid: #4CAF79;
+  --green-lt:  #E4F5EC;
+  --green-pal: #F0FAF4;
+
+  /* 포인트 — 앰버(황금) */
+  --amber:     #C07A1A;
+  --amber-mid: #E09A3A;
+  --amber-lt:  #FEF3DC;
+  --amber-pal: #FFFAF0;
+
+  /* 포인트 — 블루(지도/링크) */
+  --blue:      #1A6BB5;
+  --blue-lt:   #E8F2FC;
+
+  /* 포인트 — 레드(식당) */
+  --red:       #C0392B;
+  --red-lt:    #FDECEA;
+
+  /* 포인트 — 퍼플(숙소) */
+  --purple:    #6B3FA0;
+  --purple-lt: #F3EDFB;
+
+  /* 포인트 — 틸(사찰/자연) */
+  --teal:      #1A7A72;
+  --teal-lt:   #E4F5F3;
+
+  /* 반경 */
+  --r-sm:  8px;
+  --r-md:  12px;
+  --r-lg:  16px;
+  --r-xl:  20px;
+  --r-2xl: 24px;
+
+  /* 그림자 */
+  --shadow-xs: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
 }
 
-/* ─────────────────────────────────────────────
+/* ═══════════════════════════════════════════
    BASE
-───────────────────────────────────────────── */
+═══════════════════════════════════════════ */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-
+html { scroll-behavior:smooth; }
 body {
   font-family: 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;
-  background: var(--ink);
-  color: var(--cream);
-  line-height: 1.7;
+  background: var(--bg);
+  color: var(--tx-1);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  padding-bottom: 20px;
 }
+a { text-decoration: none; }
+em { font-style: normal; font-weight: 700; color: var(--amber); }
 
-em { font-style: italic; color: var(--gold-lt); font-family: 'Nanum Gothic', 'Malgun Gothic', sans-serif; font-weight: 700; }
-
-/* ─────────────────────────────────────────────
-   NOISE TEXTURE OVERLAY
-───────────────────────────────────────────── */
-body::before {
-  content: "";
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  opacity: 0.4;
-}
-
-/* ─────────────────────────────────────────────
-   HERO
-───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════
+   HERO  — 밝은 계열 그라디언트
+═══════════════════════════════════════════ */
 .hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 80px 24px 100px;
-  overflow: hidden;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, #1E3D2B 0%, transparent 70%),
-    radial-gradient(ellipse 60% 80% at 20% 100%, #152B1E 0%, transparent 60%),
-    radial-gradient(ellipse 50% 50% at 85% 80%, #243325 0%, transparent 55%),
-    linear-gradient(180deg, #0A1510 0%, #0D1A14 50%, #0B1812 100%);
-  isolation: isolate;
+    radial-gradient(ellipse 100% 80% at 50% -10%, #C8EDD8 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 10% 100%, #E8F5ED 0%, transparent 60%),
+    linear-gradient(160deg, #EFF8F2 0%, #F7F4ED 50%, #FDF8F0 100%);
+  padding: 56px 20px 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
 }
 
-/* Stars */
+/* 배경 잎사귀 장식 */
 .hero::before {
-  content: "";
-  position: absolute; inset: 0; z-index: 0;
-  background-image:
-    radial-gradient(1.5px 1.5px at 10% 15%, rgba(242,217,140,0.85) 0%, transparent 100%),
-    radial-gradient(1px 1px at 25% 8%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(1px 1px at 40% 22%, rgba(242,217,140,0.5) 0%, transparent 100%),
-    radial-gradient(2px 2px at 60% 5%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 72% 18%, rgba(242,217,140,0.6) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 85% 10%, rgba(255,255,255,0.55) 0%, transparent 100%),
-    radial-gradient(1px 1px at 92% 25%, rgba(242,217,140,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 5% 35%, rgba(255,255,255,0.45) 0%, transparent 100%),
-    radial-gradient(2px 2px at 33% 40%, rgba(242,217,140,0.3) 0%, transparent 100%),
-    radial-gradient(1px 1px at 55% 30%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 78% 42%, rgba(242,217,140,0.7) 0%, transparent 100%),
-    radial-gradient(1px 1px at 18% 55%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(1px 1px at 48% 48%, rgba(242,217,140,0.35) 0%, transparent 100%),
-    radial-gradient(2px 2px at 88% 52%, rgba(255,255,255,0.6) 0%, transparent 100%);
+  content: "🌿";
+  position: absolute; top: -8px; left: -8px;
+  font-size: 120px; opacity: 0.06;
+  transform: rotate(-20deg);
+  pointer-events: none;
 }
-
-/* Mountain silhouette */
 .hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 200px;
-  background: var(--ink);
-  clip-path: polygon(
-    0% 100%, 0% 60%,
-    4% 55%, 8% 48%, 12% 42%,
-    16% 50%, 20% 38%,
-    24% 28%, 28% 35%,
-    32% 22%, 36% 30%, 38% 18%,
-    42% 10%, 46% 20%, 48% 14%,
-    52% 24%, 55% 12%,
-    58% 22%, 62% 32%,
-    66% 20%, 70% 30%,
-    74% 40%, 78% 32%,
-    82% 45%, 86% 36%,
-    90% 50%, 94% 42%,
-    98% 55%, 100% 60%,
-    100% 100%
-  );
-}
-
-.hero-inner {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column;
-  align-items: center; gap: 0;
-  max-width: 580px;
+  content: "🍃";
+  position: absolute; bottom: -12px; right: -8px;
+  font-size: 110px; opacity: 0.06;
+  transform: rotate(15deg);
+  pointer-events: none;
 }
 
 .hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(201,146,74,0.15);
-  border: 1px solid rgba(201,146,74,0.35);
-  color: var(--gold-lt);
-  font-size: clamp(22px, 5vw, 32px);
-  font-weight: 800;
-  letter-spacing: 1px;
-  padding: 14px 32px;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--green-lt);
+  border: 1px solid rgba(46,125,82,0.18);
+  color: var(--green);
+  font-size: clamp(12px, 3vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 6px 16px;
   border-radius: 50px;
-  margin-bottom: 28px;
-  backdrop-filter: blur(8px);
-  animation: fadeUp 0.7s ease 0.1s both;
+  margin-bottom: 18px;
 }
 
 .hero h1 {
-  font-family: 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;
-  font-size: clamp(34px, 8vw, 62px);
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.18;
+  font-size: clamp(26px, 6.5vw, 48px);
+  font-weight: 800;
+  color: var(--tx-1);
+  line-height: 1.2;
   letter-spacing: -0.5px;
-  margin-bottom: 10px;
-  animation: fadeUp 0.7s ease 0.2s both;
+  margin-bottom: 8px;
 }
-
 .hero h1 .accent {
   display: block;
-  font-family: 'Nanum Gothic', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;
-  font-style: normal;
-  font-size: clamp(28px, 6.5vw, 50px);
-  color: var(--gold-lt);
+  font-size: clamp(16px, 4vw, 26px);
   font-weight: 700;
-  letter-spacing: 0px;
+  color: var(--green);
+  letter-spacing: 0;
+  margin-top: 4px;
 }
 
 .hero-sub {
-  font-size: clamp(14px, 3.5vw, 17px);
-  color: var(--white);
+  font-size: clamp(13px, 3.2vw, 15px);
+  color: var(--tx-2);
+  margin-bottom: 22px;
   font-weight: 600;
-  margin-bottom: 36px;
-  letter-spacing: 0.5px;
-  animation: fadeUp 0.7s ease 0.3s both;
 }
 
 .hero-chips {
   display: flex; justify-content: center;
-  gap: 10px; flex-wrap: wrap;
-  animation: fadeUp 0.7s ease 0.4s both;
+  gap: 8px; flex-wrap: wrap;
 }
-
 .hero-chip {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: var(--mist);
-  padding: 10px 18px;
-  border-radius: 40px;
-  font-size: clamp(12px, 3vw, 14px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--tx-2);
+  padding: 7px 14px;
+  border-radius: 50px;
+  font-size: clamp(11px, 2.6vw, 13px);
   font-weight: 600;
-  backdrop-filter: blur(10px);
-  white-space: nowrap;
-  transition: background 0.3s, border-color 0.3s;
-}
-.hero-chip:hover {
-  background: rgba(201,146,74,0.12);
-  border-color: rgba(201,146,74,0.35);
+  box-shadow: var(--shadow-xs);
 }
 
-/* ─────────────────────────────────────────────
+/* ═══════════════════════════════════════════
    STAY BAR
-───────────────────────────────────────────── */
+═══════════════════════════════════════════ */
 .stay-bar {
-  background: var(--ink-2);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 0 24px;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  position: relative; z-index: 1;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center;
 }
-
 .stay-item {
   text-align: center;
-  padding: 26px 32px;
-  flex: 1;
-  max-width: 300px;
+  padding: 18px 28px;
+  flex: 1; max-width: 280px;
   position: relative;
 }
 .stay-item + .stay-item::before {
   content: "";
-  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-  width: 1px; height: 40px;
-  background: rgba(255,255,255,0.10);
+  position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%);
+  width: 1px; height: 36px;
+  background: var(--border);
 }
-
 .stay-label {
-  font-size: clamp(16px, 2.8vw, 18px);
-  color: var(--sage);
-  letter-spacing: 0.8px;
-  margin-bottom: 8px;
-  font-weight: 700;
+  font-size: clamp(10px, 2.4vw, 11px);
+  font-weight: 700; letter-spacing: 0.5px;
+  color: var(--tx-3); text-transform: uppercase;
+  margin-bottom: 5px;
 }
 .stay-name {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(20px, 4.5vw, 26px);
-  font-weight: 800;
-  color: var(--cream);
-  margin-bottom: 8px;
-  letter-spacing: -0.4px;
+  font-size: clamp(14px, 3.5vw, 17px);
+  font-weight: 800; color: var(--tx-1);
+  margin-bottom: 4px;
 }
 .stay-confirm {
-  font-size: clamp(14px, 2.8vw, 16px);
-  color: var(--gold);
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--green-lt);
+  color: var(--green);
+  font-size: clamp(10px, 2.4vw, 11px);
   font-weight: 700;
-  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  border: 1px solid rgba(46,125,82,0.18);
 }
 
-/* ─────────────────────────────────────────────
-   CONTAINER
-───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════
+   WRAP / LAYOUT
+═══════════════════════════════════════════ */
 .wrap {
   max-width: 720px;
   margin: 0 auto;
-  padding: 0 16px 80px;
-  position: relative; z-index: 1;
-  width: 100%;
+  padding: 20px 14px 40px;
 }
 
-/* ─────────────────────────────────────────────
-   SUMMARY TABLE  (3×3 그리드 타임테이블)
-───────────────────────────────────────────── */
-.summary-table {
-  background: var(--ink-2);
+/* ═══════════════════════════════════════════
+   SECTION HEADER (공통)
+═══════════════════════════════════════════ */
+.sec-header {
+  display: flex; align-items: center; gap: 8px;
+  font-size: clamp(11px, 2.6vw, 12px);
+  font-weight: 700; letter-spacing: 1px;
+  color: var(--tx-3); text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sec-header::after {
+  content: ""; flex: 1; height: 1px; background: var(--border);
+}
+
+/* ═══════════════════════════════════════════
+   SUMMARY TABLE  — 3일차 한눈에 보기
+═══════════════════════════════════════════ */
+.summary-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--r-xl);
-  padding: 28px 24px 24px;
-  margin-top: 28px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
+  padding: 20px 16px 16px;
+  margin-top: 16px;
+  box-shadow: var(--shadow-xs);
 }
 
-.section-label {
-  display: flex; align-items: center; gap: 12px;
-  font-size: 17px;
-  color: var(--sage);
-  letter-spacing: 0.5px;
-  font-weight: 700;
-  margin-bottom: 22px;
-}
-.section-label::after {
-  content: "";
-  flex: 1; height: 1px;
-  background: rgba(255,255,255,0.10);
-}
-
-/* 그리드 래퍼 */
 .sched-grid {
   display: grid;
-  grid-template-columns: 44px 1fr 1fr 1fr;
-  border-radius: 12px;
+  grid-template-columns: 40px 1fr 1fr 1fr;
+  border-radius: var(--r-md);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid var(--border);
 }
-
-/* ── 헤더 행 ── */
 .sg-corner {
-  background: var(--ink-3);
-  border-bottom: 1px solid rgba(255,255,255,0.10);
-  border-right: 1px solid rgba(255,255,255,0.08);
+  background: var(--surface-2);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 .sg-head {
-  background: var(--ink-3);
-  padding: 20px 12px 17px;
+  background: var(--surface-2);
+  padding: 12px 8px 10px;
   text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid var(--border);
 }
-.sg-head:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.08); }
-.sg-head-day {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--gold-lt);
-  line-height: 1.3;
-}
-.sg-head-date {
-  font-size: 17px;
-  color: var(--mist);
-  font-weight: 600;
-  margin-top: 5px;
-}
-.sg-head-route {
-  font-size: 13px;
-  color: var(--mist);
-  font-weight: 600;
-  margin-top: 5px;
-  line-height: 1.45;
-  word-break: keep-all;
-}
+.sg-head:not(:last-child) { border-right: 1px solid var(--border); }
+.sg-head-day  { font-size: clamp(13px,3vw,15px); font-weight: 800; color: var(--tx-1); }
+.sg-head-date { font-size: clamp(10px,2.4vw,11px); color: var(--tx-3); font-weight: 600; margin-top: 2px; }
+.sg-head-route{ font-size: clamp(9px,2.2vw,10px); color: var(--green); font-weight: 700; margin-top: 3px; line-height: 1.4; }
 
-/* ── 시간 열 ── */
 .sg-time {
-  background: rgba(255,255,255,0.02);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: var(--surface-2);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-lt);
   display: flex; align-items: center; justify-content: center;
-  padding: 8px 0;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 0.8px;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  min-height: 80px;
+  font-size: 9px; font-weight: 700; color: var(--tx-3);
+  letter-spacing: 0.5px;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  min-height: 72px; padding: 6px 0;
 }
+.sg-time.sg-last-row { border-bottom: none; }
 
-/* ── 내용 셀 ── */
 .sg-cell {
-  padding: 13px 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  border-right: 1px solid rgba(255,255,255,0.08);
-  min-height: 80px;
-  display: flex; flex-direction: column;
-  justify-content: center; gap: 4px;
+  padding: 9px 8px;
+  border-bottom: 1px solid var(--border-lt);
+  border-right: 1px solid var(--border-lt);
+  min-height: 72px;
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
 }
-.sg-cell:last-child,
-.sg-col-last { border-right: none; }
-
-/* 마지막 행 border-bottom 제거 */
-.sg-time.sg-last-row,
+.sg-cell:last-child { border-right: none; }
 .sg-cell.sg-last-row { border-bottom: none; }
+.sg-cell.c-meal   { background: #FFFBF4; }
+.sg-cell.c-lodge  { background: #F8F4FD; }
+.sg-cell.c-nature { background: #F4FBF7; }
+.sg-cell.c-home   { background: var(--surface-2); }
+.sg-cell.c-empty  { background: var(--surface); }
 
-/* 셀 색상 유형 */
-.sg-cell.c-meal   { background: rgba(217,168,90,0.07); }
-.sg-cell.c-lodge  { background: rgba(126,196,154,0.07); }
-.sg-cell.c-nature { background: rgba(184,222,200,0.04); }
-.sg-cell.c-home   { background: rgba(255,255,255,0.02); }
-.sg-cell.c-empty  { background: transparent; }
-
-.sg-icon  { font-size: 20px; line-height: 1; margin-bottom: 3px; }
-.sg-title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.38;
-}
-.sg-sub {
-  font-size: 11px;
-  color: var(--sage);
-  font-weight: 500;
-  line-height: 1.45;
-  margin-top: 1px;
-}
+.sg-icon  { font-size: 16px; line-height: 1; }
+.sg-title { font-size: clamp(10px,2.4vw,11px); font-weight: 700; color: var(--tx-1); line-height: 1.35; }
+.sg-sub   { font-size: clamp(9px,2.1vw,10px); color: var(--tx-3); line-height: 1.4; }
 .sg-badge {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--gold-lt);
-  background: rgba(217,168,90,0.13);
-  border: 1px solid rgba(217,168,90,0.25);
-  border-radius: 4px;
-  padding: 2px 7px;
-  margin-top: 5px;
-  width: fit-content;
-}
-.sg-badge.green {
-  color: var(--mist);
-  background: rgba(126,196,154,0.13);
-  border-color: rgba(126,196,154,0.25);
+  display: inline-block; font-size: 9px; font-weight: 700;
+  color: var(--green); background: var(--green-lt);
+  border: 1px solid rgba(46,125,82,0.18);
+  border-radius: 4px; padding: 1px 5px; margin-top: 3px; width: fit-content;
 }
 
-/* ── 숙박 푸터 행 ── */
+/* 숙박 푸터 */
 .sg-stay-row {
   grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 44px 1fr 1fr 1fr;
-  background: rgba(255,255,255,0.07);
-  border-top: 1.5px solid rgba(255,255,255,0.15);
+  display: grid; grid-template-columns: 40px 1fr 1fr 1fr;
+  background: var(--green-pal);
+  border-top: 1px solid rgba(46,125,82,0.15);
 }
 .sg-stay-corner {
   display: flex; align-items: center; justify-content: center;
-  font-size: 14px;
-  padding: 10px 0;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.3);
+  font-size: 13px; padding: 8px 0;
+  border-right: 1px solid var(--border-lt);
+  color: var(--tx-3);
 }
 .sg-stay-cell {
-  padding: 13px 12px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  display: flex; align-items: center; gap: 8px;
+  padding: 10px 8px; border-right: 1px solid var(--border-lt);
+  display: flex; align-items: center; gap: 6px;
 }
 .sg-stay-cell:last-child { border-right: none; }
-.sg-stay-dot {
-  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-}
-.sg-stay-dot.gold  { background: var(--gold); box-shadow: 0 0 6px rgba(217,168,90,0.5); }
-.sg-stay-dot.green { background: var(--moss); box-shadow: 0 0 6px rgba(126,196,154,0.5); }
-.sg-stay-dot.gray  { background: var(--mist); }
-.sg-stay-text {
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.38;
-}
-.sg-stay-text.gold  { color: var(--gold-lt); }
-.sg-stay-text.green { color: var(--mist); }
-.sg-stay-text.gray  { color: var(--white); }
+.sg-stay-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.sg-stay-dot.green  { background: var(--green-mid); }
+.sg-stay-dot.amber  { background: var(--amber-mid); }
+.sg-stay-dot.gray   { background: var(--tx-4); }
+.sg-stay-text { font-size: clamp(9px,2.2vw,10px); font-weight: 700; color: var(--tx-2); line-height: 1.35; }
 
-/* ─────────────────────────────────────────────
+/* ═══════════════════════════════════════════
    DAY SECTION
-───────────────────────────────────────────── */
-.day-section { margin-top: 44px; }
+═══════════════════════════════════════════ */
+.day-section { margin-top: 28px; }
 
 .day-header {
-  display: flex; align-items: center; gap: 16px;
-  margin-bottom: 18px; padding-bottom: 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  position: relative;
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
 }
-.day-header::after {
-  content: "";
-  position: absolute; bottom: -1px; left: 0;
-  width: 56px; height: 2px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-  border-radius: 2px;
-}
-
 .day-badge {
-  background: linear-gradient(135deg, var(--pine), var(--ink-3));
-  border: 1px solid rgba(201,146,74,0.25);
-  color: var(--gold-lt);
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(13px, 3.2vw, 15px);
-  font-weight: 700;
-  padding: 12px 16px;
-  border-radius: var(--r-sm);
-  white-space: nowrap; min-width: 78px;
-  text-align: center; line-height: 1.5;
-  flex-shrink: 0;
-  box-shadow: 0 2px 12px rgba(201,146,74,0.1);
+  background: var(--green);
+  color: #fff;
+  font-size: clamp(11px,2.8vw,13px); font-weight: 800;
+  padding: 8px 12px; border-radius: var(--r-md);
+  text-align: center; line-height: 1.45;
+  flex-shrink: 0; min-width: 62px;
+  box-shadow: 0 2px 8px rgba(46,125,82,0.25);
 }
 .day-title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(18px, 4.8vw, 23px);
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.25;
-  letter-spacing: -0.3px;
+  font-size: clamp(16px,4.2vw,20px); font-weight: 800;
+  color: var(--tx-1); line-height: 1.25;
 }
 .day-subtitle {
-  font-size: clamp(12px, 3vw, 14px);
-  color: var(--sage);
-  margin-top: 4px;
-  font-weight: 600;
+  font-size: clamp(11px,2.6vw,12px); color: var(--tx-3);
+  font-weight: 600; margin-top: 3px;
 }
 
-/* ─────────────────────────────────────────────
+/* ═══════════════════════════════════════════
    SCHEDULE CARD
-───────────────────────────────────────────── */
+═══════════════════════════════════════════ */
 .schedule-card {
-  background: var(--ink-2);
-  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   position: relative;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.2s, transform 0.2s;
 }
-.schedule-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
+.schedule-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+/* 왼쪽 컬러 바 */
 .schedule-card::before {
-  content: "";
-  position: absolute; top: 0; left: 0;
-  width: 3px; height: 100%;
-  background: rgba(255,255,255,0.10);
-  border-radius: 0 2px 2px 0;
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 3px; height: 100%; border-radius: 0 2px 2px 0;
+  background: var(--border);
 }
-.schedule-card.meal::before    { background: linear-gradient(180deg, var(--gold), var(--gold-lt)); }
-.schedule-card.lodging::before { background: linear-gradient(180deg, var(--moss), var(--forest)); }
-.schedule-card.temple::before  { background: linear-gradient(180deg, var(--sage), var(--mist)); }
-.schedule-card.home::before    { background: rgba(255,255,255,0.12); }
+.schedule-card.meal::before    { background: linear-gradient(180deg, var(--amber-mid), #F5C060); }
+.schedule-card.lodging::before { background: linear-gradient(180deg, var(--purple), #9B6CD0); }
+.schedule-card.temple::before  { background: linear-gradient(180deg, var(--teal), #3AADA5); }
 
 .card-inner {
-  padding: 18px 20px 18px 22px;
-  display: flex; gap: 15px; align-items: flex-start;
+  padding: 16px 18px 16px 20px;
+  display: flex; gap: 12px; align-items: flex-start;
 }
-.card-icon { font-size: 26px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+.card-icon { font-size: 24px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
 .card-body { flex: 1; min-width: 0; }
 
 .card-time {
-  font-size: clamp(14px, 2.8vw, 15px);
-  font-weight: 700;
-  color: var(--sage);
-  margin-bottom: 6px;
-  letter-spacing: 0.8px;
+  font-size: clamp(10px,2.4vw,11px); font-weight: 700;
+  color: var(--tx-3); letter-spacing: 0.5px;
+  text-transform: uppercase; margin-bottom: 4px;
 }
-.schedule-card.meal    .card-time { color: var(--gold-lt); }
-.schedule-card.lodging .card-time { color: var(--sage); }
-.schedule-card.temple  .card-time { color: var(--mist); }
+.schedule-card.meal    .card-time { color: var(--amber); }
+.schedule-card.lodging .card-time { color: var(--purple); }
+.schedule-card.temple  .card-time { color: var(--teal); }
 
 .card-title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(17px, 4.3vw, 21px);
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 7px;
-  line-height: 1.28;
-  letter-spacing: -0.3px;
+  font-size: clamp(15px,3.8vw,18px); font-weight: 800;
+  color: var(--tx-1); margin-bottom: 6px; line-height: 1.25;
 }
 .card-desc {
-  font-size: clamp(14px, 3.2vw, 15px);
-  color: var(--mist);
-  line-height: 1.75;
+  font-size: clamp(12px,3vw,13px); color: var(--tx-2); line-height: 1.7;
 }
 
 /* TAGS */
-.tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .tag {
-  font-size: clamp(11px, 2.7vw, 12px);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-weight: 600;
-  background: rgba(255,255,255,0.05);
-  color: var(--sage);
-  border: 1px solid rgba(255,255,255,0.08);
-  letter-spacing: 0.2px;
+  font-size: clamp(10px,2.4vw,11px); padding: 4px 10px; border-radius: 20px;
+  font-weight: 600; border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--tx-2);
 }
-.tag-green  { background: rgba(90,138,106,0.15); color: var(--sage); border-color: rgba(90,138,106,0.25); }
-.tag-gold   { background: rgba(201,146,74,0.12); color: var(--gold-lt); border-color: rgba(201,146,74,0.22); }
-.tag-orange { background: rgba(220,120,50,0.12); color: #E8A870; border-color: rgba(220,120,50,0.22); }
-.tag-teal   { background: rgba(60,140,130,0.12); color: #7DCCC4; border-color: rgba(60,140,130,0.22); }
-.tag-brown  { background: rgba(140,100,60,0.12); color: #C8A87A; border-color: rgba(140,100,60,0.22); }
+.tag-green  { background: var(--green-lt);  color: var(--green);  border-color: rgba(46,125,82,0.2); }
+.tag-amber  { background: var(--amber-lt);  color: var(--amber);  border-color: rgba(192,122,26,0.2); }
+.tag-teal   { background: var(--teal-lt);   color: var(--teal);   border-color: rgba(26,122,114,0.2); }
+.tag-blue   { background: var(--blue-lt);   color: var(--blue);   border-color: rgba(26,107,181,0.2); }
+.tag-red    { background: var(--red-lt);    color: var(--red);    border-color: rgba(192,57,43,0.2); }
+.tag-purple { background: var(--purple-lt); color: var(--purple); border-color: rgba(107,63,160,0.2); }
 
 /* CONFIRMED BADGE */
 .confirmed-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(201,146,74,0.12);
-  color: var(--gold-lt);
-  font-size: clamp(12px, 3vw, 13px);
-  font-weight: 700;
-  padding: 7px 14px;
-  border-radius: var(--r-sm);
-  margin-top: 10px;
-  border: 1px solid rgba(201,146,74,0.25);
-  letter-spacing: 0.3px;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--green-lt); color: var(--green);
+  font-size: clamp(10px,2.4vw,11px); font-weight: 700;
+  padding: 5px 12px; border-radius: 6px;
+  margin-top: 8px; border: 1px solid rgba(46,125,82,0.2);
 }
 
-/* RESTAURANT BOX */
-.restaurant-box {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+/* ═══════════════════════════════════════════
+   DRIVE CARD
+═══════════════════════════════════════════ */
+.drive-card {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-lt);
   border-radius: var(--r-sm);
-  padding: 14px 16px;
-  margin-top: 13px;
+  padding: 9px 14px; margin: 6px 0;
+}
+.drive-icon { font-size: 14px; flex-shrink: 0; }
+.drive-text {
+  flex: 1; font-size: clamp(11px,2.6vw,12px); font-weight: 600;
+  color: var(--tx-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.drive-dist {
+  background: var(--amber-lt); border: 1px solid rgba(192,122,26,0.2);
+  color: var(--amber); font-size: clamp(10px,2.4vw,11px); font-weight: 700;
+  padding: 3px 10px; border-radius: 6px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════
+   PLACE INFO BOX
+═══════════════════════════════════════════ */
+.place-info {
+  background: var(--surface-2);
+  border: 1px solid var(--border-lt);
+  border-radius: var(--r-sm);
+  padding: 10px 12px; margin-top: 10px;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.place-info-row {
+  display: flex; align-items: flex-start; gap: 6px;
+  font-size: clamp(11px,2.6vw,12px); color: var(--tx-2); line-height: 1.5;
+}
+.place-info-row .pi-icon { flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+.place-info-row a { color: var(--blue); font-weight: 700; }
+.place-info-row a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════════
+   버튼 (지도, 검색, 웹)
+═══════════════════════════════════════════ */
+.place-btns, .rest-btns {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+}
+.btn-map, .btn-web {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 5px 12px; border-radius: 6px;
+  font-size: clamp(10px,2.4vw,11px); font-weight: 700;
+  text-decoration: none; cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  white-space: nowrap; border: 1px solid;
+}
+.btn-map {
+  background: var(--green-lt); color: var(--green);
+  border-color: rgba(46,125,82,0.22);
+}
+.btn-web {
+  background: var(--blue-lt); color: var(--blue);
+  border-color: rgba(26,107,181,0.22);
+}
+.btn-map:hover, .btn-web:hover { opacity: 0.75; transform: translateY(-1px); }
+
+/* ═══════════════════════════════════════════
+   RESTAURANT BOX
+═══════════════════════════════════════════ */
+.restaurant-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border-lt);
+  border-radius: var(--r-md);
+  padding: 12px 14px; margin-top: 10px;
 }
 .rest-header {
-  font-size: clamp(10px, 2.4vw, 11px);
-  font-weight: 700;
-  color: var(--sage);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 13px;
+  font-size: 10px; font-weight: 700; color: var(--tx-3);
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px;
 }
 .rest-item {
-  display: flex; gap: 11px; align-items: flex-start;
-  margin-bottom: 12px; padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex; gap: 10px; align-items: flex-start;
+  margin-bottom: 10px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-lt);
 }
 .rest-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 .rest-rating {
-  background: rgba(201,146,74,0.15);
-  color: var(--gold-lt);
-  border: 1px solid rgba(201,146,74,0.2);
-  font-size: clamp(11px, 2.6vw, 12px);
-  font-weight: 700;
-  padding: 4px 9px;
-  border-radius: 6px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  margin-top: 2px;
+  background: var(--amber-lt); color: var(--amber);
+  border: 1px solid rgba(192,122,26,0.2);
+  font-size: clamp(10px,2.4vw,11px); font-weight: 700;
+  padding: 3px 8px; border-radius: 6px;
+  white-space: nowrap; flex-shrink: 0; margin-top: 2px;
 }
 .rest-name {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(15px, 3.8vw, 17px);
-  font-weight: 700;
-  color: var(--cream);
-  margin-bottom: 3px;
+  font-size: clamp(13px,3.2vw,15px); font-weight: 800;
+  color: var(--tx-1); margin-bottom: 2px;
 }
 .rest-detail {
-  font-size: clamp(12px, 2.8vw, 13px);
-  color: var(--sage);
-  line-height: 1.6;
+  font-size: clamp(11px,2.6vw,12px); color: var(--tx-2); line-height: 1.55;
 }
 
-/* DRIVE CARD */
-.drive-card {
-  display: flex; align-items: center; gap: 12px;
-  background: rgba(255,255,255,0.03);
-  border-radius: var(--r-sm);
-  padding: 11px 15px;
-  margin: 8px 0;
-  border: 1px solid rgba(255,255,255,0.05);
-  overflow: hidden;
-}
-.drive-icon { font-size: 17px; flex-shrink: 0; opacity: 0.8; }
-.drive-text {
-  flex: 1;
-  font-size: clamp(13px, 3.2vw, 14px);
-  font-weight: 600;
-  color: var(--mist);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  min-width: 0;
-}
-.drive-dist {
-  background: rgba(201,146,74,0.10);
-  border: 1px solid rgba(201,146,74,0.18);
-  color: var(--gold);
-  font-size: clamp(11px, 2.7vw, 13px);
-  font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 7px;
-  white-space: nowrap; flex-shrink: 0;
-}
-
-/* ─────────────────────────────────────────────
-   TIPS
-───────────────────────────────────────────── */
-.tips-section {
-  background: linear-gradient(135deg, var(--pine), var(--ink-3));
-  border-radius: var(--r-xl);
-  padding: 28px 24px;
-  margin-top: 36px;
-  border: 1px solid rgba(201,146,74,0.15);
-  box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-}
-.tips-section::before {
-  content: "TIP";
-  position: absolute; top: -12px; right: 18px;
-  font-family: 'Nanum Gothic', 'Malgun Gothic', sans-serif;
-  font-size: 80px;
-  color: rgba(255,255,255,0.03);
-  font-style: italic;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.tips-title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(17px, 4.2vw, 20px);
-  font-weight: 700;
-  color: var(--gold-lt);
-  margin-bottom: 18px;
-  display: flex; align-items: center; gap: 10px;
-}
-.tip-item {
-  display: flex; gap: 12px; align-items: flex-start;
-  margin-bottom: 13px;
-}
-.tip-item:last-child { margin-bottom: 0; }
-.tip-dot {
-  width: 5px; height: 5px;
-  background: var(--gold);
-  border-radius: 50%;
-  margin-top: 10px; flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(201,146,74,0.6);
-}
-.tip-text {
-  font-size: clamp(14px, 3.3vw, 15px);
-  color: var(--mist);
-  line-height: 1.75;
-}
-.tip-text strong { color: var(--white); font-weight: 700; }
-
-/* ─────────────────────────────────────────────
-   CONTACT
-───────────────────────────────────────────── */
-.contact-section {
-  background: var(--ink-2);
-  border-radius: var(--r-xl);
-  padding: 24px 22px;
-  margin-top: 12px;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: var(--shadow-sm);
-}
-.contact-title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(17px, 4.2vw, 20px);
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 16px;
-  display: flex; align-items: center; gap: 10px;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
-}
-.contact-item {
-  background: var(--ink-3);
-  border-radius: var(--r-md);
-  padding: 16px 17px;
-  border: 1px solid rgba(255,255,255,0.07);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
-  position: relative; overflow: hidden;
-}
-.contact-item::before {
-  content: "";
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), transparent);
-  border-radius: 2px 2px 0 0;
-}
-.contact-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-.contact-category {
-  font-size: clamp(10px, 2.4vw, 11px);
-  font-weight: 700;
-  color: var(--gold);
-  margin-bottom: 5px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.contact-name {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(15px, 3.8vw, 18px);
-  font-weight: 700;
-  color: var(--cream);
-  margin-bottom: 4px;
-  letter-spacing: -0.2px;
-}
-.contact-detail {
-  font-size: clamp(12px, 2.8vw, 13px);
-  color: var(--sage);
-  line-height: 1.6;
-}
-.contact-phone {
-  font-size: clamp(12px, 2.8vw, 14px);
-  font-weight: 700;
-  color: var(--sage);
-  margin-top: 5px;
-}
-
-/* ─────────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────────── */
-.footer {
-  text-align: center;
-  padding: 36px 16px 48px;
-  position: relative; z-index: 1;
-}
-.footer-inner {
-  display: inline-flex; flex-direction: column;
-  align-items: center; gap: 10px;
-}
-.footer-line {
-  display: flex; align-items: center; gap: 14px;
-}
-.footer-line::before, .footer-line::after {
-  content: "";
-  width: 40px; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,146,74,0.4));
-}
-.footer-line::after {
-  background: linear-gradient(90deg, rgba(201,146,74,0.4), transparent);
-}
-.footer-text {
-  font-family: 'Nanum Gothic', 'Malgun Gothic', sans-serif;
-  font-style: normal;
-  font-size: clamp(14px, 3.5vw, 17px);
-  color: var(--gold-lt);
-  letter-spacing: 0.5px;
-}
-.footer-date {
-  font-size: clamp(11px, 2.8vw, 13px);
-  color: var(--sage);
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-/* ─────────────────────────────────────────────
-   PLACE INFO BOX (주소·전화·링크)
-───────────────────────────────────────────── */
-.place-info {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: var(--r-sm);
-  padding: 12px 14px;
-  margin-top: 12px;
-  display: flex; flex-direction: column; gap: 7px;
-}
-.place-info-row {
-  display: flex; align-items: flex-start; gap: 8px;
-  font-size: clamp(12px, 2.8vw, 13px);
-  color: var(--sage);
-  line-height: 1.5;
-}
-.place-info-row .pi-icon { flex-shrink: 0; font-size: 13px; margin-top: 1px; opacity: 0.8; }
-.place-info-row a { color: var(--sage); text-decoration: none; }
-.place-info-row a:hover { color: var(--gold-lt); text-decoration: underline; }
-
-.place-btns {
-  display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px;
-}
-.btn-map, .btn-naver, .btn-web {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 7px 14px; border-radius: 8px;
-  font-size: clamp(11px, 2.6vw, 12px); font-weight: 700;
-  text-decoration: none; border: none; cursor: pointer;
-  transition: opacity 0.2s, transform 0.15s;
-  white-space: nowrap;
-}
-.btn-map {
-  background: rgba(3,199,90,0.15);
-  border: 1px solid rgba(3,199,90,0.3);
-  color: #5de89b;
-}
-.btn-naver {
-  background: rgba(3,199,90,0.15);
-  border: 1px solid rgba(3,199,90,0.3);
-  color: #5de89b;
-}
-.btn-web {
-  background: rgba(100,160,255,0.12);
-  border: 1px solid rgba(100,160,255,0.25);
-  color: #90b8ff;
-}
-.btn-map:hover, .btn-naver:hover, .btn-web:hover {
-  opacity: 0.8; transform: translateY(-1px);
-}
-
-/* 식당 링크 버튼 */
-.rest-btns {
-  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
-}
-
-/* ─────────────────────────────────────────────
-   KAKAO SHARE BAR (상단 고정)
-───────────────────────────────────────────── */
-.kakao-bar {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(13,26,20,0.92);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: 10px 16px;
-  display: flex; justify-content: center; align-items: center; gap: 10px;
-}
-.kakao-share-btn {
-  display: flex; align-items: center; gap: 8px;
-  background: #FEE500;
-  color: #191919;
-  border: none; cursor: pointer;
-  padding: 10px 22px; border-radius: 50px;
-  font-size: clamp(13px, 3.2vw, 14px); font-weight: 800;
-  font-family: 'Nanum Gothic', sans-serif;
-  transition: opacity 0.2s, transform 0.15s;
-  box-shadow: 0 2px 12px rgba(254,229,0,0.3);
-}
-.kakao-share-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-.kakao-share-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-.copy-link-btn {
-  display: flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
-  color: var(--mist);
-  padding: 10px 18px; border-radius: 50px;
-  font-size: clamp(12px, 3vw, 13px); font-weight: 700;
-  cursor: pointer; transition: background 0.2s;
-  font-family: 'Nanum Gothic', sans-serif;
-}
-.copy-link-btn:hover { background: rgba(255,255,255,0.14); }
-.copy-toast {
-  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
-  background: rgba(46,77,58,0.95); color: var(--mist);
-  padding: 10px 20px; border-radius: 50px;
-  font-size: 13px; font-weight: 700;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.3s;
-  z-index: 200; white-space: nowrap;
-  border: 1px solid rgba(126,196,154,0.3);
-}
-.copy-toast.show { opacity: 1; }
-
-/* body bottom padding for kakao bar */
-body { padding-bottom: 64px; }
-
-/* ─────────────────────────────────────────────
-   CHECKLIST SECTION
-───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════
+   CHECKLIST
+═══════════════════════════════════════════ */
 .checklist-section {
-  background: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--r-xl);
-  padding: 24px 22px;
-  margin-top: 24px;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: var(--shadow-sm);
+  padding: 18px 16px;
+  margin-top: 12px;
+  box-shadow: var(--shadow-xs);
 }
 .checklist-title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(17px, 4.2vw, 20px);
-  font-weight: 700; color: var(--white);
-  margin-bottom: 16px;
+  font-size: clamp(14px,3.5vw,16px); font-weight: 800; color: var(--tx-1);
+  margin-bottom: 14px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .cl-reset-btn {
-  font-size: 12px; font-weight: 700;
-  color: var(--sage); background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 5px 12px; border-radius: 20px;
-  cursor: pointer; transition: background 0.2s;
+  font-size: 11px; font-weight: 700; color: var(--tx-3);
+  background: var(--surface-2); border: 1px solid var(--border);
+  padding: 4px 10px; border-radius: 20px; cursor: pointer;
+  transition: background 0.15s;
 }
-.cl-reset-btn:hover { background: rgba(255,255,255,0.12); }
-
-.cl-tabs {
-  display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
-}
+.cl-reset-btn:hover { background: var(--border); }
+.cl-tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
 .cl-tab {
-  padding: 7px 16px; border-radius: 20px;
-  font-size: clamp(12px, 3vw, 13px); font-weight: 700;
-  cursor: pointer; transition: all 0.2s;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(255,255,255,0.04); color: var(--sage);
+  padding: 6px 14px; border-radius: 20px;
+  font-size: clamp(11px,2.6vw,12px); font-weight: 700;
+  cursor: pointer; transition: all 0.15s;
+  border: 1px solid var(--border);
+  background: var(--surface-2); color: var(--tx-2);
 }
 .cl-tab.active {
-  background: rgba(201,146,74,0.15);
-  border-color: rgba(201,146,74,0.35);
-  color: var(--gold-lt);
+  background: var(--green-lt); border-color: rgba(46,125,82,0.25);
+  color: var(--green);
 }
-
 .cl-group { display: none; }
 .cl-group.active { display: block; }
-
-.cl-progress {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
-}
+.cl-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .cl-progress-bar {
-  flex: 1; height: 5px; background: rgba(255,255,255,0.08);
-  border-radius: 10px; overflow: hidden;
+  flex: 1; height: 4px; background: var(--border); border-radius: 10px; overflow: hidden;
 }
 .cl-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--forest), var(--moss));
-  border-radius: 10px;
-  transition: width 0.4s ease;
+  height: 100%; background: linear-gradient(90deg, var(--green), var(--green-mid));
+  border-radius: 10px; transition: width 0.4s ease;
 }
-.cl-progress-text {
-  font-size: 12px; font-weight: 700; color: var(--sage); white-space: nowrap;
-}
-
+.cl-progress-text { font-size: 11px; font-weight: 700; color: var(--tx-3); white-space: nowrap; }
 .cl-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 12px; border-radius: 10px;
-  margin-bottom: 6px; cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.05);
-  background: rgba(255,255,255,0.02);
-  transition: background 0.2s;
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px; border-radius: var(--r-sm); margin-bottom: 5px;
+  cursor: pointer; border: 1px solid var(--border-lt);
+  background: var(--surface-2); transition: background 0.15s;
   user-select: none;
 }
-.cl-item:hover { background: rgba(255,255,255,0.05); }
-.cl-item.checked { background: rgba(126,196,154,0.07); border-color: rgba(126,196,154,0.15); }
+.cl-item:hover { background: var(--green-pal); border-color: rgba(46,125,82,0.15); }
+.cl-item.checked { background: var(--green-lt); border-color: rgba(46,125,82,0.2); }
 .cl-checkbox {
-  width: 20px; height: 20px; border-radius: 6px;
-  border: 2px solid rgba(255,255,255,0.2);
-  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s; font-size: 12px;
+  width: 18px; height: 18px; border-radius: 5px;
+  border: 1.5px solid var(--border); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; transition: all 0.15s;
 }
 .cl-item.checked .cl-checkbox {
-  background: var(--forest);
-  border-color: var(--moss);
-  color: var(--white);
+  background: var(--green); border-color: var(--green); color: #fff;
 }
-.cl-label {
-  font-size: clamp(13px, 3.2vw, 14px); color: var(--mist); flex: 1; line-height: 1.4;
-}
-.cl-item.checked .cl-label {
-  text-decoration: line-through; color: var(--sage); opacity: 0.7;
-}
-.cl-sub {
-  font-size: 11px; color: var(--sage); opacity: 0.7; margin-top: 2px;
-}
+.cl-label { font-size: clamp(12px,3vw,13px); color: var(--tx-1); flex: 1; line-height: 1.4; }
+.cl-item.checked .cl-label { text-decoration: line-through; color: var(--tx-3); }
+.cl-sub { font-size: 10px; color: var(--tx-3); margin-top: 1px; }
 
-/* ─────────────────────────────────────────────
-   BUDGET SECTION
-───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════
+   BUDGET
+═══════════════════════════════════════════ */
 .budget-section {
-  background: var(--ink-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--r-xl);
-  padding: 24px 22px;
+  padding: 18px 16px;
   margin-top: 12px;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
 }
 .budget-title {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(17px, 4.2vw, 20px);
-  font-weight: 700; color: var(--white);
-  margin-bottom: 18px;
-  display: flex; align-items: center; gap: 10px;
-}
-.budget-grid {
-  display: grid; gap: 10px;
+  font-size: clamp(14px,3.5vw,16px); font-weight: 800; color: var(--tx-1);
+  margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
 }
 .budget-row {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: var(--r-sm);
-  padding: 13px 14px;
-  display: flex; align-items: center; gap: 12px;
+  background: var(--surface-2); border: 1px solid var(--border-lt);
+  border-radius: var(--r-sm); padding: 11px 12px;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 7px;
 }
-.budget-row-icon { font-size: 20px; flex-shrink: 0; }
-.budget-row-label {
-  flex: 1; font-size: clamp(13px, 3.2vw, 14px); font-weight: 700; color: var(--mist);
-}
-.budget-row-sub {
-  font-size: 11px; color: var(--sage); margin-top: 2px;
-}
-.budget-input-wrap {
-  display: flex; align-items: center; gap: 4px;
-}
+.budget-row-icon { font-size: 18px; flex-shrink: 0; }
+.budget-row-label { font-size: clamp(12px,3vw,13px); font-weight: 700; color: var(--tx-1); }
+.budget-row-sub { font-size: 10px; color: var(--tx-3); margin-top: 1px; }
+.budget-input-wrap { display: flex; align-items: center; gap: 4px; }
 .budget-input {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 8px;
-  color: var(--cream);
-  font-size: clamp(13px, 3.2vw, 15px);
-  font-weight: 700;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 7px; color: var(--tx-1);
+  font-size: clamp(12px,3vw,14px); font-weight: 700;
   font-family: 'Nanum Gothic', sans-serif;
-  padding: 7px 10px;
-  width: 110px; text-align: right;
-  transition: border-color 0.2s;
+  padding: 6px 8px; width: 100px; text-align: right;
+  transition: border-color 0.15s;
 }
-.budget-input:focus {
-  outline: none; border-color: rgba(201,146,74,0.5);
-  background: rgba(255,255,255,0.09);
-}
-.budget-unit { font-size: 12px; color: var(--sage); font-weight: 600; white-space: nowrap; }
-
-.budget-divider {
-  height: 1px; background: rgba(255,255,255,0.08); margin: 8px 0;
-}
+.budget-input:focus { outline: none; border-color: var(--green); }
+.budget-unit { font-size: 11px; color: var(--tx-3); font-weight: 600; white-space: nowrap; }
+.budget-divider { height: 1px; background: var(--border); margin: 10px 0; }
 .budget-total {
-  background: linear-gradient(135deg, rgba(201,146,74,0.12), rgba(201,146,74,0.06));
-  border: 1px solid rgba(201,146,74,0.25);
-  border-radius: var(--r-sm);
-  padding: 16px 18px;
+  background: var(--green-lt); border: 1px solid rgba(46,125,82,0.2);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.budget-total-label {
-  font-size: clamp(14px, 3.5vw, 16px); font-weight: 800; color: var(--gold-lt);
-}
+.budget-total-label { font-size: clamp(12px,3vw,13px); font-weight: 800; color: var(--green); }
 .budget-total-amount {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: clamp(20px, 5vw, 26px); font-weight: 800; color: var(--gold-lt);
+  font-size: clamp(18px,4.5vw,24px); font-weight: 800; color: var(--green);
   letter-spacing: -0.5px;
 }
-.budget-per {
-  font-size: 12px; color: var(--sage); font-weight: 600; margin-top: 2px; text-align: right;
-}
+.budget-per { font-size: 11px; color: var(--green); opacity: 0.75; margin-top: 2px; }
 .budget-note {
-  font-size: clamp(11px, 2.6vw, 12px); color: var(--sage);
-  margin-top: 10px; line-height: 1.6; text-align: center; opacity: 0.8;
+  font-size: 11px; color: var(--tx-3); margin-top: 8px;
+  text-align: center; line-height: 1.6;
 }
 
-/* ─────────────────────────────────────────────
+/* ═══════════════════════════════════════════
+   TIPS
+═══════════════════════════════════════════ */
+.tips-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 18px 16px; margin-top: 12px;
+  box-shadow: var(--shadow-xs);
+  position: relative; overflow: hidden;
+}
+.tips-section::before {
+  content: "💡"; position: absolute; top: -4px; right: 12px;
+  font-size: 60px; opacity: 0.05; pointer-events: none;
+}
+.tips-title {
+  font-size: clamp(14px,3.5vw,16px); font-weight: 800; color: var(--tx-1);
+  margin-bottom: 14px; display: flex; align-items: center; gap: 6px;
+}
+.tip-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+.tip-item:last-child { margin-bottom: 0; }
+.tip-dot {
+  width: 5px; height: 5px; background: var(--green-mid);
+  border-radius: 50%; margin-top: 8px; flex-shrink: 0;
+}
+.tip-text { font-size: clamp(12px,3vw,13px); color: var(--tx-2); line-height: 1.7; }
+.tip-text strong { color: var(--tx-1); font-weight: 800; }
+
+/* ═══════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════ */
+.contact-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 18px 16px; margin-top: 12px;
+  box-shadow: var(--shadow-xs);
+}
+.contact-title {
+  font-size: clamp(14px,3.5vw,16px); font-weight: 800; color: var(--tx-1);
+  margin-bottom: 14px; display: flex; align-items: center; gap: 6px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+.contact-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border-lt);
+  border-radius: var(--r-lg); padding: 14px 14px;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.contact-item::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: linear-gradient(90deg, var(--green-mid), transparent);
+  border-radius: 2px 2px 0 0;
+}
+.contact-item:hover { box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.contact-category {
+  font-size: 10px; font-weight: 700; color: var(--green);
+  margin-bottom: 4px; letter-spacing: 0.3px;
+}
+.contact-name { font-size: clamp(13px,3.3vw,15px); font-weight: 800; color: var(--tx-1); margin-bottom: 3px; }
+.contact-detail { font-size: clamp(10px,2.4vw,11px); color: var(--tx-2); line-height: 1.55; }
+.contact-phone { font-size: clamp(11px,2.6vw,12px); font-weight: 700; margin-top: 4px; }
+.contact-phone a { color: var(--blue); }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.footer {
+  text-align: center; padding: 28px 16px 40px;
+  border-top: 1px solid var(--border); margin-top: 24px;
+}
+.footer-text { font-size: clamp(12px,3vw,14px); color: var(--tx-3); font-weight: 600; }
+.footer-date { font-size: clamp(10px,2.4vw,11px); color: var(--tx-4); margin-top: 4px; }
+
+/* ═══════════════════════════════════════════
    ANIMATIONS
-───────────────────────────────────────────── */
+═══════════════════════════════════════════ */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
 }
+.hero-tag, .hero h1, .hero-sub, .hero-chips { animation: fadeUp 0.5s ease both; }
+.hero h1 { animation-delay: 0.08s; }
+.hero-sub { animation-delay: 0.15s; }
+.hero-chips { animation-delay: 0.22s; }
 
-/* ═══════════════════════════════════════════════
-   RESPONSIVE  ·  4단 브레이크포인트
-   xs  ≤ 479px  소형 스마트폰
-   sm  480–767px 일반 스마트폰
-   md  768–1023px 태블릿
-   lg  ≥ 1024px  PC / 와이드
-═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   RESPONSIVE — PC (≥ 768px)
+═══════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .wrap { max-width: 800px; padding: 24px 28px 56px; }
+  .hero { padding: 72px 40px 68px; }
+  .hero h1 { font-size: clamp(36px,5vw,54px); }
+  .hero h1 .accent { font-size: clamp(22px,3vw,32px); }
 
-/* ────────────────────────────────
-   PC (lg ≥ 1024px)
-──────────────────────────────── */
-@media (min-width: 1024px) {
+  .stay-item { padding: 22px 44px; max-width: 340px; }
+  .stay-name { font-size: 18px; }
 
-  /* 레이아웃 */
-  .wrap { max-width: 900px; padding: 0 40px 110px; }
-
-  /* Hero */
-  .hero { min-height: 90vh; padding: 110px 60px 130px; }
-  .hero-inner { max-width: 720px; }
-  .hero-tag   { font-size: 28px; padding: 16px 38px; margin-bottom: 32px; }
-  .hero h1    { font-size: 72px; line-height: 1.15; margin-bottom: 14px; }
-  .hero h1 .accent { font-size: 58px; }
-  .hero-sub   { font-size: 20px; margin-bottom: 42px; }
-  .hero-chip  { font-size: 16px; padding: 13px 26px; }
-  .hero-chips { gap: 12px; }
-
-  /* Stay bar */
-  .stay-bar { justify-content: center; }
-  .stay-item { padding: 30px 64px; max-width: 360px; }
-  .stay-label { font-size: 17px; margin-bottom: 10px; }
-  .stay-name  { font-size: 28px; margin-bottom: 10px; }
-  .stay-confirm { font-size: 17px; }
-
-  /* Summary */
-  .summary-table { padding: 40px 36px 32px; margin-top: 36px; }
-  .section-label { font-size: 17px; margin-bottom: 24px; }
-  .sched-grid    { grid-template-columns: 56px 1fr 1fr 1fr; }
-  .sg-stay-row   { grid-template-columns: 56px 1fr 1fr 1fr; }
-  .sg-head       { padding: 20px 14px 17px; }
-  .sg-head-day   { font-size: 22px; }
-  .sg-head-date  { font-size: 17px; margin-top: 5px; }
-  .sg-head-route { font-size: 14px; margin-top: 6px; display: block; }
-  .sg-time       { font-size: 12px; min-height: 96px; }
-  .sg-cell       { padding: 15px 14px; min-height: 96px; gap: 5px; }
-  .sg-icon       { font-size: 24px; }
-  .sg-title      { font-size: 15px; }
-  .sg-sub        { font-size: 13px; }
-  .sg-badge      { font-size: 12px; padding: 3px 9px; margin-top: 6px; }
-  .sg-stay-cell  { padding: 13px 14px; }
-  .sg-stay-text  { font-size: 14px; }
-  .sg-stay-dot   { width: 8px; height: 8px; }
-  .sg-stay-corner { font-size: 18px; }
-
-  /* Day section */
-  .day-section  { margin-top: 56px; }
-  .day-header   { gap: 18px; padding-bottom: 20px; margin-bottom: 20px; }
-  .day-badge    { font-size: 17px; padding: 14px 20px; min-width: 90px; }
-  .day-title    { font-size: 26px; }
-  .day-subtitle { font-size: 16px; margin-top: 5px; }
-
-  /* Schedule cards */
-  .card-inner { padding: 24px 26px 24px 28px; gap: 20px; }
-  .card-icon  { font-size: 30px; }
-  .card-time  { font-size: 16px; margin-bottom: 7px; }
-  .card-title { font-size: 24px; margin-bottom: 8px; }
-  .card-desc  { font-size: 17px; line-height: 1.75; }
-  .tag        { font-size: 14px; padding: 6px 14px; }
-  .confirmed-badge { font-size: 15px; padding: 8px 16px; margin-top: 12px; }
-
-  /* Drive card */
-  .drive-card { padding: 14px 20px; gap: 14px; border-radius: 12px; }
-  .drive-icon { font-size: 20px; }
-  .drive-text { font-size: 16px; }
-  .drive-dist { font-size: 15px; padding: 7px 14px; }
-
-  /* Restaurant */
-  .restaurant-box { padding: 16px 18px; margin-top: 14px; }
-  .rest-header { font-size: 13px; margin-bottom: 14px; }
-  .rest-name   { font-size: 19px; margin-bottom: 4px; }
-  .rest-detail { font-size: 15px; }
-  .rest-rating { font-size: 14px; padding: 4px 10px; }
-
-  /* Tips */
-  .tips-section { padding: 36px 34px; margin-top: 48px; border-radius: 28px; }
-  .tips-title   { font-size: 22px; margin-bottom: 20px; }
-  .tip-item     { margin-bottom: 15px; gap: 14px; }
-  .tip-dot      { width: 7px; height: 7px; margin-top: 10px; }
-  .tip-text     { font-size: 17px; }
-
-  /* Contact */
-  .contact-section { padding: 32px 30px; margin-top: 14px; border-radius: 28px; }
-  .contact-title   { font-size: 22px; margin-bottom: 18px; }
-  .contact-grid    { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .contact-item    { padding: 18px 20px; border-radius: 16px; }
-  .contact-category { font-size: 13px; margin-bottom: 6px; }
-  .contact-name    { font-size: 20px; margin-bottom: 5px; }
-  .contact-detail  { font-size: 15px; }
-  .contact-phone   { font-size: 16px; margin-top: 6px; }
-
-  /* Checklist & Budget */
-  .checklist-section, .budget-section { padding: 32px 30px; border-radius: 28px; }
-  .checklist-title, .budget-title { font-size: 22px; margin-bottom: 20px; }
-  .cl-item { padding: 12px 14px; }
-  .cl-label { font-size: 15px; }
-  .budget-row { padding: 15px 16px; }
-  .budget-input { width: 130px; font-size: 16px; }
-
-  /* Footer */
-  .footer      { padding: 44px 20px 60px; }
-  .footer-text { font-size: 20px; }
-  .footer-date { font-size: 15px; }
-
-  /* Hover (마우스 전용) */
-  .schedule-card:hover { transform: translateY(-4px); box-shadow: 0 12px 44px rgba(13,26,20,0.30); }
-  .contact-item:hover  { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(13,26,20,0.25); }
-}
-
-/* ────────────────────────────────
-   태블릿 (md 768–1023px)
-──────────────────────────────── */
-@media (min-width: 768px) and (max-width: 1023px) {
-
-  .wrap { max-width: 780px; padding: 0 28px 96px; }
-
-  .hero { min-height: 78vh; padding: 86px 36px 106px; }
-  .hero-inner { max-width: 620px; }
-  .hero-tag   { font-size: 24px; padding: 14px 30px; }
-  .hero h1    { font-size: 54px; }
-  .hero h1 .accent { font-size: 44px; }
-  .hero-sub   { font-size: 17px; }
-  .hero-chip  { font-size: 14px; padding: 11px 20px; }
-
-  .stay-item  { padding: 24px 44px; }
-  .stay-label { font-size: 16px; }
-  .stay-name  { font-size: 24px; }
-  .stay-confirm { font-size: 15px; }
-
-  .summary-table { padding: 32px 28px 26px; }
-  .section-label { font-size: 16px; }
-  .sched-grid    { grid-template-columns: 48px 1fr 1fr 1fr; }
-  .sg-stay-row   { grid-template-columns: 48px 1fr 1fr 1fr; }
-  .sg-head-day   { font-size: 19px; }
-  .sg-head-date  { font-size: 15px; }
-  .sg-head-route { font-size: 13px; }
-  .sg-cell, .sg-time { min-height: 88px; }
-  .sg-title { font-size: 14px; }
-  .sg-sub   { font-size: 12px; }
-
-  .day-title  { font-size: 22px; }
-  .card-title { font-size: 21px; }
-  .card-desc  { font-size: 15px; }
-  .card-time  { font-size: 14px; }
-
-  .contact-grid { grid-template-columns: repeat(2, 1fr); }
-  .tips-title   { font-size: 20px; }
-  .tip-text     { font-size: 15px; }
-}
-
-/* ────────────────────────────────
-   일반 스마트폰 (sm 480–767px)
-──────────────────────────────── */
-@media (min-width: 480px) and (max-width: 767px) {
-
-  .wrap { padding: 0 16px 76px; }
-
-  .hero { min-height: 72vh; padding: 64px 22px 94px; }
-  .hero-tag   { font-size: 20px; padding: 12px 26px; }
-  .hero h1    { font-size: 40px; }
-  .hero h1 .accent { font-size: 34px; }
-  .hero-sub   { font-size: 15px; }
-  .hero-chip  { font-size: 13px; padding: 10px 16px; }
-
-  .stay-item  { padding: 22px 28px; }
-  .stay-label { font-size: 15px; }
-  .stay-name  { font-size: 22px; }
-  .stay-confirm { font-size: 14px; }
-
-  .section-label { font-size: 14px; }
-  .sched-grid    { grid-template-columns: 40px 1fr 1fr 1fr; }
-  .sg-stay-row   { grid-template-columns: 40px 1fr 1fr 1fr; }
-  .sg-head-day   { font-size: 17px; }
-  .sg-head-date  { font-size: 14px; }
-  .sg-head-route { font-size: 12px; word-break: keep-all; }
-  .sg-cell, .sg-time { min-height: 80px; }
-  .sg-title { font-size: 13px; }
+  .summary-section { padding: 24px 20px 20px; }
+  .sched-grid { grid-template-columns: 48px 1fr 1fr 1fr; }
+  .sg-stay-row { grid-template-columns: 48px 1fr 1fr 1fr; }
+  .sg-head-day   { font-size: 16px; }
+  .sg-head-date  { font-size: 12px; }
+  .sg-head-route { font-size: 11px; }
+  .sg-title { font-size: 12px; }
   .sg-sub   { font-size: 11px; }
+  .sg-cell, .sg-time { min-height: 80px; }
 
-  .day-title  { font-size: 20px; }
-  .card-title { font-size: 19px; }
+  .day-badge { font-size: 14px; padding: 10px 16px; min-width: 74px; }
+  .day-title { font-size: 22px; }
+  .card-title { font-size: 20px; }
   .card-desc  { font-size: 14px; }
-  .card-time  { font-size: 13px; }
-  .card-inner { padding: 16px 18px 16px 20px; }
+
+  .rest-name { font-size: 16px; }
+  .rest-detail { font-size: 13px; }
 
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
-  .tips-title   { font-size: 18px; }
-  .tip-text     { font-size: 14px; }
+
+  .checklist-section, .budget-section,
+  .tips-section, .contact-section { padding: 24px 22px; border-radius: 20px; }
+  .checklist-title, .budget-title, .tips-title, .contact-title { font-size: 18px; }
+  .cl-label { font-size: 14px; }
+  .budget-input { width: 120px; font-size: 15px; }
+  .budget-total-amount { font-size: 26px; }
+  .tip-text { font-size: 14px; }
 }
 
-/* ────────────────────────────────
-   소형 스마트폰 (xs ≤ 479px)
-──────────────────────────────── */
-@media (max-width: 479px) {
+@media (min-width: 1024px) {
+  .wrap { max-width: 900px; padding: 28px 40px 64px; }
+  .hero { padding: 96px 60px 88px; }
+  .sg-head-day   { font-size: 17px; }
+  .sg-title { font-size: 13px; }
+  .card-title { font-size: 22px; }
+  .card-desc  { font-size: 15px; }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
 
-  .wrap { padding: 0 12px 64px; }
-
-  /* Hero */
-  .hero { min-height: 68vh; padding: 50px 16px 84px; }
-  .hero-inner { max-width: 100%; }
-  .hero-tag   { font-size: 18px; padding: 11px 22px; letter-spacing: 0.5px; margin-bottom: 22px; }
-  .hero h1    { font-size: 32px; line-height: 1.22; margin-bottom: 10px; }
-  .hero h1 .accent { font-size: 26px; }
-  .hero-sub   { font-size: 13px; letter-spacing: 0.2px; margin-bottom: 26px; }
-  .hero-chips { gap: 7px; flex-wrap: wrap; justify-content: center; }
-  .hero-chip  { font-size: 12px; padding: 9px 14px; }
-
-  /* Stay bar */
-  .stay-bar { flex-wrap: wrap; }
-  .stay-item { padding: 18px 18px; min-width: 0; flex: 1; }
-  .stay-item + .stay-item::before { display: none; }
-  .stay-label   { font-size: 13px; margin-bottom: 6px; }
-  .stay-name    { font-size: 19px; margin-bottom: 6px; }
-  .stay-confirm { font-size: 13px; }
-
-  /* Summary */
-  .summary-table { padding: 20px 12px 16px; border-radius: 18px; }
-  .section-label { font-size: 13px; margin-bottom: 16px; }
-
-  /* xs: 시간열 숨기고 3열 순수 그리드 */
-  .sg-corner, .sg-time, .sg-stay-corner { display: none; }
-  .sched-grid  { grid-template-columns: 1fr 1fr 1fr; border-radius: 10px; }
-  .sg-stay-row { grid-template-columns: 1fr 1fr 1fr; }
-
-  .sg-head      { padding: 13px 8px 11px; }
-  .sg-head-day  { font-size: 15px; }
-  .sg-head-date { font-size: 12px; margin-top: 3px; }
-  .sg-head-route { font-size: 11px; margin-top: 3px; line-height: 1.35; }
-
-  .sg-cell  { padding: 11px 9px; min-height: 74px; gap: 3px; }
-  .sg-icon  { font-size: 18px; }
-  .sg-title { font-size: 12px; line-height: 1.35; }
-  .sg-sub   { font-size: 10px; line-height: 1.4; }
-  .sg-badge { font-size: 10px; padding: 2px 7px; margin-top: 4px; }
-
-  .sg-stay-cell { padding: 10px 10px; }
-  .sg-stay-text { font-size: 12px; }
-  .sg-stay-dot  { width: 6px; height: 6px; }
-
-  /* Day header */
-  .day-section  { margin-top: 36px; }
-  .day-header   { gap: 12px; padding-bottom: 15px; margin-bottom: 15px; }
-  .day-badge    { font-size: 14px; padding: 11px 13px; min-width: 72px; line-height: 1.5; }
-  .day-title    { font-size: 18px; }
-  .day-subtitle { font-size: 12px; margin-top: 3px; }
-
-  /* Schedule cards */
-  .schedule-card   { border-radius: 13px; margin-bottom: 9px; }
-  .card-inner      { padding: 15px 15px 15px 18px; gap: 12px; }
-  .card-icon       { font-size: 23px; }
-  .card-time       { font-size: 13px; margin-bottom: 5px; }
-  .card-title      { font-size: 18px; margin-bottom: 6px; }
-  .card-desc       { font-size: 13px; line-height: 1.68; }
-  .tag             { font-size: 11px; padding: 4px 10px; }
-  .confirmed-badge { font-size: 12px; padding: 6px 12px; margin-top: 9px; }
-
-  /* Drive card */
-  .drive-card { padding: 11px 14px; gap: 10px; border-radius: 10px; }
-  .drive-icon { font-size: 17px; }
-  .drive-text { font-size: 13px; }
-  .drive-dist { font-size: 12px; padding: 5px 11px; }
-
-  /* Restaurant */
-  .restaurant-box { padding: 12px 13px; margin-top: 12px; }
-  .rest-header { font-size: 11px; margin-bottom: 11px; }
-  .rest-name   { font-size: 15px; }
-  .rest-detail { font-size: 12px; }
-  .rest-rating { font-size: 11px; padding: 3px 8px; }
-
-  /* Tips */
-  .tips-section { padding: 22px 18px; border-radius: 18px; margin-top: 30px; }
-  .tips-title   { font-size: 17px; margin-bottom: 15px; }
-  .tip-item     { margin-bottom: 12px; gap: 11px; }
-  .tip-dot      { margin-top: 8px; }
-  .tip-text     { font-size: 13px; line-height: 1.70; }
-
-  /* Contact */
-  .contact-section  { padding: 20px 16px; border-radius: 18px; margin-top: 10px; }
-  .contact-title    { font-size: 17px; margin-bottom: 14px; }
-  .contact-grid     { grid-template-columns: 1fr; gap: 9px; }
-  .contact-item     { padding: 14px 16px; border-radius: 13px; }
-  .contact-category { font-size: 11px; margin-bottom: 4px; }
-  .contact-name     { font-size: 16px; margin-bottom: 4px; }
-  .contact-detail   { font-size: 12px; }
-  .contact-phone    { font-size: 13px; margin-top: 4px; }
-
-  /* Footer */
-  .footer      { padding: 30px 16px 44px; }
-  .footer-text { font-size: 15px; }
-  .footer-date { font-size: 12px; }
+/* xs 소형폰 */
+@media (max-width: 359px) {
+  .sched-grid { grid-template-columns: 34px 1fr 1fr 1fr; }
+  .sg-stay-row { grid-template-columns: 34px 1fr 1fr 1fr; }
+  .sg-cell, .sg-time { min-height: 64px; }
+  .sg-icon { font-size: 14px; }
+  .sg-title { font-size: 9px; }
+  .hero h1 { font-size: 24px; }
+  .budget-input { width: 85px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ─── KAKAO SHARE BAR ─── -->
-<div class="kakao-bar">
-  <button class="kakao-share-btn" onclick="shareKakao()">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.612 1.582 4.912 3.986 6.316L4.5 21l4.5-2.7c.978.2 1.98.3 3 .3 5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/></svg>
-    카카오톡으로 공유
-  </button>
-  <button class="copy-link-btn" onclick="copyLink()">
-    🔗 링크 복사
-  </button>
-</div>
-<div class="copy-toast" id="copyToast">✓ 링크가 복사되었습니다!</div>
-
 <!-- ─── HERO ─── -->
 <div class="hero">
-  <div class="hero-inner">
-    <div class="hero-tag">✦ 강원도 힐링 여행</div>
-    <h1>
-      자연 속 2박 3일
-      <span class="accent">Healing Road Trip</span>
-    </h1>
-    <p class="hero-sub">증평 → 평창 → 오대산 → 인제 → 백담사</p>
-    <div class="hero-chips">
-      <div class="hero-chip">📅 5월 1일(금) ~ 3일(일)</div>
-      <div class="hero-chip">🚗 자가용 이동</div>
-      <div class="hero-chip">👫 커플 여행</div>
-    </div>
+  <div class="hero-tag">🌿 강원도 힐링 여행</div>
+  <h1>
+    자연 속 2박 3일
+    <span class="accent">Healing Road Trip</span>
+  </h1>
+  <p class="hero-sub">증평 → 평창 → 오대산 → 인제 → 백담사</p>
+  <div class="hero-chips">
+    <div class="hero-chip">📅 5월 1일(금) ~ 3일(일)</div>
+    <div class="hero-chip">🚗 자가용 이동</div>
+    <div class="hero-chip">👫 커플 여행</div>
   </div>
 </div>
 
@@ -1467,126 +834,58 @@ body { padding-bottom: 64px; }
 <div class="wrap">
 
   <!-- ─── SUMMARY ─── -->
-  <div class="summary-table">
-    <div class="section-label">전체 일정 한눈에 보기</div>
-
+  <div class="summary-section">
+    <div class="sec-header">📋 전체 일정 한눈에 보기</div>
     <div class="sched-grid">
 
-      <!-- ── 헤더 행 ── -->
       <div class="sg-corner"></div>
       <div class="sg-head">
         <div class="sg-head-day">1일차</div>
-        <div class="sg-head-date">5월 1일 금</div>
-        <div class="sg-head-route">증평 → 평창</div>
+        <div class="sg-head-date">5/1 금</div>
+        <div class="sg-head-route">증평→평창</div>
       </div>
       <div class="sg-head">
         <div class="sg-head-day">2일차</div>
-        <div class="sg-head-date">5월 2일 토</div>
-        <div class="sg-head-route">평창 → 오대산 → 인제</div>
+        <div class="sg-head-date">5/2 토</div>
+        <div class="sg-head-route">평창→오대산→인제</div>
       </div>
       <div class="sg-head">
         <div class="sg-head-day">3일차</div>
-        <div class="sg-head-date">5월 3일 일</div>
-        <div class="sg-head-route">인제 → 백담사 → 증평</div>
+        <div class="sg-head-date">5/3 일</div>
+        <div class="sg-head-route">인제→백담사→증평</div>
       </div>
 
-      <!-- ── 오전 행 ── -->
       <div class="sg-time">오전</div>
-      <div class="sg-cell c-empty">
-        <div class="sg-icon">🚗</div>
-        <div class="sg-title">증평 출발</div>
-        <div class="sg-sub">점심 후 이동</div>
-      </div>
-      <div class="sg-cell c-lodge">
-        <div class="sg-icon">☕</div>
-        <div class="sg-title">체크아웃</div>
-        <div class="sg-sub">숲속의요정펜션<br>여유로운 아침</div>
-      </div>
-      <div class="sg-cell c-lodge">
-        <div class="sg-icon">☕</div>
-        <div class="sg-title">체크아웃</div>
-        <div class="sg-sub">내린천 아름펜션<br>느긋한 아침</div>
-      </div>
+      <div class="sg-cell c-empty"><div class="sg-icon">🚗</div><div class="sg-title">증평 출발</div><div class="sg-sub">점심 후 이동</div></div>
+      <div class="sg-cell c-lodge"><div class="sg-icon">☕</div><div class="sg-title">체크아웃</div><div class="sg-sub">숲속의요정펜션</div></div>
+      <div class="sg-cell c-lodge"><div class="sg-icon">☕</div><div class="sg-title">체크아웃</div><div class="sg-sub">내린천 아름펜션</div></div>
 
-      <!-- ── 점심 행 ── -->
       <div class="sg-time">점심</div>
-      <div class="sg-cell c-meal">
-        <div class="sg-icon">🍽️</div>
-        <div class="sg-title">증평 점심</div>
-        <div class="sg-sub">든든하게 출발 준비</div>
-      </div>
-      <div class="sg-cell c-meal">
-        <div class="sg-icon">🍜</div>
-        <div class="sg-title">봉평 메밀막국수</div>
-        <div class="sg-sub">허생원봉평소바<br>메밀꽃향기</div>
-      </div>
-      <div class="sg-cell c-meal">
-        <div class="sg-icon">🍲</div>
-        <div class="sg-title">인제 황태해장국</div>
-        <div class="sg-sub">용바위식당<br>매바위황태식당</div>
-      </div>
+      <div class="sg-cell c-meal"><div class="sg-icon">🍽️</div><div class="sg-title">증평 점심</div><div class="sg-sub">든든하게 출발</div></div>
+      <div class="sg-cell c-meal"><div class="sg-icon">🍜</div><div class="sg-title">봉평 메밀막국수</div><div class="sg-sub">허생원봉평소바</div></div>
+      <div class="sg-cell c-meal"><div class="sg-icon">🍲</div><div class="sg-title">인제 황태해장국</div><div class="sg-sub">용바위식당</div></div>
 
-      <!-- ── 오후 행 ── -->
       <div class="sg-time">오후</div>
-      <div class="sg-cell c-lodge">
-        <div class="sg-icon">🏡</div>
-        <div class="sg-title">숲속의요정펜션</div>
-        <div class="sg-sub">평창 봉평 · 체크인</div>
-        <div class="sg-badge">✦ 예약완료</div>
-      </div>
-      <div class="sg-cell c-nature">
-        <div class="sg-icon">🌲</div>
-        <div class="sg-title">월정사 전나무 숲길</div>
-        <div class="sg-sub">오대산 · 1km 산책<br>24시간 개방</div>
-      </div>
-      <div class="sg-cell c-nature">
-        <div class="sg-icon">🙏</div>
-        <div class="sg-title">백담사 방문</div>
-        <div class="sg-sub">셔틀버스 15분<br>왕복 5,000원</div>
-      </div>
+      <div class="sg-cell c-lodge"><div class="sg-icon">🏡</div><div class="sg-title">숲속의요정펜션</div><div class="sg-sub">체크인</div><div class="sg-badge">예약완료</div></div>
+      <div class="sg-cell c-nature"><div class="sg-icon">🌲</div><div class="sg-title">월정사 전나무 숲길</div><div class="sg-sub">오대산 · 1km 산책</div></div>
+      <div class="sg-cell c-nature"><div class="sg-icon">🙏</div><div class="sg-title">백담사 방문</div><div class="sg-sub">셔틀버스 15분</div></div>
 
-      <!-- ── 저녁 행 ── -->
       <div class="sg-time sg-last-row">저녁</div>
-      <div class="sg-cell c-lodge sg-last-row">
-        <div class="sg-icon">🔥</div>
-        <div class="sg-title">바베큐 &amp; 별 감상</div>
-        <div class="sg-sub">펜션 야외 · 봉평 밤하늘</div>
-      </div>
-      <div class="sg-cell c-lodge sg-last-row">
-        <div class="sg-icon">🏕️</div>
-        <div class="sg-title">내린천 아름펜션</div>
-        <div class="sg-sub">인제 · 계곡 뷰 · 체크인</div>
-        <div class="sg-badge">✦ 예약완료</div>
-      </div>
-      <div class="sg-cell c-home sg-last-row sg-col-last">
-        <div class="sg-icon">🏠</div>
-        <div class="sg-title">증평 귀가</div>
-        <div class="sg-sub">서울양양 → 중부내륙<br>오후 4시 전 출발 권장</div>
-      </div>
+      <div class="sg-cell c-lodge sg-last-row"><div class="sg-icon">🔥</div><div class="sg-title">바베큐 &amp; 별 감상</div><div class="sg-sub">펜션 야외</div></div>
+      <div class="sg-cell c-lodge sg-last-row"><div class="sg-icon">🏕️</div><div class="sg-title">내린천 아름펜션</div><div class="sg-sub">계곡 뷰 · 체크인</div><div class="sg-badge">예약완료</div></div>
+      <div class="sg-cell c-home sg-last-row"><div class="sg-icon">🏠</div><div class="sg-title">증평 귀가</div><div class="sg-sub">오후 4시 전 출발</div></div>
 
-      <!-- ── 숙박 푸터 ── -->
       <div class="sg-stay-row">
         <div class="sg-stay-corner">🌙</div>
-        <div class="sg-stay-cell">
-          <div class="sg-stay-dot gold"></div>
-          <div class="sg-stay-text gold">숲속의요정펜션 1박</div>
-        </div>
-        <div class="sg-stay-cell">
-          <div class="sg-stay-dot green"></div>
-          <div class="sg-stay-text green">내린천 아름펜션 1박</div>
-        </div>
-        <div class="sg-stay-cell">
-          <div class="sg-stay-dot gray"></div>
-          <div class="sg-stay-text gray">증평 귀가</div>
-        </div>
+        <div class="sg-stay-cell"><div class="sg-stay-dot amber"></div><div class="sg-stay-text">숲속의요정펜션 1박</div></div>
+        <div class="sg-stay-cell"><div class="sg-stay-dot green"></div><div class="sg-stay-text">내린천 아름펜션 1박</div></div>
+        <div class="sg-stay-cell"><div class="sg-stay-dot gray"></div><div class="sg-stay-text">증평 귀가</div></div>
       </div>
 
-    </div><!-- /sched-grid -->
-  </div><!-- /summary-table -->
+    </div>
+  </div>
 
-  <!-- ═══════════════════════════════
-       1일차
-  ═══════════════════════════════ -->
+  <!-- ═══ 1일차 ═══ -->
   <div class="day-section">
     <div class="day-header">
       <div class="day-badge">1일차<br>5/1 금</div>
@@ -1627,7 +926,7 @@ body { padding-bottom: 64px; }
           </div>
           <div class="place-btns">
             <a class="btn-map" href="https://map.naver.com/v5/search/숲속의요정펜션 평창" target="_blank">🗺️ 네이버지도</a>
-            <a class="btn-web" href="https://search.naver.com/search.naver?query=숲속의요정펜션+평창+봉평" target="_blank">🔍 네이버 검색</a>
+            <a class="btn-web" href="https://search.naver.com/search.naver?query=숲속의요정펜션+평창" target="_blank">🔍 네이버 검색</a>
           </div>
         </div>
       </div>
@@ -1638,21 +937,19 @@ body { padding-bottom: 64px; }
         <div class="card-icon">🔥</div>
         <div class="card-body">
           <div class="card-time">저녁 · 펜션</div>
-          <div class="card-title">바베큐 & 별 감상</div>
+          <div class="card-title">바베큐 &amp; 별 감상</div>
           <div class="card-desc">산속 맑은 하늘 아래 바베큐. 봉평 밤하늘은 별이 쏟아져요 ⭐</div>
           <div class="tags">
             <span class="tag tag-green">🌿 자연</span>
-            <span class="tag tag-orange">🔥 바베큐</span>
-            <span class="tag tag-gold">⭐ 별 감상</span>
+            <span class="tag tag-amber">🔥 바베큐</span>
+            <span class="tag tag-teal">⭐ 별 감상</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════
-       2일차
-  ═══════════════════════════════ -->
+  <!-- ═══ 2일차 ═══ -->
   <div class="day-section">
     <div class="day-header">
       <div class="day-badge">2일차<br>5/2 토</div>
@@ -1689,7 +986,7 @@ body { padding-bottom: 64px; }
                 <div class="rest-detail">샤브샤브 메밀국수 1만원 · 가성비 최고 · 10:30~20:00</div>
                 <div class="rest-detail">📍 강원 평창군 봉평면 기풍로 56</div>
                 <div class="rest-btns">
-                  <a class="btn-map" href="https://map.naver.com/v5/search/허생원봉평소바" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-map" href="https://map.naver.com/v5/search/허생원봉평소바" target="_blank">🗺️ 지도</a>
                   <a class="btn-web" href="https://search.naver.com/search.naver?query=허생원봉평소바" target="_blank">🔍 검색</a>
                 </div>
               </div>
@@ -1701,7 +998,7 @@ body { padding-bottom: 64px; }
                 <div class="rest-detail">메밀막국수 · 메밀전병 · 9:30~19:30 (목 휴무)</div>
                 <div class="rest-detail">📍 강원 평창군 봉평면 이효석길 113</div>
                 <div class="rest-btns">
-                  <a class="btn-map" href="https://map.naver.com/v5/search/메밀꽃향기 봉평" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-map" href="https://map.naver.com/v5/search/메밀꽃향기 봉평" target="_blank">🗺️ 지도</a>
                   <a class="btn-web" href="https://search.naver.com/search.naver?query=메밀꽃향기+봉평" target="_blank">🔍 검색</a>
                 </div>
               </div>
@@ -1732,7 +1029,7 @@ body { padding-bottom: 64px; }
           <div class="place-info">
             <div class="place-info-row"><span class="pi-icon">📍</span> 강원 평창군 진부면 오대산로 374-8</div>
             <div class="place-info-row"><span class="pi-icon">📞</span> <a href="tel:033-339-6800">033-339-6800</a></div>
-            <div class="place-info-row"><span class="pi-icon">⏰</span> 24시간 개방 · 입장료 무료 (문화재구역 별도)</div>
+            <div class="place-info-row"><span class="pi-icon">⏰</span> 24시간 개방</div>
           </div>
           <div class="place-btns">
             <a class="btn-map" href="https://map.naver.com/v5/search/월정사 평창" target="_blank">🗺️ 네이버지도</a>
@@ -1769,9 +1066,7 @@ body { padding-bottom: 64px; }
     </div>
   </div>
 
-  <!-- ═══════════════════════════════
-       3일차
-  ═══════════════════════════════ -->
+  <!-- ═══ 3일차 ═══ -->
   <div class="day-section">
     <div class="day-header">
       <div class="day-badge">3일차<br>5/3 일</div>
@@ -1806,9 +1101,9 @@ body { padding-bottom: 64px; }
               <div>
                 <div class="rest-name">용바위식당</div>
                 <div class="rest-detail">황태해장국 대표 맛집 · 08:00~18:00</div>
-                <div class="rest-detail">📍 강원 인제군 북면 내린천로 67 · ☎ <a href="tel:033-462-4079" style="color:var(--sage)">033-462-4079</a></div>
+                <div class="rest-detail">📍 강원 인제군 북면 내린천로 67 · <a href="tel:033-462-4079" style="color:var(--blue);font-weight:700">☎ 033-462-4079</a></div>
                 <div class="rest-btns">
-                  <a class="btn-map" href="https://map.naver.com/v5/search/용바위식당 인제" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-map" href="https://map.naver.com/v5/search/용바위식당 인제" target="_blank">🗺️ 지도</a>
                   <a class="btn-web" href="https://search.naver.com/search.naver?query=용바위식당+인제" target="_blank">🔍 검색</a>
                 </div>
               </div>
@@ -1820,7 +1115,7 @@ body { padding-bottom: 64px; }
                 <div class="rest-detail">인공폭포 옆 황태해장국 · 계곡 뷰 맛집 · 07:30~18:00</div>
                 <div class="rest-detail">📍 강원 인제군 북면 내린천로 63</div>
                 <div class="rest-btns">
-                  <a class="btn-map" href="https://map.naver.com/v5/search/매바위황태식당 인제" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-map" href="https://map.naver.com/v5/search/매바위황태식당 인제" target="_blank">🗺️ 지도</a>
                   <a class="btn-web" href="https://search.naver.com/search.naver?query=매바위황태식당+인제" target="_blank">🔍 검색</a>
                 </div>
               </div>
@@ -1842,11 +1137,11 @@ body { padding-bottom: 64px; }
         <div class="card-body">
           <div class="card-time">오후 · 인제 북면</div>
           <div class="card-title">백담사 방문</div>
-          <div class="card-desc">설악산 깊은 산속 천년 고찰. 입구에서 셔틀버스 15분(2,500원)으로 편하게 이동. 스나기계곡 따라가는 풍경이 이미 힐링!</div>
+          <div class="card-desc">설악산 깊은 산속 천년 고찰. 입구에서 셔틀버스 15분(2,500원)으로 편하게 이동.</div>
           <div class="tags">
             <span class="tag tag-teal">🚌 셔틀버스 15분</span>
-            <span class="tag tag-orange">💰 왕복 5,000원</span>
-            <span class="tag tag-brown">⏰ 막차 17시 전후</span>
+            <span class="tag tag-amber">💰 왕복 5,000원</span>
+            <span class="tag tag-red">⏰ 막차 17시 전후</span>
           </div>
           <div class="place-info">
             <div class="place-info-row"><span class="pi-icon">📍</span> 강원 인제군 북면 백담로 746</div>
@@ -1867,7 +1162,7 @@ body { padding-bottom: 64px; }
       <div class="drive-dist">170km · 2시간 10분</div>
     </div>
 
-    <div class="schedule-card home">
+    <div class="schedule-card">
       <div class="card-inner">
         <div class="card-icon">🏠</div>
         <div class="card-body">
@@ -1894,143 +1189,46 @@ body { padding-bottom: 64px; }
       <button class="cl-tab" onclick="switchTab('food')">🍽️ 식당 완료</button>
     </div>
 
-    <!-- 준비물 -->
     <div class="cl-group active" id="cl-prep">
-      <div class="cl-progress">
-        <div class="cl-progress-bar"><div class="cl-progress-fill" id="prep-fill" style="width:0%"></div></div>
-        <div class="cl-progress-text" id="prep-text">0 / 0</div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-1">
-        <div class="cl-checkbox"></div><div><div class="cl-label">신분증 / 지갑</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-2">
-        <div class="cl-checkbox"></div><div><div class="cl-label">충전기 / 보조배터리</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-3">
-        <div class="cl-checkbox"></div><div><div class="cl-label">세면도구 / 수건</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-4">
-        <div class="cl-checkbox"></div><div><div class="cl-label">상비약 (진통제, 소화제 등)</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-5">
-        <div class="cl-checkbox"></div><div><div class="cl-label">바베큐 재료 및 숯 준비</div><div class="cl-sub">펜션 근처 마트 or 미리 준비</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-6">
-        <div class="cl-checkbox"></div><div><div class="cl-label">편한 운동화 / 등산 샌들</div><div class="cl-sub">월정사 숲길, 백담사 산책 대비</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-7">
-        <div class="cl-checkbox"></div><div><div class="cl-label">카메라 / 카메라 충전기</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-8">
-        <div class="cl-checkbox"></div><div><div class="cl-label">여분 의류 (겉옷 포함)</div><div class="cl-sub">5월 강원도 아침저녁 쌀쌀해요</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-9">
-        <div class="cl-checkbox"></div><div><div class="cl-label">선크림 / 선글라스</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-10">
-        <div class="cl-checkbox"></div><div><div class="cl-label">차량 점검 (주유, 타이어)</div></div>
-      </div>
+      <div class="cl-progress"><div class="cl-progress-bar"><div class="cl-progress-fill" id="prep-fill" style="width:0%"></div></div><div class="cl-progress-text" id="prep-text">0 / 0</div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-1"><div class="cl-checkbox"></div><div><div class="cl-label">신분증 / 지갑</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-2"><div class="cl-checkbox"></div><div><div class="cl-label">충전기 / 보조배터리</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-3"><div class="cl-checkbox"></div><div><div class="cl-label">세면도구 / 수건</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-4"><div class="cl-checkbox"></div><div><div class="cl-label">상비약 (진통제, 소화제 등)</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-5"><div class="cl-checkbox"></div><div><div class="cl-label">바베큐 재료 및 숯 준비</div><div class="cl-sub">펜션 근처 마트 or 미리 준비</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-6"><div class="cl-checkbox"></div><div><div class="cl-label">편한 운동화 / 등산 샌들</div><div class="cl-sub">월정사 숲길, 백담사 산책 대비</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-7"><div class="cl-checkbox"></div><div><div class="cl-label">카메라 / 카메라 충전기</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-8"><div class="cl-checkbox"></div><div><div class="cl-label">여분 의류 (겉옷 포함)</div><div class="cl-sub">5월 강원도 아침저녁 쌀쌀해요</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-9"><div class="cl-checkbox"></div><div><div class="cl-label">선크림 / 선글라스</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-10"><div class="cl-checkbox"></div><div><div class="cl-label">차량 점검 (주유, 타이어)</div></div></div>
     </div>
 
-    <!-- 방문 완료 -->
     <div class="cl-group" id="cl-visit">
-      <div class="cl-progress">
-        <div class="cl-progress-bar"><div class="cl-progress-fill" id="visit-fill" style="width:0%"></div></div>
-        <div class="cl-progress-text" id="visit-text">0 / 0</div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-1">
-        <div class="cl-checkbox"></div><div><div class="cl-label">숲속의요정펜션 체크인 🏡</div><div class="cl-sub">1일차 · 평창 봉평</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-2">
-        <div class="cl-checkbox"></div><div><div class="cl-label">봉평 바베큐 & 별 감상 🔥</div><div class="cl-sub">1일차 저녁 · 펜션</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-3">
-        <div class="cl-checkbox"></div><div><div class="cl-label">월정사 전나무 숲길 산책 🌲</div><div class="cl-sub">2일차 · 오대산 평창</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-4">
-        <div class="cl-checkbox"></div><div><div class="cl-label">내린천 아름펜션 체크인 🏕️</div><div class="cl-sub">2일차 저녁 · 인제</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-5">
-        <div class="cl-checkbox"></div><div><div class="cl-label">백담사 방문 🙏</div><div class="cl-sub">3일차 · 인제 북면</div></div>
-      </div>
+      <div class="cl-progress"><div class="cl-progress-bar"><div class="cl-progress-fill" id="visit-fill" style="width:0%"></div></div><div class="cl-progress-text" id="visit-text">0 / 0</div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-1"><div class="cl-checkbox"></div><div><div class="cl-label">숲속의요정펜션 체크인 🏡</div><div class="cl-sub">1일차 · 평창 봉평</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-2"><div class="cl-checkbox"></div><div><div class="cl-label">봉평 바베큐 &amp; 별 감상 🔥</div><div class="cl-sub">1일차 저녁</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-3"><div class="cl-checkbox"></div><div><div class="cl-label">월정사 전나무 숲길 산책 🌲</div><div class="cl-sub">2일차 · 오대산 평창</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-4"><div class="cl-checkbox"></div><div><div class="cl-label">내린천 아름펜션 체크인 🏕️</div><div class="cl-sub">2일차 저녁 · 인제</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-5"><div class="cl-checkbox"></div><div><div class="cl-label">백담사 방문 🙏</div><div class="cl-sub">3일차 · 인제 북면</div></div></div>
     </div>
 
-    <!-- 식당 완료 -->
     <div class="cl-group" id="cl-food">
-      <div class="cl-progress">
-        <div class="cl-progress-bar"><div class="cl-progress-fill" id="food-fill" style="width:0%"></div></div>
-        <div class="cl-progress-text" id="food-text">0 / 0</div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'food')" data-id="food-1">
-        <div class="cl-checkbox"></div><div><div class="cl-label">봉평 메밀막국수 🍜</div><div class="cl-sub">2일차 점심 · 허생원봉평소바 or 메밀꽃향기</div></div>
-      </div>
-      <div class="cl-item" onclick="toggleCheck(this,'food')" data-id="food-2">
-        <div class="cl-checkbox"></div><div><div class="cl-label">인제 황태해장국 🍲</div><div class="cl-sub">3일차 점심 · 용바위식당 or 매바위황태식당</div></div>
-      </div>
+      <div class="cl-progress"><div class="cl-progress-bar"><div class="cl-progress-fill" id="food-fill" style="width:0%"></div></div><div class="cl-progress-text" id="food-text">0 / 0</div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'food')" data-id="food-1"><div class="cl-checkbox"></div><div><div class="cl-label">봉평 메밀막국수 🍜</div><div class="cl-sub">2일차 점심 · 허생원봉평소바 or 메밀꽃향기</div></div></div>
+      <div class="cl-item" onclick="toggleCheck(this,'food')" data-id="food-2"><div class="cl-checkbox"></div><div><div class="cl-label">인제 황태해장국 🍲</div><div class="cl-sub">3일차 점심 · 용바위식당 or 매바위황태식당</div></div></div>
     </div>
   </div>
 
   <!-- ─── BUDGET ─── -->
   <div class="budget-section">
     <div class="budget-title">💰 여행 예산 계산기</div>
-    <div class="budget-grid">
-      <div class="budget-row">
-        <div class="budget-row-icon">🏡</div>
-        <div style="flex:1"><div class="budget-row-label">숙박 (2박)</div><div class="budget-row-sub">숲속의요정펜션 + 내린천 아름펜션</div></div>
-        <div class="budget-input-wrap">
-          <input class="budget-input" type="number" id="b-lodge" value="200000" oninput="calcBudget()" placeholder="0">
-          <span class="budget-unit">원</span>
-        </div>
-      </div>
-      <div class="budget-row">
-        <div class="budget-row-icon">⛽</div>
-        <div style="flex:1"><div class="budget-row-label">주유비</div><div class="budget-row-sub">총 420km 예상 (왕복)</div></div>
-        <div class="budget-input-wrap">
-          <input class="budget-input" type="number" id="b-fuel" value="80000" oninput="calcBudget()" placeholder="0">
-          <span class="budget-unit">원</span>
-        </div>
-      </div>
-      <div class="budget-row">
-        <div class="budget-row-icon">🍜</div>
-        <div style="flex:1"><div class="budget-row-label">식비</div><div class="cl-sub">3일 외식 (2인 기준)</div></div>
-        <div class="budget-input-wrap">
-          <input class="budget-input" type="number" id="b-food" value="120000" oninput="calcBudget()" placeholder="0">
-          <span class="budget-unit">원</span>
-        </div>
-      </div>
-      <div class="budget-row">
-        <div class="budget-row-icon">🔥</div>
-        <div style="flex:1"><div class="budget-row-label">바베큐 재료</div><div class="budget-row-sub">고기, 숯, 부재료 등</div></div>
-        <div class="budget-input-wrap">
-          <input class="budget-input" type="number" id="b-bbq" value="50000" oninput="calcBudget()" placeholder="0">
-          <span class="budget-unit">원</span>
-        </div>
-      </div>
-      <div class="budget-row">
-        <div class="budget-row-icon">🎟️</div>
-        <div style="flex:1"><div class="budget-row-label">입장료 / 셔틀</div><div class="budget-row-sub">백담사 셔틀 5,000원 + 기타</div></div>
-        <div class="budget-input-wrap">
-          <input class="budget-input" type="number" id="b-fee" value="20000" oninput="calcBudget()" placeholder="0">
-          <span class="budget-unit">원</span>
-        </div>
-      </div>
-      <div class="budget-row">
-        <div class="budget-row-icon">🛣️</div>
-        <div style="flex:1"><div class="budget-row-label">고속도로 통행료</div><div class="budget-row-sub">서울양양 / 중부내륙 구간</div></div>
-        <div class="budget-input-wrap">
-          <input class="budget-input" type="number" id="b-toll" value="30000" oninput="calcBudget()" placeholder="0">
-          <span class="budget-unit">원</span>
-        </div>
-      </div>
-      <div class="budget-row">
-        <div class="budget-row-icon">🛍️</div>
-        <div style="flex:1"><div class="budget-row-label">기타 / 쇼핑</div><div class="budget-row-sub">기념품, 간식 등</div></div>
-        <div class="budget-input-wrap">
-          <input class="budget-input" type="number" id="b-etc" value="50000" oninput="calcBudget()" placeholder="0">
-          <span class="budget-unit">원</span>
-        </div>
-      </div>
-    </div>
+    <div class="budget-row"><div class="budget-row-icon">🏡</div><div style="flex:1"><div class="budget-row-label">숙박 (2박)</div><div class="budget-row-sub">숲속의요정펜션 + 내린천 아름펜션</div></div><div class="budget-input-wrap"><input class="budget-input" type="number" id="b-lodge" value="200000" oninput="calcBudget()"><span class="budget-unit">원</span></div></div>
+    <div class="budget-row"><div class="budget-row-icon">⛽</div><div style="flex:1"><div class="budget-row-label">주유비</div><div class="budget-row-sub">총 420km 예상 (왕복)</div></div><div class="budget-input-wrap"><input class="budget-input" type="number" id="b-fuel" value="80000" oninput="calcBudget()"><span class="budget-unit">원</span></div></div>
+    <div class="budget-row"><div class="budget-row-icon">🍜</div><div style="flex:1"><div class="budget-row-label">식비</div><div class="budget-row-sub">3일 외식 (2인 기준)</div></div><div class="budget-input-wrap"><input class="budget-input" type="number" id="b-food" value="120000" oninput="calcBudget()"><span class="budget-unit">원</span></div></div>
+    <div class="budget-row"><div class="budget-row-icon">🔥</div><div style="flex:1"><div class="budget-row-label">바베큐 재료</div><div class="budget-row-sub">고기, 숯, 부재료 등</div></div><div class="budget-input-wrap"><input class="budget-input" type="number" id="b-bbq" value="50000" oninput="calcBudget()"><span class="budget-unit">원</span></div></div>
+    <div class="budget-row"><div class="budget-row-icon">🎟️</div><div style="flex:1"><div class="budget-row-label">입장료 / 셔틀</div><div class="budget-row-sub">백담사 셔틀 5,000원 + 기타</div></div><div class="budget-input-wrap"><input class="budget-input" type="number" id="b-fee" value="20000" oninput="calcBudget()"><span class="budget-unit">원</span></div></div>
+    <div class="budget-row"><div class="budget-row-icon">🛣️</div><div style="flex:1"><div class="budget-row-label">고속도로 통행료</div><div class="budget-row-sub">서울양양 / 중부내륙 구간</div></div><div class="budget-input-wrap"><input class="budget-input" type="number" id="b-toll" value="30000" oninput="calcBudget()"><span class="budget-unit">원</span></div></div>
+    <div class="budget-row"><div class="budget-row-icon">🛍️</div><div style="flex:1"><div class="budget-row-label">기타 / 쇼핑</div><div class="budget-row-sub">기념품, 간식 등</div></div><div class="budget-input-wrap"><input class="budget-input" type="number" id="b-etc" value="50000" oninput="calcBudget()"><span class="budget-unit">원</span></div></div>
     <div class="budget-divider"></div>
     <div class="budget-total">
       <div>
@@ -2039,75 +1237,60 @@ body { padding-bottom: 64px; }
       </div>
       <div class="budget-total-amount" id="b-total">550,000원</div>
     </div>
-    <div class="budget-note">💡 입력값을 수정하면 자동으로 합산됩니다 · 2인 기준</div>
+    <div class="budget-note">💡 입력값을 수정하면 자동 합산 · 2인 기준</div>
   </div>
 
   <!-- ─── TIPS ─── -->
   <div class="tips-section">
     <div class="tips-title">💡 여행 핵심 팁</div>
-    <div class="tip-item">
-      <div class="tip-dot"></div>
-      <div class="tip-text">백담사 셔틀버스 막차는 오후 5시 전후 — 늦어도 <strong>오후 3시 전</strong> 도착 권장</div>
-    </div>
-    <div class="tip-item">
-      <div class="tip-dot"></div>
-      <div class="tip-text">월정사는 24시간 개방이지만 <strong>오후가 한적</strong>해 더 조용하게 즐길 수 있어요</div>
-    </div>
-    <div class="tip-item">
-      <div class="tip-dot"></div>
-      <div class="tip-text">황금연휴라 식당 대기 가능 — <strong>점심 12시 전</strong> 도착 추천</div>
-    </div>
-    <div class="tip-item">
-      <div class="tip-dot"></div>
-      <div class="tip-text">5월 봉평 메밀밭은 아직 초록 — <strong>메밀꽃</strong>은 9월이 시즌이에요</div>
-    </div>
-    <div class="tip-item">
-      <div class="tip-dot"></div>
-      <div class="tip-text">귀가 시 황금연휴 귀경 차량 많음 — <strong>오후 4시 이전</strong> 출발 권장</div>
-    </div>
+    <div class="tip-item"><div class="tip-dot"></div><div class="tip-text">백담사 셔틀버스 막차는 오후 5시 전후 — 늦어도 <strong>오후 3시 전</strong> 도착 권장</div></div>
+    <div class="tip-item"><div class="tip-dot"></div><div class="tip-text">월정사는 24시간 개방이지만 <strong>오후가 한적</strong>해 더 조용하게 즐길 수 있어요</div></div>
+    <div class="tip-item"><div class="tip-dot"></div><div class="tip-text">황금연휴라 식당 대기 가능 — <strong>점심 12시 전</strong> 도착 추천</div></div>
+    <div class="tip-item"><div class="tip-dot"></div><div class="tip-text">5월 봉평 메밀밭은 아직 초록 — <strong>메밀꽃</strong>은 9월이 시즌이에요</div></div>
+    <div class="tip-item"><div class="tip-dot"></div><div class="tip-text">귀가 시 황금연휴 귀경 차량 많음 — <strong>오후 4시 이전</strong> 출발 권장</div></div>
   </div>
 
   <!-- ─── CONTACT ─── -->
   <div class="contact-section">
-    <div class="contact-title">📋 숙소 & 식당 정리</div>
+    <div class="contact-title">📋 숙소 &amp; 식당 정리</div>
     <div class="contact-grid">
       <div class="contact-item">
         <div class="contact-category">✦ 1박 · 예약완료</div>
         <div class="contact-name">숲속의요정펜션</div>
         <div class="contact-detail">강원 평창군 봉평면 흥정계곡길 123</div>
-        <div class="contact-phone"><a href="tel:033-335-5464" style="color:var(--sage);text-decoration:none">☎ 033-335-5464</a></div>
+        <div class="contact-phone"><a href="tel:033-335-5464">☎ 033-335-5464</a></div>
         <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-          <a class="btn-map" href="https://map.naver.com/v5/search/숲속의요정펜션 평창" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
-          <a class="btn-web" href="https://search.naver.com/search.naver?query=숲속의요정펜션+평창" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+          <a class="btn-map" href="https://map.naver.com/v5/search/숲속의요정펜션 평창" target="_blank">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=숲속의요정펜션+평창" target="_blank">🔍 검색</a>
         </div>
       </div>
       <div class="contact-item">
         <div class="contact-category">✦ 2박 · 예약완료</div>
         <div class="contact-name">내린천 아름펜션</div>
         <div class="contact-detail">강원 인제군 북면 내린천로 357</div>
-        <div class="contact-phone"><a href="tel:010-4805-8704" style="color:var(--sage);text-decoration:none">☎ 010-4805-8704</a></div>
+        <div class="contact-phone"><a href="tel:010-4805-8704">☎ 010-4805-8704</a></div>
         <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-          <a class="btn-map" href="https://map.naver.com/v5/search/내린천 아름펜션 인제" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
-          <a class="btn-web" href="https://search.naver.com/search.naver?query=내린천아름펜션+인제" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+          <a class="btn-map" href="https://map.naver.com/v5/search/내린천 아름펜션 인제" target="_blank">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=내린천아름펜션+인제" target="_blank">🔍 검색</a>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-category">🍜 2일차 점심 추천</div>
+        <div class="contact-category">🍜 2일차 점심</div>
         <div class="contact-name">허생원봉평소바</div>
         <div class="contact-detail">강원 평창군 봉평면 기풍로 56 · ⭐ 4.4</div>
         <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-          <a class="btn-map" href="https://map.naver.com/v5/search/허생원봉평소바" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
-          <a class="btn-web" href="https://search.naver.com/search.naver?query=허생원봉평소바" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+          <a class="btn-map" href="https://map.naver.com/v5/search/허생원봉평소바" target="_blank">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=허생원봉평소바" target="_blank">🔍 검색</a>
         </div>
       </div>
       <div class="contact-item">
-        <div class="contact-category">🍲 3일차 점심 추천</div>
+        <div class="contact-category">🍲 3일차 점심</div>
         <div class="contact-name">용바위식당</div>
         <div class="contact-detail">강원 인제군 북면 내린천로 67 · ⭐ 4.3</div>
-        <div class="contact-phone"><a href="tel:033-462-4079" style="color:var(--sage);text-decoration:none">☎ 033-462-4079</a></div>
+        <div class="contact-phone"><a href="tel:033-462-4079">☎ 033-462-4079</a></div>
         <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-          <a class="btn-map" href="https://map.naver.com/v5/search/용바위식당 인제" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
-          <a class="btn-web" href="https://search.naver.com/search.naver?query=용바위식당+인제" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+          <a class="btn-map" href="https://map.naver.com/v5/search/용바위식당 인제" target="_blank">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=용바위식당+인제" target="_blank">🔍 검색</a>
         </div>
       </div>
     </div>
@@ -2115,19 +1298,20 @@ body { padding-bottom: 64px; }
 
 </div><!-- /wrap -->
 
+<!-- ─── FOOTER ─── -->
+<div class="footer">
+  <div class="footer-text">즐거운 강원도 힐링 여행 되세요 🌿</div>
+  <div class="footer-date">2025. 05. 01 — 03</div>
+</div>
+
 <!-- ─── SCRIPTS ─── -->
 <script>
 // ── CHECKLIST ──────────────────────────────
-const STORAGE_KEY = 'gwtravel_checklist';
+const STORAGE_KEY = 'gwtravel_checklist_v2';
+function loadChecklist() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; } }
+function saveChecklist(data) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {} }
 
-function loadChecklist() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
-}
-function saveChecklist(data) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {}
-}
-
-function toggleCheck(el, group) {
+function toggleCheck(el) {
   const id = el.dataset.id;
   const data = loadChecklist();
   data[id] = !data[id];
@@ -2138,94 +1322,37 @@ function toggleCheck(el, group) {
 function applyChecklist(data) {
   document.querySelectorAll('.cl-item').forEach(el => {
     const id = el.dataset.id;
-    if (data[id]) {
-      el.classList.add('checked');
-      el.querySelector('.cl-checkbox').textContent = '✓';
-    } else {
-      el.classList.remove('checked');
-      el.querySelector('.cl-checkbox').textContent = '';
-    }
+    if (data[id]) { el.classList.add('checked'); el.querySelector('.cl-checkbox').textContent = '✓'; }
+    else { el.classList.remove('checked'); el.querySelector('.cl-checkbox').textContent = ''; }
   });
-  ['prep', 'visit', 'food'].forEach(group => {
-    const items = document.querySelectorAll(`#cl-${group} .cl-item`);
+  ['prep','visit','food'].forEach(g => {
+    const items = document.querySelectorAll(`#cl-${g} .cl-item`);
     const total = items.length;
     const done = [...items].filter(el => data[el.dataset.id]).length;
     const pct = total ? Math.round(done / total * 100) : 0;
-    const fill = document.getElementById(`${group}-fill`);
-    const text = document.getElementById(`${group}-text`);
+    const fill = document.getElementById(`${g}-fill`);
+    const txt  = document.getElementById(`${g}-text`);
     if (fill) fill.style.width = pct + '%';
-    if (text) text.textContent = `${done} / ${total}`;
+    if (txt)  txt.textContent = `${done} / ${total}`;
   });
 }
 
 function switchTab(name) {
-  document.querySelectorAll('.cl-tab').forEach((t, i) => {
-    const groups = ['prep', 'visit', 'food'];
-    t.classList.toggle('active', groups[i] === name);
-  });
-  document.querySelectorAll('.cl-group').forEach(g => {
-    g.classList.toggle('active', g.id === 'cl-' + name);
-  });
+  const groups = ['prep','visit','food'];
+  document.querySelectorAll('.cl-tab').forEach((t,i) => t.classList.toggle('active', groups[i] === name));
+  document.querySelectorAll('.cl-group').forEach(g => g.classList.toggle('active', g.id === 'cl-' + name));
 }
 
 function resetChecklist() {
-  if (confirm('체크리스트를 초기화할까요?')) {
-    saveChecklist({});
-    applyChecklist({});
-  }
+  if (confirm('체크리스트를 초기화할까요?')) { saveChecklist({}); applyChecklist({}); }
 }
 
 // ── BUDGET ──────────────────────────────────
 function calcBudget() {
   const ids = ['b-lodge','b-fuel','b-food','b-bbq','b-fee','b-toll','b-etc'];
-  const total = ids.reduce((sum, id) => {
-    const val = parseInt(document.getElementById(id)?.value) || 0;
-    return sum + val;
-  }, 0);
+  const total = ids.reduce((s,id) => s + (parseInt(document.getElementById(id)?.value)||0), 0);
   document.getElementById('b-total').textContent = total.toLocaleString() + '원';
-  document.getElementById('b-per').textContent = '1인당 약 ' + Math.round(total / 2).toLocaleString() + '원';
-}
-
-// ── KAKAO SHARE ─────────────────────────────
-function shareKakao() {
-  const url = window.location.href;
-  const text = '🌿 강원도 힐링 여행 2박3일\n증평→평창→오대산→인제→백담사\n5월 1일(금) ~ 3일(일)\n\n일정 확인하기 👇\n' + url;
-
-  // 카카오 SDK 없으면 클립보드 복사 + 안내
-  if (typeof Kakao === 'undefined') {
-    navigator.clipboard.writeText(text).then(() => {
-      showToast('여행 일정이 복사되었습니다! 카카오톡에 붙여넣기 하세요 💬');
-    }).catch(() => {
-      prompt('아래 내용을 복사해서 카카오톡에 공유하세요:', text);
-    });
-    return;
-  }
-
-  Kakao.Share.sendDefault({
-    objectType: 'text',
-    text: text,
-    link: { mobileWebUrl: url, webUrl: url }
-  });
-}
-
-function copyLink() {
-  const url = window.location.href;
-  navigator.clipboard.writeText(url).then(() => {
-    showToast('✓ 링크가 복사되었습니다!');
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = url; document.body.appendChild(ta);
-    ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-    showToast('✓ 링크가 복사되었습니다!');
-  });
-}
-
-function showToast(msg) {
-  const t = document.getElementById('copyToast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  document.getElementById('b-per').textContent = '1인당 약 ' + Math.round(total/2).toLocaleString() + '원';
 }
 
 // ── INIT ────────────────────────────────────
@@ -2234,16 +1361,5 @@ document.addEventListener('DOMContentLoaded', () => {
   calcBudget();
 });
 </script>
-
-<!-- ─── FOOTER ─── -->
-<div class="footer">
-  <div class="footer-inner">
-    <div class="footer-line">
-      <span class="footer-text">즐거운 강원도 힐링 여행 되세요</span>
-    </div>
-    <div class="footer-date">2025. 05. 01 — 03</div>
-  </div>
-</div>
-
 </body>
 </html>
