@@ -828,6 +828,289 @@ body::before {
 }
 
 /* ─────────────────────────────────────────────
+   PLACE INFO BOX (주소·전화·링크)
+───────────────────────────────────────────── */
+.place-info {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+  margin-top: 12px;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.place-info-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: clamp(12px, 2.8vw, 13px);
+  color: var(--sage);
+  line-height: 1.5;
+}
+.place-info-row .pi-icon { flex-shrink: 0; font-size: 13px; margin-top: 1px; opacity: 0.8; }
+.place-info-row a { color: var(--sage); text-decoration: none; }
+.place-info-row a:hover { color: var(--gold-lt); text-decoration: underline; }
+
+.place-btns {
+  display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px;
+}
+.btn-map, .btn-naver, .btn-web {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 14px; border-radius: 8px;
+  font-size: clamp(11px, 2.6vw, 12px); font-weight: 700;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.btn-map {
+  background: rgba(3,199,90,0.15);
+  border: 1px solid rgba(3,199,90,0.3);
+  color: #5de89b;
+}
+.btn-naver {
+  background: rgba(3,199,90,0.15);
+  border: 1px solid rgba(3,199,90,0.3);
+  color: #5de89b;
+}
+.btn-web {
+  background: rgba(100,160,255,0.12);
+  border: 1px solid rgba(100,160,255,0.25);
+  color: #90b8ff;
+}
+.btn-map:hover, .btn-naver:hover, .btn-web:hover {
+  opacity: 0.8; transform: translateY(-1px);
+}
+
+/* 식당 링크 버튼 */
+.rest-btns {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+}
+
+/* ─────────────────────────────────────────────
+   KAKAO SHARE BAR (상단 고정)
+───────────────────────────────────────────── */
+.kakao-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(13,26,20,0.92);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 16px;
+  display: flex; justify-content: center; align-items: center; gap: 10px;
+}
+.kakao-share-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: #FEE500;
+  color: #191919;
+  border: none; cursor: pointer;
+  padding: 10px 22px; border-radius: 50px;
+  font-size: clamp(13px, 3.2vw, 14px); font-weight: 800;
+  font-family: 'Nanum Gothic', sans-serif;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 2px 12px rgba(254,229,0,0.3);
+}
+.kakao-share-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.kakao-share-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.copy-link-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--mist);
+  padding: 10px 18px; border-radius: 50px;
+  font-size: clamp(12px, 3vw, 13px); font-weight: 700;
+  cursor: pointer; transition: background 0.2s;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+.copy-link-btn:hover { background: rgba(255,255,255,0.14); }
+.copy-toast {
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+  background: rgba(46,77,58,0.95); color: var(--mist);
+  padding: 10px 20px; border-radius: 50px;
+  font-size: 13px; font-weight: 700;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 200; white-space: nowrap;
+  border: 1px solid rgba(126,196,154,0.3);
+}
+.copy-toast.show { opacity: 1; }
+
+/* body bottom padding for kakao bar */
+body { padding-bottom: 64px; }
+
+/* ─────────────────────────────────────────────
+   CHECKLIST SECTION
+───────────────────────────────────────────── */
+.checklist-section {
+  background: var(--ink-2);
+  border-radius: var(--r-xl);
+  padding: 24px 22px;
+  margin-top: 24px;
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: var(--shadow-sm);
+}
+.checklist-title {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  font-weight: 700; color: var(--white);
+  margin-bottom: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cl-reset-btn {
+  font-size: 12px; font-weight: 700;
+  color: var(--sage); background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 5px 12px; border-radius: 20px;
+  cursor: pointer; transition: background 0.2s;
+}
+.cl-reset-btn:hover { background: rgba(255,255,255,0.12); }
+
+.cl-tabs {
+  display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.cl-tab {
+  padding: 7px 16px; border-radius: 20px;
+  font-size: clamp(12px, 3vw, 13px); font-weight: 700;
+  cursor: pointer; transition: all 0.2s;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04); color: var(--sage);
+}
+.cl-tab.active {
+  background: rgba(201,146,74,0.15);
+  border-color: rgba(201,146,74,0.35);
+  color: var(--gold-lt);
+}
+
+.cl-group { display: none; }
+.cl-group.active { display: block; }
+
+.cl-progress {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.cl-progress-bar {
+  flex: 1; height: 5px; background: rgba(255,255,255,0.08);
+  border-radius: 10px; overflow: hidden;
+}
+.cl-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--forest), var(--moss));
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+.cl-progress-text {
+  font-size: 12px; font-weight: 700; color: var(--sage); white-space: nowrap;
+}
+
+.cl-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px; border-radius: 10px;
+  margin-bottom: 6px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+  transition: background 0.2s;
+  user-select: none;
+}
+.cl-item:hover { background: rgba(255,255,255,0.05); }
+.cl-item.checked { background: rgba(126,196,154,0.07); border-color: rgba(126,196,154,0.15); }
+.cl-checkbox {
+  width: 20px; height: 20px; border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.2);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; font-size: 12px;
+}
+.cl-item.checked .cl-checkbox {
+  background: var(--forest);
+  border-color: var(--moss);
+  color: var(--white);
+}
+.cl-label {
+  font-size: clamp(13px, 3.2vw, 14px); color: var(--mist); flex: 1; line-height: 1.4;
+}
+.cl-item.checked .cl-label {
+  text-decoration: line-through; color: var(--sage); opacity: 0.7;
+}
+.cl-sub {
+  font-size: 11px; color: var(--sage); opacity: 0.7; margin-top: 2px;
+}
+
+/* ─────────────────────────────────────────────
+   BUDGET SECTION
+───────────────────────────────────────────── */
+.budget-section {
+  background: var(--ink-2);
+  border-radius: var(--r-xl);
+  padding: 24px 22px;
+  margin-top: 12px;
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: var(--shadow-sm);
+}
+.budget-title {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: clamp(17px, 4.2vw, 20px);
+  font-weight: 700; color: var(--white);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.budget-grid {
+  display: grid; gap: 10px;
+}
+.budget-row {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-sm);
+  padding: 13px 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.budget-row-icon { font-size: 20px; flex-shrink: 0; }
+.budget-row-label {
+  flex: 1; font-size: clamp(13px, 3.2vw, 14px); font-weight: 700; color: var(--mist);
+}
+.budget-row-sub {
+  font-size: 11px; color: var(--sage); margin-top: 2px;
+}
+.budget-input-wrap {
+  display: flex; align-items: center; gap: 4px;
+}
+.budget-input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: var(--cream);
+  font-size: clamp(13px, 3.2vw, 15px);
+  font-weight: 700;
+  font-family: 'Nanum Gothic', sans-serif;
+  padding: 7px 10px;
+  width: 110px; text-align: right;
+  transition: border-color 0.2s;
+}
+.budget-input:focus {
+  outline: none; border-color: rgba(201,146,74,0.5);
+  background: rgba(255,255,255,0.09);
+}
+.budget-unit { font-size: 12px; color: var(--sage); font-weight: 600; white-space: nowrap; }
+
+.budget-divider {
+  height: 1px; background: rgba(255,255,255,0.08); margin: 8px 0;
+}
+.budget-total {
+  background: linear-gradient(135deg, rgba(201,146,74,0.12), rgba(201,146,74,0.06));
+  border: 1px solid rgba(201,146,74,0.25);
+  border-radius: var(--r-sm);
+  padding: 16px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.budget-total-label {
+  font-size: clamp(14px, 3.5vw, 16px); font-weight: 800; color: var(--gold-lt);
+}
+.budget-total-amount {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: clamp(20px, 5vw, 26px); font-weight: 800; color: var(--gold-lt);
+  letter-spacing: -0.5px;
+}
+.budget-per {
+  font-size: 12px; color: var(--sage); font-weight: 600; margin-top: 2px; text-align: right;
+}
+.budget-note {
+  font-size: clamp(11px, 2.6vw, 12px); color: var(--sage);
+  margin-top: 10px; line-height: 1.6; text-align: center; opacity: 0.8;
+}
+
+/* ─────────────────────────────────────────────
    ANIMATIONS
 ───────────────────────────────────────────── */
 @keyframes fadeUp {
@@ -933,6 +1216,14 @@ body::before {
   .contact-name    { font-size: 20px; margin-bottom: 5px; }
   .contact-detail  { font-size: 15px; }
   .contact-phone   { font-size: 16px; margin-top: 6px; }
+
+  /* Checklist & Budget */
+  .checklist-section, .budget-section { padding: 32px 30px; border-radius: 28px; }
+  .checklist-title, .budget-title { font-size: 22px; margin-bottom: 20px; }
+  .cl-item { padding: 12px 14px; }
+  .cl-label { font-size: 15px; }
+  .budget-row { padding: 15px 16px; }
+  .budget-input { width: 130px; font-size: 16px; }
 
   /* Footer */
   .footer      { padding: 44px 20px 60px; }
@@ -1130,6 +1421,18 @@ body::before {
 </head>
 <body>
 
+<!-- ─── KAKAO SHARE BAR ─── -->
+<div class="kakao-bar">
+  <button class="kakao-share-btn" onclick="shareKakao()">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.477 3 2 6.477 2 10.5c0 2.612 1.582 4.912 3.986 6.316L4.5 21l4.5-2.7c.978.2 1.98.3 3 .3 5.523 0 10-3.477 10-7.5S17.523 3 12 3z"/></svg>
+    카카오톡으로 공유
+  </button>
+  <button class="copy-link-btn" onclick="copyLink()">
+    🔗 링크 복사
+  </button>
+</div>
+<div class="copy-toast" id="copyToast">✓ 링크가 복사되었습니다!</div>
+
 <!-- ─── HERO ─── -->
 <div class="hero">
   <div class="hero-inner">
@@ -1318,6 +1621,14 @@ body::before {
           <div class="card-title">숲속의요정펜션 체크인</div>
           <div class="card-desc">체크인 후 펜션 주변 산책으로 몸 풀기</div>
           <div class="confirmed-badge">✦ 예약 완료</div>
+          <div class="place-info">
+            <div class="place-info-row"><span class="pi-icon">📍</span> 강원 평창군 봉평면 흥정계곡길 123</div>
+            <div class="place-info-row"><span class="pi-icon">📞</span> <a href="tel:033-335-5464">033-335-5464</a></div>
+          </div>
+          <div class="place-btns">
+            <a class="btn-map" href="https://map.naver.com/v5/search/숲속의요정펜션 평창" target="_blank">🗺️ 네이버지도</a>
+            <a class="btn-web" href="https://search.naver.com/search.naver?query=숲속의요정펜션+평창+봉평" target="_blank">🔍 네이버 검색</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1376,6 +1687,11 @@ body::before {
               <div>
                 <div class="rest-name">허생원봉평소바</div>
                 <div class="rest-detail">샤브샤브 메밀국수 1만원 · 가성비 최고 · 10:30~20:00</div>
+                <div class="rest-detail">📍 강원 평창군 봉평면 기풍로 56</div>
+                <div class="rest-btns">
+                  <a class="btn-map" href="https://map.naver.com/v5/search/허생원봉평소바" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-web" href="https://search.naver.com/search.naver?query=허생원봉평소바" target="_blank">🔍 검색</a>
+                </div>
               </div>
             </div>
             <div class="rest-item">
@@ -1383,6 +1699,11 @@ body::before {
               <div>
                 <div class="rest-name">메밀꽃향기</div>
                 <div class="rest-detail">메밀막국수 · 메밀전병 · 9:30~19:30 (목 휴무)</div>
+                <div class="rest-detail">📍 강원 평창군 봉평면 이효석길 113</div>
+                <div class="rest-btns">
+                  <a class="btn-map" href="https://map.naver.com/v5/search/메밀꽃향기 봉평" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-web" href="https://search.naver.com/search.naver?query=메밀꽃향기+봉평" target="_blank">🔍 검색</a>
+                </div>
               </div>
             </div>
           </div>
@@ -1408,6 +1729,15 @@ body::before {
             <span class="tag tag-teal">🕌 사찰</span>
             <span class="tag tag-green">⏱ 1~2시간</span>
           </div>
+          <div class="place-info">
+            <div class="place-info-row"><span class="pi-icon">📍</span> 강원 평창군 진부면 오대산로 374-8</div>
+            <div class="place-info-row"><span class="pi-icon">📞</span> <a href="tel:033-339-6800">033-339-6800</a></div>
+            <div class="place-info-row"><span class="pi-icon">⏰</span> 24시간 개방 · 입장료 무료 (문화재구역 별도)</div>
+          </div>
+          <div class="place-btns">
+            <a class="btn-map" href="https://map.naver.com/v5/search/월정사 평창" target="_blank">🗺️ 네이버지도</a>
+            <a class="btn-web" href="https://www.woljeongsa.org" target="_blank">🌐 공식 홈페이지</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1426,8 +1756,13 @@ body::before {
           <div class="card-title">내린천 아름펜션 체크인</div>
           <div class="card-desc">조용한 산골 청정 뷰. 깔끔하고 친절한 주인장. 내린천 계곡 소리 들으며 바베큐 🔥</div>
           <div class="confirmed-badge">✦ 예약 완료</div>
-          <div class="tags">
-            <span class="tag tag-teal">📞 010-4805-8704</span>
+          <div class="place-info">
+            <div class="place-info-row"><span class="pi-icon">📍</span> 강원 인제군 북면 내린천로 357</div>
+            <div class="place-info-row"><span class="pi-icon">📞</span> <a href="tel:010-4805-8704">010-4805-8704</a></div>
+          </div>
+          <div class="place-btns">
+            <a class="btn-map" href="https://map.naver.com/v5/search/내린천 아름펜션 인제" target="_blank">🗺️ 네이버지도</a>
+            <a class="btn-web" href="https://search.naver.com/search.naver?query=내린천아름펜션+인제" target="_blank">🔍 네이버 검색</a>
           </div>
         </div>
       </div>
@@ -1470,7 +1805,12 @@ body::before {
               <div class="rest-rating">⭐ 4.3</div>
               <div>
                 <div class="rest-name">용바위식당</div>
-                <div class="rest-detail">황태해장국 대표 맛집 · 08:00~18:00 · ☎ 033-462-4079</div>
+                <div class="rest-detail">황태해장국 대표 맛집 · 08:00~18:00</div>
+                <div class="rest-detail">📍 강원 인제군 북면 내린천로 67 · ☎ <a href="tel:033-462-4079" style="color:var(--sage)">033-462-4079</a></div>
+                <div class="rest-btns">
+                  <a class="btn-map" href="https://map.naver.com/v5/search/용바위식당 인제" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-web" href="https://search.naver.com/search.naver?query=용바위식당+인제" target="_blank">🔍 검색</a>
+                </div>
               </div>
             </div>
             <div class="rest-item">
@@ -1478,6 +1818,11 @@ body::before {
               <div>
                 <div class="rest-name">매바위황태식당</div>
                 <div class="rest-detail">인공폭포 옆 황태해장국 · 계곡 뷰 맛집 · 07:30~18:00</div>
+                <div class="rest-detail">📍 강원 인제군 북면 내린천로 63</div>
+                <div class="rest-btns">
+                  <a class="btn-map" href="https://map.naver.com/v5/search/매바위황태식당 인제" target="_blank">🗺️ 네이버지도</a>
+                  <a class="btn-web" href="https://search.naver.com/search.naver?query=매바위황태식당+인제" target="_blank">🔍 검색</a>
+                </div>
               </div>
             </div>
           </div>
@@ -1503,6 +1848,15 @@ body::before {
             <span class="tag tag-orange">💰 왕복 5,000원</span>
             <span class="tag tag-brown">⏰ 막차 17시 전후</span>
           </div>
+          <div class="place-info">
+            <div class="place-info-row"><span class="pi-icon">📍</span> 강원 인제군 북면 백담로 746</div>
+            <div class="place-info-row"><span class="pi-icon">📞</span> <a href="tel:033-462-6969">033-462-6969</a></div>
+            <div class="place-info-row"><span class="pi-icon">🚌</span> 용대리 주차장에서 셔틀 탑승 (왕복 5,000원)</div>
+          </div>
+          <div class="place-btns">
+            <a class="btn-map" href="https://map.naver.com/v5/search/백담사 인제" target="_blank">🗺️ 네이버지도</a>
+            <a class="btn-web" href="https://www.baekdamsa.org" target="_blank">🌐 공식 홈페이지</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1526,6 +1880,166 @@ body::before {
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- ─── CHECKLIST ─── -->
+  <div class="checklist-section">
+    <div class="checklist-title">
+      ✅ 여행 체크리스트
+      <button class="cl-reset-btn" onclick="resetChecklist()">초기화</button>
+    </div>
+    <div class="cl-tabs">
+      <button class="cl-tab active" onclick="switchTab('prep')">🎒 준비물</button>
+      <button class="cl-tab" onclick="switchTab('visit')">📍 방문 완료</button>
+      <button class="cl-tab" onclick="switchTab('food')">🍽️ 식당 완료</button>
+    </div>
+
+    <!-- 준비물 -->
+    <div class="cl-group active" id="cl-prep">
+      <div class="cl-progress">
+        <div class="cl-progress-bar"><div class="cl-progress-fill" id="prep-fill" style="width:0%"></div></div>
+        <div class="cl-progress-text" id="prep-text">0 / 0</div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-1">
+        <div class="cl-checkbox"></div><div><div class="cl-label">신분증 / 지갑</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-2">
+        <div class="cl-checkbox"></div><div><div class="cl-label">충전기 / 보조배터리</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-3">
+        <div class="cl-checkbox"></div><div><div class="cl-label">세면도구 / 수건</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-4">
+        <div class="cl-checkbox"></div><div><div class="cl-label">상비약 (진통제, 소화제 등)</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-5">
+        <div class="cl-checkbox"></div><div><div class="cl-label">바베큐 재료 및 숯 준비</div><div class="cl-sub">펜션 근처 마트 or 미리 준비</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-6">
+        <div class="cl-checkbox"></div><div><div class="cl-label">편한 운동화 / 등산 샌들</div><div class="cl-sub">월정사 숲길, 백담사 산책 대비</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-7">
+        <div class="cl-checkbox"></div><div><div class="cl-label">카메라 / 카메라 충전기</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-8">
+        <div class="cl-checkbox"></div><div><div class="cl-label">여분 의류 (겉옷 포함)</div><div class="cl-sub">5월 강원도 아침저녁 쌀쌀해요</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-9">
+        <div class="cl-checkbox"></div><div><div class="cl-label">선크림 / 선글라스</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'prep')" data-id="prep-10">
+        <div class="cl-checkbox"></div><div><div class="cl-label">차량 점검 (주유, 타이어)</div></div>
+      </div>
+    </div>
+
+    <!-- 방문 완료 -->
+    <div class="cl-group" id="cl-visit">
+      <div class="cl-progress">
+        <div class="cl-progress-bar"><div class="cl-progress-fill" id="visit-fill" style="width:0%"></div></div>
+        <div class="cl-progress-text" id="visit-text">0 / 0</div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-1">
+        <div class="cl-checkbox"></div><div><div class="cl-label">숲속의요정펜션 체크인 🏡</div><div class="cl-sub">1일차 · 평창 봉평</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-2">
+        <div class="cl-checkbox"></div><div><div class="cl-label">봉평 바베큐 & 별 감상 🔥</div><div class="cl-sub">1일차 저녁 · 펜션</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-3">
+        <div class="cl-checkbox"></div><div><div class="cl-label">월정사 전나무 숲길 산책 🌲</div><div class="cl-sub">2일차 · 오대산 평창</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-4">
+        <div class="cl-checkbox"></div><div><div class="cl-label">내린천 아름펜션 체크인 🏕️</div><div class="cl-sub">2일차 저녁 · 인제</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'visit')" data-id="visit-5">
+        <div class="cl-checkbox"></div><div><div class="cl-label">백담사 방문 🙏</div><div class="cl-sub">3일차 · 인제 북면</div></div>
+      </div>
+    </div>
+
+    <!-- 식당 완료 -->
+    <div class="cl-group" id="cl-food">
+      <div class="cl-progress">
+        <div class="cl-progress-bar"><div class="cl-progress-fill" id="food-fill" style="width:0%"></div></div>
+        <div class="cl-progress-text" id="food-text">0 / 0</div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'food')" data-id="food-1">
+        <div class="cl-checkbox"></div><div><div class="cl-label">봉평 메밀막국수 🍜</div><div class="cl-sub">2일차 점심 · 허생원봉평소바 or 메밀꽃향기</div></div>
+      </div>
+      <div class="cl-item" onclick="toggleCheck(this,'food')" data-id="food-2">
+        <div class="cl-checkbox"></div><div><div class="cl-label">인제 황태해장국 🍲</div><div class="cl-sub">3일차 점심 · 용바위식당 or 매바위황태식당</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── BUDGET ─── -->
+  <div class="budget-section">
+    <div class="budget-title">💰 여행 예산 계산기</div>
+    <div class="budget-grid">
+      <div class="budget-row">
+        <div class="budget-row-icon">🏡</div>
+        <div style="flex:1"><div class="budget-row-label">숙박 (2박)</div><div class="budget-row-sub">숲속의요정펜션 + 내린천 아름펜션</div></div>
+        <div class="budget-input-wrap">
+          <input class="budget-input" type="number" id="b-lodge" value="200000" oninput="calcBudget()" placeholder="0">
+          <span class="budget-unit">원</span>
+        </div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-row-icon">⛽</div>
+        <div style="flex:1"><div class="budget-row-label">주유비</div><div class="budget-row-sub">총 420km 예상 (왕복)</div></div>
+        <div class="budget-input-wrap">
+          <input class="budget-input" type="number" id="b-fuel" value="80000" oninput="calcBudget()" placeholder="0">
+          <span class="budget-unit">원</span>
+        </div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-row-icon">🍜</div>
+        <div style="flex:1"><div class="budget-row-label">식비</div><div class="cl-sub">3일 외식 (2인 기준)</div></div>
+        <div class="budget-input-wrap">
+          <input class="budget-input" type="number" id="b-food" value="120000" oninput="calcBudget()" placeholder="0">
+          <span class="budget-unit">원</span>
+        </div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-row-icon">🔥</div>
+        <div style="flex:1"><div class="budget-row-label">바베큐 재료</div><div class="budget-row-sub">고기, 숯, 부재료 등</div></div>
+        <div class="budget-input-wrap">
+          <input class="budget-input" type="number" id="b-bbq" value="50000" oninput="calcBudget()" placeholder="0">
+          <span class="budget-unit">원</span>
+        </div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-row-icon">🎟️</div>
+        <div style="flex:1"><div class="budget-row-label">입장료 / 셔틀</div><div class="budget-row-sub">백담사 셔틀 5,000원 + 기타</div></div>
+        <div class="budget-input-wrap">
+          <input class="budget-input" type="number" id="b-fee" value="20000" oninput="calcBudget()" placeholder="0">
+          <span class="budget-unit">원</span>
+        </div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-row-icon">🛣️</div>
+        <div style="flex:1"><div class="budget-row-label">고속도로 통행료</div><div class="budget-row-sub">서울양양 / 중부내륙 구간</div></div>
+        <div class="budget-input-wrap">
+          <input class="budget-input" type="number" id="b-toll" value="30000" oninput="calcBudget()" placeholder="0">
+          <span class="budget-unit">원</span>
+        </div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-row-icon">🛍️</div>
+        <div style="flex:1"><div class="budget-row-label">기타 / 쇼핑</div><div class="budget-row-sub">기념품, 간식 등</div></div>
+        <div class="budget-input-wrap">
+          <input class="budget-input" type="number" id="b-etc" value="50000" oninput="calcBudget()" placeholder="0">
+          <span class="budget-unit">원</span>
+        </div>
+      </div>
+    </div>
+    <div class="budget-divider"></div>
+    <div class="budget-total">
+      <div>
+        <div class="budget-total-label">✦ 예상 총 비용</div>
+        <div class="budget-per" id="b-per">1인당 약 — 원</div>
+      </div>
+      <div class="budget-total-amount" id="b-total">550,000원</div>
+    </div>
+    <div class="budget-note">💡 입력값을 수정하면 자동으로 합산됩니다 · 2인 기준</div>
   </div>
 
   <!-- ─── TIPS ─── -->
@@ -1560,29 +2074,166 @@ body::before {
       <div class="contact-item">
         <div class="contact-category">✦ 1박 · 예약완료</div>
         <div class="contact-name">숲속의요정펜션</div>
-        <div class="contact-detail">평창 봉평 · 숲속 힐링 펜션</div>
+        <div class="contact-detail">강원 평창군 봉평면 흥정계곡길 123</div>
+        <div class="contact-phone"><a href="tel:033-335-5464" style="color:var(--sage);text-decoration:none">☎ 033-335-5464</a></div>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+          <a class="btn-map" href="https://map.naver.com/v5/search/숲속의요정펜션 평창" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=숲속의요정펜션+평창" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+        </div>
       </div>
       <div class="contact-item">
         <div class="contact-category">✦ 2박 · 예약완료</div>
         <div class="contact-name">내린천 아름펜션</div>
-        <div class="contact-detail">인제 · 백담사 15분 거리</div>
-        <div class="contact-phone">☎ 010-4805-8704</div>
+        <div class="contact-detail">강원 인제군 북면 내린천로 357</div>
+        <div class="contact-phone"><a href="tel:010-4805-8704" style="color:var(--sage);text-decoration:none">☎ 010-4805-8704</a></div>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+          <a class="btn-map" href="https://map.naver.com/v5/search/내린천 아름펜션 인제" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=내린천아름펜션+인제" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+        </div>
       </div>
       <div class="contact-item">
         <div class="contact-category">🍜 2일차 점심 추천</div>
         <div class="contact-name">허생원봉평소바</div>
-        <div class="contact-detail">봉평 · 메밀 샤브샤브국수 ⭐ 4.4</div>
+        <div class="contact-detail">강원 평창군 봉평면 기풍로 56 · ⭐ 4.4</div>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+          <a class="btn-map" href="https://map.naver.com/v5/search/허생원봉평소바" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=허생원봉평소바" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+        </div>
       </div>
       <div class="contact-item">
         <div class="contact-category">🍲 3일차 점심 추천</div>
         <div class="contact-name">용바위식당</div>
-        <div class="contact-detail">인제 · 황태해장국 ⭐ 4.3</div>
-        <div class="contact-phone">☎ 033-462-4079</div>
+        <div class="contact-detail">강원 인제군 북면 내린천로 67 · ⭐ 4.3</div>
+        <div class="contact-phone"><a href="tel:033-462-4079" style="color:var(--sage);text-decoration:none">☎ 033-462-4079</a></div>
+        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
+          <a class="btn-map" href="https://map.naver.com/v5/search/용바위식당 인제" target="_blank" style="font-size:11px;padding:5px 10px">🗺️ 지도</a>
+          <a class="btn-web" href="https://search.naver.com/search.naver?query=용바위식당+인제" target="_blank" style="font-size:11px;padding:5px 10px">🔍 검색</a>
+        </div>
       </div>
     </div>
   </div>
 
 </div><!-- /wrap -->
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+// ── CHECKLIST ──────────────────────────────
+const STORAGE_KEY = 'gwtravel_checklist';
+
+function loadChecklist() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+function saveChecklist(data) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {}
+}
+
+function toggleCheck(el, group) {
+  const id = el.dataset.id;
+  const data = loadChecklist();
+  data[id] = !data[id];
+  saveChecklist(data);
+  applyChecklist(data);
+}
+
+function applyChecklist(data) {
+  document.querySelectorAll('.cl-item').forEach(el => {
+    const id = el.dataset.id;
+    if (data[id]) {
+      el.classList.add('checked');
+      el.querySelector('.cl-checkbox').textContent = '✓';
+    } else {
+      el.classList.remove('checked');
+      el.querySelector('.cl-checkbox').textContent = '';
+    }
+  });
+  ['prep', 'visit', 'food'].forEach(group => {
+    const items = document.querySelectorAll(`#cl-${group} .cl-item`);
+    const total = items.length;
+    const done = [...items].filter(el => data[el.dataset.id]).length;
+    const pct = total ? Math.round(done / total * 100) : 0;
+    const fill = document.getElementById(`${group}-fill`);
+    const text = document.getElementById(`${group}-text`);
+    if (fill) fill.style.width = pct + '%';
+    if (text) text.textContent = `${done} / ${total}`;
+  });
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.cl-tab').forEach((t, i) => {
+    const groups = ['prep', 'visit', 'food'];
+    t.classList.toggle('active', groups[i] === name);
+  });
+  document.querySelectorAll('.cl-group').forEach(g => {
+    g.classList.toggle('active', g.id === 'cl-' + name);
+  });
+}
+
+function resetChecklist() {
+  if (confirm('체크리스트를 초기화할까요?')) {
+    saveChecklist({});
+    applyChecklist({});
+  }
+}
+
+// ── BUDGET ──────────────────────────────────
+function calcBudget() {
+  const ids = ['b-lodge','b-fuel','b-food','b-bbq','b-fee','b-toll','b-etc'];
+  const total = ids.reduce((sum, id) => {
+    const val = parseInt(document.getElementById(id)?.value) || 0;
+    return sum + val;
+  }, 0);
+  document.getElementById('b-total').textContent = total.toLocaleString() + '원';
+  document.getElementById('b-per').textContent = '1인당 약 ' + Math.round(total / 2).toLocaleString() + '원';
+}
+
+// ── KAKAO SHARE ─────────────────────────────
+function shareKakao() {
+  const url = window.location.href;
+  const text = '🌿 강원도 힐링 여행 2박3일\n증평→평창→오대산→인제→백담사\n5월 1일(금) ~ 3일(일)\n\n일정 확인하기 👇\n' + url;
+
+  // 카카오 SDK 없으면 클립보드 복사 + 안내
+  if (typeof Kakao === 'undefined') {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('여행 일정이 복사되었습니다! 카카오톡에 붙여넣기 하세요 💬');
+    }).catch(() => {
+      prompt('아래 내용을 복사해서 카카오톡에 공유하세요:', text);
+    });
+    return;
+  }
+
+  Kakao.Share.sendDefault({
+    objectType: 'text',
+    text: text,
+    link: { mobileWebUrl: url, webUrl: url }
+  });
+}
+
+function copyLink() {
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    showToast('✓ 링크가 복사되었습니다!');
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = url; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('✓ 링크가 복사되었습니다!');
+  });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('copyToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ── INIT ────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  applyChecklist(loadChecklist());
+  calcBudget();
+});
+</script>
 
 <!-- ─── FOOTER ─── -->
 <div class="footer">
