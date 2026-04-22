@@ -20,38 +20,38 @@
   --border-lt: #F0F0EA;
 
   /* 텍스트 */
-  --tx-1: #1A1A1A;
-  --tx-2: #555555;
-  --tx-3: #999999;
-  --tx-4: #BBBBBB;
+  --tx-1: #111111;
+  --tx-2: #3D3D3D;
+  --tx-3: #6B6B6B;
+  --tx-4: #999999;
 
   /* 포인트 — 초록(자연) */
-  --green:     #2E7D52;
-  --green-mid: #4CAF79;
-  --green-lt:  #E4F5EC;
-  --green-pal: #F0FAF4;
+  --green:     #1F6B41;
+  --green-mid: #3A9A65;
+  --green-lt:  #D6EFE2;
+  --green-pal: #EAF7F0;
 
   /* 포인트 — 앰버(황금) */
-  --amber:     #C07A1A;
-  --amber-mid: #E09A3A;
-  --amber-lt:  #FEF3DC;
-  --amber-pal: #FFFAF0;
+  --amber:     #A05E0A;
+  --amber-mid: #C87E28;
+  --amber-lt:  #FDEDC8;
+  --amber-pal: #FFF8EC;
 
   /* 포인트 — 블루(지도/링크) */
-  --blue:      #1A6BB5;
-  --blue-lt:   #E8F2FC;
+  --blue:      #1255A0;
+  --blue-lt:   #DCEAF8;
 
   /* 포인트 — 레드(식당) */
-  --red:       #C0392B;
-  --red-lt:    #FDECEA;
+  --red:       #A82920;
+  --red-lt:    #FAE0DE;
 
   /* 포인트 — 퍼플(숙소) */
-  --purple:    #6B3FA0;
-  --purple-lt: #F3EDFB;
+  --purple:    #5A2E90;
+  --purple-lt: #EDE0FA;
 
   /* 포인트 — 틸(사찰/자연) */
-  --teal:      #1A7A72;
-  --teal-lt:   #E4F5F3;
+  --teal:      #0F6560;
+  --teal-lt:   #D6EFED;
 
   /* 반경 */
   --r-sm:  8px;
@@ -190,7 +190,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
 .stay-label {
   font-size: clamp(10px, 2.4vw, 11px);
   font-weight: 700; letter-spacing: 0.5px;
-  color: var(--tx-3); text-transform: uppercase;
+  color: #555; text-transform: uppercase;
   margin-bottom: 5px;
 }
 .stay-name {
@@ -296,7 +296,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
 
 .sg-icon  { font-size: 16px; line-height: 1; }
 .sg-title { font-size: clamp(10px,2.4vw,11px); font-weight: 700; color: var(--tx-1); line-height: 1.35; }
-.sg-sub   { font-size: clamp(9px,2.1vw,10px); color: var(--tx-3); line-height: 1.4; }
+.sg-sub   { font-size: clamp(9px,2.1vw,10px); color: #5A5A5A; line-height: 1.4; }
 .sg-badge {
   display: inline-block; font-size: 9px; font-weight: 700;
   color: var(--green); background: var(--green-lt);
@@ -402,7 +402,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
   color: var(--tx-1); margin-bottom: 6px; line-height: 1.25;
 }
 .card-desc {
-  font-size: clamp(12px,3vw,13px); color: var(--tx-2); line-height: 1.7;
+  font-size: clamp(12px,3vw,13px); color: #3D3D3D; line-height: 1.7;
 }
 
 /* TAGS */
@@ -441,7 +441,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
 .drive-icon { font-size: 14px; flex-shrink: 0; }
 .drive-text {
   flex: 1; font-size: clamp(11px,2.6vw,12px); font-weight: 600;
-  color: var(--tx-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  color: #3D3D3D; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .drive-dist {
   background: var(--amber-lt); border: 1px solid rgba(192,122,26,0.2);
@@ -461,7 +461,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
 }
 .place-info-row {
   display: flex; align-items: flex-start; gap: 6px;
-  font-size: clamp(11px,2.6vw,12px); color: var(--tx-2); line-height: 1.5;
+  font-size: clamp(11px,2.6vw,12px); color: #3D3D3D; line-height: 1.5;
 }
 .place-info-row .pi-icon { flex-shrink: 0; font-size: 12px; margin-top: 1px; }
 .place-info-row a { color: var(--blue); font-weight: 700; }
@@ -522,7 +522,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
   color: var(--tx-1); margin-bottom: 2px;
 }
 .rest-detail {
-  font-size: clamp(11px,2.6vw,12px); color: var(--tx-2); line-height: 1.55;
+  font-size: clamp(11px,2.6vw,12px); color: #3D3D3D; line-height: 1.55;
 }
 
 /* ═══════════════════════════════════════════
@@ -589,9 +589,9 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
 .cl-item.checked .cl-checkbox {
   background: var(--green); border-color: var(--green); color: #fff;
 }
-.cl-label { font-size: clamp(12px,3vw,13px); color: var(--tx-1); flex: 1; line-height: 1.4; }
-.cl-item.checked .cl-label { text-decoration: line-through; color: var(--tx-3); }
-.cl-sub { font-size: 10px; color: var(--tx-3); margin-top: 1px; }
+.cl-label { font-size: clamp(12px,3vw,13px); color: #111111; flex: 1; line-height: 1.4; }
+.cl-item.checked .cl-label { text-decoration: line-through; color: #888888; }
+.cl-sub { font-size: 10px; color: #666666; margin-top: 1px; }
 
 /* ═══════════════════════════════════════════
    BUDGET
@@ -615,8 +615,8 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
   margin-bottom: 7px;
 }
 .budget-row-icon { font-size: 18px; flex-shrink: 0; }
-.budget-row-label { font-size: clamp(12px,3vw,13px); font-weight: 700; color: var(--tx-1); }
-.budget-row-sub { font-size: 10px; color: var(--tx-3); margin-top: 1px; }
+.budget-row-label { font-size: clamp(12px,3vw,13px); font-weight: 700; color: #111111; }
+.budget-row-sub { font-size: 10px; color: #666666; margin-top: 1px; }
 .budget-input-wrap { display: flex; align-items: center; gap: 4px; }
 .budget-input {
   background: var(--surface); border: 1px solid var(--border);
@@ -642,7 +642,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
 }
 .budget-per { font-size: 11px; color: var(--green); opacity: 0.75; margin-top: 2px; }
 .budget-note {
-  font-size: 11px; color: var(--tx-3); margin-top: 8px;
+  font-size: 11px; color: #666666; margin-top: 8px;
   text-align: center; line-height: 1.6;
 }
 
@@ -671,8 +671,8 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
   width: 5px; height: 5px; background: var(--green-mid);
   border-radius: 50%; margin-top: 8px; flex-shrink: 0;
 }
-.tip-text { font-size: clamp(12px,3vw,13px); color: var(--tx-2); line-height: 1.7; }
-.tip-text strong { color: var(--tx-1); font-weight: 800; }
+.tip-text { font-size: clamp(12px,3vw,13px); color: #3D3D3D; line-height: 1.7; }
+.tip-text strong { color: #111111; font-weight: 800; }
 
 /* ═══════════════════════════════════════════
    CONTACT
@@ -711,7 +711,7 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
   margin-bottom: 4px; letter-spacing: 0.3px;
 }
 .contact-name { font-size: clamp(13px,3.3vw,15px); font-weight: 800; color: var(--tx-1); margin-bottom: 3px; }
-.contact-detail { font-size: clamp(10px,2.4vw,11px); color: var(--tx-2); line-height: 1.55; }
+.contact-detail { font-size: clamp(10px,2.4vw,11px); color: #3D3D3D; line-height: 1.55; }
 .contact-phone { font-size: clamp(11px,2.6vw,12px); font-weight: 700; margin-top: 4px; }
 .contact-phone a { color: var(--blue); }
 
@@ -722,8 +722,8 @@ em { font-style: normal; font-weight: 700; color: var(--amber); }
   text-align: center; padding: 28px 16px 40px;
   border-top: 1px solid var(--border); margin-top: 24px;
 }
-.footer-text { font-size: clamp(12px,3vw,14px); color: var(--tx-3); font-weight: 600; }
-.footer-date { font-size: clamp(10px,2.4vw,11px); color: var(--tx-4); margin-top: 4px; }
+.footer-text { font-size: clamp(12px,3vw,14px); color: #555555; font-weight: 600; }
+.footer-date { font-size: clamp(10px,2.4vw,11px); color: #888888; margin-top: 4px; }
 
 /* ═══════════════════════════════════════════
    ANIMATIONS
