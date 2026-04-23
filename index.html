@@ -1013,7 +1013,7 @@ body{
 .place-ico{font-size:18px;flex-shrink:0;line-height:1}
 .place-info{flex:1;min-width:0}
 .place-name{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:2px;display:flex;align-items:center;flex-wrap:wrap;gap:3px;line-height:1.4}
-.place-type-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:1px 6px;border-radius:20px;flex-shrink:0}
+.place-type-badge{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;flex-shrink:0}
 .pt-lodging{background:#dbeafe;color:#1e40af}
 .pt-restaurant{background:#fef3c7;color:#92400e}
 .pt-sight{background:var(--teal50);color:var(--teal800)}
@@ -3537,7 +3537,7 @@ function renderTripDetail() {
   const daysHtml = t.days.map((day, di) => {
     const placesHtml = day.places.length
       ? day.places.map(p => {
-          const typeMap = {lodging:'🏨 숙소',restaurant:'🍜 식당',sight:'🗺️ 관광지',move:'🚗 이동'};
+          const typeMap = {lodging:'숙소',restaurant:'식당',sight:'관광지',move:'이동'};
           const typeCls = {lodging:'pt-lodging',restaurant:'pt-restaurant',sight:'pt-sight',move:'pt-move'};
           const typeBadge = p.placeType ? `<span class="place-type-badge ${typeCls[p.placeType]||''}">${typeMap[p.placeType]||''}</span>` : '';
           const starsHtml = p.rating ? ` <span class="place-stars">★ ${p.rating}</span>` : '';
@@ -3555,18 +3555,18 @@ function renderTripDetail() {
             ? `<button class="place-status-toggle" style="${st.cls}" onclick="event.stopPropagation();requireAuth(()=>cycleBookingStatus(${t.id},${p.id}))">${st.label}</button>`
             : (showStatusToggle ? `<button class="place-status-toggle" style="border-color:var(--sky100);color:var(--sky800);background:var(--sky50);font-size:11px;padding:3px 8px;border-radius:var(--r8);border:1.5px solid" onclick="event.stopPropagation();requireAuth(()=>cycleBookingStatus(${t.id},${p.id}))">+ 예약</button>` : '');
           const photoHtml = p.photo ? `<img src="${p.photo}" class="place-photo" alt="장소 사진" onclick="event.stopPropagation()">` : '';
+          let pressTimer;
           return `<div class="place-row" draggable="true" data-day="${di}" data-pid="${p.id}"
-            ondragstart="dragStart(event)" ondragover="dragOver(event)" ondrop="dragDrop(event)" ondragend="dragEnd(event)">
+            ondragstart="dragStart(event)" ondragover="dragOver(event)" ondrop="dragDrop(event)" ondragend="dragEnd(event)"
+            ontouchstart="this._pt=setTimeout(()=>requireAuth(()=>deletePlace(${di},${p.id})),700)"
+            ontouchend="clearTimeout(this._pt)" ontouchmove="clearTimeout(this._pt)">
             <div class="place-row-top">
-              <span class="drag-handle" title="드래그로 순서 변경">⠿</span>
               <div class="place-time">${p.time||''}</div>
-              <div class="place-ico">${p.emoji||'📍'}</div>
               <div class="place-info">
                 <div class="place-name">${typeBadge}${p.name}${starsHtml}${statusBtn ? ' '+statusBtn : ''}</div>
                 ${cleanNote ? `<div class="place-note">${cleanNote}</div>` : ''}
                 ${photoHtml}
               </div>
-              <button class="pa-btn pa-del" style="margin-left:4px;flex-shrink:0" onclick="requireAuth(()=>deletePlace(${di},${p.id}))">✕</button>
             </div>
           </div>`;
         }).join('')
@@ -5622,7 +5622,31 @@ applyDark(isDark);
 ═══════════════════════════════ */
 const WMO_CODES = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'🌨️',73:'🌨️',75:'❄️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',99:'⛈️'};
 const WMO_DESC = {0:'맑음',1:'대체로 맑음',2:'구름 조금',3:'흐림',45:'안개',51:'이슬비',55:'이슬비',61:'비',63:'비',65:'강한 비',71:'눈',80:'소나기',82:'폭우',95:'뇌우',99:'뇌우'};
-const WMO_BG   = {0:'linear-gradient(135deg,#60B8F8,#378ADD)',1:'linear-gradient(135deg,#7EC8F8,#4A9DE0)',2:'linear-gradient(135deg,#95B8D0,#6A9AB8)',3:'linear-gradient(135deg,#8A9EAE,#6B7F8E)',45:'linear-gradient(135deg,#9AABB8,#7A8E9A)',61:'linear-gradient(135deg,#5A8FAA,#3A6F8A)',80:'linear-gradient(135deg,#5A8FAA,#3A6F8A)',95:'linear-gradient(135deg,#445566,#334455)'};
+// 날씨 배경 — 앱 테마 색상 기반 (CSS 변수 대신 실제 값 사용, 다크모드 대응)
+function getWmoBg(code) {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (code <= 1)  return dark
+    ? 'linear-gradient(135deg,#1A3A5C,#0C2440)'   // 맑음 - 다크 네이비
+    : 'linear-gradient(135deg,#E6F1FB,#B5D4F4)';  // 맑음 - 앱 sky50~sky100
+  if (code <= 2)  return dark
+    ? 'linear-gradient(135deg,#1A3550,#0F2A40)'
+    : 'linear-gradient(135deg,#EFF6FF,#CCE4F7)';  // 구름조금
+  if (code <= 3)  return dark
+    ? 'linear-gradient(135deg,#1E2A35,#151E28)'
+    : 'linear-gradient(135deg,#E8EDF3,#CDD5DF)';  // 흐림 - 회색
+  if (code <= 55) return dark
+    ? 'linear-gradient(135deg,#1A2E3A,#0F2030)'
+    : 'linear-gradient(135deg,#E1EFF6,#BDD8EA)';  // 안개/이슬비
+  if (code <= 65) return dark
+    ? 'linear-gradient(135deg,#0F2A35,#081C28)'
+    : 'linear-gradient(135deg,#D6EAF5,#A8CCE4)';  // 비
+  if (code <= 82) return dark
+    ? 'linear-gradient(135deg,#142030,#0A1520)'
+    : 'linear-gradient(135deg,#D0E5F5,#9CC0DC)';  // 소나기
+  return dark
+    ? 'linear-gradient(135deg,#1A1A2E,#0F0F20)'   // 뇌우 - 다크 퍼플
+    : 'linear-gradient(135deg,#DDE8F5,#B8CEDE)';  // 뇌우
+}
 
 const CITY_LIST = [
   {name:'증평',lat:36.785,lon:127.582},{name:'서울',lat:37.566,lon:126.978},
@@ -5644,15 +5668,7 @@ const CITY_LIST = [
 let currentWeatherCity = localStorage.getItem('travelon_wcity') || '증평';
 let weatherData = { current: null, trips: [] }; // 렌더 상태 보관
 
-function getWmoBg(code) {
-  if (code <= 1)  return WMO_BG[0];
-  if (code <= 2)  return WMO_BG[2];
-  if (code <= 3)  return WMO_BG[3];
-  if (code <= 55) return WMO_BG[45];
-  if (code <= 65) return WMO_BG[61];
-  if (code <= 82) return WMO_BG[80];
-  return WMO_BG[95];
-}
+// getWmoBg는 위에 정의됨
 
 function renderWeatherWidget() {
   const el = document.getElementById('weatherContent');
@@ -5661,93 +5677,97 @@ function renderWeatherWidget() {
   const cur = weatherData.current;
   const trips = weatherData.trips;
 
-  // ── 현재 날씨 섹션 ──
+  // ── 현재 날씨 ──
   let curHtml = '';
   if (!cur) {
-    curHtml = `<div style="padding:14px 16px;display:flex;align-items:center;gap:8px">
-      <div style="font-size:22px">🌤️</div>
-      <div style="font-size:13px;color:var(--txt3)">날씨 불러오는 중...</div>
+    curHtml = `<div style="padding:10px 14px;display:flex;align-items:center;gap:8px">
+      <div style="font-size:18px">🌤️</div>
+      <div style="font-size:12px;color:var(--txt3)">날씨 불러오는 중...</div>
     </div>`;
   } else if (cur.error) {
-    const msg = cur.msg || '날씨를 불러올 수 없어요';
     const isFile = location.protocol === 'file:';
-    curHtml = `<div style="padding:12px 16px">
-      <div style="font-size:12px;color:var(--txt3);margin-bottom:6px;white-space:pre-line">${msg}</div>
-      ${isFile ? `<div style="font-size:11px;padding:7px 10px;background:var(--amber50);border:1px solid var(--amber100);border-radius:var(--r8);color:var(--amber800);margin-bottom:8px;line-height:1.6">💡 GitHub Pages에 올리면 날씨가 정상 표시됩니다.</div>` : ''}
+    curHtml = `<div style="padding:10px 14px">
+      <div style="font-size:11px;color:var(--txt3);margin-bottom:5px">${cur.msg||'날씨를 불러올 수 없어요'}</div>
+      ${isFile?`<div style="font-size:10px;padding:5px 8px;background:var(--amber50);border:1px solid var(--amber100);border-radius:var(--r8);color:var(--amber800);margin-bottom:6px">💡 GitHub Pages에 올리면 정상 표시됩니다.</div>`:''}
       ${buildCitySelectorHtml()}
     </div>`;
   } else {
     const bg = getWmoBg(cur.code);
-    const hourlyHtml = cur.hourly.map(h =>
-      `<div style="flex-shrink:0;text-align:center;padding:5px 9px;border-radius:8px;background:rgba(255,255,255,.15)">
-        <div style="font-size:10px;color:rgba(255,255,255,.8);font-weight:600">${h.t}시</div>
-        <div style="font-size:16px;margin:3px 0">${h.ico}</div>
-        <div style="font-size:12px;color:#fff;font-weight:700">${h.tmp}°</div>
-      </div>`
-    ).join('');
+    // 현재날씨: 왼쪽 현재 + 오른쪽 7일 가로 스크롤
+    const daysHtml = (cur.days||[]).map((d,i) => `
+      <div style="flex-shrink:0;text-align:center;min-width:38px">
+        <div style="font-size:9px;font-weight:700;color:var(--sky800)">${i===0?'오늘':d.mmdd}</div>
+        <div style="font-size:9px;color:var(--txt3)">${d.dow}</div>
+        <div style="font-size:15px;margin:2px 0">${d.ico}</div>
+        <div style="font-size:11px;font-weight:800;color:var(--coral800)">${d.max}°</div>
+        <div style="font-size:10px;color:var(--sky800)">${d.min}°</div>
+        ${d.rain?`<div style="font-size:9px;color:var(--sky600)">${d.rain}</div>`:''}
+      </div>`).join('');
     curHtml = `
-      <div style="background:${bg};padding:14px 16px 10px">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-          <div>
-            <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.05em;margin-bottom:2px">📍 ${cur.city}</div>
-            <div style="font-size:22px;font-weight:900;color:#fff;line-height:1.1">${cur.temp}°</div>
-            <div style="font-size:12px;color:rgba(255,255,255,.85);margin-top:3px">${WMO_DESC[cur.code]||''}</div>
+      <div style="background:${bg};padding:10px 14px 8px;border-radius:var(--r12) var(--r12) 0 0">
+        <div style="display:flex;align-items:center;gap:12px">
+          <!-- 현재 기온 -->
+          <div style="flex-shrink:0">
+            <div style="font-size:9px;font-weight:700;color:var(--sky800);margin-bottom:1px">📍 ${cur.city}</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div style="font-size:28px;line-height:1">${WMO_CODES[cur.code]||'🌤️'}</div>
+              <div>
+                <div style="font-size:22px;font-weight:900;color:var(--txt);line-height:1">${cur.temp}°</div>
+                <div style="font-size:10px;color:var(--txt2)">${WMO_DESC[cur.code]||''}</div>
+              </div>
+            </div>
           </div>
-          <div style="text-align:right">
-            <div style="font-size:46px;line-height:1">${WMO_CODES[cur.code]||'🌤️'}</div>
-            <div onclick="refreshWeather()" style="font-size:11px;color:rgba(255,255,255,.6);margin-top:4px;cursor:pointer">↻ 새로고침</div>
-          </div>
+          <!-- 구분선 -->
+          <div style="width:1px;height:52px;background:var(--border);flex-shrink:0"></div>
+          <!-- 7일 예보 가로 스크롤 -->
+          <div style="flex:1;overflow-x:auto;scrollbar-width:none;display:flex;gap:6px">${daysHtml}</div>
         </div>
-        <div style="display:flex;gap:5px;overflow-x:auto;scrollbar-width:none">${hourlyHtml}</div>
       </div>
-      <div style="padding:8px 16px 9px;border-bottom:1px solid var(--border2)">
+      <div style="padding:6px 14px 7px;background:var(--sky50);border-top:1px solid var(--sky100);border-bottom:2px solid var(--border);">
         ${buildCitySelectorHtml()}
+        <div onclick="refreshWeather()" style="font-size:10px;color:var(--txt3);cursor:pointer;flex-shrink:0;margin-left:8px">↻</div>
       </div>`;
   }
 
-  // ── 여행지 예보 섹션 ──
+  // ── 여행지 예보: 한 행에 가로 나열 ──
   let tripsHtml = '';
   if (trips.length > 0) {
     tripsHtml = trips.map(t => {
       if (t.loading) return `
-        <div style="padding:10px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px">
-          <div style="font-size:20px">${t.emoji}</div>
-          <div>
-            <div style="font-size:13px;font-weight:700;color:var(--txt)">${t.title}</div>
-            <div style="font-size:11px;color:var(--txt3);margin-top:2px">예보 불러오는 중...</div>
-          </div>
+        <div style="padding:8px 14px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px" style="background:${COLOR_MAP[t.color]?.bg||'#E6F1FB'};border-radius:var(--r10)">
+          <div style="font-size:16px">${t.emoji}</div>
+          <div style="font-size:12px;font-weight:700;color:${COLOR_MAP[t.color]?.txt||'#0C447C'}">${t.title}</div>
+          <div style="font-size:10px;color:var(--txt3);margin-left:auto">로딩중...</div>
         </div>`;
       if (t.error) return `
-        <div style="padding:10px 16px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px">
-          <div style="font-size:20px">${t.emoji}</div>
-          <div>
-            <div style="font-size:13px;font-weight:700;color:var(--txt)">${t.title}</div>
-            <div style="font-size:11px;color:var(--txt3);margin-top:2px">📍 지역 인식 실패</div>
-          </div>
+        <div style="padding:8px 14px;border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px" style="background:${COLOR_MAP[t.color]?.bg||'#E6F1FB'};border-radius:var(--r10)">
+          <div style="font-size:16px">${t.emoji}</div>
+          <div style="font-size:12px;font-weight:700;color:${COLOR_MAP[t.color]?.txt||'#0C447C'}">${t.title}</div>
+          <div style="font-size:10px;color:var(--txt3);margin-left:auto">지역 인식 실패</div>
         </div>`;
       const daysHtml = t.days.map(d => `
-        <div style="flex:1;min-width:44px;text-align:center">
-          <div style="font-size:11px;font-weight:700;color:var(--txt3)">${d.mmdd}</div>
-          <div style="font-size:11px;color:var(--txt2);margin-bottom:4px">${d.dow}</div>
-          <div style="font-size:20px;line-height:1.2">${d.ico}</div>
-          <div style="font-size:12px;font-weight:800;color:var(--coral800);margin-top:3px">${d.max}°</div>
-          <div style="font-size:11px;color:var(--sky800)">${d.min}°</div>
-          ${d.rain ? `<div style="font-size:10px;color:var(--sky600);margin-top:2px">${d.rain}</div>` : ''}
+        <div style="flex-shrink:0;text-align:center;min-width:42px">
+          <div style="font-size:10px;font-weight:700;color:var(--txt2)">${d.mmdd}</div>
+          <div style="font-size:9px;color:var(--txt3);margin-bottom:2px">${d.dow}</div>
+          <div style="font-size:18px;line-height:1.2">${d.ico}</div>
+          <div style="font-size:12px;font-weight:800;color:var(--coral800);margin-top:2px">${d.max}°</div>
+          <div style="font-size:10px;color:var(--sky800)">${d.min}°</div>
+          ${d.rain?`<div style="font-size:9px;color:var(--sky600)">${d.rain}</div>`:''}
         </div>`).join('');
       const isLast = trips.indexOf(t) === trips.length - 1;
       return `
-        <div style="padding:10px 16px 9px;${isLast?'':'border-bottom:1px solid var(--border2)'}">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-            <div style="display:flex;align-items:center;gap:6px">
-              <div style="font-size:18px">${t.emoji}</div>
+        <div style="padding:8px 14px 7px;${isLast?'':'border-bottom:1px solid var(--border2)'}" data-trip-color="${t.color}">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <div style="display:flex;align-items:center;gap:5px">
+              <div style="font-size:15px">${t.emoji}</div>
               <div>
-                <div style="font-size:13px;font-weight:800;color:var(--txt)">${t.title}</div>
-                <div style="font-size:10px;color:var(--txt3);margin-top:1px">📍 ${t.locName} · ${t.startDate}~${t.endDate}</div>
+                <div style="font-size:12px;font-weight:800;color:var(--tc-txt,var(--txt))">${t.title}</div>
+                <div style="font-size:9px;color:var(--tc-txt2,var(--txt3))">📍 ${t.locName} · ${t.startDate}~${t.endDate}</div>
               </div>
             </div>
-            <div style="font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:var(--sky50);color:var(--sky800)">${t.dday}</div>
+            <div style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px;background:var(--tc-bg,var(--sky50));border:1px solid var(--tc-border,var(--sky100));color:var(--tc-txt,var(--sky800));flex-shrink:0">${t.dday}</div>
           </div>
-          <div style="display:flex;gap:4px">${daysHtml}</div>
+          <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none">${daysHtml}</div>
         </div>`;
     }).join('');
   }
@@ -5777,22 +5797,64 @@ function changeWeatherCity(name) {
   if (!city) return;
   weatherData.current = null;
   renderWeatherWidget();
-  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode&hourly=temperature_2m,weathercode&timezone=Asia%2FSeoul&forecast_days=1`)
+  fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia%2FSeoul&forecast_days=7`)
     .then(r => r.json()).then(data => {
       weatherData.current = buildCurrentData(city.name, data);
       renderWeatherWidget();
     }).catch(() => { weatherData.current = { error: true }; renderWeatherWidget(); });
 }
 
-function buildCurrentData(cityName, data) {
-  const cur  = data.current;
-  const nowH = new Date().getHours();
-  const hrs  = data.hourly;
-  const hourly = [];
-  for (let i = nowH; i < Math.min(nowH+8, hrs.time.length); i++) {
-    hourly.push({ t: new Date(hrs.time[i]).getHours(), ico: WMO_CODES[hrs.weathercode[i]]||'🌤️', tmp: Math.round(hrs.temperature_2m[i]) });
+// 여행 제목·태그·주소에서 지역 좌표 추출
+function guessCoords(trip) {
+  const RMAP = {
+    '서울':[37.566,126.978],'인천':[37.456,126.705],'수원':[37.263,127.028],
+    '춘천':[37.881,127.729],'강릉':[37.751,128.876],'속초':[38.207,128.591],
+    '원주':[37.342,127.920],'평창':[37.372,128.390],'양양':[38.075,128.616],
+    '인제':[38.069,128.171],'정선':[37.379,128.660],'삼척':[37.450,129.165],
+    '대전':[36.350,127.385],'세종':[36.480,127.289],'청주':[36.637,127.489],
+    '충주':[36.991,127.925],'제천':[37.132,128.191],'괴산':[36.815,127.787],
+    '천안':[36.807,127.153],'공주':[36.446,127.119],'아산':[36.789,127.002],
+    '부산':[35.179,129.075],'울산':[35.538,129.311],'창원':[35.228,128.681],
+    '거제':[34.881,128.621],'통영':[34.854,128.433],'남해':[34.837,127.892],
+    '대구':[35.871,128.601],'경주':[35.843,129.211],'포항':[36.019,129.343],
+    '안동':[36.568,128.729],'구미':[36.119,128.344],'영주':[36.806,128.624],
+    '전주':[35.824,127.148],'군산':[35.967,126.737],'익산':[35.948,126.954],
+    '광주':[35.160,126.852],'목포':[34.811,126.393],'여수':[34.761,127.662],
+    '순천':[34.950,127.487],'나주':[35.016,126.711],'담양':[35.321,126.988],
+    '제주':[33.499,126.531],'서귀포':[33.254,126.560],
+    '강원':[37.881,127.729],'충북':[36.637,127.489],'충남':[36.659,126.673],
+    '경북':[36.576,128.506],'경남':[35.461,128.213],
+    '전남':[34.816,126.463],'전북':[35.716,127.144],'경기':[37.414,127.518],
+    '증평':[36.785,127.582],
+  };
+  const text = (trip.title + ' ' + (trip.tags||[]).join(' '));
+  for (const [name, coords] of Object.entries(RMAP)) {
+    if (text.includes(name)) return { name, coords };
   }
-  return { city: cityName, temp: Math.round(cur.temperature_2m), code: cur.weathercode, hourly };
+  // days 주소에서 추출
+  const addr = (trip.days||[]).flatMap(d=>(d.places||[])).map(p=>p.address||'').join(' ');
+  for (const [name, coords] of Object.entries(RMAP)) {
+    if (addr.includes(name)) return { name, coords };
+  }
+  return null;
+}
+
+function buildCurrentData(cityName, data) {
+  // 현재 날씨 + 7일 예보
+  const cur = data.current;
+  const daily = data.daily;
+  const days = (daily?.time||[]).map((date, i) => {
+    const dt = new Date(date);
+    return {
+      mmdd: `${dt.getMonth()+1}/${dt.getDate()}`,
+      dow:  ['일','월','화','수','목','금','토'][dt.getDay()],
+      ico:  WMO_CODES[daily.weathercode[i]]||'🌤️',
+      max:  Math.round(daily.temperature_2m_max[i]),
+      min:  Math.round(daily.temperature_2m_min[i]),
+      rain: daily.precipitation_sum[i] > 0 ? `💧${daily.precipitation_sum[i].toFixed(1)}` : '',
+    };
+  });
+  return { city: cityName, temp: Math.round(cur.temperature_2m), code: cur.weathercode, days };
 }
 
 async function fetchWeather() {
@@ -5807,7 +5869,7 @@ async function fetchWeather() {
 
   // 여행 로딩 placeholder
   weatherData.trips = upcoming.map(t => ({
-    loading: true, emoji: t.emoji, title: t.title.length > 10 ? t.title.slice(0,10)+'…' : t.title
+    loading: true, emoji: t.emoji, title: t.title, color: t.color||'sky'
   }));
   renderWeatherWidget();
 
@@ -5822,7 +5884,7 @@ async function fetchWeather() {
           const {latitude:lat, longitude:lon} = pos.coords;
           const nearest = CITY_LIST.reduce((a,b) => Math.hypot(a.lat-lat,a.lon-lon) < Math.hypot(b.lat-lat,b.lon-lon) ? a : b);
           currentWeatherCity = nearest.name;
-          const data = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode&hourly=temperature_2m,weathercode&timezone=Asia%2FSeoul&forecast_days=1`).then(r=>r.json());
+          const data = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia%2FSeoul&forecast_days=7`).then(r=>r.json());
           weatherData.current = buildCurrentData(nearest.name, data);
           gpsSuccess = true;
         } catch(e) {}
@@ -5833,7 +5895,7 @@ async function fetchWeather() {
   if (!gpsSuccess) {
     try {
       const city = CITY_LIST.find(c => c.name === currentWeatherCity) || CITY_LIST[0];
-      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode&hourly=temperature_2m,weathercode&timezone=Asia%2FSeoul&forecast_days=1`);
+      const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia%2FSeoul&forecast_days=7`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       if (!data.current) throw new Error('no current data');
@@ -5856,7 +5918,7 @@ async function fetchWeather() {
     const dd  = getDday(t.startDate);
     const ddText = getTripStatus(t) === 'ongoing' ? 'D-DAY' : `D-${dd}`;
     if (!loc) {
-      weatherData.trips[i] = { error:true, emoji:t.emoji, title: t.title.length>10?t.title.slice(0,10)+'…':t.title };
+      weatherData.trips[i] = { error:true, emoji:t.emoji, title:t.title, color:t.color||'sky' };
       renderWeatherWidget(); return;
     }
     try {
@@ -5869,9 +5931,9 @@ async function fetchWeather() {
         const rain = d.precipitation_sum[j] > 0 ? `💧${d.precipitation_sum[j].toFixed(1)}` : '';
         return { mmdd:`${dt.getMonth()+1}/${dt.getDate()}`, dow:['일','월','화','수','목','금','토'][dt.getDay()], ico:WMO_CODES[d.weathercode[j]]||'🌤️', max:Math.round(d.temperature_2m_max[j]), min:Math.round(d.temperature_2m_min[j]), rain };
       });
-      weatherData.trips[i] = { emoji:t.emoji, title:t.title.length>10?t.title.slice(0,10)+'…':t.title, locName:loc.name, startDate:t.startDate, endDate:t.endDate, dday:ddText, days };
+      weatherData.trips[i] = { emoji:t.emoji, title:t.title, locName:loc.name, startDate:t.startDate, endDate:t.endDate, dday:ddText, days, color:t.color||'sky' };
     } catch(e) {
-      weatherData.trips[i] = { error:true, emoji:t.emoji, title:t.title.length>10?t.title.slice(0,10)+'…':t.title };
+      weatherData.trips[i] = { error:true, emoji:t.emoji, title:t.title };
     }
     renderWeatherWidget();
   }));
