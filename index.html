@@ -5907,6 +5907,8 @@ function renderWeatherWidget() {
       if (t.error) {
         const isNoLoc  = t.error === 'no_loc';
         const isApiFail = t.error === 'api_fail';
+        const isTooFar = t.error === 'too_far';
+        const errMsg = t.errMsg || '';
         return `
         <div style="padding:10px 14px 10px;${isLast?'':'border-bottom:1px solid var(--border2)'}">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
@@ -5920,18 +5922,25 @@ function renderWeatherWidget() {
                 </div>` : ''}
               </div>
             </div>
-            <div style="flex-shrink:0;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;${
-              isNoLoc
-                ? 'color:var(--txt3);background:var(--gray50);border:1px solid var(--border)'
-                : 'color:var(--amber800);background:var(--amber50);border:1px solid var(--amber100)'
-            }">
-              ${isNoLoc ? '📍 지역 미인식' : '🌐 웹서버 필요'}
+            <div style="display:flex;align-items:center;gap:5px;flex-shrink:0">
+              ${isApiFail ? `<button onclick="retryTripWeather()" style="font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;border:1.5px solid var(--sky100);background:var(--sky50);color:var(--sky800);cursor:pointer;transition:all .15s" onmouseover="this.style.background='var(--sky100)'" onmouseout="this.style.background='var(--sky50)'">🔄 재시도</button>` : ''}
+              <div style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;${
+                isNoLoc
+                  ? 'color:var(--txt3);background:var(--gray50);border:1px solid var(--border)'
+                  : isTooFar
+                    ? 'color:var(--purple800);background:var(--purple50);border:1px solid var(--purple100)'
+                    : 'color:var(--coral800);background:var(--coral50);border:1px solid var(--coral100)'
+              }">
+                ${isNoLoc ? '📍 지역 미인식' : isTooFar ? `📅 D-${t.daysUntil}` : '⚠️ 날씨 오류'}
+              </div>
             </div>
           </div>
           <div style="margin-top:6px;padding:6px 10px;border-radius:var(--r8);background:var(--gray50);border:1px solid var(--border2)">
             ${isNoLoc
               ? `<span style="font-size:10px;color:var(--txt3)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> 일정에 장소 주소를 입력하거나, 여행 제목/태그에 지역명(예: 제주, 강릉)을 추가하면 날씨가 표시돼요</span>`
-              : `<span style="font-size:10px;color:var(--amber800)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> <b>${t.locName}</b> 날씨 준비 완료 — GitHub Pages 등 웹서버에서 열면 날씨가 자동으로 표시됩니다</span>`
+              : isTooFar
+                ? `<span style="font-size:10px;color:var(--txt3)">📅 여행까지 ${t.daysUntil}일 남았어요 — 날씨 예보는 출발 16일 전부터 확인할 수 있어요</span>`
+                : `<span style="font-size:10px;color:var(--txt3)">🌐 날씨 API(open-meteo.com) 응답 없음${errMsg ? ` — ${errMsg}` : ''} · 🔄 재시도 버튼을 눌러보세요</span>`
             }
           </div>
         </div>`;
@@ -6259,9 +6268,20 @@ async function fetchWeather() {
     // ── 지역 인식 성공 → API 호출 ──
     try {
       const [lat, lon] = loc.coords;
-      const today = new Date().toISOString().slice(0,10);
+      const todayObj = new Date();
+      const today = todayObj.toISOString().slice(0,10);
+      const maxForecastObj = new Date(todayObj);
+      maxForecastObj.setDate(maxForecastObj.getDate() + 15);
+      const maxForecastStr = maxForecastObj.toISOString().slice(0,10);
+      // 여행 시작일이 16일 예보 범위 밖이면 예보 불가 안내
+      if (t.startDate > maxForecastStr) {
+        const daysUntil = Math.round((new Date(t.startDate) - todayObj) / 86400000);
+        weatherData.trips[i] = { error:'too_far', emoji:t.emoji, title:t.title, color:t.color||'sky', locName:loc.name, locSource:loc.source||'', daysUntil };
+        renderWeatherWidget(); return;
+      }
       const startDate = t.startDate < today ? today : t.startDate;
-      const endDate   = t.endDate   < today ? today : t.endDate;
+      const rawEnd = t.endDate < today ? today : t.endDate;
+      const endDate = rawEnd > maxForecastStr ? maxForecastStr : rawEnd;
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia%2FSeoul&start_date=${startDate}&end_date=${endDate}&forecast_days=16`;
       const res  = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -6276,18 +6296,54 @@ async function fetchWeather() {
       weatherData.trips[i] = { emoji:t.emoji, title:t.title, locName:loc.name, locSource:loc.source||'', startDate:t.startDate, endDate:t.endDate, dday:ddText, days, color:t.color||'sky' };
     } catch(e) {
       // 지역은 찾았지만 API 실패 (CORS / 네트워크 오류)
-      const isFile = location.protocol === 'file:';
       weatherData.trips[i] = {
         error: 'api_fail',
         emoji: t.emoji, title: t.title, color: t.color||'sky',
         locName: loc.name, locSource: loc.source||'',
-        isFile,
+        errMsg: e.message || String(e),
       };
     }
     renderWeatherWidget();
   }));
 }
 function refreshWeather() { fetchWeather(); showToast('🌤️ 날씨 새로고침 중...'); }
+function retryTripWeather() {
+  // 여행지 날씨만 재시도 (현재 위치 날씨는 유지)
+  const upcoming = (typeof trips !== 'undefined' ? trips : [])
+    .filter(t => getTripStatus(t) !== 'done')
+    .sort((a,b) => new Date(a.startDate) - new Date(b.startDate))
+    .slice(0, 3);
+  weatherData.trips = upcoming.map(t => ({ loading: true, emoji: t.emoji, title: t.title, color: t.color||'sky' }));
+  renderWeatherWidget();
+  showToast('🌤️ 여행지 날씨 재시도 중...');
+  Promise.allSettled(upcoming.map(async (t, i) => {
+    const loc = guessCoords(t);
+    const dd  = getDday(t.startDate);
+    const ddText = getTripStatus(t) === 'ongoing' ? 'D-DAY' : `D-${dd}`;
+    if (!loc) { weatherData.trips[i] = { error:'no_loc', emoji:t.emoji, title:t.title, color:t.color||'sky' }; renderWeatherWidget(); return; }
+    try {
+      const [lat, lon] = loc.coords;
+      const today = new Date().toISOString().slice(0,10);
+      const startDate = t.startDate < today ? today : t.startDate;
+      const endDate   = t.endDate   < today ? today : t.endDate;
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Asia%2FSeoul&start_date=${startDate}&end_date=${endDate}&forecast_days=16`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const d = data.daily;
+      if (!d?.time?.length) throw new Error('no data');
+      const days = d.time.map((date, j) => {
+        const dt = new Date(date);
+        const rain = d.precipitation_sum[j] > 0 ? `💧${d.precipitation_sum[j].toFixed(1)}` : '';
+        return { mmdd:`${dt.getMonth()+1}/${dt.getDate()}`, dow:['일','월','화','수','목','금','토'][dt.getDay()], ico:WMO_CODES[d.weathercode[j]]||'🌤️', max:Math.round(d.temperature_2m_max[j]), min:Math.round(d.temperature_2m_min[j]), rain };
+      });
+      weatherData.trips[i] = { emoji:t.emoji, title:t.title, locName:loc.name, locSource:loc.source||'', startDate:t.startDate, endDate:t.endDate, dday:ddText, days, color:t.color||'sky' };
+    } catch(e) {
+      weatherData.trips[i] = { error:'api_fail', emoji:t.emoji, title:t.title, color:t.color||'sky', locName:loc.name, locSource:loc.source||'', errMsg: e.message||String(e) };
+    }
+    renderWeatherWidget();
+  }));
+}
 
 // 사용하지 않는 탭 함수들 (하위 호환용 빈 함수)
 function renderWeatherTabs(){}
