@@ -441,17 +441,18 @@ body{
 .day-block{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r14);margin-bottom:10px;overflow:hidden}
 .day-head{
   padding:11px 14px;display:flex;align-items:center;justify-content:space-between;
-  background:var(--gray50);border-bottom:1px solid var(--border2)
+  background:linear-gradient(135deg,var(--sky50) 0%,var(--border2) 100%);
+  border-bottom:1.5px solid var(--sky100)
 }
-.day-label{font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.2px}
-.day-date{font-size:14px;color:var(--txt2);font-weight:600}
+.day-label{font-size:15px;font-weight:800;color:var(--sky800);letter-spacing:-.2px}
+.day-date{font-size:14px;color:var(--sky600);font-weight:600}
 
 .place-row{
   padding:10px 14px;border-bottom:1px solid var(--border2);
   transition:background .15s
 }
 .place-row:last-child{border-bottom:none}
-.place-row:hover{background:var(--bg)}
+.place-row:hover{background:var(--sky50)}
 .place-row-top{display:flex;align-items:center;gap:10px}
 .place-time{font-size:14px;font-weight:700;color:var(--sky800);min-width:40px;flex-shrink:0}
 .place-ico{font-size:18px;flex-shrink:0;line-height:1}
@@ -461,8 +462,8 @@ body{
 .pt-lodging{background:#dbeafe;color:#1e40af}
 .pt-restaurant{background:#fef3c7;color:#92400e}
 .pt-sight{background:var(--teal50);color:var(--teal800)}
-.pt-move{background:var(--gray50);color:var(--gray600)}
-.place-note{font-size:14px;color:var(--txt2);margin-top:3px;line-height:1.65;font-weight:400}
+.pt-move{background:#ede9fe;color:#5b21b6}
+.place-note{font-size:14px;color:var(--txt2);margin-top:3px;line-height:1.65;font-weight:600}
 .place-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
 .place-meta-item{display:flex;align-items:center;gap:3px;font-size:13px;color:var(--txt2);font-weight:500}
 .place-meta-item a{color:var(--sky600);text-decoration:none;font-weight:600}
@@ -506,12 +507,13 @@ body{
 .info-name{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
 .info-star{color:#1A2535;font-size:14px;font-weight:800}
 .info-addr{font-size:14px;color:var(--txt2);margin-bottom:4px;line-height:1.6;font-weight:500}
-.info-chips{display:flex;gap:5px;flex-wrap:wrap}
+.info-chips{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px}
 .info-chip{
+  display:inline-flex;align-items:center;gap:4px;
   font-size:13px;font-weight:600;
-  padding:3px 9px;border-radius:20px;
-  background:var(--gray50);color:var(--txt2);
-  border:1px solid var(--gray100)
+  padding:4px 10px;border-radius:var(--r8);
+  background:var(--card);color:var(--txt2);
+  border:1.5px solid var(--sky100);line-height:1
 }
 .info-btns{display:flex;gap:6px;flex-wrap:wrap}
 .info-btn{
@@ -976,14 +978,14 @@ body{
 
   <!-- ③ 랜덤 여행지 추천 -->
   <div style="margin-bottom:14px">
-    <div class="sec"><div class="sec-t">오늘 어디 갈까? 🎲</div></div>
+    <div class="sec"><div class="sec-t">오늘 어디 갈까? 🧭</div></div>
     <div id="randomSpotCard" style="border-radius:var(--r14);border:1.5px solid var(--border);background:var(--card);overflow:hidden">
       <div id="randomSpotBody" style="padding:14px 16px">
-        <div style="font-size:13px;color:var(--txt3);text-align:center;padding:8px 0">버튼을 눌러 랜덤 여행지를 추천받아보세요!</div>
+        <div style="font-size:13px;color:var(--txt3);text-align:center;padding:8px 0">나침반을 돌려 오늘의 여행지 3곳을 추천받아보세요!</div>
       </div>
       <button onclick="pickRandomSpot()" id="randomBtn" style="width:100%;padding:11px;background:var(--sky50);border:none;border-top:1.5px solid var(--border2);font-size:14px;font-weight:700;color:var(--sky800);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
-        다른 곳 추천받기
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        오늘의 여행지 추천받기
       </button>
     </div>
   </div>
@@ -1066,16 +1068,16 @@ body{
 <!-- 여행 상세 뷰 -->
 <div class="panel" id="p5-detail" style="display:none">
   <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border2);margin-bottom:14px;padding-bottom:4px">
-    <div class="detail-back" style="border:none;margin:0;padding:6px 0" onclick="closeTripDetail()">← 일정으로 돌아가기</div>
   </div>
   <div id="detailContent"></div>
 </div>
 <!-- ════ 국내 ════ -->
 <div class="panel" id="p1">
 
-  <!-- 서브패널: 전체 -->
+  <!-- 국내 탭: 지역 필터 + 명소 인라인 -->
   <div class="sub-panel on" id="sp0">
-    <div class="rgrid" id="regionGrid"></div>
+    <div id="domesticRegionGrid" class="theme-icon-grid" style="margin-bottom:12px"></div>
+    <div id="domesticDestList"></div>
     <div class="sec"><div class="sec-t">국내 여행 예약 사이트</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
 
@@ -1136,23 +1138,6 @@ body{
     </div>
   </div>
 
-  <!-- 서브패널 1~13: JS로 동적 생성 -->
-  <div class="sub-panel" id="sp1"></div>
-  <div class="sub-panel" id="sp2"></div>
-  <div class="sub-panel" id="sp3"></div>
-  <div class="sub-panel" id="sp4"></div>
-  <div class="sub-panel" id="sp5"></div>
-  <div class="sub-panel" id="sp6"></div>
-  <div class="sub-panel" id="sp7"></div>
-  <div class="sub-panel" id="sp8"></div>
-  <div class="sub-panel" id="sp9"></div>
-  <div class="sub-panel" id="sp10"></div>
-  <div class="sub-panel" id="sp11"></div>
-  <div class="sub-panel" id="sp12"></div>
-  <div class="sub-panel" id="sp13"></div>
-  <div class="sub-panel" id="sp14"></div>
-  <div class="sub-panel" id="sp15"></div>
-  <div class="sub-panel" id="sp16"></div>
 
 </div>
 
@@ -1160,7 +1145,7 @@ body{
 <div class="panel" id="p2">
 
 <!-- 지역 카드 그리드 -->
-<div class="rgrid" id="intlRegionGrid"></div>
+<div class="theme-icon-grid" id="intlRegionGrid"></div>
 
 <!-- 여행지 목록 -->
 <div id="intlDestSection">
@@ -1434,7 +1419,7 @@ function sw(n, el) {
   // 테마 탭 진입 시 카운트 갱신
   if (n === 2) initInlineTheme();
   // 국내 탭 진입 시 지역 그리드 렌더링
-  if (n === 3) renderRegionGrid();
+  if (n === 3) initDomesticDests();
 }
 function swSub(n, el) {
   document.querySelectorAll('.stab').forEach(t => t.classList.remove('on'));
@@ -1647,14 +1632,8 @@ function renderTrips() {
     const ddBg = st === 'done' ? '#F1EFE8' : st === 'ongoing' ? '#E1F5EE' : '#E6F1FB';
     const ddColor = st === 'done' ? '#5F5E5A' : st === 'ongoing' ? '#085041' : '#0C447C';
     const totalPlaces = t.days.reduce((s,d) => s + d.places.length, 0);
-    const confirmedCount = t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='confirmed').length;
-    const pendingCount   = t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='pending').length;
-    const bookingBadge = confirmedCount
-      ? `<span style="font-size:13px;font-weight:700;background:var(--teal50);color:var(--teal800);padding:2px 7px;border-radius:20px;border:1px solid var(--teal100);margin-left:6px"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 확정 ${confirmedCount}</span>`
-      : '';
-    const pendingBadge = pendingCount
-      ? `<span style="font-size:13px;font-weight:700;background:var(--amber50);color:var(--amber800);padding:2px 7px;border-radius:20px;border:1px solid var(--amber100);margin-left:4px">⏳ 대기 ${pendingCount}</span>`
-      : '';
+    const bookingBadge = '';
+    const pendingBadge = '';
     const budget = budgets[t.id];
     const budgetBadge = budget?.total
       ? (() => {
@@ -1758,7 +1737,6 @@ function renderDday() {
 /* ── 랜덤 여행지 추천 ── */
 let lastRandomIdx = -1;
 function pickRandomSpot() {
-  // REGIONS 데이터에서 모든 국내 명소를 flat하게 모음
   const allSpots = [];
   if (typeof REGIONS !== 'undefined') {
     REGIONS.forEach(r => {
@@ -1769,40 +1747,35 @@ function pickRandomSpot() {
   }
   if (!allSpots.length) return;
 
-  // 이전과 다른 인덱스 선택
-  let idx;
-  do { idx = Math.floor(Math.random() * allSpots.length); }
-  while (allSpots.length > 1 && idx === lastRandomIdx);
-  lastRandomIdx = idx;
+  // 중복 없이 3개 랜덤 선택
+  const shuffled = [...allSpots].sort(() => Math.random() - 0.5);
+  const picks = shuffled.slice(0, 3);
 
-  const s = allSpots[idx];
   const body = document.getElementById('randomSpotBody');
   const btn  = document.getElementById('randomBtn');
   if (!body) return;
 
-  // 버튼 애니메이션
   if (btn) { btn.style.opacity = '.5'; setTimeout(()=>{ btn.style.opacity='1'; }, 300); }
 
   body.style.opacity = '0';
   setTimeout(() => {
-    body.innerHTML = `
-      <div style="display:flex;align-items:flex-start;gap:12px">
-        <div style="font-size:32px;flex-shrink:0;width:52px;height:52px;border-radius:var(--r12);background:var(--sky50);display:flex;align-items:center;justify-content:center">${s.emoji}</div>
+    body.innerHTML = picks.map((s, i) => `
+      <div style="display:flex;align-items:flex-start;gap:12px;${i>0?'margin-top:12px;padding-top:12px;border-top:1px solid var(--border2)':''}">
+        <div style="font-size:28px;flex-shrink:0;width:48px;height:48px;border-radius:var(--r12);background:var(--sky50);display:flex;align-items:center;justify-content:center">${s.emoji}</div>
         <div style="flex:1;min-width:0">
-          <div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:3px">${s.name}</div>
-          <div style="font-size:13px;color:var(--txt3);margin-bottom:6px">${s.meta || ''}</div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px">${s.name}</div>
+          <div style="font-size:13px;color:var(--txt3);margin-bottom:5px">${s.meta || ''}</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px">
             <span style="font-size:12px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--teal50);color:var(--teal800)">${s.regionName}</span>
             ${(s.tags||[]).slice(0,2).map(t=>`<span style="font-size:12px;font-weight:600;padding:3px 8px;border-radius:10px;background:var(--sky50);color:var(--sky800)">${t}</span>`).join('')}
           </div>
-          ${s.tip ? `<div style="margin-top:8px;font-size:13px;color:var(--txt2);line-height:1.6;word-break:keep-all">💡 ${s.tip}</div>` : ''}
+          <button onclick="window.open('https://map.naver.com/search?query=${encodeURIComponent(s.mapQ||s.name)}','_blank')"
+            style="padding:6px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r8);font-size:12px;font-weight:700;color:var(--txt2);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            지도 보기
+          </button>
         </div>
-      </div>
-      <button onclick="window.open('https://map.naver.com/search?query=${encodeURIComponent(s.mapQ||s.name)}','_blank')"
-        style="margin-top:10px;width:100%;padding:9px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r8);font-size:13px;font-weight:700;color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px">
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        네이버 지도에서 보기
-      </button>`;
+      </div>`).join('');
     body.style.opacity = '1';
     body.style.transition = 'opacity .2s';
   }, 150);
@@ -1845,34 +1818,7 @@ function closeTripDetail() {
 function renderTripDetail() {
   const t = trips.find(x => x.id === viewingTripId);
   if (!t) return;
-    /* ── 예약 확정 요약 ── */
-  const allPlacesForSummary = t.days.flatMap(d => d.places);
-  const bookedPlaces = allPlacesForSummary.filter(p =>
-    (p.bookingStatus === 'confirmed' || p.bookingStatus === 'pending') &&
-    p.placeType !== 'move' && p.name
-  );
-  const typeLabel = {lodging:'숙소', restaurant:'식당', sight:'관광지', '':'기타'};
-  const typeIco   = {lodging:'lodging', restaurant:'restaurant', sight:'sight', '':'default'};
-  const bookingSummaryHtml = bookedPlaces.length ? `
-    <div class="booking-summary">
-      <div style="font-size:14px;font-weight:800;color:var(--txt);margin-bottom:8px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 예약 현황</div>
-      ${bookedPlaces.map(p => {
-        const isConfirmed = p.bookingStatus === 'confirmed';
-        const shopName = p.shopName || p.name.replace(/\s*(체크인|체크아웃|방문|이동).*$/,'').trim();
-        const dayInfo = (() => {
-          for (let di=0; di<t.days.length; di++) {
-            if (t.days[di].places.find(x=>x.id===p.id)) return `Day${di+1} · ${formatDateKo(t.days[di].date)}`;
-          }
-          return '';
-        })();
-        return `<div class="bs-row">
-          <span class="bs-ico">${placeIconSvg(typeIco[p.placeType||'']||'default','',16)}</span>
-          <span class="bs-name">${shopName}</span>
-          <span class="bs-meta">${typeLabel[p.placeType||'']||'기타'} · ${dayInfo}</span>
-          <span class="bs-badge ${isConfirmed?'bs-confirmed':'bs-pending'}">${isConfirmed?'✅ 확정':'⏳ 대기'}</span>
-        </div>`;
-      }).join('')}
-    </div>` : '';
+  const bookingSummaryHtml = '';
 
   /* ── 날짜별 일정 (단순 타임라인) ── */
   const daysHtml = t.days.map((day, di) => {
@@ -1884,17 +1830,7 @@ function renderTripDetail() {
           const starsHtml = p.rating ? ` <span class="place-stars">★ ${p.rating}</span>` : '';
           // 렌더링 시 잔여 중복 패턴만 제거 (저장된 정상 메모는 보존)
           const cleanNote = (p.note||'').replace(/^✅\s*/,'').replace(/^⭐\s*추천\s*[·]?\s*/,'').trim();
-          // 예약 상태 토글 버튼 (이동 타입 제외)
-          const showStatusToggle = p.placeType !== 'move';
-          const stMap = {
-            confirmed: {label:'<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" ><polyline points="20 6 9 17 4 12"/></svg> 확정', cls:'border-color:var(--teal);color:var(--teal800);background:var(--teal50)'},
-            pending:   {label:'⏳ 대기', cls:'border-color:var(--amber);color:var(--amber800);background:var(--amber50)'},
-          };
-          const st = stMap[p.bookingStatus||'none'];
-          // 확정/대기 상태만 뱃지 표시, none은 숨김 (이동 타입 제외)
-          const statusBtn = (showStatusToggle && st)
-            ? `<button class="place-status-toggle" style="${st.cls}" >${st.label}</button>`
-            : (showStatusToggle ? `<button class="place-status-toggle" style="border-color:var(--sky100);color:var(--sky800);background:var(--sky50);font-size:13px;padding:3px 8px;border-radius:var(--r8);border:1.5px solid" >+ 예약</button>` : '');
+          const statusBtn = '';
           const photoHtml = p.photo ? `<img src="${p.photo}" class="place-photo" alt="장소 사진" onclick="event.stopPropagation()">` : '';
           let pressTimer;
           return `<div class="place-row" data-day="${di}" data-pid="${p.id}"
@@ -1902,7 +1838,7 @@ function renderTripDetail() {
             <div class="place-row-top">
               <div class="place-time">${p.time||''}</div>
               <div class="place-info">
-                <div class="place-name">${typeBadge}${p.name}${starsHtml}${statusBtn ? ' '+statusBtn : ''}</div>
+                <div class="place-name">${typeBadge}${p.name}${starsHtml}</div>
                 ${cleanNote ? `<div class="place-note">${cleanNote}</div>` : ''}
                 ${photoHtml}
               </div>
@@ -1954,8 +1890,8 @@ function renderTripDetail() {
     const naverBook = `https://search.naver.com/search.naver?query=${qName}`;
     const naverSrch = `https://search.naver.com/search.naver?query=${qName}`;
     const starsHtml = p.rating ? `<span class="info-star">★ ${p.rating}</span>` : '';
-    const costHtml  = p.cost   ? `<span class="info-chip"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> ${p.cost}</span>`  : '';
-    const hoursHtml = p.hours  ? `<span class="info-chip">🕐 ${p.hours}</span>` : '';
+    const costHtml  = p.cost   ? `<span class="info-chip"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> ${p.cost}</span>` : '';
+    const hoursHtml = p.hours  ? `<span class="info-chip"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ${p.hours}</span>` : '';
     const addrHtml  = p.address? `<div class="info-addr">📍 ${p.address}</div>` : '';
     const phoneBtn  = p.phone  ? `<a class="info-btn info-call" href="tel:${p.phone}"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg> ${p.phone}</a>` : '';
     let actionBtns = '';
@@ -2095,7 +2031,16 @@ function renderThemeModal(key) {
   document.getElementById('themeModalTitle').textContent = meta.label;
   document.getElementById('themeModalCnt').textContent = `${areaLabel} ${list.length}곳 · 별점 높은 순`;
 
-  const BGCOLORS = ['#E6F1FB','#E1F5EE','#FAEEDA','#FAECE7','#EEEDFE','#EAF3DE','#FBEAF0','#F1EFE8'];
+      const tagColor = (t) => {
+        const v = t.toLowerCase();
+        if (/사원|신사|절|성|궁|유적|역사|문화재|세계유산/.test(v)) return {bg:'#EDE9FE',c:'#5B21B6'};
+        if (/자연|공원|숲|산|강|호수|해변|폭포|계곡|바다|섬/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+        if (/맛집|음식|시장|해산물|먹거리|미식|카페|빵/.test(v)) return {bg:'#FEF3C7',c:'#92400E'};
+        if (/쇼핑|번화가|교차로|상점|마트|백화점/.test(v)) return {bg:'#FCE7F3',c:'#9D174D'};
+        if (/전망|야경|타워|스카이/.test(v)) return {bg:'#DBEAFE',c:'#1E40AF'};
+        if (/무료|입장무료/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+        return {bg:'#F1F5F9',c:'#475569'};
+      };
   const body = document.getElementById('themeModalBody');
 
   if (!list.length) {
@@ -2259,7 +2204,16 @@ const THEME_CARDS = [
 function renderThemeIconGrid() {
   const grid = document.getElementById('themeIconGrid');
   if (!grid) return;
-  grid.innerHTML = THEME_CARDS.map(card => {
+  // 전체 카드 (국내·해외와 동일한 sky 색상 체계)
+  const allIsOnTheme = inlineThemeKey === 'all';
+  const allThemeCard = `<div class="theme-ico-card${allIsOnTheme?' on':''}"
+    style="background:${allIsOnTheme?'var(--sky50)':'var(--card)'};border:${allIsOnTheme?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+    onclick="inlineSwitchTheme('all')">
+    <div style="font-size:22px;line-height:1;margin-bottom:3px">🗺️</div>
+    <div class="tic-label" style="color:${allIsOnTheme?'var(--sky800)':'var(--txt)'}">전체</div>
+    <div class="tic-cnt" style="color:${allIsOnTheme?'var(--sky800)':'var(--txt2)'}"> ${getThemeSpots('all').length}곳</div>
+  </div>`;
+  const themeCards = THEME_CARDS.filter(c => c.key !== 'all').map(card => {
     const meta = THEME_META[card.key];
     const isOn = card.key === inlineThemeKey;
     const bg   = isOn ? meta.bg : 'var(--card)';
@@ -2267,12 +2221,14 @@ function renderThemeIconGrid() {
     const bdr  = isOn ? `2.5px solid ${meta.color}` : '2px solid var(--border)';
     const cnt  = getThemeSpots(card.key).length;
     return `<div class="theme-ico-card${isOn?' on':''}"
-      style="background:${bg};border:${bdr};color:${col}"
+      style="background:${bg};border:${bdr}"
       onclick="inlineSwitchTheme('${card.key}')">
-      <div class="tic-label" style="color:${col}">${card.emoji} ${card.shortLabel}</div>
+      <div style="font-size:22px;line-height:1;margin-bottom:3px">${card.emoji}</div>
+      <div class="tic-label" style="color:${col}">${card.shortLabel}</div>
       <div class="tic-cnt" style="color:${col}">${cnt}곳</div>
     </div>`;
   }).join('');
+  grid.innerHTML = allThemeCard + themeCards;
 }
 
 function initInlineTheme() {
@@ -2425,7 +2381,16 @@ function renderInlineTheme() {
   const areaLabel = regionLabelMap[inlineRegionFilter] || '전체';
   if (cntEl) cntEl.textContent = `${areaLabel} ${list.length}곳 · 별점 높은 순`;
 
-  const BGCOLORS = ['#E6F1FB','#E1F5EE','#FAEEDA','#FAECE7','#EEEDFE','#EAF3DE','#FBEAF0','#F1EFE8'];
+      const tagColor = (t) => {
+        const v = t.toLowerCase();
+        if (/사원|신사|절|성|궁|유적|역사|문화재|세계유산/.test(v)) return {bg:'#EDE9FE',c:'#5B21B6'};
+        if (/자연|공원|숲|산|강|호수|해변|폭포|계곡|바다|섬/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+        if (/맛집|음식|시장|해산물|먹거리|미식|카페|빵/.test(v)) return {bg:'#FEF3C7',c:'#92400E'};
+        if (/쇼핑|번화가|교차로|상점|마트|백화점/.test(v)) return {bg:'#FCE7F3',c:'#9D174D'};
+        if (/전망|야경|타워|스카이/.test(v)) return {bg:'#DBEAFE',c:'#1E40AF'};
+        if (/무료|입장무료/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+        return {bg:'#F1F5F9',c:'#475569'};
+      };
 
   if (!list.length) {
     body.innerHTML = `<div class="empty-state"><div class="empty-ico">🗺️</div><div class="empty-msg">해당 테마 명소가 없습니다</div></div>`;
@@ -2535,7 +2500,7 @@ const REGIONS = [
       {emoji:'🍁',name:'설악 오색약수터',meta:'강원 양양군 · 무료',mapQ:'오색약수터 양양',rating:4.1,tags:['약수터','트레킹','무료'],tip:'철분 풍부 탄산수, 주전골 단풍길과 연계'},
     ]
   },
-  { key:'jeju', idx:2, name:'제주도', emoji:'🌸', grad:'linear-gradient(135deg,#FF6B6B,#FFE66D)', sub:'사계절 아름다운 화산섬 여행',
+  { key:'jeju', idx:2, name:'제주도', emoji:'🌸', grad:'linear-gradient(135deg,#e84f4f,#e07b2a)', sub:'사계절 아름다운 화산섬 여행',
     links:[{lbl:'제주관광',url:'https://www.visitjeju.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'클룩투어',url:'https://www.klook.com/ko'}],
     spots:[
       {emoji:'🌋',name:'한라산 국립공원',meta:'제주시 · 무료(성판악 탐방)',mapQ:'한라산 국립공원',rating:4.9,tags:['등산','유네스코','자연'],tip:'성판악 탐방로 예약 필수(숲이나숲), 왕복 9시간'},
@@ -2602,7 +2567,7 @@ const REGIONS = [
       {emoji:'🏖️',name:'송정해수욕장',meta:'해운대구 · 무료',mapQ:'송정해수욕장',rating:4.5,tags:['서핑','해변','여유'],tip:'해운대보다 한적, 서핑 명소·게스트하우스 밀집'},
     ]
   },
-  { key:'gyeongbuk', idx:5, name:'경주·경북', emoji:'🏯', grad:'linear-gradient(135deg,#f7971e,#ffd200)', sub:'신라 천년 역사와 경북의 문화',
+  { key:'gyeongbuk', idx:5, name:'경주·경북', emoji:'🏯', grad:'linear-gradient(135deg,#c87d2f,#a85e10)', sub:'신라 천년 역사와 경북의 문화',
     links:[{lbl:'경북관광',url:'https://www.gbtour.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'문화재청',url:'https://www.cha.go.kr'}],
     spots:[
       {emoji:'🏛️',name:'불국사',meta:'경주시 · 6,000원',mapQ:'불국사 경주',rating:4.8,tags:['유네스코','사찰','국보'],tip:'다보탑·석가탑 국보 보유, 봄 벚꽃길이 장관'},
@@ -2642,7 +2607,7 @@ const REGIONS = [
       {emoji:'🏔️',name:'밀양 얼음골',meta:'밀양시 · 2,000원',mapQ:'밀양 얼음골',rating:4.3,tags:['천연기념물','여름','계곡'],tip:'여름에도 얼음 나오는 천연기념물, 케이블카 운영'},
     ]
   },
-  { key:'chungcheong', idx:7, name:'충청', emoji:'🌾', grad:'linear-gradient(135deg,#56ab2f,#a8e063)', sub:'자연과 역사가 조화로운 중심지',
+  { key:'chungcheong', idx:7, name:'충청', emoji:'🌾', grad:'linear-gradient(135deg,#2d7a1f,#4a9e2f)', sub:'자연과 역사가 조화로운 중심지',
     links:[{lbl:'충북관광',url:'https://www.chungbuk.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🌿',name:'쌍곡계곡',meta:'괴산군 · 무료',mapQ:'쌍곡계곡 괴산',rating:4.6,tags:['계곡','힐링','무료'],tip:'총 9곳 명소, 쌍곡폭포·쌍곡소 구간 추천'},
@@ -2682,7 +2647,7 @@ const REGIONS = [
       {emoji:'🌺',name:'진도 운림산방',meta:'진도군 · 2,000원',mapQ:'운림산방 진도',rating:4.3,tags:['예술','연못','남도화'],tip:'남종화 본고장, 진도개·강강술래 문화 체험'},
     ]
   },
-  { key:'jeonbuk', idx:9, name:'전북', emoji:'🌻', grad:'linear-gradient(135deg,#f6d365,#fda085)', sub:'전주한옥마을과 내장산 단풍의 고장',
+  { key:'jeonbuk', idx:9, name:'전북', emoji:'🌻', grad:'linear-gradient(135deg,#d4820a,#c05a1f)', sub:'전주한옥마을과 내장산 단풍의 고장',
     links:[{lbl:'전북관광',url:'https://www.jeonbuk.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏡',name:'전주 한옥마을',meta:'전주시 · 무료',mapQ:'전주 한옥마을',rating:4.7,tags:['전통','포토존','무료'],tip:'700여 채 한옥 밀집, 한복 대여 후 인생샷 필수'},
@@ -2722,7 +2687,7 @@ const REGIONS = [
       {emoji:'🌊',name:'고령 대가야박물관',meta:'고령군 · 3,000원',mapQ:'대가야박물관 고령',rating:4.3,tags:['역사','박물관','가야'],tip:'가야 왕릉 지산동 고분군 인접, 세계유산 신청'},
     ]
   },
-  { key:'daejeon', idx:11, name:'대전·세종', emoji:'🌇', grad:'linear-gradient(135deg,#4facfe,#00f2fe)', sub:'과학도시 대전과 행정수도 세종',
+  { key:'daejeon', idx:11, name:'대전·세종', emoji:'🌇', grad:'linear-gradient(135deg,#1a7abf,#0a5a9e)', sub:'과학도시 대전과 행정수도 세종',
     links:[{lbl:'대전관광',url:'https://www.daejeon.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🔬',name:'국립중앙과학관',meta:'유성구 · 무료',mapQ:'국립중앙과학관 대전',rating:4.6,tags:['과학','가족','무료'],tip:'어린이관·천체투영관 유료, 야외전시 무료'},
@@ -2742,7 +2707,7 @@ const REGIONS = [
       {emoji:'🎠',name:'대전 오월드',meta:'중구 · 25,000원~',mapQ:'대전 오월드',rating:4.2,tags:['동물원','놀이공원','가족'],tip:'동물원+플라워랜드 복합, 주말 동물쇼 운영'},
     ]
   },
-  { key:'incheon', idx:12, name:'인천·경기', emoji:'🌁', grad:'linear-gradient(135deg,#a8edea,#3a7bd5)', sub:'수도권 나들이·인천 항구·수원화성',
+  { key:'incheon', idx:12, name:'인천·경기', emoji:'🌁', grad:'linear-gradient(135deg,#2a7bbf,#1a4fa0)', sub:'수도권 나들이·인천 항구·수원화성',
     links:[{lbl:'인천관광',url:'https://itour.incheon.go.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏯',name:'수원화성',meta:'수원시 · 1,000원',mapQ:'수원화성',rating:4.7,tags:['유네스코','역사','성곽'],tip:'성곽 5.7km 둘레길, 야간개장·화성행궁 추천'},
@@ -2765,7 +2730,7 @@ const REGIONS = [
       {emoji:'🌊',name:'인천 영종도 을왕리',meta:'중구 · 무료',mapQ:'을왕리해수욕장 인천',rating:4.4,tags:['해변','드라이브','일몰'],tip:'인천공항 근처 해변, 노을 명소·조개구이 유명'},
     ]
   },
-  { key:'gwangju', idx:13, name:'광주', emoji:'🌿', grad:'linear-gradient(135deg,#fd746c,#ff9068)', sub:'예향의 도시·5·18 민주화운동의 고장',
+  { key:'gwangju', idx:13, name:'광주', emoji:'🌿', grad:'linear-gradient(135deg,#c94040,#c05e20)', sub:'예향의 도시·5·18 민주화운동의 고장',
     links:[{lbl:'광주관광',url:'https://www.gwangjutour.or.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🕊️',name:'5·18 민주화운동 성지',meta:'북구 · 무료',mapQ:'5.18 국립민주묘지',rating:4.7,tags:['역사','추모','민주주의'],tip:'국립묘지·구 전남도청·금남로 역사 코스 추천'},
@@ -2785,7 +2750,7 @@ const REGIONS = [
       {emoji:'🍜',name:'광주 상무지구 먹거리',meta:'서구 · 10,000원~',mapQ:'광주 상무지구 맛집',rating:4.4,tags:['맛집','야식'],tip:'광주 최고 맛집 밀집 지역, 오리불고기·보리밥'},
     ]
   },
-  { key:'gyeongju', idx:14, name:'경주', emoji:'🏯', grad:'linear-gradient(135deg,#f7971e,#ffd200)', sub:'신라 천년 고도, 야외 박물관 도시',
+  { key:'gyeongju', idx:14, name:'경주', emoji:'🏯', grad:'linear-gradient(135deg,#c87d2f,#a85e10)', sub:'신라 천년 고도, 야외 박물관 도시',
     links:[{lbl:'경주관광',url:'https://www.gyeongju.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏛️',name:'불국사',meta:'경주시 · 6,000원',mapQ:'불국사 경주',rating:4.8,tags:['유네스코','사찰','국보','역사'],tip:'다보탑·석가탑 국보 보유, 봄 벚꽃길이 장관'},
@@ -2805,7 +2770,7 @@ const REGIONS = [
       {emoji:'🍡',name:'황남빵 본점',meta:'황남동 · 1,500원~',mapQ:'황남빵 경주 본점',rating:4.7,tags:['맛집','기념품','전통'],tip:'1939년부터 이어온 경주 대표 기념품, 줄 서서 구매'},
     ]
   },
-  { key:'jeonju', idx:15, name:'전주', emoji:'🏘️', grad:'linear-gradient(135deg,#f6d365,#fda085)', sub:'한옥마을과 비빔밥의 도시',
+  { key:'jeonju', idx:15, name:'전주', emoji:'🏘️', grad:'linear-gradient(135deg,#d4820a,#c05a1f)', sub:'한옥마을과 비빔밥의 도시',
     links:[{lbl:'전주관광',url:'https://www.jeonju.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏘️',name:'전주 한옥마을',meta:'완산구 · 무료',mapQ:'전주 한옥마을',rating:4.7,tags:['한옥','역사','무료','사진'],tip:'700여 채 한옥 밀집, 한복 대여 후 산책 필수'},
@@ -2825,7 +2790,7 @@ const REGIONS = [
       {emoji:'🌿',name:'전주 봉황동 유적',meta:'완산구 · 무료',mapQ:'봉황동 유적 전주',rating:4.2,tags:['역사','무료','문화재'],tip:'도심 속 백제 유적지, 한옥마을 산책과 연계'},
     ]
   },
-  { key:'chungbuk', idx:16, name:'충북', emoji:'🌾', grad:'linear-gradient(135deg,#56ab2f,#a8e063)', sub:'단양·충주·청주의 내륙 자연',
+  { key:'chungbuk', idx:16, name:'충북', emoji:'🌾', grad:'linear-gradient(135deg,#2d7a1f,#4a9e2f)', sub:'단양·충주·청주의 내륙 자연',
     links:[{lbl:'충북관광',url:'https://www.chungbuk.go.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏔️',name:'단양 도담삼봉',meta:'단양군 · 무료',mapQ:'도담삼봉 단양',rating:4.7,tags:['기암','강변','무료','드라이브'],tip:'남한강 위 3개 봉우리, 일출·안개 사진 국내 TOP'},
@@ -2848,6 +2813,119 @@ const REGIONS = [
 ];
 
 /* ── 전체 지역 바로가기 그리드 렌더링 ── */
+/* ── 국내 지역 인기순 배열 ── */
+const DOMESTIC_ORDER = ['jeju','seoul','busan','gangwon','gyeongbuk','gyeongnam','incheon','jeonnam','jeonbuk','chungcheong','chungbuk','daegu','daejeon','gwangju'];
+
+let currentDomesticRegion = 'all';
+
+function renderDomesticRegionGrid() {
+  const el = document.getElementById('domesticRegionGrid');
+  if (!el) return;
+  // 전체 카드
+  const allIsOn = currentDomesticRegion === 'all';
+  const allCard = `<div class="theme-ico-card${allIsOn?' on':''}"
+    style="background:${allIsOn?'var(--sky50)':'var(--card)'};border:${allIsOn?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+    onclick="selectDomesticRegion('all')">
+    <div style="font-size:22px;line-height:1;margin-bottom:3px">🗺️</div>
+    <div class="tic-label" style="color:${allIsOn?'var(--sky800)':'var(--txt)'}">전체</div>
+    <div class="tic-cnt" style="color:${allIsOn?'var(--sky800)':'var(--txt2)'}">14곳</div>
+  </div>`;
+  const regionCards = DOMESTIC_ORDER.map(key => {
+    const r = REGIONS.find(r => r.key === key);
+    if (!r) return '';
+    const isOn = currentDomesticRegion === key;
+    const spots = getRegionSpots(r.key);
+    return `<div class="theme-ico-card${isOn?' on':''}"
+      style="background:${isOn?'var(--sky50)':'var(--card)'};border:${isOn?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+      onclick="selectDomesticRegion('${key}')">
+      <div style="font-size:22px;line-height:1;margin-bottom:3px">${r.emoji}</div>
+      <div class="tic-label" style="color:${isOn?'var(--sky800)':'var(--txt)'}">${r.name}</div>
+      <div class="tic-cnt" style="color:${isOn?'var(--sky800)':'var(--txt2)'}">${spots.length}곳</div>
+    </div>`;
+  }).join('');
+  el.innerHTML = allCard + regionCards;
+}
+
+function selectDomesticRegion(key) {
+  currentDomesticRegion = key;
+  renderDomesticRegionGrid();
+  renderDomesticDests();
+}
+
+function renderDomesticDests() {
+  const el = document.getElementById('domesticDestList');
+  if (!el) return;
+  const list = currentDomesticRegion === 'all'
+    ? DOMESTIC_ORDER.map(k => REGIONS.find(r => r.key === k)).filter(Boolean)
+    : [REGIONS.find(r => r.key === currentDomesticRegion)].filter(Boolean);
+
+  el.innerHTML = list.map(r => {
+    const spots = getRegionSpots(r.key);
+    const freeCount = spots.filter(s => s.meta && s.meta.includes('무료')).length;
+    const _tagColor = (t) => {
+      const v = t.toLowerCase();
+      if (/사원|신사|절|성|궁|유적|역사|문화재|세계유산|사찰/.test(v)) return {bg:'#EDE9FE',c:'#5B21B6'};
+      if (/자연|공원|숲|산|강|호수|해변|폭포|계곡|바다|섬|정원|해수욕/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+      if (/맛집|음식|시장|해산물|먹거리|미식|카페|빵|골목/.test(v)) return {bg:'#FEF3C7',c:'#92400E'};
+      if (/쇼핑|번화가|교차로|상점|마트|백화점/.test(v)) return {bg:'#FCE7F3',c:'#9D174D'};
+      if (/전망|야경|타워|스카이|케이블카|뷰/.test(v)) return {bg:'#DBEAFE',c:'#1E40AF'};
+      if (/서핑|래프팅|액티비티|스키|리조트/.test(v)) return {bg:'#FEE2E2',c:'#991B1B'};
+      if (/무료|입장무료/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+      return {bg:'#F1F5F9',c:'#475569'};
+    };
+    const spotsHtml = spots.slice(0,10).map((s,i) => {
+      const stars = s.rating ? '⭐'.repeat(Math.floor(s.rating)) + `<span style="font-size:12px;color:#1A2535;font-weight:800;margin-left:2px">${s.rating}</span>` : '';
+      const rankBadge = i===0?'<span style="font-size:11px;font-weight:800;background:#FF5B00;color:#fff;padding:1px 5px;border-radius:4px;margin-left:4px">🏆 1위</span>'
+                      : i===1?'<span style="font-size:11px;font-weight:800;background:#5E35B1;color:#fff;padding:1px 5px;border-radius:4px;margin-left:4px">🥈 2위</span>'
+                      : i===2?'<span style="font-size:11px;font-weight:800;background:#0575e6;color:#fff;padding:1px 5px;border-radius:4px;margin-left:4px">🥉 3위</span>':'';
+      const tagsHtml = (s.tags||[]).map(t=>{ const {bg,c}=_tagColor(t); return `<span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;background:${bg};color:${c}">${t}</span>`; }).join('');
+      const mapUrl = `https://map.naver.com/search?query=${encodeURIComponent(s.mapQ||s.name)}`;
+      return `<div style="padding:12px 0;${i>0?'border-top:1px solid var(--border2)':''}">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <div style="font-size:26px;flex-shrink:0;width:44px;height:44px;border-radius:var(--r10);background:var(--sky50);display:flex;align-items:center;justify-content:center">${s.emoji}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px;display:flex;align-items:center;flex-wrap:wrap;gap:3px">${s.name}${rankBadge}</div>
+            <div style="font-size:13px;color:var(--txt2);font-weight:600;margin-bottom:4px">${s.meta||''} ${stars}</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px">${tagsHtml}</div>
+            ${s.tip?`<div style="font-size:13px;color:var(--teal800);font-weight:600;margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>`:''}
+            <button onclick="window.open('${mapUrl}','_blank')" style="padding:5px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r8);font-size:12px;font-weight:700;color:var(--txt2);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              지도 보기
+            </button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div style="border:1.5px solid var(--border);border-radius:var(--r14);overflow:hidden;margin-bottom:10px">
+      <div style="background:${r.grad};padding:14px 16px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="font-size:22px;width:42px;height:42px;border-radius:var(--r10);background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center">${r.emoji}</div>
+            <div>
+              <div style="font-size:16px;font-weight:800;color:#fff">${r.name}</div>
+              <div style="font-size:13px;color:rgba(255,255,255,.85);font-weight:600">${r.sub}</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:5px">
+            <span style="font-size:12px;font-weight:700;background:rgba(255,255,255,.25);color:#fff;padding:3px 8px;border-radius:10px">${spots.length}곳</span>
+            <span style="font-size:12px;font-weight:700;background:rgba(255,255,255,.25);color:#fff;padding:3px 8px;border-radius:10px">무료 ${freeCount}</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+          ${r.links.slice(0,4).map(l=>`<button onclick="window.open('${l.url}','_blank')" style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,.22);border:1.5px solid rgba(255,255,255,.4);color:#fff;cursor:pointer">${l.lbl}</button>`).join('')}
+        </div>
+      </div>
+      <div style="padding:0 14px;background:var(--card)">${spotsHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function initDomesticDests() {
+  renderDomesticRegionGrid();
+  renderDomesticDests();
+}
+
 function renderRegionGrid() {
   const el = document.getElementById('regionGrid');
   if (!el) return;
@@ -2894,6 +2972,7 @@ let editingRegionSpotId = null;
 
 function initRegionSpots() {
   renderRegionGrid();
+  initDomesticDests();
   REGIONS.forEach(r => renderRegionPanel(r));
 }
 
@@ -2904,14 +2983,19 @@ function renderRegionPanel(r) {
     <div class="gw-app" style="border-color:transparent">
       <div class="gw-header" style="background:${r.grad};border-bottom:none;padding:18px 16px 14px">
         <div class="gw-top" style="margin-bottom:10px">
-          <div class="gw-logo">
-            <div class="gw-mark" style="background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.3);font-size:20px">${r.emoji}</div>
-            <div>
-              <div class="gw-name" style="color:#fff;font-size:17px">${r.name} 여행 가이드</div>
-              <div class="gw-sub" style="color:rgba(255,255,255,.85)">${r.sub}</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+            <div class="gw-logo">
+              <div class="gw-mark" style="background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.3);font-size:20px">${r.emoji}</div>
+              <div>
+                <div class="gw-name" style="color:#fff;font-size:17px">${r.name} 여행 가이드</div>
+                <div class="gw-sub" style="color:rgba(255,255,255,.85)">${r.sub}</div>
+              </div>
             </div>
+            <button onclick="swSub(0,null)" style="background:rgba(255,255,255,.22);border:1.5px solid rgba(255,255,255,.4);border-radius:20px;padding:5px 12px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;gap:4px;flex-shrink:0">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              국내
+            </button>
           </div>
-          
         </div>
         <div class="gw-stats">
           <div class="gw-stat" style="background:var(--card);border:1.5px solid rgba(255,255,255,.7);border-radius:10px">
@@ -2961,7 +3045,17 @@ function renderRegionSpotList(key) {
   } else {
     el.innerHTML = filtered.map((s,i) => {
       const safeS = JSON.stringify({emoji:s.emoji,name:s.name,meta:s.meta||'',tags:s.tags}).replace(/"/g,'&quot;');
-      const tagsHtml = (s.tags||[]).map((t,ti)=>`<span class="sp-tag" style="background:${BGCOLORS[ti%8]};color:var(--txt2)">${t}</span>`).join('');
+      const tagColor = (t) => {
+        const v = t.toLowerCase();
+        if (/사원|신사|절|성|궁|유적|역사|문화재|세계유산/.test(v)) return {bg:'#EDE9FE',c:'#5B21B6'};
+        if (/자연|공원|숲|산|강|호수|해변|폭포|계곡|바다|섬/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+        if (/맛집|음식|시장|해산물|먹거리|미식|카페|빵/.test(v)) return {bg:'#FEF3C7',c:'#92400E'};
+        if (/쇼핑|번화가|교차로|상점|마트|백화점/.test(v)) return {bg:'#FCE7F3',c:'#9D174D'};
+        if (/전망|야경|타워|스카이/.test(v)) return {bg:'#DBEAFE',c:'#1E40AF'};
+        if (/무료|입장무료/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+        return {bg:'#F1F5F9',c:'#475569'};
+      };
+      const tagsHtml = (s.tags||[]).map(t=>{ const {bg,c}=tagColor(t); return `<span class="sp-tag" style="background:${bg};color:${c}">${t}</span>`; }).join('');
       const rankBadge = i===0 ? `<span style="font-size:13px;font-weight:800;background:#FF5B00;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🏆 1위</span>`
                       : i===1 ? `<span style="font-size:13px;font-weight:800;background:#5E35B1;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🥈 2위</span>`
                       : i===2 ? `<span style="font-size:13px;font-weight:800;background:#0575e6;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🥉 3위</span>` : '';
@@ -3347,19 +3441,26 @@ const INTL_REGIONS = [
 function renderIntlRegionGrid() {
   const el = document.getElementById('intlRegionGrid');
   if (!el) return;
-  el.innerHTML = INTL_REGIONS.map(r => {
-    const cnt  = INTL_DESTS.filter(d => d.region === r.key).length;
+  const allIsOn = currentIntlRegion === 'all';
+  const allCard = `<div class="theme-ico-card${allIsOn?' on':''}"
+    style="background:${allIsOn?'var(--sky50)':'var(--card)'};border:${allIsOn?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+    onclick="selectIntlRegion('all')">
+    <div style="font-size:22px;line-height:1;margin-bottom:3px">🌍</div>
+    <div class="tic-label" style="color:${allIsOn?'var(--sky800)':'var(--txt)'}">전체</div>
+    <div class="tic-cnt" style="color:${allIsOn?'var(--sky800)':'var(--txt2)'}"> ${INTL_DESTS.length}곳</div>
+  </div>`;
+  const regionCards = INTL_REGIONS.map(r => {
+    const cnt  = INTL_DESTS.filter(d => d.region === r.key || (['sea','philippines','vietnam','thailand'].includes(d.region) && r.key==='sea')).length;
     const isOn = currentIntlRegion === r.key;
-    const bg   = isOn ? 'var(--sky50)' : 'var(--card)';
-    const col  = isOn ? 'var(--sky800)' : 'var(--txt2)';
-    const bdr  = isOn ? '2.5px solid var(--sky)' : '2px solid var(--border)';
-    return `<div class="ritem${isOn?' on':''}" onclick="selectIntlRegion('${r.key}')"
-      style="background:${bg};border:${bdr}">
-      <div class="r-ico" style="font-size:0;display:flex;align-items:center;justify-content:center;margin-bottom:2px">${r.icon}</div>
-      <div class="r-lbl" style="color:${col}">${r.name}</div>
-      <div class="r-cnt">${cnt}곳</div>
+    return `<div class="theme-ico-card${isOn?' on':''}"
+      style="background:${isOn?'var(--sky50)':'var(--card)'};border:${isOn?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+      onclick="selectIntlRegion('${r.key}')">
+      <div style="display:flex;align-items:center;justify-content:center;margin-bottom:3px">${r.icon}</div>
+      <div class="tic-label" style="color:${isOn?'var(--sky800)':'var(--txt)'}">${r.name}</div>
+      <div class="tic-cnt" style="color:${isOn?'var(--sky800)':'var(--txt2)'}">${cnt}곳</div>
     </div>`;
   }).join('');
+  el.innerHTML = allCard + regionCards;
 }
 
 function selectIntlRegion(key) {
@@ -3384,7 +3485,17 @@ function renderIntlDests() {
   el.innerHTML = list.map((d,idx) => {
     const stars = d.rating ? '⭐'.repeat(Math.floor(d.rating)) + `<span style="font-size:13px;color:#1A2535;font-weight:800;margin-left:2px">${d.rating}</span>` : '';
     const rankBadge = idx===0?'<span style="font-size:13px;font-weight:800;background:#FF5B00;color:#fff;padding:2px 5px;border-radius:4px;margin-left:5px">🏆 인기1위</span>':'';
-    const spotsHtml = d.spots ? `<div style="margin:8px 0 6px;display:flex;flex-wrap:wrap;gap:4px">${d.spots.map(s=>`<span style="font-size:13px;background:var(--gray50);color:var(--txt);padding:2px 7px;border-radius:20px;font-weight:600">${s}</span>`).join('')}</div>` : '';
+    const _tagColor = (t) => {
+      const v = t.toLowerCase();
+      if (/사원|신사|절|성|궁|유적|역사|문화재|세계유산|사찰/.test(v)) return {bg:'#EDE9FE',c:'#5B21B6'};
+      if (/자연|공원|숲|산|강|호수|해변|폭포|계곡|바다|섬|정원/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+      if (/맛집|음식|시장|해산물|먹거리|미식|카페|빵|외시장/.test(v)) return {bg:'#FEF3C7',c:'#92400E'};
+      if (/쇼핑|번화가|교차로|상점|마트|백화점|스크램블/.test(v)) return {bg:'#FCE7F3',c:'#9D174D'};
+      if (/전망|야경|타워|스카이트리|스카이/.test(v)) return {bg:'#DBEAFE',c:'#1E40AF'};
+      if (/무료|입장무료/.test(v)) return {bg:'#D1FAE5',c:'#065F46'};
+      return {bg:'#F1F5F9',c:'#475569'};
+    };
+    const spotsHtml = d.spots ? `<div style="margin:8px 0 6px;display:flex;flex-wrap:wrap;gap:4px">${d.spots.map(s=>{ const {bg,c}=_tagColor(s); return `<span style="font-size:13px;background:${bg};color:${c};padding:3px 9px;border-radius:20px;font-weight:600">${s}</span>`; }).join('')}</div>` : '';
     const tipHtml = d.tips ? `<div style="font-size:13px;color:var(--teal800);font-weight:600;margin-bottom:6px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${d.tips}</div>` : '';
     return `<div class="intl-dest">
       <div class="intl-dest-body">
@@ -3554,7 +3665,7 @@ renderUpcoming();
 renderDday();
 setTimeout(renderTodayTip, 0);
 // 지역 그리드 지연 재렌더링 (display:none 상태 렌더링 누락 방지)
-setTimeout(renderRegionGrid, 100);
+setTimeout(() => { renderRegionGrid(); initDomesticDests(); }, 100);
 
 /* ── 여행 삭제 ── */
 function deleteTrip(id) {
@@ -3685,14 +3796,10 @@ function renderTripsFull(){
     const ddBg=st==='done'?'#F1EFE8':st==='ongoing'?'#E1F5EE':'#E6F1FB';
     const ddColor=st==='done'?'#5F5E5A':st==='ongoing'?'#085041':'#0C447C';
     const tp=t.days.reduce((s,d)=>s+d.places.length,0);
-    const cc=t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='confirmed').length;
-    const pc=t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='pending').length;
-    const bBadge=cc?`<span style="font-size:13px;font-weight:700;background:var(--teal50);color:var(--teal800);padding:2px 7px;border-radius:20px;border:1px solid var(--teal100);margin-left:6px">✅ 확정 ${cc}</span>`:'';
-    const pBadge=pc?`<span style="font-size:13px;font-weight:700;background:var(--amber50);color:var(--amber800);padding:2px 7px;border-radius:20px;border:1px solid var(--amber100);margin-left:4px">⏳ 대기 ${pc}</span>`:'';
     const bg=budgets[t.id];
     const bgBadge=bg?.total?(()=>{const sp=getTripSpentAmt(t.id);return `<span style="font-size:13px;font-weight:700;background:var(--sky50);color:var(--sky800);padding:2px 7px;border-radius:20px;border:1px solid var(--sky100);margin-left:4px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> ${Math.min(100,Math.round(sp/bg.total*100))}%</span>`;})():'';
     const tagsH=(t.tags||[]).map(tag=>`<span class="uc-tag tc-tag">${tag}</span>`).join('');
-    return `<div class="trip-card" onclick="openTripDetail(${t.id})"><div class="tc-head"><div class="tc-info"><div class="tc-title">${t.emoji} ${t.title}</div><div class="tc-date"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${formatDate(t.startDate)} ~ ${formatDate(t.endDate)} · ${getTripNights(t)}</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:4px"><span class="tc-status ${stCls}">${stLabel}</span>${tagsH}</div></div></div><div class="tc-foot"><div class="tc-places">📍 ${tp}개 장소 · 👥 ${t.companions||'미정'}${bBadge}${pBadge}${bgBadge}</div></div></div>`;
+    return `<div class="trip-card" onclick="openTripDetail(${t.id})"><div class="tc-head"><div class="tc-info"><div class="tc-title">${t.emoji} ${t.title}</div><div class="tc-date"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${formatDate(t.startDate)} ~ ${formatDate(t.endDate)} · ${getTripNights(t)}</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:4px"><span class="tc-status ${stCls}">${stLabel}</span>${tagsH}</div></div></div><div class="tc-foot"><div class="tc-places">📍 ${tp}개 장소 · 👥 ${t.companions||'미정'}${bgBadge}</div></div></div>`;
   }).join('');
 }
 
