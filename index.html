@@ -26,7 +26,7 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
   --pink:#993556;--pink50:#FBEAF0;--pink100:#F4C0D1;--pink800:#72243E;
   --gray50:#F1EFE8;--gray100:#D3D1C7;--gray200:#B4B2A9;--gray600:#5F5E5A;
   --bg:#F5F8FF;--card:#FFFFFF;--border:#E0EAF5;--border2:#EBF3FF;
-  --txt:#1A2535;--txt2:#3D4F68;--txt3:#6B7E99;
+  --txt:#1A2535;--txt2:#354A63;--txt3:#526480;
   --r6:6px;--r8:8px;--r12:12px;--r14:14px;--r16:16px;--r20:20px;--r24:24px;
   --shadow:0 2px 12px rgba(55,138,221,.08);
   --shadow-hover:0 6px 24px rgba(55,138,221,.15);
@@ -43,7 +43,7 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 .form-inp,.form-select{
   width:100%;padding:10px 13px;
   border:1.5px solid var(--border);border-radius:var(--r8);
-  font-size:16px;font-family:inherit;color:var(--txt);
+  font-size:17px;font-family:inherit;color:var(--txt);
   background:var(--bg);transition:border-color .15s;min-height:44px
 }
 /* 버튼 */
@@ -51,7 +51,7 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 /* 여행팁 */
 /* 환율/통계 */
 /* 빈 상태 */
-/* trip */.spot-tip-text { color:#0575e6; }
+/* trip */.spot-tip-text { color:var(--teal800);font-weight:600;font-size:13px; }
 /* toast */
 
 /* ── 환율 계산기 ── */
@@ -61,8 +61,8 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 .exch-rate-card { display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r12);margin-bottom:8px;transition:all .15s; }
 .exch-rate-card:hover { border-color:var(--sky100);background:var(--card); }
 .exch-flag { font-size:22px;flex-shrink:0;width:36px }
-.exch-currency { font-size:13px;font-weight:700;color:var(--txt);flex:1;margin-left:8px }
-.exch-rate-val { font-size:13px;font-weight:800;color:var(--sky800) }
+.exch-currency { font-size:14px;font-weight:700;color:var(--txt);flex:1;margin-left:8px }
+.exch-rate-val { font-size:14px;font-weight:800;color:var(--sky800) }
 
 /* ── 통계 뷰 ── */
 .stats-modal { background:var(--card);border-radius:var(--r20);width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:slideUp .22s ease; }
@@ -70,13 +70,13 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 .stats-overlay.open { display:flex;animation:fadeOverlay .2s ease; }
 .stat-card { background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r14);padding:16px;text-align:center; }
 .stat-val { font-size:28px;font-weight:900;color:var(--sky800);line-height:1;margin-bottom:4px; }
-.stat-lbl { font-size:11px;font-weight:700;color:var(--txt3); }
+.stat-lbl { font-size:13px;font-weight:700;color:var(--txt2); }
 .stat-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px; }
 .region-bar { display:flex;align-items:center;gap:8px;margin-bottom:6px; }
-.rb-name { font-size:12px;font-weight:700;color:var(--txt2);min-width:80px;flex-shrink:0; }
+.rb-name { font-size:14px;font-weight:700;color:var(--txt);min-width:80px;flex-shrink:0; }
 .rb-track { flex:1;height:8px;background:var(--gray50);border-radius:20px;overflow:hidden; }
 .rb-fill { height:100%;background:var(--sky);border-radius:20px;transition:width .6s ease; }
-.rb-cnt { font-size:11px;font-weight:700;color:var(--sky800);min-width:24px;text-align:right; }
+.rb-cnt { font-size:13px;font-weight:700;color:var(--sky800);min-width:24px;text-align:right; }
 
 /* ── 사진 첨부 미리보기 ── */
 .place-photo { width:100%;height:80px;object-fit:cover;border-radius:var(--r8);margin-top:6px;cursor:pointer;border:1px solid var(--border); }
@@ -103,21 +103,22 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 /* 여행 테마 공통 CSS 클래스 */
 .tc-hero { background:var(--tc-bg);border:1.5px solid var(--tc-border);border-radius:var(--r16);padding:18px;margin-bottom:14px;transition:background .3s,border-color .3s; }
 #detailContent { transition:all .3s; }
-.tc-title-txt { color:var(--tc-txt);font-size:20px;font-weight:800;margin-bottom:4px; }
+.tc-title-txt { color:var(--tc-txt);font-size:17px;font-weight:800;margin-bottom:4px; }
 .tc-date-txt { color:var(--tc-txt);font-size:14px;font-weight:600;margin-bottom:8px;opacity:.85; }
-.tc-memo-txt { color:var(--tc-txt);font-size:13px;line-height:1.6;opacity:.8; }
+.tc-memo-txt { color:var(--tc-txt);font-size:14px;line-height:1.6;opacity:.8; }
 .tc-emoji-box { background:var(--tc-bg);border:1px solid var(--tc-border);transition:background .3s; }
-.tc-tag { background:var(--tc-bg);color:var(--tc-txt);border:1px solid var(--tc-border);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block; }
+.tc-tag { background:var(--tc-bg);color:var(--tc-txt);border:1px solid var(--tc-border);font-size:13px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block; }
 .tc-dday-box { background:var(--tc-bg);border:1px solid var(--tc-border);transition:background .3s; }
 .tc-dday-num { color:var(--tc-txt);font-size:18px;font-weight:800;line-height:1; }
-.tc-dday-lbl { color:var(--tc-txt);font-size:10px;font-weight:700; }
+.tc-dday-lbl { color:var(--tc-txt);font-size:13px;font-weight:700; }
 
 html,body{height:100%;overflow-x:clip;scrollbar-gutter:stable}
 body{
   font-family:'Noto Sans KR',sans-serif;
-  background:var(--bg);color:var(--txt);font-size:14px;
+  background:var(--bg);color:var(--txt);font-size:15px;
   display:flex;flex-direction:column;min-height:100vh;
-  word-break:keep-all
+  word-break:keep-all;line-height:1.7;
+  -webkit-font-smoothing:antialiased
 }
 
 /* ── 헤더 ── */
@@ -136,7 +137,7 @@ body{
   border:1.5px solid #c8e8b8;overflow:hidden
 }
 .logo-name{font-size:20px;font-weight:800;color:#2e7040;letter-spacing:-.5px;font-family:'Sunflower','Noto Sans KR',sans-serif}
-.logo-en{font-size:10px;color:#5aa066;font-weight:600;letter-spacing:.5px;margin-top:-2px}
+.logo-en{font-size:12px;color:#5aa066;font-weight:600;letter-spacing:.5px;margin-top:-2px}
 
 /* 메인 탭바 */
 .main-tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
@@ -144,14 +145,12 @@ body{
 .mtab{
   flex:1;min-width:52px;padding:10px 8px 11px;
   text-align:center;cursor:pointer;font-size:15px;font-weight:700;
-  color:var(--txt3);border-bottom:3px solid transparent;
+  color:var(--txt2);border-bottom:3px solid transparent;
   transition:all .18s;white-space:nowrap;user-select:none;
   display:inline-flex;align-items:center;justify-content:center
 }
-.mtab .mtab-ico{display:inline-flex;align-items:center;margin-right:4px;opacity:.7;transition:opacity .15s}
-.mtab.on .mtab-ico{opacity:1}
-.mtab.on{color:var(--sky800);border-bottom-color:var(--sky)}
-.mtab:hover:not(.on){color:var(--txt2);background:var(--sky50)}
+.mtab.on{color:var(--sky800);border-bottom-color:var(--sky);font-weight:800}
+.mtab:hover:not(.on){color:var(--txt);background:var(--sky50)}
 
 /* ── 메인 콘텐츠 ── */
 .content{flex:1;padding:16px 20px max(32px,env(safe-area-inset-bottom));max-width:900px;margin:0 auto;width:100%}
@@ -160,9 +159,9 @@ body{
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* 섹션 */
-.sec{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px}
-.sec-t{font-size:15px;font-weight:800;color:var(--txt)}
-.sec-more{font-size:12px;font-weight:700;color:var(--sky);cursor:pointer;padding:4px 8px;border-radius:var(--r6);transition:background .15s}
+.sec{display:flex;align-items:center;justify-content:space-between;margin:20px 0 10px}
+.sec-t{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:-.4px}
+.sec-more{font-size:13px;font-weight:700;color:var(--sky600);cursor:pointer;padding:4px 8px;border-radius:var(--r6);transition:background .15s}
 .sec-more:hover{background:var(--sky50)}
 
 
@@ -176,7 +175,7 @@ body{
 }
 .q-item:hover{border-color:var(--sky100);transform:translateY(-3px);box-shadow:var(--shadow-hover)}
 .q-ico{font-size:24px;margin-bottom:6px}
-.q-lbl{font-size:11px;font-weight:700;color:var(--txt2)}
+.q-lbl{font-size:13px;font-weight:700;color:var(--txt)}
 
 /* 가로 스크롤 */
 .hscroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px;margin-bottom:16px}
@@ -193,10 +192,10 @@ body{
 .dest-img{height:100px;display:flex;align-items:flex-end;padding:8px;position:relative;font-size:36px;align-items:center;justify-content:center}
 
 .dest-body{padding:10px 11px}
-.dest-name{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:2px}
-.dest-loc{font-size:12px;color:var(--txt2);margin-bottom:5px;font-weight:500}
-.dest-price{font-size:13px;font-weight:800;color:var(--sky800)}
-.dest-price span{font-size:10px;font-weight:400;color:var(--txt3)}
+.dest-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px}
+.dest-loc{font-size:13px;color:var(--txt2);margin-bottom:5px;font-weight:500}
+.dest-price{font-size:14px;font-weight:800;color:var(--sky800)}
+.dest-price span{font-size:12px;font-weight:500;color:var(--txt3)}
 
 .theme-card{
   border-radius:var(--r14);padding:16px;cursor:pointer;
@@ -205,8 +204,8 @@ body{
 }
 .theme-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
 .th-ico{font-size:24px;margin-bottom:7px}
-.th-name{font-size:14px;font-weight:800;margin-bottom:2px}
-.th-cnt{font-size:11px;font-weight:600}
+.th-name{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:2px}
+.th-cnt{font-size:13px;font-weight:600;color:var(--txt2)}
 
 
 
@@ -227,8 +226,8 @@ body{
 .ritem:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 .ritem.on{border-color:var(--sky);background:var(--sky50);border-width:2.5px}
 .r-ico{font-size:22px;line-height:1;filter:drop-shadow(0 1px 3px rgba(0,0,0,.1))}
-.r-lbl{font-size:12px;font-weight:800;color:var(--txt2);line-height:1.3;word-break:keep-all}
-.r-cnt{font-size:11px;font-weight:600;color:var(--txt3);margin-top:-1px}
+.r-lbl{font-size:13px;font-weight:700;color:var(--txt);line-height:1.3;word-break:keep-all}
+.r-cnt{font-size:12px;font-weight:600;color:var(--txt2);margin-top:-1px}
 
 
 /* ── 강원도 내장 앱 ── */
@@ -238,30 +237,30 @@ body{
 .gw-logo{display:flex;align-items:center;gap:10px}
 .gw-mark{width:40px;height:40px;background:var(--teal100);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;border:1.5px solid rgba(29,158,117,.2)}
 .gw-name{font-size:17px;font-weight:800;color:var(--teal800);font-family:'Sunflower','Noto Sans KR',sans-serif}
-.gw-sub{font-size:11px;color:var(--teal600);font-weight:600;margin-top:1px}
+.gw-sub{font-size:13px;color:var(--teal600);font-weight:600;margin-top:1px}
 .gw-add-btn{
   display:flex;align-items:center;gap:5px;
-  font-size:12px;font-weight:700;padding:8px 14px;
+  font-size:13px;font-weight:700;padding:8px 14px;
   background:var(--teal600);color:#fff;border:none;border-radius:var(--r12);
   cursor:pointer;transition:all .15s;border-radius:var(--r12)
 }
 .gw-add-btn:hover{background:var(--teal800)}
 .gw-stats{display:flex;gap:8px}
 .gw-stat{text-align:center;background:var(--card);border-radius:var(--r8);padding:8px 12px;flex:1;border:1px solid var(--teal100)}
-.gw-sv{font-size:16px;font-weight:800;color:var(--teal800)}
-.gw-sl{font-size:10px;color:#374151;font-weight:700;margin-top:1px}
+.gw-sv{font-size:17px;font-weight:800;color:var(--teal800)}
+.gw-sl{font-size:13px;color:var(--txt2);font-weight:700;margin-top:1px}
 
 /* 강원 세부탭 */
 .gw-tabs-wrap{padding:10px 14px 0;background:var(--card);border-bottom:1px solid var(--border2)}
 .gw-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:0}
 .gw-tabs::-webkit-scrollbar{display:none}
 .gw-tab{
-  flex-shrink:0;padding:8px 14px;font-size:12px;font-weight:700;
-  color:var(--txt3);border-bottom:2.5px solid transparent;
+  flex-shrink:0;padding:8px 14px;font-size:14px;font-weight:700;
+  color:var(--txt2);border-bottom:2.5px solid transparent;
   cursor:pointer;transition:all .15s;white-space:nowrap
 }
-.gw-tab.on{color:var(--teal800);border-bottom-color:var(--teal)}
-.gw-tab:hover:not(.on){color:var(--txt2)}
+.gw-tab.on{color:var(--teal800);border-bottom-color:var(--teal);font-weight:800}
+.gw-tab:hover:not(.on){color:var(--txt)}
 
 /* 강원 목록 */
 .gw-list{padding:12px 14px}
@@ -271,7 +270,7 @@ body{
   border-radius:var(--r12);padding:9px 12px;
   margin-bottom:12px;border-radius:var(--r12)
 }
-.gw-search input{flex:1;border:none;outline:none;background:transparent;font-size:13px;color:var(--txt);font-family:inherit}
+.gw-search input{flex:1;border:none;outline:none;background:transparent;font-size:15px;color:var(--txt);font-family:inherit;font-weight:500}
 .gw-search input::placeholder{color:var(--txt3)}
 
 /* 명소 카드 */
@@ -281,21 +280,16 @@ body{
   transition:all .18s;position:relative
 }
 .spot:hover{border-color:var(--teal100);box-shadow:var(--shadow)}
-.spot-img{
-  width:56px;height:56px;border-radius:var(--r10,10px);
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:24px;border:1px solid rgba(0,0,0,.05)
-}
 .spot-body{flex:1;min-width:0}
-.spot-name{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:2px;line-height:1.4}
-.spot-region{font-size:12px;color:var(--txt2);margin-bottom:4px;font-weight:600}
+.spot-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px;line-height:1.4}
+.spot-region{font-size:13px;color:var(--txt2);margin-bottom:4px;font-weight:600}
 .spot-tags{display:flex;gap:3px;flex-wrap:wrap}
-.spot-actions{
+.sp-tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;display:inline-block}
   display:flex;flex-direction:column;gap:3px;justify-content:center;
   flex-shrink:0;margin-left:4px
 }
 .sa-btn{
-  font-size:11px;font-weight:700;padding:4px 8px;border-radius:var(--r6);
+  font-size:13px;font-weight:700;padding:4px 8px;border-radius:var(--r6);
   border:1.5px solid;cursor:pointer;transition:all .15s;white-space:nowrap
 }
 .sa-edit:hover{background:var(--amber100)}
@@ -303,8 +297,8 @@ body{
 /* 빈 상태 */
 .empty-state{text-align:center;padding:40px 20px;color:var(--txt3)}
 .empty-ico{font-size:40px;margin-bottom:10px}
-.empty-msg{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--txt2)}
-.empty-sub{font-size:12px}
+.empty-msg{font-size:16px;font-weight:700;margin-bottom:4px;color:var(--txt)}
+.empty-sub{font-size:14px;color:var(--txt2)}
 
 /* ══ 모달 (명소 추가/편집) ══ */
 .modal-overlay{
@@ -340,7 +334,7 @@ body{
 .form-inp,.form-select{
   width:100%;padding:10px 13px;
   border:1.5px solid var(--border);border-radius:var(--r8);
-  font-size:16px;font-family:inherit;color:var(--txt);
+  font-size:17px;font-family:inherit;color:var(--txt);
   background:var(--bg);transition:border-color .15s;min-height:44px
 }
 .form-inp:focus{border-color:var(--teal);background:var(--card);box-shadow:0 0 0 3px rgba(29,158,117,.1)}
@@ -350,9 +344,10 @@ body{
 /* 알림 토스트 */
 .toast{
   position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--teal800);color:#fff;font-size:13px;font-weight:700;
-  padding:10px 20px;border-radius:20px;z-index:9999;
-  opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap
+  background:var(--teal800);color:#fff;font-size:14px;font-weight:700;
+  padding:11px 22px;border-radius:20px;z-index:9999;
+  opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap;
+  box-shadow:0 4px 16px rgba(0,0,0,.2)
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -360,8 +355,6 @@ body{
 
 /* 내 일정 탭 강조 */
 .trip-tab{color:var(--sky600) !important}
-.trip-tab .new-badge{display:inline-block;font-size:8px;font-weight:800;background:var(--coral);color:#fff;padding:1px 4px;border-radius:6px;margin-left:3px;vertical-align:super;line-height:1.4}
-.trip-tab.on .new-badge{display:none}
 
 /* 홈 다가오는 여행 */
 .upcoming-wrap{margin-bottom:4px}
@@ -372,19 +365,12 @@ body{
   display:flex;align-items:center;gap:14px
 }
 .upcoming-card:hover{border-color:var(--sky100);box-shadow:var(--shadow-hover);transform:translateY(-2px)}
-.uc-dday{
-  flex-shrink:0;width:54px;height:54px;border-radius:var(--r12);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  font-weight:800;line-height:1.1
-}
-.uc-dday .dd-label{font-size:10px;font-weight:700;margin-bottom:1px}
-.uc-dday .dd-num{font-size:18px;font-weight:800}
 .uc-body{flex:1;min-width:0}
-.uc-title{font-size:14px;font-weight:800;color:var(--txt);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.uc-meta{font-size:12px;color:var(--txt2);margin-bottom:5px;font-weight:500}
+.uc-title{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.uc-meta{font-size:14px;color:var(--txt2);margin-bottom:5px;font-weight:600}
 .uc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
-.uc-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
-.uc-arrow{font-size:18px;color:var(--txt3);flex-shrink:0}
+.uc-tag{font-size:13px;font-weight:700;padding:3px 10px;border-radius:20px}
+.uc-arrow{font-size:20px;color:var(--txt2);flex-shrink:0}
 .upcoming-empty{
   background:var(--card);border:1.5px dashed var(--border);border-radius:var(--r16);
   padding:24px;text-align:center;margin-bottom:16px
@@ -395,9 +381,9 @@ body{
 /* 필터 */
 .trip-filter{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .trip-filter::-webkit-scrollbar{display:none}
-.tf{flex-shrink:0;font-size:12px;font-weight:700;padding:6px 13px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.tf{flex-shrink:0;font-size:14px;font-weight:700;padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
 .tf.on,.tf:hover{background:var(--sky50);border-color:var(--sky);color:var(--sky800)}
-.tf-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:20px;font-size:10px;font-weight:800;background:var(--sky100);color:var(--sky800);line-height:1}
+.tf-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:20px;font-size:12px;font-weight:800;background:var(--sky100);color:var(--sky800);line-height:1}
 .tf.on .tf-badge{background:var(--sky);color:#fff}
 
 /* 여행 카드 */
@@ -408,30 +394,19 @@ body{
 }
 .trip-card:hover{border-color:var(--sky100);box-shadow:var(--shadow-hover)}
 .tc-head{padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
-.tc-emoji{
-  width:48px;height:48px;border-radius:var(--r12);
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px
-}
 .tc-info{flex:1;min-width:0}
-.tc-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:3px}
-.tc-date{font-size:12px;color:var(--txt2);margin-bottom:6px;font-weight:600}
-.tc-status{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;margin-right:4px}
+.tc-title{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
+.tc-date{font-size:14px;color:var(--txt2);margin-bottom:6px;font-weight:600}
+.tc-status{display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:700;padding:4px 10px;border-radius:20px;margin-right:4px}
 .st-upcoming{background:var(--sky50);color:var(--sky800)}
 .st-ongoing{background:var(--teal50);color:var(--teal800)}
 .st-done{background:var(--gray50);color:var(--gray600)}
-.tc-dday{
-  flex-shrink:0;text-align:center;
-  width:52px;height:52px;border-radius:var(--r12);
-  display:flex;flex-direction:column;align-items:center;justify-content:center
-}
-.tc-dday .dd-l{font-size:10px;font-weight:700}
-.tc-dday .dd-n{font-size:18px;font-weight:800;line-height:1}
 .tc-foot{
   border-top:1px solid var(--border2);padding:10px 16px;
   display:flex;align-items:center;justify-content:space-between;
   background:var(--bg)
 }
-.tc-places{font-size:12px;color:var(--txt2);font-weight:500}
+.tc-places{font-size:14px;color:var(--txt2);font-weight:600}
 .tc-btn-edit{background:var(--amber50);border-color:var(--amber100);color:var(--amber800)}
 .tc-btn-edit:hover{background:var(--amber100)}
 .tc-btn-share{background:var(--sky50);border-color:var(--sky100);color:var(--sky800)}
@@ -444,14 +419,14 @@ body{
 /* 빈 상태 */
 .trip-empty{text-align:center;padding:48px 20px;background:var(--card);border:1.5px dashed var(--border);border-radius:var(--r16)}
 .te-ico{font-size:48px;margin-bottom:12px}
-.te-title{font-size:16px;font-weight:800;color:var(--txt);margin-bottom:6px}
-.te-sub{font-size:13px;color:var(--txt3);line-height:1.7;margin-bottom:18px}
-.te-btn{font-size:13px;font-weight:700;padding:11px 22px;background:var(--sky);color:#fff;border:none;border-radius:var(--r12);cursor:pointer;transition:all .15s}
+.te-title{font-size:18px;font-weight:800;color:var(--txt);margin-bottom:6px}
+.te-sub{font-size:14px;color:var(--txt2);line-height:1.75;margin-bottom:18px}
+.te-btn{font-size:14px;font-weight:700;padding:11px 22px;background:var(--sky);color:#fff;border:none;border-radius:var(--r12);cursor:pointer;transition:all .15s}
 .te-btn:hover{background:var(--sky800)}
 
 /* 상세 뷰 */
 .detail-back{
-  font-size:13px;font-weight:700;color:var(--sky800);
+  font-size:14px;font-weight:700;color:var(--sky800);
   padding:10px 0 14px;cursor:pointer;display:flex;align-items:center;gap:4px;
   border-bottom:1px solid var(--border2);margin-bottom:14px
 }
@@ -460,16 +435,16 @@ body{
   border-radius:var(--r16);padding:18px;margin-bottom:14px;
   border:1.5px solid transparent
 }
-.detail-title{font-size:20px;font-weight:800;margin-bottom:4px}
+.detail-title{font-size:17px;font-weight:800;margin-bottom:4px}
 .detail-date{font-size:14px;font-weight:600;margin-bottom:8px}
-.detail-memo{font-size:13px;opacity:1;color:var(--txt2);line-height:1.6}
+.detail-memo{font-size:14px;opacity:1;color:var(--txt2);line-height:1.75;font-weight:400}
 .day-block{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r14);margin-bottom:10px;overflow:hidden}
 .day-head{
   padding:11px 14px;display:flex;align-items:center;justify-content:space-between;
   background:var(--gray50);border-bottom:1px solid var(--border2)
 }
-.day-label{font-size:13px;font-weight:800;color:var(--txt)}
-.day-date{font-size:12px;color:var(--txt2);font-weight:600}
+.day-label{font-size:15px;font-weight:800;color:var(--txt);letter-spacing:-.2px}
+.day-date{font-size:14px;color:var(--txt2);font-weight:600}
 
 .place-row{
   padding:10px 14px;border-bottom:1px solid var(--border2);
@@ -478,24 +453,24 @@ body{
 .place-row:last-child{border-bottom:none}
 .place-row:hover{background:var(--bg)}
 .place-row-top{display:flex;align-items:center;gap:10px}
-.place-time{font-size:12px;font-weight:700;color:var(--sky800);min-width:40px;flex-shrink:0}
+.place-time{font-size:14px;font-weight:700;color:var(--sky800);min-width:40px;flex-shrink:0}
 .place-ico{font-size:18px;flex-shrink:0;line-height:1}
 .place-info{flex:1;min-width:0}
-.place-name{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:2px;display:flex;align-items:center;flex-wrap:wrap;gap:3px;line-height:1.4}
+.place-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px;display:flex;align-items:center;flex-wrap:wrap;gap:3px;line-height:1.4}
 .place-type-badge{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;flex-shrink:0}
 .pt-lodging{background:#dbeafe;color:#1e40af}
 .pt-restaurant{background:#fef3c7;color:#92400e}
 .pt-sight{background:var(--teal50);color:var(--teal800)}
 .pt-move{background:var(--gray50);color:var(--gray600)}
-.place-note{font-size:12px;color:var(--txt2);margin-top:3px;line-height:1.5;font-weight:500}
+.place-note{font-size:14px;color:var(--txt2);margin-top:3px;line-height:1.65;font-weight:400}
 .place-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
-.place-meta-item{display:flex;align-items:center;gap:3px;font-size:11px;color:var(--txt3)}
+.place-meta-item{display:flex;align-items:center;gap:3px;font-size:13px;color:var(--txt2);font-weight:500}
 .place-meta-item a{color:var(--sky600);text-decoration:none;font-weight:600}
 .place-meta-item a:hover{text-decoration:underline}
-.place-stars{color:#f59e0b;font-size:12px;font-weight:700}
+.place-stars{color:#1A2535;font-size:13px;font-weight:800}
 .place-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 
-.no-places{font-size:12px;color:var(--txt3);padding:16px 14px;text-align:center}
+.no-places{font-size:14px;color:var(--txt2);padding:16px 14px;text-align:center}
 
 /* 여행 추가 모달 (trip modal) */
 .45);z-index:998;
@@ -504,12 +479,12 @@ body{
 
 /* 장소 추가 미니 모달 */
 
-.pm-title{font-size:14px;font-weight:800;color:var(--txt);margin-bottom:12px}
+.pm-title{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:12px}
 
 /* ── 장소 정보 섹션 (하단) ── */
 .info-section{margin-bottom:16px}
 .info-sec-title{
-  font-size:13px;font-weight:800;color:var(--txt2);
+  font-size:15px;font-weight:800;color:var(--txt);
   margin-bottom:8px;padding-left:4px;
   display:flex;align-items:center;gap:6px
 }
@@ -528,20 +503,20 @@ body{
   font-size:20px;flex-shrink:0;border-radius:var(--r12)
 }
 .info-body{flex:1;min-width:0}
-.info-name{font-size:14px;font-weight:800;color:var(--txt);margin-bottom:3px}
-.info-star{color:#f59e0b;font-size:12px;font-weight:700}
-.info-addr{font-size:11px;color:var(--txt3);margin-bottom:4px;line-height:1.5}
+.info-name{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
+.info-star{color:#1A2535;font-size:14px;font-weight:800}
+.info-addr{font-size:14px;color:var(--txt2);margin-bottom:4px;line-height:1.6;font-weight:500}
 .info-chips{display:flex;gap:5px;flex-wrap:wrap}
 .info-chip{
-  font-size:10px;font-weight:600;
-  padding:2px 8px;border-radius:20px;
+  font-size:13px;font-weight:600;
+  padding:3px 9px;border-radius:20px;
   background:var(--gray50);color:var(--txt2);
   border:1px solid var(--gray100)
 }
 .info-btns{display:flex;gap:6px;flex-wrap:wrap}
 .info-btn{
   display:inline-flex;align-items:center;gap:4px;
-  font-size:12px;font-weight:700;
+  font-size:13px;font-weight:700;
   padding:7px 13px;border-radius:var(--r12);
   border:1.5px solid;cursor:pointer;
   text-decoration:none;transition:all .15s;
@@ -560,7 +535,7 @@ body{
 
 /* 화살표 스크롤 공통 */
 .scroll-row-wrap{display:flex;align-items:center;gap:4px;margin-bottom:14px}
-.arr-btn{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:16px;line-height:1;transition:all .15s;padding:0}
+.arr-btn{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:17px;line-height:1;transition:all .15s;padding:0}
 .arr-btn:hover{border-color:var(--sky);color:var(--sky800);background:var(--sky50)}
 
 /* 국내 서브탭 */
@@ -570,12 +545,12 @@ body{
 }
 .sub-tab-bar::-webkit-scrollbar{display:none}
 .stab{
-  flex-shrink:0;font-size:12px;font-weight:700;
+  flex-shrink:0;font-size:14px;font-weight:700;
   padding:7px 14px;border-radius:20px;cursor:pointer;
   border:1.5px solid var(--border);background:var(--card);color:var(--txt2);
   transition:all .18s;white-space:nowrap
 }
-.stab.on{background:var(--sky50);border-color:var(--sky);color:var(--sky800)}
+.stab.on{background:var(--sky50);border-color:var(--sky);color:var(--sky800);font-weight:800}
 .stab:hover:not(.on){border-color:var(--sky100);background:var(--sky50)}
 
 /* 서브패널 */
@@ -584,9 +559,9 @@ body{
 
 
 /* ── 테마별 여행 모달 ── */
-.theme-ftab{flex-shrink:0;font-size:12px;font-weight:700;padding:7px 12px;border-radius:20px 20px 0 0;cursor:pointer;color:var(--txt3);border-bottom:2.5px solid transparent;transition:all .15s;white-space:nowrap}
-.theme-ftab.on{color:var(--sky800);border-bottom-color:var(--sky);background:var(--sky50)}
-.theme-ftab:hover:not(.on){color:var(--txt2)}
+.theme-ftab{flex-shrink:0;font-size:14px;font-weight:700;padding:7px 12px;border-radius:20px 20px 0 0;cursor:pointer;color:var(--txt2);border-bottom:2.5px solid transparent;transition:all .15s;white-space:nowrap}
+.theme-ftab.on{color:var(--sky800);border-bottom-color:var(--sky);background:var(--sky50);font-weight:800}
+.theme-ftab:hover:not(.on){color:var(--txt)}
 
 /* ── 테마 아이콘 카드 그리드 ── */
 .theme-icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:2px}
@@ -602,32 +577,30 @@ body{
 .theme-ico-card.on{border-width:2.5px;box-shadow:0 4px 16px rgba(0,0,0,.12)}
 .theme-ico-card.on::after{
   content:'✓';position:absolute;top:4px;right:6px;
-  font-size:9px;font-weight:900;opacity:.9
+  font-size:13px;font-weight:900;opacity:.9
 }
-.tic-emoji{font-size:22px;line-height:1;filter:drop-shadow(0 1px 3px rgba(0,0,0,.1))}
-.tic-label{font-size:12px;font-weight:800;text-align:center;line-height:1.3;word-break:keep-all}
-.tic-cnt{font-size:11px;font-weight:600;opacity:.75;margin-top:-1px}
-@keyframes themeSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.theme-region-slide{animation:themeSlide .22s ease}
+
+.tic-label{font-size:13px;font-weight:700;color:var(--txt);text-align:center;line-height:1.3;word-break:keep-all}
+.tic-cnt{font-size:12px;font-weight:600;color:var(--txt2);margin-top:-1px}
+@keyframes themeSlide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.theme-region-slide{animation:themeSlide .2s ease forwards}
 .theme-spot-card{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r12);margin-bottom:7px;cursor:pointer;transition:all .15s}
 .theme-spot-card:hover{border-color:var(--sky100);background:var(--card);transform:translateX(3px)}
-.theme-spot-emoji{width:46px;height:46px;border-radius:var(--r10,10px);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+
 .theme-spot-info{flex:1;min-width:0}
 .theme-spot-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:3px}
-.theme-spot-meta{font-size:13px;color:var(--txt2);margin-bottom:4px}
-.theme-spot-region{font-size:12px;font-weight:700;padding:3px 9px;border-radius:10px;background:var(--sky50);color:var(--sky800);display:inline-block}
-.theme-spot-actions{display:flex;flex-direction:column;gap:4px;flex-shrink:0}
+.theme-spot-meta{font-size:13px;font-weight:600;color:var(--txt2);margin-bottom:4px}
+.theme-spot-region{font-size:13px;font-weight:700;padding:3px 9px;border-radius:10px;background:var(--sky50);color:var(--sky800);display:inline-block}
 .theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
 
 .region-guide{border-radius:var(--r20);overflow:hidden;border:1.5px solid var(--border);box-shadow:var(--shadow);margin-bottom:16px}
 .rg-spot-list{padding:0 12px 12px;background:var(--card)}
 .rg-spot{display:flex;align-items:center;gap:10px;padding:9px 10px;border:1.5px solid var(--border);border-radius:var(--r12);margin-bottom:7px;cursor:pointer;transition:all .15s;background:var(--bg)}
 .rg-spot:hover{border-color:var(--sky100);background:var(--card);transform:translateX(3px)}
-.rg-spot-emoji{font-size:22px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:var(--r8);flex-shrink:0}
 .rg-spot-info{flex:1;min-width:0}
-.rg-spot-name{font-size:13px;font-weight:700;color:var(--txt);margin-bottom:1px}
-.rg-spot-meta{font-size:12px;color:var(--txt2);font-weight:500}
-.rg-spot-price{font-size:12px;font-weight:700;color:var(--sky800);flex-shrink:0}
+.rg-spot-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:1px}
+.rg-spot-meta{font-size:13px;color:var(--txt2);font-weight:600}
+.rg-spot-price{font-size:13px;font-weight:700;color:var(--sky800);flex-shrink:0}
 .rg-spot-actions{display:flex;gap:4px;flex-shrink:0}
 
 /* ── 예약 허브 ── */
@@ -636,18 +609,17 @@ body{
 .bk-site{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;border:1.5px solid var(--border);border-radius:var(--r12);background:var(--card);cursor:pointer;transition:all .18s}
 .bk-site:hover{border-color:var(--sky);transform:translateY(-3px);box-shadow:var(--shadow-hover)}
 .bk-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;overflow:hidden}
-.bk-name{font-size:11px;font-weight:700;color:var(--txt);text-align:center}
-.bk-desc{font-size:11px;color:var(--txt2);text-align:center;font-weight:600}
+.bk-name{font-size:13px;font-weight:700;color:var(--txt);text-align:center}
+.bk-desc{font-size:13px;color:var(--txt2);text-align:center;font-weight:600}
 
 /* ── 해외 여행지 목록 ── */
 .intl-dest{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r14);padding:14px;margin-bottom:10px;display:flex;gap:12px;cursor:pointer;transition:all .18s;box-shadow:var(--shadow)}
 .intl-dest:hover{border-color:var(--sky100);box-shadow:var(--shadow-hover)}
-.intl-dest-flag{display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:var(--r12);flex-shrink:0;overflow:hidden}
 .intl-dest-body{flex:1;min-width:0}
-.intl-dest-name{font-size:15px;font-weight:800;color:var(--txt);margin-bottom:2px}
-.intl-dest-sub{font-size:12px;color:var(--txt2);margin-bottom:8px;font-weight:500}
+.intl-dest-name{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:2px}
+.intl-dest-sub{font-size:14px;color:var(--txt2);margin-bottom:8px;font-weight:600}
 .intl-dest-btns{display:flex;gap:6px;flex-wrap:wrap}
-.intl-dest-btn{font-size:11px;font-weight:700;padding:5px 10px;border-radius:var(--r8);border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s}
+.intl-dest-btn{font-size:13px;font-weight:600;padding:5px 10px;border-radius:var(--r8);border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s}
 .intl-dest-btn:hover{background:var(--sky50);border-color:var(--sky);color:var(--sky800)}
 
 /* ── 준비 카드 ── */
@@ -656,35 +628,35 @@ body{
 .prep-card:hover{border-color:var(--sky);transform:translateX(4px);box-shadow:var(--shadow-hover)}
 .prep-ico{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--sky50);border-radius:var(--r12);flex-shrink:0;overflow:hidden}
 .prep-body{flex:1}
-.prep-title{font-size:14px;font-weight:700;color:var(--txt)}
-.prep-sub{font-size:12px;color:var(--txt2);margin-top:1px;font-weight:600}
-.prep-arrow{font-size:16px;color:var(--txt3)}
+.prep-title{font-size:15px;font-weight:700;color:var(--txt)}
+.prep-sub{font-size:13px;color:var(--txt2);margin-top:1px;font-weight:600}
+.prep-arrow{font-size:17px;color:var(--txt2)}
 
 /* ── 여행팁 ── */
-.tip-header{background:linear-gradient(135deg,var(--sky50),var(--purple50));border:1.5px solid var(--sky100);border-radius:var(--r16);padding:18px;margin-bottom:14px;text-align:center}
-.th-title{font-size:18px;font-weight:800;color:var(--sky800);margin-bottom:4px}
-.th-sub{font-size:12px;color:var(--txt3)}
+.tip-header{background:var(--sky50);border:1.5px solid var(--sky100);border-radius:var(--r12);padding:11px 16px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.th-title{font-size:15px;font-weight:700;color:var(--sky800)}
+.th-sub{font-size:13px;font-weight:500;color:var(--txt2);margin-top:1px}
 .tip-filter{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .tip-filter::-webkit-scrollbar{display:none}
-.tip-f{flex-shrink:0;font-size:12px;font-weight:700;padding:6px 13px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s}
+.tip-f{flex-shrink:0;font-size:13px;font-weight:700;padding:5px 11px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s}
 .tip-f.on,.tip-f:hover{background:var(--sky50);border-color:var(--sky);color:var(--sky800)}
-.tip-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r14);padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow);cursor:pointer;transition:all .18s}
+.tip-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);padding:11px 14px;margin-bottom:8px;box-shadow:var(--shadow);transition:all .18s}
 .tip-card:hover{border-color:var(--sky100);box-shadow:var(--shadow-hover)}
-.tip-card-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.tip-card-title{font-size:13px;font-weight:700;color:var(--txt)}
-.tip-card-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px}
-.tip-card-body{font-size:13px;color:var(--txt2);line-height:1.75}
-.tip-card-body li{margin-bottom:3px;list-style:none;padding-left:0}
-.tip-card-body li::before{content:'✓ ';color:var(--teal)}
+.tip-card-head{display:flex;align-items:center;gap:7px;margin-bottom:7px}
+.tip-card-title{font-size:14px;font-weight:700;color:var(--txt)}
+.tip-card-badge{font-size:11px;font-weight:700;padding:2px 7px;border-radius:20px}
+.tip-card-body{font-size:14px;font-weight:500;color:var(--txt);line-height:1.7}
+.tip-card-body li{margin-bottom:2px;list-style:none;padding-left:0}
+.tip-card-body li::before{content:'✓ ';color:var(--teal);font-weight:600}
 .useful-apps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
 .app-item{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 6px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);cursor:pointer;transition:all .18s}
 .app-item:hover{border-color:var(--sky);transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 .app-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.app-name{font-size:10px;font-weight:700;color:var(--txt2);text-align:center}
+.app-name{font-size:13px;font-weight:700;color:var(--txt);text-align:center}
 .emergency-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
 .emer-item{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);padding:12px;text-align:center;box-shadow:var(--shadow)}
 .emer-num{font-size:18px;font-weight:800;margin-bottom:3px}
-.emer-lbl{font-size:11px;color:var(--txt3);font-weight:600}
+.emer-lbl{font-size:13px;color:var(--txt2);font-weight:600}
 
 /* 외부링크 안내 모달 */
 
@@ -698,29 +670,26 @@ body{
   .header-top{margin-bottom:8px}
   .logo-name{font-size:17px}
   .logo-mark{width:34px;height:34px;font-size:18px}
-  .mtab{font-size:13px;padding:8px 4px 9px;min-width:44px}
+  .mtab{font-size:14px;padding:8px 4px 9px;min-width:44px}
   .main-tabs{padding:0 14px;margin:0 -14px}
   .content{padding:12px 14px max(80px,calc(64px + env(safe-area-inset-bottom)));overflow-x:clip}
   .dest{width:130px}
   .dest-img{height:82px;font-size:30px}
-  .dest-name{font-size:12px}
-  .dest-loc{font-size:11px;color:var(--txt2)}
-  .dest-price{font-size:12px}
+  .dest-name{font-size:14px}
+  .dest-loc{font-size:12px;color:var(--txt2)}
+  .dest-price{font-size:13px}
   .quick{grid-template-columns:repeat(4,1fr);gap:5px}
   .quick-5{grid-template-columns:repeat(5,1fr);gap:4px}
   .q-item{padding:10px 3px 8px}
   .q-ico{font-size:20px;margin-bottom:3px}
-  .q-lbl{font-size:10px}
+  .q-lbl{font-size:12px}
   .theme-grid{grid-template-columns:1fr 1fr;gap:6px}
   .th-ico{font-size:22px;margin-bottom:5px}
   .th-name{font-size:13px}
   .rgrid{grid-template-columns:repeat(4,1fr);gap:6px}
   .upcoming-card{gap:10px;padding:11px 12px}
-  .uc-dday{width:48px;height:48px;border-radius:12px}
-  .uc-dday .dd-label{font-size:9px}
-  .uc-dday .dd-num{font-size:16px}
-  .uc-title{font-size:13px}
-  .uc-meta{font-size:11px;color:var(--txt2)}
+  .uc-title{font-size:15px}
+  .uc-meta{font-size:13px;color:var(--txt2)}
   
 /* ── 태블릿 (481~768px) ── */
 @media(min-width:481px) and (max-width:768px){
@@ -750,30 +719,27 @@ body{
   .mtab{font-size:15px;padding:11px 14px 12px}
   .logo-name{font-size:22px}
   .logo-mark{width:44px;height:44px;font-size:24px}
-  .logo-en{font-size:11px}
+  .logo-en{font-size:12px}
   .quick{grid-template-columns:repeat(4,1fr);gap:12px}
   .q-item{padding:16px 8px 14px}
   .q-ico{font-size:28px;margin-bottom:8px}
-  .q-lbl{font-size:12px}
+  .q-lbl{font-size:14px}
   .theme-grid{grid-template-columns:repeat(4,1fr);gap:10px}
   .th-ico{font-size:28px;margin-bottom:8px}
   .th-name{font-size:15px}
-  .th-cnt{font-size:12px}
+  .th-cnt{font-size:13px}
   .rgrid{grid-template-columns:repeat(8,1fr);gap:8px}
   .dest{width:162px}
   .dest-img{height:112px;font-size:42px}
-  .dest-name{font-size:14px}
+  .dest-name{font-size:15px}
   .dest-price{font-size:14px}
   .hscroll{gap:14px;padding-bottom:8px}
   .b-title{font-size:18px}
   .rev{width:270px}
-  .sec-t{font-size:16px}
+  .sec-t{font-size:19px}
   .upcoming-card{padding:14px 18px}
-  .uc-dday{width:60px;height:60px;border-radius:14px}
-  .uc-dday .dd-label{font-size:10px}
-  .uc-dday .dd-num{font-size:20px}
-  .uc-title{font-size:15px}
-  .uc-meta{font-size:12px}
+  .uc-title{font-size:17px}
+  .uc-meta{font-size:14px}
   
 /* ── 대형 PC (1100px+) ── */
 @media(min-width:1100px){
@@ -791,12 +757,9 @@ body{
   .quick{gap:14px}
   .q-item{padding:20px 10px 16px}
   .q-ico{font-size:32px;margin-bottom:10px}
-  .q-lbl{font-size:13px}
+  .q-lbl{font-size:14px}
   /* 여행 카드 */
-  .tc-emoji{width:56px;height:56px;font-size:28px}
   .tc-title{font-size:17px}
-  .tc-dday{width:64px;height:64px}
-  .tc-dday .dd-n{font-size:22px}
 
   /* 모달 */
   .modal,  
@@ -825,8 +788,15 @@ body{
 
 /* 입력창 */
 
+/* ── 모달 타이틀 공통 ── */
+.modal-title{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:-.3px;display:flex;align-items:center;gap:6px}
+.modal-sub{font-size:13px;font-weight:500;color:var(--txt2);margin-top:2px}
+
+/* ── 폼 레이블 공통 ── */
+.form-label{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:6px;display:block}
+.form-hint{font-size:12px;font-weight:500;color:var(--txt2);margin-top:4px}
+
 </style>
-</head>
 <body>
 
 <!-- 테마별 여행 모달 -->
@@ -835,7 +805,7 @@ body{
     <div class="modal-header">
       <div>
         <div class="modal-title" id="themeModalTitle">🌿 힐링·자연</div>
-        <div style="font-size:11px;color:var(--txt3);margin-top:2px" id="themeModalCnt"></div>
+        <div style="font-size:14px;color:var(--txt2);margin-top:2px" id="themeModalCnt"></div>
       </div>
       <button class="modal-close" onclick="closeThemeModal()" style="display:inline-flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" ><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
@@ -865,7 +835,7 @@ body{
     <div class="modal-header">
       <div>
         <div class="modal-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg> 환율 계산기</div>
-        <div style="font-size:11px;color:var(--txt3);margin-top:2px" id="exchLastUpdate">환율 불러오는 중...</div>
+        <div style="font-size:14px;color:var(--txt2);margin-top:2px" id="exchLastUpdate">환율 불러오는 중...</div>
       </div>
       <button class="modal-close" onclick="closeExchangeModal()" style="display:inline-flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" ><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
@@ -873,11 +843,11 @@ body{
       <!-- 입력 -->
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px">
         <div style="flex:1">
-          <div style="font-size:11px;font-weight:700;color:var(--txt3);margin-bottom:5px">금액 입력</div>
-          <input class="form-inp" id="exchAmount" type="number" placeholder="100000" value="100000" oninput="calcExchange()" style="font-size:16px;font-weight:800;text-align:right">
+          <div style="font-size:13px;font-weight:700;color:var(--txt3);margin-bottom:5px">금액 입력</div>
+          <input class="form-inp" id="exchAmount" type="number" placeholder="100000" value="100000" oninput="calcExchange()" style="font-size:17px;font-weight:800;text-align:right">
         </div>
         <div style="flex:1">
-          <div style="font-size:11px;font-weight:700;color:var(--txt3);margin-bottom:5px">기준 통화</div>
+          <div style="font-size:13px;font-weight:700;color:var(--txt3);margin-bottom:5px">기준 통화</div>
           <select class="form-select" id="exchBase" onchange="calcExchange()">
             <option value="KRW">🇰🇷 원화 (KRW)</option>
             <option value="USD">🇺🇸 달러 (USD)</option>
@@ -889,7 +859,7 @@ body{
       <!-- 결과 -->
       <div id="exchResults"></div>
       <div style="margin-top:12px;padding:10px 12px;background:var(--amber50);border:1px solid var(--amber100);border-radius:var(--r8)">
-        <div style="font-size:11px;color:var(--amber800);font-weight:600"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> 환율은 Open Exchange Rates 기반 실시간 근사값입니다. 실제 환전 시 은행 환율을 확인하세요.</div>
+        <div style="font-size:13px;color:var(--amber800);font-weight:600"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> 환율은 Open Exchange Rates 기반 실시간 근사값입니다. 실제 환전 시 은행 환율을 확인하세요.</div>
       </div>
     </div>
   </div>
@@ -952,12 +922,12 @@ body{
   </div>
 
   <div class="main-tabs">
-    <div class="mtab on" onclick="sw(0,this)"><span class="mtab-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>홈</div>
-    <div class="mtab trip-tab" onclick="sw(1,this)"><span class="mtab-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>일정<span class="new-badge">NEW</span></div>
-    <div class="mtab" onclick="sw(2,this)"><span class="mtab-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>테마</div>
-    <div class="mtab" onclick="sw(3,this)"><span class="mtab-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>국내</div>
-    <div class="mtab" onclick="sw(4,this)"><span class="mtab-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>해외</div>
-    <div class="mtab" onclick="sw(5,this)"><span class="mtab-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg></span>여행팁</div>
+    <div class="mtab on" onclick="sw(0,this)">홈</div>
+    <div class="mtab trip-tab" onclick="sw(1,this)">일정</div>
+    <div class="mtab" onclick="sw(2,this)">테마</div>
+    <div class="mtab" onclick="sw(3,this)">국내</div>
+    <div class="mtab" onclick="sw(4,this)">해외</div>
+    <div class="mtab" onclick="sw(5,this)">여행팁</div>
   </div>
 </div>
 
@@ -967,34 +937,65 @@ body{
 <!-- ════ 홈 ════ -->
 <div class="panel" id="p0">
 
+  <!-- ① D-day 카운터 -->
+  <div id="ddayBanner" style="margin-bottom:14px;display:none">
+    <div id="ddayInner" style="padding:12px 16px;background:var(--sky50);border:1.5px solid var(--sky100);border-radius:var(--r14);display:flex;align-items:center;gap:14px">
+      <!-- D-day 숫자 뱃지 -->
+      <div id="ddayBadge" style="flex-shrink:0;min-width:64px;text-align:center;padding:8px 10px;border-radius:var(--r12);background:var(--sky);box-shadow:0 2px 8px rgba(55,138,221,.25)">
+        <div id="ddayNumber" style="font-size:22px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px"></div>
+        <div id="ddayUnit" style="font-size:10px;font-weight:700;color:rgba(255,255,255,.9);margin-top:2px;white-space:nowrap"></div>
+      </div>
+      <!-- 여행 정보 -->
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;font-weight:700;color:var(--sky600);letter-spacing:.04em;margin-bottom:3px">다음 여행</div>
+        <div id="ddayTripName" style="font-size:14px;font-weight:700;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px"></div>
+        <div id="ddayTripDate" style="font-size:12px;font-weight:500;color:var(--txt3)"></div>
+      </div>
+      <!-- 화살표 -->
+      <div style="font-size:18px;color:var(--sky);flex-shrink:0">›</div>
+    </div>
+  </div>
+
+  <!-- D-day 없을 때 (여행 없음) -->
+  <div id="ddayEmpty" style="display:none;margin-bottom:14px;padding:16px 18px;border-radius:var(--r14);border:1.5px dashed var(--border);background:var(--card);text-align:center">
+    <div style="font-size:26px;margin-bottom:6px">✈️</div>
+    <div style="font-size:14px;font-weight:700;color:var(--txt2)">아직 계획된 여행이 없어요</div>
+  </div>
+
+  <!-- ② 다가오는 여행 -->
   <div class="upcoming-wrap" id="upcomingWrap">
     <div class="sec" style="margin-top:0">
-      <div class="sec-t"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="16" y1="16" x2="16.01" y2="16"/></svg></span> 다가오는 여행</div>
+      <div class="sec-t">다가오는 여행</div>
       <div class="sec-more" onclick="sw(1,document.querySelectorAll('.mtab')[1])">전체보기 →</div>
     </div>
     <div id="upcomingCards"></div>
     <div class="upcoming-empty" id="upcomingEmpty" style="display:none">
-      <div style="font-size:28px;margin-bottom:8px">🗺️</div>
-      <div style="font-size:13px;font-weight:700;color:var(--txt2);margin-bottom:4px">아직 계획된 여행이 없어요</div>
-      <div style="font-size:12px;color:var(--txt3);margin-bottom:12px">일정 탭에서 새 여행을 추가해 보세요!</div>
-      <button onclick="sw(1,document.querySelectorAll('.mtab')[1])" style="font-size:12px;font-weight:700;padding:8px 16px;background:var(--sky50);border:1.5px solid var(--sky100);color:var(--sky800);border-radius:var(--r12);cursor:pointer"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 21 4s-2 0-3.5 1.5L14 9 5.8 6.2c-.5-.2-1.1 0-1.4.5L3 8l5 3-2.5 2.5L3 13l2 2 2-2.5L11 17l-1.5 3.5 1.5.5 4.5-1.5.5 1.5 2-2-.2-1.8z"/></svg> 여행 일정 추가하기</button>
+      <div style="font-size:14px;color:var(--txt3);padding:8px 0 12px;text-align:center">예정된 여행이 없습니다</div>
     </div>
   </div>
 
-  <!-- 오늘의 여행 팁 -->
+  <!-- ③ 랜덤 여행지 추천 -->
+  <div style="margin-bottom:14px">
+    <div class="sec"><div class="sec-t">오늘 어디 갈까? 🎲</div></div>
+    <div id="randomSpotCard" style="border-radius:var(--r14);border:1.5px solid var(--border);background:var(--card);overflow:hidden">
+      <div id="randomSpotBody" style="padding:14px 16px">
+        <div style="font-size:13px;color:var(--txt3);text-align:center;padding:8px 0">버튼을 눌러 랜덤 여행지를 추천받아보세요!</div>
+      </div>
+      <button onclick="pickRandomSpot()" id="randomBtn" style="width:100%;padding:11px;background:var(--sky50);border:none;border-top:1.5px solid var(--border2);font-size:14px;font-weight:700;color:var(--sky800);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        다른 곳 추천받기
+      </button>
+    </div>
+  </div>
+
+  <!-- ④ 오늘의 여행 팁 -->
   <div id="todayTipCard" onclick="rotateTip()" style="cursor:pointer;margin-bottom:14px;padding:12px 14px;border-radius:var(--r14);border:1.5px solid var(--border);background:var(--card);display:flex;align-items:center;gap:12px;transition:all .18s">
     <div id="todayTipIco" class="today-tip-ico-wrap" style="font-size:26px;flex-shrink:0;width:42px;height:42px;border-radius:var(--r12);display:flex;align-items:center;justify-content:center;background:var(--sky50)"></div>
     <div style="flex:1;min-width:0">
-      <div style="font-size:13px;font-weight:700;color:var(--sky800);margin-bottom:4px;letter-spacing:.04em"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> 오늘의 여행 팁</div>
+      <div style="font-size:14px;font-weight:700;color:var(--sky800);margin-bottom:4px;letter-spacing:.04em"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> 오늘의 여행 팁</div>
       <div id="todayTipText" style="font-size:14px;font-weight:600;color:var(--txt);line-height:1.6;word-break:keep-all"></div>
     </div>
     <div style="font-size:18px;color:var(--txt3);flex-shrink:0">›</div>
-  </div>
-
-  <!-- 찜 목록 (저장된 게 있을 때만 표시) -->
-  <div id="wishSection" style="display:none">
-    <div class="sec"><div class="sec-t"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></span> 내 찜 목록</div><div class="sec-more" onclick="clearWishes()">전체 삭제</div></div>
-    <div id="wishList" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
   </div>
 
 </div>
@@ -1005,17 +1006,17 @@ body{
   <!-- 테마 아이콘 카드 그리드 -->
   <div class="theme-icon-grid" id="themeIconGrid"></div>
 
-  <!-- 지역 필터 (선택 시 슬라이드 펼침) -->
-  <div id="themeRegionWrap" style="visibility:hidden;overflow:visible;min-height:76px">
+  <!-- 지역 필터 (아코디언 — 테마 카드 클릭 시 슬라이드 펼침) -->
+  <div id="themeRegionWrap" style="display:none;overflow:hidden;transition:none">
     <div style="padding:10px 0 6px;border-top:1px solid var(--border2)">
       <!-- 국내/해외 토글 -->
       <div style="display:flex;gap:6px;margin-bottom:8px">
         <button id="regionToggleDom" onclick="setRegionMode('domestic')"
-          style="flex:1;padding:7px 0;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:1.5px solid var(--sky);background:var(--sky);color:#fff;transition:all .18s">
+          style="flex:1;padding:7px 0;border-radius:20px;font-size:13px;font-weight:800;cursor:pointer;border:1.5px solid var(--sky);background:var(--sky);color:#fff;transition:all .18s">
           국내
         </button>
         <button id="regionToggleIntl" onclick="setRegionMode('intl')"
-          style="flex:1;padding:7px 0;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);transition:all .18s">
+          style="flex:1;padding:7px 0;border-radius:20px;font-size:13px;font-weight:800;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);transition:all .18s">
           해외
         </button>
       </div>
@@ -1030,7 +1031,7 @@ body{
   </div>
 
   <!-- 카운트 -->
-  <div id="inlineThemeCnt" style="font-size:12px;color:var(--txt3);font-weight:600;padding:6px 0 4px"></div>
+  <div id="inlineThemeCnt" style="font-size:14px;color:var(--txt2);font-weight:600;padding:6px 0 4px"></div>
 
   <!-- 목록 -->
   <div id="inlineThemeBody"></div>
@@ -1057,7 +1058,7 @@ body{
   <div class="trip-empty" id="tripEmpty">
     <div class="te-ico">🗺️</div>
     <div class="te-title">아직 여행 일정이 없어요</div>
-    <div class="te-sub">새 여행을 계획하고 일정을 관리해보세요</div>
+    <div class="te-sub">Claude 앱에서 일정을 추가해 보세요</div>
   </div>
 
 </div>
@@ -1072,36 +1073,10 @@ body{
 <!-- ════ 국내 ════ -->
 <div class="panel" id="p1">
 
-  <!-- 국내 서브탭 -->
-  <div class="scroll-row-wrap">
-    <button class="arr-btn" onclick="scrollRow('subTabBar',-1)">‹</button>
-    <div class="sub-tab-bar" id="subTabBar">
-      <div class="stab on" onclick="swSub(0,this)">전체</div>
-      <div class="stab" onclick="swSub(1,this)">강원</div>
-      <div class="stab" onclick="swSub(2,this)">제주</div>
-      <div class="stab" onclick="swSub(3,this)">서울</div>
-      <div class="stab" onclick="swSub(4,this)">부산</div>
-      <div class="stab" onclick="swSub(5,this)">경주·경북</div>
-      <div class="stab" onclick="swSub(14,this)">경주</div>
-      <div class="stab" onclick="swSub(6,this)">경남</div>
-      <div class="stab" onclick="swSub(7,this)">충청</div>
-      <div class="stab" onclick="swSub(16,this)">충북</div>
-      <div class="stab" onclick="swSub(8,this)">전남</div>
-      <div class="stab" onclick="swSub(9,this)">전북</div>
-      <div class="stab" onclick="swSub(15,this)">전주</div>
-      <div class="stab" onclick="swSub(10,this)">대구</div>
-      <div class="stab" onclick="swSub(11,this)">대전</div>
-      <div class="stab" onclick="swSub(12,this)">인천</div>
-      <div class="stab" onclick="swSub(13,this)">광주</div>
-    </div>
-    <button class="arr-btn" onclick="scrollRow('subTabBar',1)">›</button>
-  </div>
-
   <!-- 서브패널: 전체 -->
   <div class="sub-panel on" id="sp0">
-    <div class="sec"><div class="sec-t"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span> 지역 바로가기</div></div>
     <div class="rgrid" id="regionGrid"></div>
-    <div class="sec"><div class="sec-t"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></span> 국내 여행 예약 사이트</div></div>
+    <div class="sec"><div class="sec-t">국내 여행 예약 사이트</div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
 
       <!-- 여기어때 -->
@@ -1185,7 +1160,6 @@ body{
 <div class="panel" id="p2">
 
 <!-- 지역 카드 그리드 -->
-<div class="sec" style="margin-bottom:10px"><div class="sec-t">🌍 지역별 여행 정보</div></div>
 <div class="rgrid" id="intlRegionGrid"></div>
 
 <!-- 여행지 목록 -->
@@ -1205,7 +1179,7 @@ body{
 
 <!-- 예약 사이트 허브 -->
 <div class="booking-hub" style="margin-top:20px">
-  <div class="sec-t" style="margin-bottom:12px"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 21 4s-2 0-3.5 1.5L14 9 5.8 6.2c-.5-.2-1.1 0-1.4.5L3 8l5 3-2.5 2.5L3 13l2 2 2-2.5L11 17l-1.5 3.5 1.5.5 4.5-1.5.5 1.5 2-2-.2-1.8z"/></svg></span> ✈️ 항공권</div>
+  <div class="sec"><div class="sec-t">항공권</div></div>
   <div class="booking-grid">
     <button class="bk-site" onclick="window.open('https://flight.naver.com','_blank')">
       <div class="bk-ico" style="background:#03C75A;overflow:hidden;padding:0"><svg width="36" height="36" viewBox="0 0 36 36" style="display:block"><rect width="36" height="36" fill="#03C75A"/><path d="M8 18l5-8 3 5 4-9 4 9 3-5 5 8" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -1225,7 +1199,7 @@ body{
     </button>
   </div>
 
-  <div class="sec-t" style="margin:16px 0 12px"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> 🏨 숙소</div>
+  <div class="sec"><div class="sec-t">숙소</div></div>
   <div class="booking-grid">
     <button class="bk-site" onclick="window.open('https://www.booking.com/index.ko.html','_blank')">
       <div class="bk-ico" style="background:#003580;overflow:hidden;padding:0"><svg width="36" height="36" viewBox="0 0 36 36" style="display:block"><rect width="36" height="36" fill="#003580"/><text x="18" y="23" font-size="13" font-weight="900" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif">B.</text></svg></div>
@@ -1245,7 +1219,7 @@ body{
     </button>
   </div>
 
-  <div class="sec-t" style="margin:16px 0 12px"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> 🎫 투어·액티비티</div>
+  <div class="sec"><div class="sec-t">투어 · 액티비티</div></div>
   <div class="booking-grid">
     <button class="bk-site" onclick="window.open('https://www.klook.com/ko','_blank')">
       <div class="bk-ico" style="background:#FF6800;overflow:hidden;padding:0"><svg width="36" height="36" viewBox="0 0 36 36" style="display:block"><rect width="36" height="36" fill="#FF6800"/><text x="18" y="25" font-size="16" font-weight="900" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif">K</text></svg></div>
@@ -1274,8 +1248,13 @@ body{
 <div class="panel" id="p-tip" style="display:none">
 
   <div class="tip-header">
-    <div class="th-title"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> 스마트 여행 가이드</div>
-    <div class="th-sub">준비부터 귀국까지 꼭 필요한 정보</div>
+    <div style="width:34px;height:34px;border-radius:var(--r8);background:var(--sky);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg>
+    </div>
+    <div>
+      <div class="th-title">스마트 여행 가이드</div>
+      <div class="th-sub">준비부터 귀국까지 꼭 필요한 정보</div>
+    </div>
   </div>
 
   <!-- 카테고리 탭 -->
@@ -1295,7 +1274,7 @@ body{
   <div id="tipList"></div>
 
   <!-- 유용한 앱 -->
-  <div class="sec" style="margin-top:4px"><div class="sec-t">📱 여행에 필수인 앱·사이트</div></div>
+  <div class="sec"><div class="sec-t">여행에 필수인 앱 · 사이트</div></div>
   <div class="useful-apps">
     <div class="app-item" onclick="window.open('https://map.naver.com','_blank')">
       <div class="app-ico" style="background:#03C75A">🗺️</div>
@@ -1332,7 +1311,7 @@ body{
   </div>
 
   <!-- 긴급 연락처 -->
-  <div class="sec"><div class="sec-t"><span style="display:inline-flex;align-items:center;gap:6px;vertical-align:middle"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></span> 긴급 연락처</div></div>
+  <div class="sec"><div class="sec-t">긴급 연락처</div></div>
   <div class="emergency-grid">
     <div class="emer-item"><div class="emer-num" style="color:var(--coral)">119</div><div class="emer-lbl">소방·구급</div></div>
     <div class="emer-item"><div class="emer-num" style="color:var(--sky800)">112</div><div class="emer-lbl">경찰</div></div>
@@ -1454,12 +1433,17 @@ function sw(n, el) {
   if (p5el && n === 1) p5el.style.display = 'block';
   // 테마 탭 진입 시 카운트 갱신
   if (n === 2) initInlineTheme();
+  // 국내 탭 진입 시 지역 그리드 렌더링
+  if (n === 3) renderRegionGrid();
 }
 function swSub(n, el) {
   document.querySelectorAll('.stab').forEach(t => t.classList.remove('on'));
   document.querySelectorAll('.sub-panel').forEach((p,i) => p.classList.toggle('on', i===n));
   if(el) el.classList.add('on');
-  else document.querySelectorAll('.stab')[n].classList.add('on');
+  else {
+    const tab = document.querySelectorAll('.stab')[n];
+    if(tab) tab.classList.add('on');
+  }
 }
 
 /* ── 강원도 세부탭 ── */
@@ -1666,32 +1650,27 @@ function renderTrips() {
     const confirmedCount = t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='confirmed').length;
     const pendingCount   = t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='pending').length;
     const bookingBadge = confirmedCount
-      ? `<span style="font-size:10px;font-weight:700;background:var(--teal50);color:var(--teal800);padding:2px 7px;border-radius:20px;border:1px solid var(--teal100);margin-left:6px"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 확정 ${confirmedCount}</span>`
+      ? `<span style="font-size:13px;font-weight:700;background:var(--teal50);color:var(--teal800);padding:2px 7px;border-radius:20px;border:1px solid var(--teal100);margin-left:6px"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 확정 ${confirmedCount}</span>`
       : '';
     const pendingBadge = pendingCount
-      ? `<span style="font-size:10px;font-weight:700;background:var(--amber50);color:var(--amber800);padding:2px 7px;border-radius:20px;border:1px solid var(--amber100);margin-left:4px">⏳ 대기 ${pendingCount}</span>`
+      ? `<span style="font-size:13px;font-weight:700;background:var(--amber50);color:var(--amber800);padding:2px 7px;border-radius:20px;border:1px solid var(--amber100);margin-left:4px">⏳ 대기 ${pendingCount}</span>`
       : '';
     const budget = budgets[t.id];
     const budgetBadge = budget?.total
       ? (() => {
           const spent = getTripSpentAmt(t.id);
           const pct = Math.min(100, Math.round(spent / budget.total * 100));
-          return `<span style="font-size:10px;font-weight:700;background:var(--sky50);color:var(--sky800);padding:2px 7px;border-radius:20px;border:1px solid var(--sky100);margin-left:4px"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg>${pct}%</span>`;
+          return `<span style="font-size:13px;font-weight:700;background:var(--sky50);color:var(--sky800);padding:2px 7px;border-radius:20px;border:1px solid var(--sky100);margin-left:4px"><svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:2px"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg>${pct}%</span>`;
         })()
       : '';
     const tagsHtml = (t.tags||[]).map(tag =>
       `<span class="uc-tag tc-tag">${tag}</span>`).join('');
     return `<div class="trip-card" onclick="openTripDetail(${t.id})">
       <div class="tc-head">
-        <div class="tc-emoji tc-emoji-box">${t.emoji}</div>
         <div class="tc-info">
-          <div class="tc-title">${t.title}</div>
+          <div class="tc-title">${t.emoji} ${t.title}</div>
           <div class="tc-date"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${formatDate(t.startDate)} ~ ${formatDate(t.endDate)} · ${getTripNights(t)}</div>
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:4px"><span class="tc-status ${stCls}">${stLabel}</span>${tagsHtml.length ? tagsHtml : ''}</div>
-        </div>
-        <div class="tc-dday" style="background:${ddBg}">
-          <div class="dd-l" style="color:${ddColor}">D-day</div>
-          <div class="dd-n" style="color:${ddColor}">${ddText}</div>
         </div>
       </div>
       <div class="tc-foot">
@@ -1722,10 +1701,6 @@ function renderUpcoming() {
     const tagsHtml = (t.tags||[]).map(tag =>
       `<span class="uc-tag tc-tag">${tag}</span>`).join('');
     return `<div class="upcoming-card" data-trip-color="${t.color}" onclick="sw(1,document.querySelectorAll('.mtab')[1]);setTimeout(()=>openTripDetail(${t.id}),100)">
-      <div class="uc-dday tc-dday-box">
-        <div class="dd-label tc-dday-lbl">D-day</div>
-        <div class="dd-num tc-dday-num">${ddText}</div>
-      </div>
       <div class="uc-body">
         <div class="uc-title">${t.emoji} ${t.title}</div>
         <div class="uc-meta"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${formatDate(t.startDate)} ~ ${formatDate(t.endDate)} · ${getTripNights(t)}</div>
@@ -1734,6 +1709,103 @@ function renderUpcoming() {
       <div class="uc-arrow">›</div>
     </div>`;
   }).join('');
+}
+
+/* ── D-day 카운터 배너 ── */
+function renderDday() {
+  const banner  = document.getElementById('ddayBanner');
+  const empty   = document.getElementById('ddayEmpty');
+  if (!banner || !empty) return;
+
+  const next = trips
+    .filter(t => getTripStatus(t) !== 'done')
+    .sort((a,b) => new Date(a.startDate) - new Date(b.startDate))[0];
+
+  if (!next) {
+    banner.style.display = 'none';
+    empty.style.display  = 'block';
+    return;
+  }
+  empty.style.display  = 'none';
+  banner.style.display = 'block';
+
+  const st    = getTripStatus(next);
+  const dd    = getDday(next.startDate);
+  const numEl   = document.getElementById('ddayNumber');
+  const unitEl  = document.getElementById('ddayUnit');
+  const nameEl  = document.getElementById('ddayTripName');
+  const dateEl  = document.getElementById('ddayTripDate');
+  const badge   = document.getElementById('ddayBadge');
+  const inner   = document.getElementById('ddayInner');
+
+  if (st === 'ongoing') {
+    // 여행 중 — 초록 계열
+    if (badge) badge.style.background = 'var(--teal)';
+    if (inner) { inner.style.background = 'var(--teal50)'; inner.style.borderColor = 'var(--teal100)'; }
+    numEl.textContent  = 'D-0';
+    unitEl.textContent = '여행 중 🎉';
+  } else {
+    // 예정 — 스카이블루
+    if (badge) badge.style.background = 'var(--sky)';
+    if (inner) { inner.style.background = 'var(--sky50)'; inner.style.borderColor = 'var(--sky100)'; }
+    numEl.textContent  = `D-${dd}`;
+    unitEl.textContent = '일 후 출발';
+  }
+  nameEl.textContent = `${next.emoji} ${next.title}`;
+  dateEl.textContent = `${formatDate(next.startDate)} ~ ${formatDate(next.endDate)}`;
+}
+
+/* ── 랜덤 여행지 추천 ── */
+let lastRandomIdx = -1;
+function pickRandomSpot() {
+  // REGIONS 데이터에서 모든 국내 명소를 flat하게 모음
+  const allSpots = [];
+  if (typeof REGIONS !== 'undefined') {
+    REGIONS.forEach(r => {
+      (r.spots || []).forEach(s => {
+        allSpots.push({ ...s, regionName: r.name, regionKey: r.key });
+      });
+    });
+  }
+  if (!allSpots.length) return;
+
+  // 이전과 다른 인덱스 선택
+  let idx;
+  do { idx = Math.floor(Math.random() * allSpots.length); }
+  while (allSpots.length > 1 && idx === lastRandomIdx);
+  lastRandomIdx = idx;
+
+  const s = allSpots[idx];
+  const body = document.getElementById('randomSpotBody');
+  const btn  = document.getElementById('randomBtn');
+  if (!body) return;
+
+  // 버튼 애니메이션
+  if (btn) { btn.style.opacity = '.5'; setTimeout(()=>{ btn.style.opacity='1'; }, 300); }
+
+  body.style.opacity = '0';
+  setTimeout(() => {
+    body.innerHTML = `
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <div style="font-size:32px;flex-shrink:0;width:52px;height:52px;border-radius:var(--r12);background:var(--sky50);display:flex;align-items:center;justify-content:center">${s.emoji}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:3px">${s.name}</div>
+          <div style="font-size:13px;color:var(--txt3);margin-bottom:6px">${s.meta || ''}</div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <span style="font-size:12px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--teal50);color:var(--teal800)">${s.regionName}</span>
+            ${(s.tags||[]).slice(0,2).map(t=>`<span style="font-size:12px;font-weight:600;padding:3px 8px;border-radius:10px;background:var(--sky50);color:var(--sky800)">${t}</span>`).join('')}
+          </div>
+          ${s.tip ? `<div style="margin-top:8px;font-size:13px;color:var(--txt2);line-height:1.6;word-break:keep-all">💡 ${s.tip}</div>` : ''}
+        </div>
+      </div>
+      <button onclick="window.open('https://map.naver.com/search?query=${encodeURIComponent(s.mapQ||s.name)}','_blank')"
+        style="margin-top:10px;width:100%;padding:9px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r8);font-size:13px;font-weight:700;color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        네이버 지도에서 보기
+      </button>`;
+    body.style.opacity = '1';
+    body.style.transition = 'opacity .2s';
+  }, 150);
 }
 
 /* ── 여행 필터 ── */
@@ -1783,7 +1855,7 @@ function renderTripDetail() {
   const typeIco   = {lodging:'lodging', restaurant:'restaurant', sight:'sight', '':'default'};
   const bookingSummaryHtml = bookedPlaces.length ? `
     <div class="booking-summary">
-      <div style="font-size:13px;font-weight:800;color:var(--txt);margin-bottom:8px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 예약 현황</div>
+      <div style="font-size:14px;font-weight:800;color:var(--txt);margin-bottom:8px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> 예약 현황</div>
       ${bookedPlaces.map(p => {
         const isConfirmed = p.bookingStatus === 'confirmed';
         const shopName = p.shopName || p.name.replace(/\s*(체크인|체크아웃|방문|이동).*$/,'').trim();
@@ -1822,7 +1894,7 @@ function renderTripDetail() {
           // 확정/대기 상태만 뱃지 표시, none은 숨김 (이동 타입 제외)
           const statusBtn = (showStatusToggle && st)
             ? `<button class="place-status-toggle" style="${st.cls}" >${st.label}</button>`
-            : (showStatusToggle ? `<button class="place-status-toggle" style="border-color:var(--sky100);color:var(--sky800);background:var(--sky50);font-size:11px;padding:3px 8px;border-radius:var(--r8);border:1.5px solid" >+ 예약</button>` : '');
+            : (showStatusToggle ? `<button class="place-status-toggle" style="border-color:var(--sky100);color:var(--sky800);background:var(--sky50);font-size:13px;padding:3px 8px;border-radius:var(--r8);border:1.5px solid" >+ 예약</button>` : '');
           const photoHtml = p.photo ? `<img src="${p.photo}" class="place-photo" alt="장소 사진" onclick="event.stopPropagation()">` : '';
           let pressTimer;
           return `<div class="place-row" data-day="${di}" data-pid="${p.id}"
@@ -1930,7 +2002,7 @@ function renderTripDetail() {
 
   const hasInfo = lodgings.length || restaurants.length || sights.length;
   const infoHtml = hasInfo ? `
-    <div class="sec" style="margin-top:20px"><div class="sec-t"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> 장소 정보</div></div>
+    <div class="sec" style="margin-top:20px"><div class="sec-t">장소 정보</div></div>
     ${lodgingSec}${restaurantSec}${sightSec}` : '';
 
   const detailEl = document.getElementById('detailContent');
@@ -1945,7 +2017,7 @@ function renderTripDetail() {
     </div>
     ${renderBudgetBar(t.id)}
     ${bookingSummaryHtml}
-    <div class="sec" style="margin-top:18px"><div class="sec-t"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 날짜별 일정</div></div>
+    <div class="sec" style="margin-top:18px"><div class="sec-t">날짜별 일정</div></div>
     ${daysHtml}
     ${infoHtml}`;
 }
@@ -1953,7 +2025,7 @@ function renderTripDetail() {
 function starHtml(r) {
   if (!r) return '';
   const full = Math.floor(r);
-  return `<span style="font-size:10px">${'⭐'.repeat(full)} <b style="color:#f59e0b">${r.toFixed(1)}</b></span>`;
+  return `<span style="font-size:13px">${'⭐'.repeat(full)} <b style="color:#1A2535;font-weight:800">${r.toFixed(1)}</b></span>`;
 }
 
 const THEME_META = {
@@ -2041,19 +2113,14 @@ function renderThemeModal(key) {
       ? 'background:var(--purple50);color:var(--purple800)'
       : 'background:var(--sky50);color:var(--sky800)';
     return `<div class="theme-spot-card">
-      <div class="theme-spot-emoji" style="background:${BGCOLORS[i%8]}">${s.emoji}</div>
       <div class="theme-spot-info">
-        <div class="theme-spot-name">${rankBadge} ${s.name}</div>
+        <div class="theme-spot-name">${rankBadge} ${s.emoji} ${s.name}</div>
         <div class="theme-spot-meta">${s.meta||''}</div>
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px">
           <span class="theme-spot-region" style="${regionStyle}">${s.isIntl?'🌏 ':' '}${s.regionName}</span>
           ${starHtml(s.rating)}
-          ${s.tip ? `<span style="font-size:12px;font-weight:600" class="spot-tip-text"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip.slice(0,20)}${s.tip.length>20?'…':''}</span>` : ''}
+          ${s.tip ? `<span style="font-size:13px;font-weight:600" class="spot-tip-text"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip.slice(0,20)}${s.tip.length>20?'…':''}</span>` : ''}
         </div>
-      </div>
-      <div class="theme-spot-actions">
-        <button class="sa-btn" style="background:var(--sky50);border-color:var(--sky100);color:var(--sky800);font-size:10px" onclick="window.open('${mapUrl}','_blank')">🗺️</button>
-        
       </div>
     </div>`;
   }).join('');
@@ -2098,7 +2165,7 @@ function renderThemeRegionBar() {
 
   function chipHtml(chip) {
     const isOn = chip.key === currentRegionFilter;
-    return `<div onclick="setThemeRegionFilter('${chip.key}')" style="flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s;background:${isOn?'var(--sky)':'var(--bg)'};color:${isOn?'#fff':'var(--txt2)'};border:1.5px solid ${isOn?'var(--sky)':'var(--border)'};">${chip.label}</div>`;
+    return `<div onclick="setThemeRegionFilter('${chip.key}')" style="flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s;background:${isOn?'var(--sky)':'var(--bg)'};color:${isOn?'#fff':'var(--txt2)'};border:1.5px solid ${isOn?'var(--sky)':'var(--border)'};">${chip.label}</div>`;
   }
 
   rowDom.innerHTML = DOMESTIC.map(chipHtml).join('');
@@ -2202,8 +2269,7 @@ function renderThemeIconGrid() {
     return `<div class="theme-ico-card${isOn?' on':''}"
       style="background:${bg};border:${bdr};color:${col}"
       onclick="inlineSwitchTheme('${card.key}')">
-      <div class="tic-emoji">${card.emoji}</div>
-      <div class="tic-label" style="color:${col}">${card.shortLabel}</div>
+      <div class="tic-label" style="color:${col}">${card.emoji} ${card.shortLabel}</div>
       <div class="tic-cnt" style="color:${col}">${cnt}곳</div>
     </div>`;
   }).join('');
@@ -2216,22 +2282,29 @@ function initInlineTheme() {
   renderThemeIconGrid();
   renderInlineRegionBar();
   renderInlineTheme();
+  // 초기 진입 시 지역 필터 숨김 (빈 공간 제거)
   const wrap = document.getElementById('themeRegionWrap');
-  if (wrap) wrap.style.visibility = 'hidden';
+  if (wrap) wrap.style.display = 'none';
 }
 
 function inlineSwitchTheme(key) {
+  const prevKey = inlineThemeKey;
   inlineThemeKey = key;
   inlineRegionFilter = 'domestic';
   regionMode = 'domestic';
   renderThemeIconGrid();
   renderInlineRegionBar();
   renderInlineTheme();
+  // 아코디언: 처음 열릴 때만 애니메이션, 이미 열려 있으면 유지
   const wrap = document.getElementById('themeRegionWrap');
   if (wrap) {
-    wrap.style.visibility = 'visible';
-    wrap.classList.add('theme-region-slide');
-    setTimeout(() => wrap.classList.remove('theme-region-slide'), 300);
+    if (wrap.style.display === 'none') {
+      wrap.style.display = 'block';
+      wrap.classList.remove('theme-region-slide');
+      void wrap.offsetWidth; // reflow for animation restart
+      wrap.classList.add('theme-region-slide');
+      setTimeout(() => wrap.classList.remove('theme-region-slide'), 250);
+    }
   }
 }
 
@@ -2272,11 +2345,11 @@ function setRegionMode(mode) {
   const btnIntl = document.getElementById('regionToggleIntl');
   if (btnDom && btnIntl) {
     if (mode === 'domestic') {
-      btnDom.style.cssText  = 'flex:1;padding:7px 0;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:1.5px solid var(--sky);background:var(--sky);color:#fff;transition:all .18s';
-      btnIntl.style.cssText = 'flex:1;padding:7px 0;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);transition:all .18s';
+      btnDom.style.cssText  = 'flex:1;padding:7px 0;border-radius:20px;font-size:13px;font-weight:800;cursor:pointer;border:1.5px solid var(--sky);background:var(--sky);color:#fff;transition:all .18s';
+      btnIntl.style.cssText = 'flex:1;padding:7px 0;border-radius:20px;font-size:13px;font-weight:800;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);transition:all .18s';
     } else {
-      btnDom.style.cssText  = 'flex:1;padding:7px 0;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);transition:all .18s';
-      btnIntl.style.cssText = 'flex:1;padding:7px 0;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:1.5px solid var(--sky);background:var(--sky);color:#fff;transition:all .18s';
+      btnDom.style.cssText  = 'flex:1;padding:7px 0;border-radius:20px;font-size:13px;font-weight:800;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);transition:all .18s';
+      btnIntl.style.cssText = 'flex:1;padding:7px 0;border-radius:20px;font-size:13px;font-weight:800;cursor:pointer;border:1.5px solid var(--sky);background:var(--sky);color:#fff;transition:all .18s';
     }
   }
   // 칩 행 전환
@@ -2314,7 +2387,7 @@ function renderInlineRegionBar() {
   ];
   const chip = (r) => {
     const on = r.key === inlineRegionFilter;
-    return `<div data-active="${on?1:0}" onclick="inlineSetRegion('${r.key}')" style="flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;cursor:pointer;border:1.5px solid ${on?'var(--sky)':'var(--border)'};background:${on?'var(--sky50)':'var(--card)'};color:${on?'var(--sky800)':'var(--txt2)'};transition:all .15s;white-space:nowrap">${r.label}</div>`;
+    return `<div data-active="${on?1:0}" onclick="inlineSetRegion('${r.key}')" style="flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid ${on?'var(--sky)':'var(--border)'};background:${on?'var(--sky50)':'var(--card)'};color:${on?'var(--sky800)':'var(--txt2)'};transition:all .15s;white-space:nowrap">${r.label}</div>`;
   };
   rowDom.innerHTML  = DOMESTIC.map(chip).join('');
   rowIntl.innerHTML = INTL.map(chip).join('');
@@ -2368,18 +2441,14 @@ function renderInlineTheme() {
       ? 'background:var(--purple50);color:var(--purple800)'
       : 'background:var(--sky50);color:var(--sky800)';
     return `<div class="theme-spot-card">
-      <div class="theme-spot-emoji" style="background:${BGCOLORS[i%8]}">${s.emoji}</div>
       <div class="theme-spot-info">
-        <div class="theme-spot-name">${rankBadge} ${s.name}</div>
+        <div class="theme-spot-name">${rankBadge} ${s.emoji} ${s.name}</div>
         <div class="theme-spot-meta">${s.meta||''}</div>
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px">
           <span class="theme-spot-region" style="${regionStyle}">${s.isIntl?'🌏 ':' '}${s.regionName}</span>
           ${starHtml(s.rating)}
-          ${s.tip ? `<span style="font-size:12px;font-weight:600" class="spot-tip-text"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip}</span>` : ''}
+          ${s.tip ? `<span style="font-size:13px;font-weight:600" class="spot-tip-text"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip}</span>` : ''}
         </div>
-      </div>
-      <div class="theme-spot-actions">
-        <button class="sa-btn" style="background:var(--sky50);border-color:var(--sky100);color:var(--sky800);font-size:10px" onclick="window.open('${mapUrl}','_blank')">🗺️</button>
       </div>
     </div>`;
   }).join('');
@@ -2783,7 +2852,7 @@ function renderRegionGrid() {
   const el = document.getElementById('regionGrid');
   if (!el) return;
   el.innerHTML = REGIONS.map(r => `
-    <div class="ritem" onclick="swSub(${r.idx},document.querySelectorAll('.stab')[${r.idx}]);highlightRegionCard('${r.key}')">
+    <div class="ritem" onclick="swSub(${r.idx},null);highlightRegionCard('${r.key}')">
       <div class="r-ico">${r.emoji}</div>
       <div class="r-lbl">${r.name}</div>
       <div class="r-cnt" id="rcnt-${r.key}">로딩중</div>
@@ -2838,7 +2907,7 @@ function renderRegionPanel(r) {
           <div class="gw-logo">
             <div class="gw-mark" style="background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.3);font-size:20px">${r.emoji}</div>
             <div>
-              <div class="gw-name" style="color:#fff;font-size:16px">${r.name} 여행 가이드</div>
+              <div class="gw-name" style="color:#fff;font-size:17px">${r.name} 여행 가이드</div>
               <div class="gw-sub" style="color:rgba(255,255,255,.85)">${r.sub}</div>
             </div>
           </div>
@@ -2846,18 +2915,18 @@ function renderRegionPanel(r) {
         </div>
         <div class="gw-stats">
           <div class="gw-stat" style="background:var(--card);border:1.5px solid rgba(255,255,255,.7);border-radius:10px">
-            <div class="gw-sv" id="rcnt2-${r.key}" style="color:#1a2533;font-size:18px;font-weight:800">-</div>
+            <div class="gw-sv" id="rcnt2-${r.key}" style="color:var(--txt);font-size:18px;font-weight:800">-</div>
             <div class="gw-sl" style="color:var(--txt);font-weight:700">전체 명소</div>
           </div>
           <div class="gw-stat" style="background:var(--card);border:1.5px solid rgba(255,255,255,.7);border-radius:10px">
-            <div class="gw-sv" id="rfreecnt-${r.key}" style="color:#1a2533;font-size:18px;font-weight:800">-</div>
+            <div class="gw-sv" id="rfreecnt-${r.key}" style="color:var(--txt);font-size:18px;font-weight:800">-</div>
             <div class="gw-sl" style="color:var(--txt);font-weight:700">무료 명소</div>
           </div>
           <div class="gw-stat" style="background:var(--card);border:1.5px solid rgba(255,255,255,.7);border-radius:10px;display:flex;flex-direction:column;justify-content:center;gap:3px">
-            ${r.links.slice(0,2).map(l=>`<button onclick="window.open('${l.url}','_blank')" style="font-size:10px;font-weight:700;padding:0;border:none;background:none;color:#1a2533;cursor:pointer;text-align:left;line-height:1.6">${l.lbl}</button>`).join('')}
+            ${r.links.slice(0,2).map(l=>`<button onclick="window.open('${l.url}','_blank')" style="font-size:13px;font-weight:700;padding:0;border:none;background:none;color:var(--txt);cursor:pointer;text-align:left;line-height:1.6">${l.lbl}</button>`).join('')}
           </div>
           <div class="gw-stat" style="background:var(--card);border:1.5px solid rgba(255,255,255,.7);border-radius:10px;display:flex;flex-direction:column;justify-content:center;gap:3px">
-            ${r.links.slice(2,4).map(l=>`<button onclick="window.open('${l.url}','_blank')" style="font-size:10px;font-weight:700;padding:0;border:none;background:none;color:#1a2533;cursor:pointer;text-align:left;line-height:1.6">${l.lbl}</button>`).join('')}
+            ${r.links.slice(2,4).map(l=>`<button onclick="window.open('${l.url}','_blank')" style="font-size:13px;font-weight:700;padding:0;border:none;background:none;color:var(--txt);cursor:pointer;text-align:left;line-height:1.6">${l.lbl}</button>`).join('')}
           </div>
         </div>
       </div>
@@ -2885,27 +2954,24 @@ function renderRegionSpotList(key) {
     let s = '';
     for(let i=0;i<full;i++) s+='⭐';
     if(half) s+='✨';
-    return `<span style="font-size:11px">${s} <span style="font-size:11px;color:#f59e0b;font-weight:700">${r.toFixed(1)}</span></span>`;
+    return `<span style="font-size:13px">${s} <span style="font-size:13px;color:#1A2535;font-weight:800">${r.toFixed(1)}</span></span>`;
   }
   if (!filtered.length) {
     el.innerHTML = `<div class="empty-state"><div class="empty-ico">🗺️</div><div class="empty-msg">명소가 없습니다</div><div class="empty-sub">위의 + 명소 추가 버튼으로 추가해 보세요!</div></div>`;
   } else {
     el.innerHTML = filtered.map((s,i) => {
       const safeS = JSON.stringify({emoji:s.emoji,name:s.name,meta:s.meta||'',tags:s.tags}).replace(/"/g,'&quot;');
-      const tagsHtml = (s.tags||[]).map((t,ti)=>`<span class="sp-tag" style="background:${BGCOLORS[ti%8]};color:#374151">${t}</span>`).join('');
-      const rankBadge = i===0 ? `<span style="font-size:9px;font-weight:800;background:#FF5B00;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🏆 1위</span>`
-                      : i===1 ? `<span style="font-size:9px;font-weight:800;background:#5E35B1;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🥈 2위</span>`
-                      : i===2 ? `<span style="font-size:9px;font-weight:800;background:#0575e6;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🥉 3위</span>` : '';
+      const tagsHtml = (s.tags||[]).map((t,ti)=>`<span class="sp-tag" style="background:${BGCOLORS[ti%8]};color:var(--txt2)">${t}</span>`).join('');
+      const rankBadge = i===0 ? `<span style="font-size:13px;font-weight:800;background:#FF5B00;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🏆 1위</span>`
+                      : i===1 ? `<span style="font-size:13px;font-weight:800;background:#5E35B1;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🥈 2위</span>`
+                      : i===2 ? `<span style="font-size:13px;font-weight:800;background:#0575e6;color:#fff;padding:2px 5px;border-radius:4px;margin-left:4px">🥉 3위</span>` : '';
       return `<div class="spot">
-        <div class="spot-img" style="background:${BGCOLORS[i%8]}">${s.emoji}</div>
         <div class="spot-body">
-          <div class="spot-name" style="margin-bottom:2px">${s.name}${rankBadge}${_localStarHtml(s.rating) ? ' '+_localStarHtml(s.rating) : ''}</div>
+          <div class="spot-name" style="margin-bottom:2px">${s.emoji} ${s.name}${rankBadge}${_localStarHtml(s.rating) ? ' '+_localStarHtml(s.rating) : ''}</div>
           <div class="spot-region" style="margin-bottom:4px">${s.meta||''}</div>
           <div class="spot-tags">${tagsHtml}</div>
-          ${s.tip ? `<div style="font-size:10px;color:#0575e6;margin-top:3px;font-weight:600;line-height:1.4"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip}</div>` : ''}
+          ${s.tip ? `<div style="font-size:13px;color:var(--teal800);margin-top:3px;font-weight:600;line-height:1.4"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip}</div>` : ''}
         </div>
-        <div class="spot-actions">
-          <button class="sa-btn" style="background:var(--sky50);border-color:var(--sky100);color:var(--sky800)" onclick="window.open('https://map.naver.com/p/search/${encodeURIComponent(s.mapQ||s.name)}','_blank')">🗺️</button>
         </div>
       </div>`;
     }).join('');
@@ -3316,17 +3382,16 @@ function renderIntlDests() {
   const el = document.getElementById('intlDestList');
   if (!el) return;
   el.innerHTML = list.map((d,idx) => {
-    const stars = d.rating ? '⭐'.repeat(Math.floor(d.rating)) + `<span style="font-size:11px;color:#f59e0b;font-weight:700;margin-left:2px">${d.rating}</span>` : '';
-    const rankBadge = idx===0?'<span style="font-size:9px;font-weight:800;background:#FF5B00;color:#fff;padding:2px 5px;border-radius:4px;margin-left:5px">🏆 인기1위</span>':'';
-    const spotsHtml = d.spots ? `<div style="margin:8px 0 6px;display:flex;flex-wrap:wrap;gap:4px">${d.spots.map(s=>`<span style="font-size:10px;background:var(--gray50);color:var(--txt);padding:2px 7px;border-radius:20px;font-weight:600">${s}</span>`).join('')}</div>` : '';
-    const tipHtml = d.tips ? `<div style="font-size:10px;color:#0575e6;font-weight:600;margin-bottom:6px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${d.tips}</div>` : '';
+    const stars = d.rating ? '⭐'.repeat(Math.floor(d.rating)) + `<span style="font-size:13px;color:#1A2535;font-weight:800;margin-left:2px">${d.rating}</span>` : '';
+    const rankBadge = idx===0?'<span style="font-size:13px;font-weight:800;background:#FF5B00;color:#fff;padding:2px 5px;border-radius:4px;margin-left:5px">🏆 인기1위</span>':'';
+    const spotsHtml = d.spots ? `<div style="margin:8px 0 6px;display:flex;flex-wrap:wrap;gap:4px">${d.spots.map(s=>`<span style="font-size:13px;background:var(--gray50);color:var(--txt);padding:2px 7px;border-radius:20px;font-weight:600">${s}</span>`).join('')}</div>` : '';
+    const tipHtml = d.tips ? `<div style="font-size:13px;color:var(--teal800);font-weight:600;margin-bottom:6px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${d.tips}</div>` : '';
     return `<div class="intl-dest">
-      <div class="intl-dest-flag" style="background:var(--sky50)">${d.flag}</div>
       <div class="intl-dest-body">
-        <div class="intl-dest-name">${d.name}${rankBadge}</div>
+        <div class="intl-dest-name">${d.flag} ${d.name}${rankBadge}</div>
         <div style="margin:2px 0 4px">${stars}</div>
         <div class="intl-dest-sub" style="margin-bottom:4px">${d.cities}</div>
-        <div style="font-size:11px;color:var(--txt2);margin-bottom:4px">${d.desc}</div>
+        <div style="font-size:13px;color:var(--txt2);margin-bottom:4px;font-weight:600">${d.desc}</div>
         ${spotsHtml}
         ${tipHtml}
         <div class="intl-dest-btns">
@@ -3369,9 +3434,9 @@ function renderTips(cat) {
   const el = document.getElementById('tipList');
   if (!el) return;
   el.innerHTML = list.map(t => `
-    <div class="tip-card" style="border-left:4px solid ${t.badgeText}">
+    <div class="tip-card" style="border-left:3px solid ${t.badgeText}">
       <div class="tip-card-head">
-        <span style="font-size:18px;flex-shrink:0">${t.ico}</span>
+        <span style="font-size:16px;flex-shrink:0">${t.ico}</span>
         <span class="tip-card-title" style="flex:1">${t.title}</span>
         <span class="tip-card-badge" style="background:${t.badgeColor};color:${t.badgeText};flex-shrink:0">${t.badge}</span>
       </div>
@@ -3402,13 +3467,13 @@ function renderBudgetBar(tripId) {
   const barColor = pct >= 90 ? 'var(--coral)' : pct >= 70 ? 'var(--amber)' : 'var(--teal)';
   return `<div style="margin:14px 0 4px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-      <div style="font-size:13px;font-weight:800;color:var(--txt)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> 여행 예산</div>
-      <div style="font-size:11px;color:var(--txt3)">총 ${fmtWon(b.total)}</div>
+      <div style="font-size:14px;font-weight:800;color:var(--txt)"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> 여행 예산</div>
+      <div style="font-size:13px;color:var(--txt3)">총 ${fmtWon(b.total)}</div>
     </div>
     <div style="background:var(--gray50);border-radius:20px;height:8px;overflow:hidden;border:1px solid var(--border)">
       <div style="height:100%;width:${pct}%;background:${barColor};border-radius:20px;transition:width .4s ease"></div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:11px">
+    <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:13px">
       <span style="color:${barColor};font-weight:700">사용 ${fmtWon(spent)} (${pct}%)</span>
       <span style="color:var(--txt3)">잔여 <strong style="color:${remain<0?'var(--coral)':'var(--teal800)'}">${fmtWon(remain)}</strong></span>
     </div>
@@ -3444,7 +3509,7 @@ function renderWishList() {
   sec.style.display = 'block';
   list.innerHTML = keys.map(k => {
     const w = wishes[k];
-    return `<div style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--card);border:1.5px solid var(--border);border-radius:20px;font-size:12px;font-weight:700;color:var(--txt2);box-shadow:var(--shadow)">
+    return `<div style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--card);border:1.5px solid var(--border);border-radius:20px;font-size:13px;font-weight:700;color:var(--txt2);box-shadow:var(--shadow)">
       ❤️ ${w.name || k.replace('dest_','')}
       <button onclick="removeWish('${k}')" style="border:none;background:none;cursor:pointer;font-size:14px;color:var(--txt3);padding:0 0 0 4px;line-height:1;display:inline-flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>`;
@@ -3486,7 +3551,10 @@ sw(0, document.querySelectorAll('.mtab')[0]);
 // 초기 렌더
 renderTrips();
 renderUpcoming();
+renderDday();
 setTimeout(renderTodayTip, 0);
+// 지역 그리드 지연 재렌더링 (display:none 상태 렌더링 누락 방지)
+setTimeout(renderRegionGrid, 100);
 
 /* ── 여행 삭제 ── */
 function deleteTrip(id) {
@@ -3496,6 +3564,7 @@ function deleteTrip(id) {
   saveToStorage();
   renderTrips();
   renderUpcoming();
+  renderDday();
   showToast('🗑️ 여행이 삭제됐어요');
 }
 
@@ -3568,7 +3637,7 @@ function calcExchange() {
     const rate=cur==='KRW'?1:(exchRates[cur]||0), converted=amtKrw*rate;
     const info=CURRENCY_INFO[cur]||{flag:'💱',name:cur,symbol:cur};
     const fmt=cur==='KRW'?converted.toLocaleString('ko-KR',{maximumFractionDigits:0})+'원':converted.toLocaleString('ko-KR',{maximumFractionDigits:2})+' '+cur;
-    return `<div class="exch-rate-card"><span class="exch-flag">${info.flag}</span><div class="exch-currency">${info.name}<div style="font-size:10px;color:var(--txt3);font-weight:500;margin-top:1px">1원 = ${cur==='KRW'?'1원':`${rate.toFixed(4)} ${cur}`}</div></div><div class="exch-rate-val">${info.symbol} ${fmt}</div></div>`;
+    return `<div class="exch-rate-card"><span class="exch-flag">${info.flag}</span><div class="exch-currency">${info.name}<div style="font-size:13px;color:var(--txt3);font-weight:500;margin-top:1px">1원 = ${cur==='KRW'?'1원':`${rate.toFixed(4)} ${cur}`}</div></div><div class="exch-rate-val">${info.symbol} ${fmt}</div></div>`;
   }).join('');
 }
 function openExchangeModal() { document.getElementById('exchModal').classList.add('open'); if(!Object.keys(exchRates).length) fetchExchRates(); else calcExchange(); }
@@ -3590,7 +3659,7 @@ function renderStats(){
   const topT=Object.entries(tc).sort((a,b)=>b[1]-a[1]).slice(0,5);
   const rc={}; ['국내','제주','강원','부산','서울','경주','전주','해외','일본','유럽','미국','동남아'].forEach(r=>{trips.forEach(t=>{if((t.tags||[]).includes(r)||(t.title||'').includes(r))rc[r]=(rc[r]||0)+1;});});
   const topR=Object.entries(rc).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]).slice(0,5), maxR=topR[0]?.[1]||1;
-  el.innerHTML=`<div class="stat-grid"><div class="stat-card"><div class="stat-val" style="color:var(--sky800)">${total}</div><div class="stat-lbl">총 여행 수</div></div><div class="stat-card"><div class="stat-val" style="color:var(--teal800)">${totalDays}</div><div class="stat-lbl">총 여행 일수</div></div><div class="stat-card"><div class="stat-val" style="color:var(--coral800)">${done}</div><div class="stat-lbl">완료한 여행</div></div><div class="stat-card"><div class="stat-val" style="color:var(--amber800)">${up+on}</div><div class="stat-lbl">예정·진행 여행</div></div></div><div class="stat-grid"><div class="stat-card"><div class="stat-val" style="color:var(--purple800)">${totalP}</div><div class="stat-lbl">등록 장소 수</div></div><div class="stat-card"><div class="stat-val" style="color:var(--green800);font-size:18px">${fmtWon(tb)}</div><div class="stat-lbl">총 계획 예산</div></div></div>${tb>0?`<div style="background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r14);padding:14px;margin-bottom:14px"><div style="font-size:12px;font-weight:800;color:var(--txt);margin-bottom:8px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> 예산 사용률</div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>사용: <strong style="color:var(--sky800)">${fmtWon(ts)}</strong></span><span style="color:var(--txt3)">${Math.round(ts/tb*100)}%</span></div><div style="background:var(--gray50);border-radius:20px;height:8px;overflow:hidden"><div style="height:100%;width:${Math.min(100,Math.round(ts/tb*100))}%;background:var(--sky);border-radius:20px"></div></div></div>`:''}${topR.length?`<div style="margin-bottom:14px"><div style="font-size:12px;font-weight:800;color:var(--txt);margin-bottom:10px">📍 자주 간 지역</div>${topR.map(([r,cnt])=>`<div class="region-bar"><div class="rb-name">${r}</div><div class="rb-track"><div class="rb-fill" style="width:${Math.round(cnt/maxR*100)}%"></div></div><div class="rb-cnt">${cnt}번</div></div>`).join('')}</div>`:''}${topT.length?`<div><div style="font-size:12px;font-weight:800;color:var(--txt);margin-bottom:8px">🏷️ 자주 사용한 태그</div><div style="display:flex;flex-wrap:wrap;gap:6px">${topT.map(([t,cnt])=>`<span style="font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:var(--sky50);color:var(--sky800);border:1px solid var(--sky100)">${t} (${cnt})</span>`).join('')}</div></div>`:''}${!total?'<div style="text-align:center;padding:32px;color:var(--txt3)"><div style="font-size:36px;margin-bottom:8px">✈️</div><div style="font-size:14px;font-weight:600">아직 여행 기록이 없어요!</div></div>':''}`;
+  el.innerHTML=`<div class="stat-grid"><div class="stat-card"><div class="stat-val" style="color:var(--sky800)">${total}</div><div class="stat-lbl">총 여행 수</div></div><div class="stat-card"><div class="stat-val" style="color:var(--teal800)">${totalDays}</div><div class="stat-lbl">총 여행 일수</div></div><div class="stat-card"><div class="stat-val" style="color:var(--coral800)">${done}</div><div class="stat-lbl">완료한 여행</div></div><div class="stat-card"><div class="stat-val" style="color:var(--amber800)">${up+on}</div><div class="stat-lbl">예정·진행 여행</div></div></div><div class="stat-grid"><div class="stat-card"><div class="stat-val" style="color:var(--purple800)">${totalP}</div><div class="stat-lbl">등록 장소 수</div></div><div class="stat-card"><div class="stat-val" style="color:var(--green800);font-size:18px">${fmtWon(tb)}</div><div class="stat-lbl">총 계획 예산</div></div></div>${tb>0?`<div style="background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r14);padding:14px;margin-bottom:14px"><div style="font-size:13px;font-weight:800;color:var(--txt);margin-bottom:8px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> 예산 사용률</div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span>사용: <strong style="color:var(--sky800)">${fmtWon(ts)}</strong></span><span style="color:var(--txt3)">${Math.round(ts/tb*100)}%</span></div><div style="background:var(--gray50);border-radius:20px;height:8px;overflow:hidden"><div style="height:100%;width:${Math.min(100,Math.round(ts/tb*100))}%;background:var(--sky);border-radius:20px"></div></div></div>`:''}${topR.length?`<div style="margin-bottom:14px"><div style="font-size:13px;font-weight:800;color:var(--txt);margin-bottom:10px">📍 자주 간 지역</div>${topR.map(([r,cnt])=>`<div class="region-bar"><div class="rb-name">${r}</div><div class="rb-track"><div class="rb-fill" style="width:${Math.round(cnt/maxR*100)}%"></div></div><div class="rb-cnt">${cnt}번</div></div>`).join('')}</div>`:''}${topT.length?`<div><div style="font-size:13px;font-weight:800;color:var(--txt);margin-bottom:8px">🏷️ 자주 사용한 태그</div><div style="display:flex;flex-wrap:wrap;gap:6px">${topT.map(([t,cnt])=>`<span style="font-size:13px;font-weight:700;padding:4px 10px;border-radius:20px;background:var(--sky50);color:var(--sky800);border:1px solid var(--sky100)">${t} (${cnt})</span>`).join('')}</div></div>`:''}${!total?'<div style="text-align:center;padding:32px;color:var(--txt3)"><div style="font-size:36px;margin-bottom:8px">✈️</div><div style="font-size:14px;font-weight:600">아직 여행 기록이 없어요!</div></div>':''}`;
 }
 
 /* ── 여행 검색 + renderTripsFull ── */
@@ -3618,12 +3687,12 @@ function renderTripsFull(){
     const tp=t.days.reduce((s,d)=>s+d.places.length,0);
     const cc=t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='confirmed').length;
     const pc=t.days.flatMap(d=>d.places).filter(p=>p.bookingStatus==='pending').length;
-    const bBadge=cc?`<span style="font-size:10px;font-weight:700;background:var(--teal50);color:var(--teal800);padding:2px 7px;border-radius:20px;border:1px solid var(--teal100);margin-left:6px">✅ 확정 ${cc}</span>`:'';
-    const pBadge=pc?`<span style="font-size:10px;font-weight:700;background:var(--amber50);color:var(--amber800);padding:2px 7px;border-radius:20px;border:1px solid var(--amber100);margin-left:4px">⏳ 대기 ${pc}</span>`:'';
+    const bBadge=cc?`<span style="font-size:13px;font-weight:700;background:var(--teal50);color:var(--teal800);padding:2px 7px;border-radius:20px;border:1px solid var(--teal100);margin-left:6px">✅ 확정 ${cc}</span>`:'';
+    const pBadge=pc?`<span style="font-size:13px;font-weight:700;background:var(--amber50);color:var(--amber800);padding:2px 7px;border-radius:20px;border:1px solid var(--amber100);margin-left:4px">⏳ 대기 ${pc}</span>`:'';
     const bg=budgets[t.id];
-    const bgBadge=bg?.total?(()=>{const sp=getTripSpentAmt(t.id);return `<span style="font-size:10px;font-weight:700;background:var(--sky50);color:var(--sky800);padding:2px 7px;border-radius:20px;border:1px solid var(--sky100);margin-left:4px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> ${Math.min(100,Math.round(sp/bg.total*100))}%</span>`;})():'';
+    const bgBadge=bg?.total?(()=>{const sp=getTripSpentAmt(t.id);return `<span style="font-size:13px;font-weight:700;background:var(--sky50);color:var(--sky800);padding:2px 7px;border-radius:20px;border:1px solid var(--sky100);margin-left:4px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><path d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2v-4"/><path d="M16 12h6v4h-6a2 2 0 010-4z"/></svg> ${Math.min(100,Math.round(sp/bg.total*100))}%</span>`;})():'';
     const tagsH=(t.tags||[]).map(tag=>`<span class="uc-tag tc-tag">${tag}</span>`).join('');
-    return `<div class="trip-card" onclick="openTripDetail(${t.id})"><div class="tc-head"><div class="tc-emoji tc-emoji-box">${t.emoji}</div><div class="tc-info"><div class="tc-title">${t.title}</div><div class="tc-date"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${formatDate(t.startDate)} ~ ${formatDate(t.endDate)} · ${getTripNights(t)}</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:4px"><span class="tc-status ${stCls}">${stLabel}</span>${tagsH}</div></div><div class="tc-dday" style="background:${ddBg}"><div class="dd-l" style="color:${ddColor}">D-day</div><div class="dd-n" style="color:${ddColor}">${ddText}</div></div></div><div class="tc-foot"><div class="tc-places">📍 ${tp}개 장소 · 👥 ${t.companions||'미정'}${bBadge}${pBadge}${bgBadge}</div></div></div>`;
+    return `<div class="trip-card" onclick="openTripDetail(${t.id})"><div class="tc-head"><div class="tc-info"><div class="tc-title">${t.emoji} ${t.title}</div><div class="tc-date"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${formatDate(t.startDate)} ~ ${formatDate(t.endDate)} · ${getTripNights(t)}</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:4px"><span class="tc-status ${stCls}">${stLabel}</span>${tagsH}</div></div></div><div class="tc-foot"><div class="tc-places">📍 ${tp}개 장소 · 👥 ${t.companions||'미정'}${bBadge}${pBadge}${bgBadge}</div></div></div>`;
   }).join('');
 }
 
@@ -3648,7 +3717,7 @@ function placeIconSvg(placeType, emoji, size) {
 function scheduleDdayRefresh(){
   const now=new Date();
   const ms=(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1)-now)+1000;
-  setTimeout(()=>{renderTrips();renderUpcoming();scheduleDdayRefresh();},ms);
+  setTimeout(()=>{renderTrips();renderUpcoming();renderDday();scheduleDdayRefresh();},ms);
 }
 scheduleDdayRefresh();
 
