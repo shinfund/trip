@@ -534,12 +534,23 @@ body{
 .sub-tab-bar::-webkit-scrollbar{display:none}
 .stab{
   flex-shrink:0;font-size:14px;font-weight:700;
-  padding:7px 14px;border-radius:20px;cursor:pointer;
-  border:1.5px solid var(--border);background:var(--card);color:var(--txt2);
-  transition:all .18s;white-space:nowrap
+  padding:6px 14px;border-radius:20px;cursor:pointer;
+  background:rgba(255,255,255,.55);
+  border:1.5px solid rgba(255,255,255,.8);
+  color:var(--txt2);
+  transition:all .18s;white-space:nowrap;
+  letter-spacing:-0.01em
 }
-.stab.on{background:var(--sky50);border-color:var(--sky);color:var(--sky800);font-weight:800}
-.stab:hover:not(.on){border-color:var(--sky100);background:var(--sky50)}
+.stab.on{
+  background:var(--card);border-color:var(--sky100);
+  color:var(--sky800);font-weight:800;
+  box-shadow:0 2px 8px rgba(55,138,221,.18)
+}
+.stab:hover:not(.on){
+  background:rgba(255,255,255,.8);
+  border-color:rgba(255,255,255,1);
+  color:var(--txt)
+}
 
 /* 서브패널 */
 .sub-panel{display:none}
@@ -547,40 +558,80 @@ body{
 
 
 /* ── 테마별 여행 모달 ── */
-.theme-ftab{flex-shrink:0;font-size:14px;font-weight:700;padding:7px 12px;border-radius:20px 20px 0 0;cursor:pointer;color:var(--txt2);border-bottom:2.5px solid transparent;transition:all .15s;white-space:nowrap}
-.theme-ftab.on{color:var(--sky800);border-bottom-color:var(--sky);background:var(--sky50);font-weight:800}
-.theme-ftab:hover:not(.on){color:var(--txt)}
+/* ── 해외 탭: 지역·나라 탭 (Pill 스타일) ── */
+.theme-ftab{
+  flex-shrink:0;font-size:14px;font-weight:700;
+  padding:6px 14px;border-radius:20px;
+  cursor:pointer;color:var(--txt2);
+  background:rgba(255,255,255,.55);
+  border:1.5px solid rgba(255,255,255,.8);
+  transition:all .18s;white-space:nowrap;
+  letter-spacing:-0.01em
+}
+.theme-ftab.on{
+  color:var(--sky800);background:var(--card);
+  border-color:var(--sky100);
+  font-weight:800;
+  box-shadow:0 2px 8px rgba(55,138,221,.18);
+}
+.theme-ftab:hover:not(.on){
+  color:var(--txt);
+  background:rgba(255,255,255,.8);
+  border-color:rgba(255,255,255,1);
+}
 /* 도시 서브탭 카드형 (ritem 스타일 기반) */
+/* ── 도시 탭 (Pill 스타일 통일) ── */
 .city-ftab{
   flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  padding:6px 12px;
-  background:var(--card);border:2px solid var(--border);border-radius:var(--r8);
-  cursor:pointer;transition:all .2s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:var(--shadow);text-align:center;white-space:nowrap
+  padding:7px 14px;
+  background:rgba(255,255,255,.65);
+  border:1.5px solid rgba(255,255,255,.9);
+  border-radius:20px;
+  cursor:pointer;transition:all .18s;
+  white-space:nowrap;
+  backdrop-filter:blur(4px)
 }
-.city-ftab:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
-.city-ftab.on{border-color:var(--teal,#2BB5A0);background:var(--teal50,#E1F5EE);border-width:2.5px}
-.city-ftab-name{font-size:12px;font-weight:700;color:var(--txt);line-height:1}
+.city-ftab:hover{background:rgba(255,255,255,.85)}
+.city-ftab.on{
+  border-color:var(--teal);background:var(--card);
+  box-shadow:0 2px 8px rgba(29,158,117,.2)
+}
+.city-ftab-name{font-size:13px;font-weight:700;color:var(--txt);line-height:1;letter-spacing:-0.01em}
 
 /* ── 테마 아이콘 카드 그리드 ── */
-.theme-icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:2px}
+.theme-icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:2px}
 .theme-ico-card{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:4px;padding:10px 4px 9px;
-  border-radius:var(--r12);border:2px solid var(--border);
+  gap:3px;padding:12px 4px 10px;
+  border-radius:var(--r14);border:1.5px solid var(--border);
   background:var(--card);cursor:pointer;
-  transition:all .2s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:var(--shadow);position:relative;overflow:hidden
+  transition:all .18s ease;
+  box-shadow:0 1px 4px rgba(55,138,221,.06);
+  position:relative;overflow:hidden
 }
-.theme-ico-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
-.theme-ico-card.on{border-width:2.5px;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.theme-ico-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-hover);
+  border-color:var(--sky100)
+}
+.theme-ico-card.on{
+  border-width:2px;
+  box-shadow:0 4px 16px rgba(55,138,221,.18)
+}
+.theme-ico-card.on::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;border-radius:3px 3px 0 0;
+  background:var(--sky);opacity:.7
+}
 .theme-ico-card.on::after{
-  content:'✓';position:absolute;top:4px;right:6px;
-  font-size:13px;font-weight:900;opacity:.9
+  content:'✓';position:absolute;top:5px;right:7px;
+  font-size:11px;font-weight:900;opacity:.85;
+  width:16px;height:16px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.7);line-height:16px;text-align:center
 }
-
-.tic-label{font-size:13px;font-weight:700;color:var(--txt);text-align:center;line-height:1.3;word-break:keep-all}
-.tic-cnt{font-size:12px;font-weight:600;color:var(--txt2);margin-top:-1px}
+.tic-label{font-size:13px;font-weight:800;color:var(--txt);text-align:center;line-height:1.3;word-break:keep-all;letter-spacing:-0.01em}
+.tic-cnt{font-size:11px;font-weight:600;color:var(--txt2);margin-top:1px;letter-spacing:0.01em}
 @keyframes themeSlide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 .theme-region-slide{animation:themeSlide .2s ease forwards}
 .theme-spot-card{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r12);margin-bottom:7px;cursor:pointer;transition:all .15s}
@@ -744,7 +795,7 @@ body{
       <button class="modal-close" onclick="closeThemeModal()" style="display:inline-flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" ><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <!-- 테마 필터 탭 -->
-    <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:6px 16px 0;border-bottom:1px solid var(--border2)">
+    <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:8px 16px;background:linear-gradient(180deg,var(--sky50) 0%,#EAF3FB 100%);border-bottom:1px solid var(--sky100)">
       <div class="theme-ftab" data-theme="all" onclick="switchThemeTab(this,'all')">🗺️ 전체</div>
       <div class="theme-ftab on" data-theme="heal" onclick="switchThemeTab(this,'heal')">🌿 힐링</div>
       <div class="theme-ftab" data-theme="restaurant" onclick="switchThemeTab(this,'restaurant')">🍽️ 맛집</div>
@@ -753,9 +804,9 @@ body{
       <div class="theme-ftab" data-theme="cafe" onclick="switchThemeTab(this,'cafe')">☕ 카페</div>
     </div>
     <!-- 지역 필터 칩 바 -->
-    <div id="themeRegionBar" style="border-bottom:1px solid var(--border2);padding:4px 16px 0">
-      <div id="themeRegionBarDomestic" style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:5px;-webkit-overflow-scrolling:touch"></div>
-      <div id="themeRegionBarIntl" style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:5px;-webkit-overflow-scrolling:touch;border-top:1px dashed var(--border2);padding-top:4px"></div>
+    <div id="themeRegionBar" style="border-bottom:1px solid var(--sky100);padding:6px 16px;background:linear-gradient(180deg,#EAF3FB 0%,var(--sky50) 100%)">
+      <div id="themeRegionBarDomestic" style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;-webkit-overflow-scrolling:touch"></div>
+      <div id="themeRegionBarIntl" style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;-webkit-overflow-scrolling:touch;border-top:1px solid rgba(55,138,221,.1);padding-top:6px;margin-top:2px"></div>
     </div>
     <div class="modal-body" style="padding:8px 16px 14px" id="themeModalBody"></div>
   </div>
@@ -1015,22 +1066,22 @@ body{
 <div class="panel" id="p2">
 
 <!-- 지역 탭: 항상 상단 고정 (우측 화살표만) -->
-<div style="position:relative;border-bottom:2px solid var(--sky100,#BFDBFE);margin:0 calc(-1 * var(--cp));background:#EAF3FB;padding-top:2px">
+<div style="position:relative;border-bottom:1px solid var(--sky100);margin:0 calc(-1 * var(--cp));background:linear-gradient(180deg,var(--sky50) 0%,#EAF3FB 100%);padding:6px 0 4px">
   <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp)" id="intlRegionTabs"></div>
-  <button onclick="scrollRow('intlRegionTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;border:1.5px solid var(--sky100,#BFDBFE);background:#EAF3FB;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sky800,#0C447C);font-size:15px;line-height:1;padding:0">›</button>
+  <button onclick="scrollRow('intlRegionTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--sky100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sky800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
 </div>
 
 <!-- 콘텐츠 A: 나라 탭 (나라 여러개인 지역) -->
 <div id="intlCountryLayer" style="display:none">
-  <div style="position:relative;border-bottom:2px solid var(--sky100,#BFDBFE);margin:0 calc(-1 * var(--cp));background:var(--sky50,#EFF6FF);padding-top:2px">
+  <div style="position:relative;border-bottom:1px solid var(--sky100);margin:0 calc(-1 * var(--cp));background:linear-gradient(180deg,#EAF3FB 0%,var(--sky50) 100%);padding:6px 0 4px">
     <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp)" id="intlCountryTabs"></div>
-    <button onclick="scrollRow('intlCountryTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:15px;line-height:1;padding:0">›</button>
+    <button onclick="scrollRow('intlCountryTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--sky100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sky800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
   </div>
   <!-- 도시 카드 탭 (나라 선택 후) -->
   <div id="intlCountryCityWrap" style="display:none;background:var(--card)">
-    <div style="position:relative;padding:6px 0 10px;overflow:visible;background:var(--teal50,#E1F5EE);border-bottom:2px solid var(--teal100,#99E6D8);margin:0 calc(-1 * var(--cp))">
+    <div style="position:relative;padding:6px 0 8px;overflow:visible;background:linear-gradient(180deg,var(--teal50) 0%,#E8F9F2 100%);border-bottom:1px solid var(--teal100);margin:0 calc(-1 * var(--cp))">
       <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp);gap:6px" id="intlCityTabs2"></div>
-      <button onclick="scrollRow('intlCityTabs2',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:15px;line-height:1;padding:0">›</button>
+      <button onclick="scrollRow('intlCityTabs2',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
     </div>
     <div id="intlCityHeader2" style="padding:20px 16px 0"></div>
     <div id="intlSpotsList2" style="padding:0 16px"></div>
@@ -1040,9 +1091,9 @@ body{
 <!-- 콘텐츠 B: 도시 탭 + 명소 (나라 1개인 지역) -->
 <div id="intlCityLayer" style="display:none;background:var(--card)">
   <!-- 도시 서브탭 카드형 (우측 화살표) -->
-  <div style="position:relative;padding:6px 0 10px;overflow:visible;background:var(--teal50,#E1F5EE);border-bottom:2px solid var(--teal100,#99E6D8);margin:0 calc(-1 * var(--cp))">
+  <div style="position:relative;padding:6px 0 8px;overflow:visible;background:linear-gradient(180deg,var(--teal50) 0%,#E8F9F2 100%);border-bottom:1px solid var(--teal100);margin:0 calc(-1 * var(--cp))">
     <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp);gap:6px" id="intlCityTabs"></div>
-    <button onclick="scrollRow('intlCityTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:15px;line-height:1;padding:0">›</button>
+    <button onclick="scrollRow('intlCityTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
   </div>
   <!-- 도시 헤더 -->
   <div id="intlCityHeader" style="padding:20px 16px 0"></div>
@@ -1895,7 +1946,7 @@ function renderThemeRegionBar() {
 
   function chipHtml(chip) {
     const isOn = chip.key === currentRegionFilter;
-    return `<div onclick="setThemeRegionFilter('${chip.key}')" style="flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s;background:${isOn?'var(--sky)':'var(--bg)'};color:${isOn?'#fff':'var(--txt2)'};border:1.5px solid ${isOn?'var(--sky)':'var(--border)'};">${chip.label}</div>`;
+    return `<div onclick="setThemeRegionFilter('${chip.key}')" style="flex-shrink:0;padding:5px 13px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .18s;background:${isOn?'var(--card)':'rgba(255,255,255,.55)'};color:${isOn?'var(--sky800)':'var(--txt2)'};border:1.5px solid ${isOn?'var(--sky100)':'rgba(255,255,255,.8)'};${isOn?'box-shadow:0 2px 8px rgba(55,138,221,.18)':''}">${chip.label}</div>`;
   }
 
   rowDom.innerHTML = DOMESTIC.map(chipHtml).join('');
@@ -1962,9 +2013,9 @@ function renderThemeIconGrid() {
   // 전체 카드 (국내·해외와 동일한 sky 색상 체계)
   const allIsOnTheme = inlineThemeKey === 'all';
   const allThemeCard = `<div class="theme-ico-card${allIsOnTheme?' on':''}"
-    style="background:${allIsOnTheme?'var(--sky50)':'var(--card)'};border:${allIsOnTheme?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+    style="background:${allIsOnTheme?'var(--sky50)':'var(--card)'};border:${allIsOnTheme?'2px solid var(--sky)':'1.5px solid var(--border)'}"
     onclick="inlineSwitchTheme('all')">
-    <div style="font-size:22px;line-height:1;margin-bottom:3px">🗺️</div>
+    <div style="font-size:26px;line-height:1;margin-bottom:2px">🗺️</div>
     <div class="tic-label" style="color:${allIsOnTheme?'var(--sky800)':'var(--txt)'}">전체</div>
     <div class="tic-cnt" style="color:${allIsOnTheme?'var(--sky800)':'var(--txt2)'}"> ${getThemeSpots('all').length}곳</div>
   </div>`;
@@ -1973,12 +2024,12 @@ function renderThemeIconGrid() {
     const isOn = card.key === inlineThemeKey;
     const bg   = isOn ? meta.bg : 'var(--card)';
     const col  = isOn ? meta.color : 'var(--txt2)';
-    const bdr  = isOn ? `2.5px solid ${meta.color}` : '2px solid var(--border)';
+    const bdr  = isOn ? `2px solid ${meta.color}` : '1.5px solid var(--border)';
     const cnt  = getThemeSpots(card.key).length;
     return `<div class="theme-ico-card${isOn?' on':''}"
       style="background:${bg};border:${bdr}"
       onclick="inlineSwitchTheme('${card.key}')">
-      <div style="font-size:22px;line-height:1;margin-bottom:3px">${card.emoji}</div>
+      <div style="font-size:26px;line-height:1;margin-bottom:2px">${card.emoji}</div>
       <div class="tic-label" style="color:${col}">${card.shortLabel}</div>
       <div class="tic-cnt" style="color:${col}">${cnt}곳</div>
     </div>`;
@@ -2626,9 +2677,9 @@ function renderDomesticRegionGrid() {
   // 전체 카드
   const allIsOn = currentDomesticRegion === 'all';
   const allCard = `<div class="theme-ico-card${allIsOn?' on':''}"
-    style="background:${allIsOn?'var(--sky50)':'var(--card)'};border:${allIsOn?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+    style="background:${allIsOn?'var(--sky50)':'var(--card)'};border:${allIsOn?'2px solid var(--sky)':'1.5px solid var(--border)'}"
     onclick="selectDomesticRegion('all')">
-    <div style="font-size:22px;line-height:1;margin-bottom:3px">🗺️</div>
+    <div style="font-size:26px;line-height:1;margin-bottom:2px">🗺️</div>
     <div class="tic-label" style="color:${allIsOn?'var(--sky800)':'var(--txt)'}">전체</div>
     <div class="tic-cnt" style="color:${allIsOn?'var(--sky800)':'var(--txt2)'}">14곳</div>
   </div>`;
@@ -2638,9 +2689,9 @@ function renderDomesticRegionGrid() {
     const isOn = currentDomesticRegion === key;
     const spots = getRegionSpots(r.key);
     return `<div class="theme-ico-card${isOn?' on':''}"
-      style="background:${isOn?'var(--sky50)':'var(--card)'};border:${isOn?'2.5px solid var(--sky)':'2px solid var(--border)'}"
+      style="background:${isOn?'var(--sky50)':'var(--card)'};border:${isOn?'2px solid var(--sky)':'1.5px solid var(--border)'}"
       onclick="selectDomesticRegion('${key}')">
-      <div style="font-size:22px;line-height:1;margin-bottom:3px">${r.emoji}</div>
+      <div style="font-size:26px;line-height:1;margin-bottom:2px">${r.emoji}</div>
       <div class="tic-label" style="color:${isOn?'var(--sky800)':'var(--txt)'}">${r.name}</div>
       <div class="tic-cnt" style="color:${isOn?'var(--sky800)':'var(--txt2)'}">${spots.length}곳</div>
     </div>`;
@@ -2866,31 +2917,34 @@ const INTL_DESTS = [
    name:'일본 · 도쿄', cityKey:'tokyo', cities:'시부야 · 신주쿠 · 아키하바라 · 아사쿠사 · 하라주쿠', desc:'패션·문화·먹거리의 현대 도시. 한국에서 2.5시간', rating:4.9,
    tips:'IC카드(Suica) 편의점에서 구매, JR패스 3·5·7일권 선택 / 맛집은 구글맵·타베로그 활용 추천',
    cats:[
+     {key:'sight', label:'⛩️ 관광·명소', items:[
+       {e:'⛩️', name:'센소지 사원', loc:'아사쿠사', price:'무료', tip:'새벽 5시 가장 조용·사진 명소', map:'https://maps.app.goo.gl/asakusa'},
+       {e:'🗼', name:'도쿄타워', loc:'미나토구', price:'1,200엔~', tip:'야경은 저녁 7~9시가 최고', map:'https://maps.app.goo.gl/tokyotower'},
+       {e:'🏙️', name:'도쿄 스카이트리', loc:'오시아게', price:'2,100엔~', tip:'맑은 날 후지산까지 보임', map:'https://maps.app.goo.gl/skytree'},
+       {e:'🌿', name:'신주쿠 교엔', loc:'신주쿠', price:'500엔', tip:'봄 벚꽃·가을 단풍 최고 명소', map:'https://maps.app.goo.gl/shinjukugyoen'},
+       {e:'🏯', name:'에도성터·황궁 외원', loc:'치요다', price:'무료', tip:'주변 산책로와 함께 2시간 코스', map:'https://maps.app.goo.gl/imperialpalace'},
+       {e:'🎡', name:'오다이바', loc:'미나토구', price:'무료~', tip:'레인보우브릿지 야경·쇼핑 복합', map:'https://maps.app.goo.gl/odaiba'},
+       {e:'🛍️', name:'시부야 스크램블 교차로', loc:'시부야', price:'무료', tip:'스타벅스 2층에서 내려다보기', map:'https://maps.app.goo.gl/shibuya'},
+       {e:'🎮', name:'아키하바라 전자·오타쿠 거리', loc:'치요다', price:'무료~', tip:'전자부품·피규어·메이드카페', map:'https://maps.app.goo.gl/akihabara'},
+     ]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍣 쓰키지 외시장 스시·해산물 (300엔~)',
-       '🍜 이케부쿠로·신주쿠 라멘 골목 (800엔~)',
-       '🍱 긴자 오마카세 스시 (런치 5,000엔~)',
-       '🍢 아사쿠사 나카미세 거리 닌교야키·멜론빵 (200엔~)',
-       '🥩 시부야·신주쿠 야키니쿠 (2,000엔~)',
-       '🦞 도요스 시장 참치 경매·해산물 (5,000엔~)',
-       '🍺 신주쿠 오모이데요코초 야키토리·이자카야 (1,000엔~)',
-       '🥟 아사쿠사 교자·텐동 전문점 (1,200엔~)',
-       '🍱 아키하바라 메이드카페·오타쿠 음식 (1,500엔~)',
-       '🌮 롯폰기 세계 각국 레스토랑 (2,000엔~)',
+       {e:'🍣', name:'쓰키지 외시장 스시·해산물', loc:'추오구', price:'300엔~', tip:'오전 10시 전에 가야 신선하고 덜 붐빔', map:'https://maps.app.goo.gl/tsukiji'},
+       {e:'🍜', name:'이케부쿠로·신주쿠 라멘 골목', loc:'신주쿠·이케부쿠로', price:'800엔~', tip:'신주쿠 오이시 로쿠롯폰기 추천', map:'https://maps.app.goo.gl/shinjukuramen'},
+       {e:'🍢', name:'나카미세 거리 닌교야키·멜론빵', loc:'아사쿠사', price:'200엔~', tip:'센소지 가는 길목에 즐기기', map:'https://maps.app.goo.gl/nakamise'},
+       {e:'🥩', name:'시부야·신주쿠 야키니쿠', loc:'시부야·신주쿠', price:'2,000엔~', tip:'런치 세트가 저녁보다 40% 저렴', map:'https://maps.app.goo.gl/yakiniku'},
+       {e:'🍺', name:'신주쿠 오모이데요코초', loc:'신주쿠', price:'1,000엔~', tip:'좁은 골목 이자카야·야키토리 분위기 최고', map:'https://maps.app.goo.gl/omoide'},
+       {e:'🥟', name:'아사쿠사 교자·텐동 전문점', loc:'아사쿠사', price:'1,200엔~', tip:'가미나리몬 근처 골목 탐방', map:'https://maps.app.goo.gl/asakusagyoza'},
+       {e:'🦞', name:'도요스 시장 해산물', loc:'고토구', price:'5,000엔~', tip:'참치경매 관람은 사전 예약 필수', map:'https://maps.app.goo.gl/toyosu'},
+       {e:'🍱', name:'긴자 오마카세 스시', loc:'긴자', price:'런치 5,000엔~', tip:'런치 타임이 저녁의 절반 가격', map:'https://maps.app.goo.gl/ginzasushi'},
      ]},
      {key:'cafe', label:'☕ 카페·디저트', items:[
-       '🍡 시모키타자와 카레·빈티지 카페 (1,000엔~)',
-       '🍰 하라주쿠 크레이프·카와이 디저트 (500엔~)',
-       '🍦 도쿄 편의점 디저트 (세븐일레븐·패밀리마트) (150엔~)',
-     ]},
-     {key:'sight', label:'⛩️ 관광·명소', items:[
-       '⛩️ 센소지 사원 (아사쿠사·무료)',
-       '🗼 도쿄타워·스카이트리 전망',
-       '🌿 신주쿠 교엔 정원 (500엔)',
+       {e:'🍰', name:'하라주쿠 크레이프·카와이 디저트', loc:'하라주쿠', price:'500엔~', tip:'타케시타 거리 구경과 함께', map:'https://maps.app.goo.gl/harajuku'},
+       {e:'🍦', name:'편의점 디저트', loc:'전국', price:'150엔~', tip:'세븐일레븐 롤케이크·팸마 푸딩 추천', map:'https://maps.app.goo.gl/7eleven'},
+       {e:'🍡', name:'시모키타자와 빈티지 카페', loc:'시모키타자와', price:'1,000엔~', tip:'도쿄 힙스터 성지·레코드샵 동반', map:'https://maps.app.goo.gl/shimokita'},
      ]},
      {key:'shop', label:'🛍️ 쇼핑·문화', items:[
-       '🛍️ 시부야 스크램블 교차로',
-       '🎮 아키하바라 전자거리',
+       {e:'👗', name:'하라주쿠·오모테산도', loc:'시부야구', price:'무료~', tip:'명품가와 빈티지 숍이 공존', map:'https://maps.app.goo.gl/omotesando'},
+       {e:'📚', name:'진보초 헌책방 거리', loc:'치요다', price:'무료~', tip:'오래된 책·만화·엽서 보물 탐방', map:'https://maps.app.goo.gl/jinbocho'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🚆 JR패스',url:'https://www.japanrailpass.net/ko'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
@@ -2898,29 +2952,25 @@ const INTL_DESTS = [
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF3E0"/><path d="M8 32l6-20 2 4 4-12 4 12 2-4 6 20z" fill="none" stroke="#FF7043" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 20h8" stroke="#FF7043" stroke-width="1.2"/><path d="M14 25h12" stroke="#FF7043" stroke-width="1.2"/><path d="M8 32h24" stroke="#FF7043" stroke-width="1.5"/><path d="M18 8l2-5 2 5z" fill="white"/><path d="M5 26h5v6H5z" fill="#FFCCBC" rx="1"/><path d="M30 26h5v6h-5z" fill="#FFCCBC" rx="1"/><circle cx="30" cy="8" r="3" fill="#FF8A65" opacity=".6"/><path d="M27 8 Q30 5 33 8" fill="none" stroke="#FF8A65" stroke-width="1.5"/></svg>',
    name:'일본 · 오사카·교토', cityKey:'osaka', cities:'오사카성 · 도톤보리 · 기온 · 아라시야마 · 나라', desc:'역사와 미식의 도시. 교토 유네스코 문화재 집결', rating:4.8,
    tips:'오사카에서 교토 기차 15분, 나라 사슴공원 연계 당일치기 / 오사카는 "쿠이다오레(먹다 쓰러진다)" 미식 도시',
-   cats:[
+      cats:[
+     {key:'sight', label:'⛩️ 관광·명소', items:[
+       {e:'🏯', name:'오사카성', loc:'오사카 중심', price:'600엔', tip:'천수각 엘리베이터·계단 선택, 야경도 추천'},
+       {e:'⛩️', name:'후시미이나리', loc:'교토 후시미', price:'무료', tip:'이른 아침 방문 필수, 수천 개 도리이 터널'},
+       {e:'🎋', name:'아라시야마 대나무숲', loc:'교토 아라시야마', price:'무료', tip:'오전 7시 이전이 가장 한적하고 사진 명소'},
+       {e:'🦌', name:'나라 사슴공원', loc:'나라시', price:'무료', tip:'사슴 센베이(150엔) 구매해서 사슴과 교감'},
+       {e:'🌸', name:'철학의 길', loc:'교토 히가시야마', price:'무료', tip:'3~4월 벚꽃·11월 단풍 시즌이 절정'},
+     ]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍢 도톤보리 타코야키·꼬치 (200엔~)',
-       '🥩 오사카 오코노미야키 (800엔~)',
-       '🍜 신세카이 쿠시카츠 (100엔~/꼬치)',
-       '🦀 난바 카니도라쿠 게 요리 (3,000엔~)',
-       '🍱 구로몬 시장 신선 해산물 (1,000엔~)',
-       '🍣 도요나카·우메다 회전초밥 (100엔~)',
-       '🍺 신사이바시 이자카야 골목 (1,500엔~)',
+       {e:'🍢', name:'도톤보리 타코야키', loc:'난바 도톤보리', price:'200엔~', tip:'아지노야·오타코 등 원조 가게 줄 서서 먹기'},
+       {e:'🥩', name:'오사카 오코노미야키', loc:'오사카 전역', price:'800엔~', tip:'오사카식(혼합)과 히로시마식(층층) 구분'},
+       {e:'🍜', name:'신세카이 쿠시카츠', loc:'신세카이', price:'100엔~/꼬치', tip:'소스 두 번 찍기 금지! 현지 룰 준수'},
+       {e:'🦀', name:'난바 카니도라쿠 게 요리', loc:'난바', price:'3,000엔~', tip:'런치 코스가 저녁 대비 40% 저렴'},
+       {e:'🍱', name:'구로몬 시장 해산물', loc:'구로몬 시장', price:'1,000엔~', tip:'오전 10시~낮 1시가 가장 신선'},
+       {e:'🍣', name:'회전초밥', loc:'우메다·도톤보리', price:'100엔~/접시', tip:'무텐쿠라 스시·하마즈시 추천'},
      ]},
      {key:'cafe', label:'☕ 카페·디저트', items:[
-       '🍵 교토 니시키 시장 두부·교야사이 (500엔~)',
-       '🍡 기온 마치야 카페·말차 디저트 (600엔~)',
-       '🍜 교토 라멘 (교토풍 닭육수) (900엔~)',
-       '🌸 아라시야마 유도후 두부 요리 (2,500엔~)',
-       '🥧 나라 미타라시단고·가키노하즈시 (300엔~)',
-     ]},
-     {key:'sight', label:'⛩️ 관광·명소', items:[
-       '🏯 오사카성 (600엔)',
-       '⛩️ 후시미이나리 (무료)',
-       '🎋 아라시야마 대나무숲 (무료)',
-       '🦌 나라 사슴공원 (무료)',
-       '🌸 철학의 길 벚꽃 (무료)',
+       {e:'🍵', name:'기온 말차 디저트', loc:'교토 기온', price:'600엔~', tip:'나나나나 입장 줄 길어 오전 개점 직후 방문'},
+       {e:'🥧', name:'나라 미타라시단고', loc:'나라 공원 주변', price:'300엔~', tip:'사슴공원 산책 후 간식으로 딱'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
@@ -2928,25 +2978,20 @@ const INTL_DESTS = [
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><path d="M20 6 Q10 16 10 26 Q10 34 20 34 Q30 34 30 26 Q30 16 20 6z" fill="none" stroke="#66BB6A" stroke-width="1.5"/><path d="M12 28 Q14 22 20 20 Q26 22 28 28" fill="#A5D6A7" opacity=".5"/><rect x="18" y="18" width="4" height="14" fill="#795548" rx="1"/><path d="M14 18h12l2 2H12z" fill="#4CAF50" rx="1"/><path d="M16 16h8l1 2H15z" fill="#388E3C" rx="1"/><path d="M17 14l3-6 3 6z" fill="#2E7D32" rx="1"/><ellipse cx="14" cy="30" rx="3" ry="2" fill="#F57F17" opacity=".6"/><ellipse cx="26" cy="30" rx="3" ry="2" fill="#F57F17" opacity=".6"/></svg>',
    name:'일본 · 후쿠오카·규슈', cityKey:'fukuoka', cities:'하카타 · 유후인 · 벳부 · 나가사키 · 구마모토', desc:'한국에서 가장 가까운 일본 도시. 온천 천국', rating:4.7,
    tips:'부산~후쿠오카 배 3시간, 유후인 온천 1박 추천 / 후쿠오카는 야타이(포장마차)가 일품',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 하카타 돈코츠 라멘 (일후쿠·신신 등) (800엔~)',
-       '🍢 나카스 야타이(포장마차) 라멘·오뎅·야키토리 (1,000엔~)',
-       '🥩 후쿠오카 모츠나베(곱창전골) (2,500엔~)',
-       '🐟 하카타 명란젓(멘타이코) 직구매 (500엔~)',
-       '🍱 텐진 지하상가 오야꼬동·카레 (900엔~)',
-       '🦑 벳부 지옥찜 요리 (1,000엔~)',
-       '🍵 유후인 온천 마을 카페·크림소프트 (400엔~)',
-       '🐖 나가사키 짬폰·사라우동 (1,000엔~)',
-       '🍣 나가사키 카스테라·화과자 (500엔~)',
-       '🥢 구마모토 아카규(적우) 스테이크 (3,000엔~)',
-     ]},
+      cats:[
      {key:'sight', label:'⛩️ 관광·명소', items:[
-       '♨️ 벳부·유후인 온천',
-       '🏰 구마모토성',
-       '🌊 아소산 화산',
-       '⛩️ 다자이후 텐만구',
-       '🛍️ 캐널시티 쇼핑',
+       {e:'♨️', name:'유후인·벳부 온천', loc:'오이타현', price:'500엔~', tip:'유후인 료칸 1박 예약 필수, 벳부 지옥 순회'},
+       {e:'🏰', name:'구마모토성', loc:'구마모토시', price:'800엔', tip:'2016 지진 복구 중, 천수각 내부 전시 충실'},
+       {e:'🌋', name:'아소산 화산', loc:'구마모토 아소', price:'무료~', tip:'분화 상황에 따라 접근 제한, 사전 확인 필수'},
+       {e:'⛩️', name:'다자이후 텐만구', loc:'다자이후시', price:'무료', tip:'수험생 합격 기원 신사, 우메가에 모찌 필수'},
+       {e:'🛍️', name:'캐널시티', loc:'하카타', price:'무료', tip:'분수 쇼 매시 정각·30분, 라멘 스타디움 있음'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍜', name:'하카타 돈코츠 라멘', loc:'하카타역 주변', price:'800엔~', tip:'이치란·신신·잇푸도 본점이 모두 후쿠오카'},
+       {e:'🍢', name:'나카스 야타이 포장마차', loc:'나카스 강변', price:'1,000엔~', tip:'저녁 6시 이후 오픈, 현금만 가능한 곳 많음'},
+       {e:'🥩', name:'후쿠오카 모츠나베', loc:'하카타·텐진', price:'2,500엔~', tip:'곱창 전골, 마지막에 챙쿄 면 추가가 정석'},
+       {e:'🐟', name:'하카타 명란젓 직구매', loc:'아뮤프라자·시장', price:'500엔~', tip:'후쿠야·야마야 공장 직영점이 가성비 최고'},
+       {e:'🐖', name:'나가사키 짬폰·사라우동', loc:'나가사키 차이나타운', price:'1,000엔~', tip:'링거헛 체인도 있지만 시카이로 본점 추천'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🚢 부산~후쿠오카',url:'https://www.beetles.co.jp/ko'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
@@ -2954,25 +2999,19 @@ const INTL_DESTS = [
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E3F2FD"/><path d="M5 28 L12 14 L16 19 L20 8 L24 19 L28 14 L35 28z" fill="#E3F2FD" stroke="#42A5F5" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 19 L20 8 L24 19z" fill="white"/><path d="M5 28h30v4H5z" fill="#B3E5FC" rx="1"/><circle cx="30" cy="12" r="3" fill="#FFD54F" opacity=".8"/></svg>',
    name:'일본 · 홋카이도', cityKey:'hokkaido', cities:'삿포로 · 오타루 · 하코다테 · 비에이 · 노보리베츠', desc:'설경·유제품·온천. 여름 라벤더·겨울 설국', rating:4.8,
    tips:'2월 삿포로 눈 축제, 7~8월 후라노 라벤더 시즌 / 해산물·유제품은 홋카이도가 일본 최고',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🦀 삿포로 게요리·성게(우니) 덮밥 (3,000엔~)',
-       '🍺 삿포로 맥주 박물관·레스토랑 (입장 무료)',
-       '🥛 삿포로 농학교 밀크·치즈 소프트 (300엔~)',
-       '🍜 삿포로 미소라멘 (스스키노·라멘 공화국) (900엔~)',
-       '🍖 징기스칸(양고기 구이) (1,500엔~)',
-       '🐟 오타루 운하 인근 초밥·훈제연어 (2,000엔~)',
-       '🥩 토카치 스테이크·버터 감자 (2,000엔~)',
-       '🍰 하코다테 아침시장 오징어·성게 (1,500엔~)',
-       '🌸 후라노 치즈공방·잼&버터 (500엔~)',
-       '🍦 홋카이도 우유 소프트 아이스크림 (300엔~)',
-     ]},
+      cats:[
      {key:'sight', label:'❄️ 관광·자연', items:[
-       '❄️ 삿포로 눈 축제 (2월·무료)',
-       '🌸 후라노 라벤더밭 (7월)',
-       '♨️ 노보리베츠 온천',
-       '🏙️ 하코다테 야경',
-       '🧀 오타루 운하',
+       {e:'🌸', name:'삿포로 오도리 공원', loc:'삿포로 중심', price:'무료', tip:'2월 눈 축제, 7월 맥주 축제 시즌 방문 추천'},
+       {e:'🏔️', name:'비에이 파노라마 로드', loc:'비에이', price:'무료', tip:'렌터카 필수, 패치워크 언덕이 포토 스팟'},
+       {e:'💜', name:'후라노 라벤더밭', loc:'후라노', price:'무료', tip:'7월 중순~8월 초가 절정, 패밀리 팜 추천'},
+       {e:'⛵', name:'오타루 운하', loc:'오타루시', price:'무료', tip:'저녁 조명이 낭만적, 유리공예·오르골 쇼핑'},
+       {e:'🌊', name:'노보리베츠 온천', loc:'노보리베츠시', price:'500엔~', tip:'지옥 계곡 산책 무료, 호텔 당일 온천 가능'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🦀', name:'삿포로 게 요리·카이센동', loc:'스스키노·니조 시장', price:'2,000엔~', tip:'니조 시장 아침 해산물이 가장 신선'},
+       {e:'🍜', name:'삿포로 미소 라멘', loc:'삿포로 라멘 골목', price:'900엔~', tip:'스스키노역 인근 삿포로 라멘 코쿄 추천'},
+       {e:'🧀', name:'홋카이도 유제품·치즈', loc:'오타루·비에이', price:'300엔~', tip:'비에이 치즈공방 소프트아이스크림 필수'},
+       {e:'🥩', name:'징기스칸 양고기 구이', loc:'삿포로 전역', price:'1,500엔~', tip:'다루마 본점이 원조, 저녁 웨이팅 필수'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🚆 JR패스',url:'https://www.japanrailpass.net/ko'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
@@ -2980,21 +3019,18 @@ const INTL_DESTS = [
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F2F1"/><path d="M8 28 Q14 18 20 16 Q26 18 32 28" fill="none" stroke="#00897B" stroke-width="1.5"/><circle cx="20" cy="14" r="4" fill="#E0F2F1" stroke="#26A69A" stroke-width="1.2"/><path d="M10 30 Q15 26 20 28 Q25 26 30 30" fill="#80CBC4" opacity=".4"/></svg>',
    name:'일본 · 오키나와', cityKey:'okinawa', cities:'나하 국제거리 · 추라우미 수족관 · 고토 섬 · 이시가키', desc:'일본의 하와이. 에메랄드 바다와 산호초 스노클링', rating:4.8,
    tips:'4~6월·10~11월 성수기 이전 방문 추천, 렌터카 필수 / 류큐 왕국 독자 음식 문화',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 오키나와 소바 (700엔~)',
-       '🐷 라후테(류큐 돼지고기 조림) (1,200엔~)',
-       '🥗 찬푸루(두부·고야 볶음) (1,000엔~)',
-       '🍹 아와모리(오키나와 소주) & 오리온 맥주 (500엔~)',
-       '🍦 블루실 아이스크림(보라색 타로·사탕수수) (400엔~)',
-       '🐟 나하 국제거리 해산물 이자카야 (2,000엔~)',
-       '🍡 전통 과자 치나앙쿠·사타안다기 (200엔~)',
-     ]},
+      cats:[
      {key:'sight', label:'🌊 관광·자연', items:[
-       '🌊 추라우미 수족관 (2,180엔)',
-       '🏯 슈리성 (400엔)',
-       '🤿 만좌모 스노클링 투어 (4,000엔~)',
-       '🌸 나하 국제거리 쇼핑',
+       {e:'🏯', name:'슈리성', loc:'나하시', price:'400엔', tip:'2026년 복원 완료 예정, 야경도 아름다움'},
+       {e:'🐠', name:'추라우미 수족관', loc:'모토부', price:'2,180엔', tip:'고래상어 매일 3회 먹이주기 쇼 시간 확인'},
+       {e:'🏖️', name:'에메랄드 비치', loc:'모토부', price:'무료', tip:'수족관 인근, 스노클링 장비 현지 렌탈 가능'},
+       {e:'🛤️', name:'나하 국제거리', loc:'나하 중심', price:'무료', tip:'도보 1.6km 쇼핑 거리, 류큐 유리 기념품'},
+       {e:'⛵', name:'이시가키·고토섬', loc:'야에야마 제도', price:'페리 왕복 3,000엔~', tip:'케라마 제도 산호초 다이빙이 세계 최고급'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🐷', name:'오키나와 소바·라후테', loc:'나하 전역', price:'800엔~', tip:'돼지 삼겹살 라후테는 오키나와 소울푸드'},
+       {e:'🥤', name:'블루씰 아이스크림', loc:'전국 체인', price:'300엔~', tip:'홍이모·소금 카라멜 맛이 오키나와 한정'},
+       {e:'🍺', name:'오리온 맥주 공장 견학', loc:'나고시', price:'500엔~', tip:'공장 투어 후 갓 만든 생맥주 시음 포함'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩',url:'https://www.klook.com/ko'},{lbl:'🗺️ 오키나와 관광',url:'https://visitokinawa.jp/ko/'}]},
@@ -3002,19 +3038,16 @@ const INTL_DESTS = [
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF8F0"/><rect x="5" y="18" width="30" height="16" fill="#F57F17" rx="2" opacity=".2"/><path d="M8 20h24v10H8z" fill="none" stroke="#FF8F00" stroke-width="1.2" rx="1"/><path d="M8 24h24" stroke="#FF8F00" stroke-width="1"/><path d="M14 16 Q20 10 26 16" fill="none" stroke="#FF7043" stroke-width="1.5"/><circle cx="20" cy="10" r="3" fill="#FFB300" opacity=".8"/></svg>',
    name:'일본 · 나고야·이세', cityKey:'nagoya', cities:'나고야성 · 이세신궁 · 시라카와고 합장마을 · 도요타박물관', desc:'중부 일본의 역사와 자연. 합장마을 유네스코 세계유산', rating:4.6,
    tips:'시라카와고 1~2월 라이트업 예약 필수 / 나고야 먹거리는 "나고야 메시(名古屋飯)" 독자 문화',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍱 나고야 히츠마부시(장어덮밥) (4,000엔~)',
-       '🥩 나고야 미소카츠(된장돈카츠) (1,500엔~)',
-       '🍜 나고야 키시멘(납작 우동) (700엔~)',
-       '🐔 나고야 코친(토종닭) 야키토리 (2,000엔~)',
-       '☕ 나고야 모닝 문화 (커피+토스트) (500엔~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏯 관광·명소', items:[
-       '🏯 나고야성 (500엔)',
-       '⛩️ 이세신궁 (무료)',
-       '🏘️ 시라카와고 합장마을 (무료)',
-       '🚗 도요타 산업기술기념관 (500엔)',
+       {e:'🏯', name:'나고야성', loc:'나고야 중심', price:'500엔', tip:'금 샤치호코 천수각이 상징, 혼마루 어전 무료'},
+       {e:'⛩️', name:'이세신궁', loc:'이세시', price:'무료', tip:'외궁→내궁 순서 참배, 오하라이마치 도보 쇼핑'},
+       {e:'🏘️', name:'시라카와고 합장마을', loc:'기후현', price:'무료', tip:'유네스코 세계유산, 겨울 설경이 압도적'},
+       {e:'🚗', name:'도요타 박물관', loc:'나가쿠테시', price:'1,200엔', tip:'자동차 역사 전시, 아이와 함께 인기'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍗', name:'나고야 데바사키·미소카츠', loc:'나고야 전역', price:'1,000엔~', tip:'세카이노야마짱 닭날개·야바톤 미소카츠'},
+       {e:'🍜', name:'히츠마부시', loc:'나고야 중심', price:'1,500엔~', tip:'3가지 방법으로 먹는 장어덮밥이 나고야 명물'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩',url:'https://www.klook.com/ko'},{lbl:'🗺️ 나고야 관광',url:'https://www.nagoya-info.jp/ko/'}]},
@@ -3022,19 +3055,17 @@ const INTL_DESTS = [
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF9C4"/><path d="M10 28 Q20 8 30 28" fill="#FFF176" stroke="#F9A825" stroke-width="1.2"/><path d="M14 22 Q20 14 26 22" fill="#FFE082" stroke="#FFB300" stroke-width="1"/><circle cx="20" cy="22" r="3" fill="#F57F17" opacity=".7"/><rect x="18" y="25" width="4" height="6" fill="#795548" rx="1"/></svg>',
    name:'일본 · 히로시마·미야지마', cityKey:'hiroshima', cities:'원폭돔 · 미야지마 이쓰쿠시마 신사 · 오코노미야키 · 구레', desc:'평화의 도시와 물 위의 도리이. 유네스코 2관왕', rating:4.8,
    tips:'미야지마 간조 시각에 맞춰 도리이 앞 방문, JR패스 페리 포함',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍳 히로시마식 오코노미야키(면 들어간 철판 구이) (900엔~)',
-       '🍁 모미지 만쥬(단풍 팥빵) - 기념품 (150엔~)',
-       '🦪 미야지마·히로시마 굴 요리(가키) (1,500엔~)',
-       '🍜 히로시마 츠케멘(찍어먹는 라멘) (900엔~)',
-       '🥢 원폭 돔 인근 혼도리 상점가 음식거리 (500엔~)',
-     ]},
+      cats:[
      {key:'sight', label:'☮️ 관광·명소', items:[
-       '⛩️ 이쓰쿠시마 신사 (300엔)',
-       '☮️ 원폭 돔·평화기념공원 (무료)',
-       '🦌 미야지마 사슴 (무료)',
-       '🚡 미야지마 로프웨이 (1,840엔)',
+       {e:'☮️', name:'히로시마 평화기념공원', loc:'히로시마 중심', price:'무료', tip:'원폭 돔과 평화 박물관 세트 관람, 약 2시간'},
+       {e:'⛩️', name:'이쓰쿠시마 신사', loc:'미야지마섬', price:'300엔', tip:'썰물 시 바다 위 도리이 걸어서 접근 가능'},
+       {e:'🦌', name:'미야지마 사슴', loc:'미야지마섬', price:'무료', tip:'페리 20분, 사슴이 자유롭게 돌아다님'},
+       {e:'🏰', name:'히로시마성', loc:'히로시마 중심', price:'370엔', tip:'평화공원 도보 20분, 성 내부 역사 전시'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🥞', name:'히로시마식 오코노미야키', loc:'히로시마 전역', price:'1,000엔~', tip:'밀가루 반죽 위에 층층이 쌓는 방식이 특징'},
+       {e:'🦪', name:'미야지마 굴 요리', loc:'미야지마', price:'1,000엔~', tip:'10~3월 제철, 구이·튀김·그라탱 모두 맛있음'},
+       {e:'🍁', name:'모미지만쥬', loc:'미야지마', price:'130엔~', tip:'단풍잎 모양 화과자, 튀김 버전도 별미'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩',url:'https://www.klook.com/ko'},{lbl:'🗺️ 히로시마 관광',url:'https://www.visit-hiroshima.com/ko/'}]},
@@ -3043,21 +3074,19 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F7FA"/><path d="M5 28 Q10 24 15 28 Q20 32 25 28 Q30 24 35 28L35 36H5z" fill="#4FC3F7" opacity=".4"/><path d="M20 6 Q16 8 14 12 Q16 14 20 13 Q24 14 26 12 Q24 8 20 6z" fill="#FFCC02"/><path d="M18 13v10" stroke="#8D6E63" stroke-width="2" stroke-linecap="round"/><path d="M14 15h12" stroke="#8D6E63" stroke-width="1.5" stroke-linecap="round"/><rect x="10" y="23" width="5" height="7" fill="#EF9A9A" rx="1"/><rect x="25" y="23" width="5" height="7" fill="#EF9A9A" rx="1"/><path d="M10 22h20l1 1H9z" fill="#E57373"/></svg>',
    name:'베트남 · 다낭·호이안', cityKey:'danang', cities:'미케비치 · 바나힐 · 호이안 올드타운 · 마블마운틴', desc:'가성비+아름다운 해변. 한국인 방문 동남아 1위', rating:4.8,
    tips:'10~4월 건기가 최적, 호이안 야시장은 저녁 필수 / 베트남 물가 최저, 현지식 1~3달러',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 미꽝(쌀국수) 현지 로컬식당 (30,000동~)',
-       '🥖 까오러우·반미 호이안 명물 (20,000동~)',
-       '🥘 화이트로즈 덤플링·호이안 왕새우 (50,000동~)',
-       '🍹 다낭 해변 씨푸드 레스토랑 (200,000동~)',
-       '🍵 호이안 야시장 로컬 디저트·체찌 (30,000동~)',
-       '🦐 미케비치 씨푸드 BBQ 저녁 (300,000동~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏖️ 관광·자연', items:[
-       '🏖️ 미케비치 (무료)',
-       '🏯 호이안 올드타운 (120,000동)',
-       '🌄 바나힐 케이블카',
-       '🌉 드래곤 브릿지 야경',
-       '🗿 마블마운틴 (150,000동)',
+       {e:'🏖️', name:'미케 비치', loc:'다낭 해안', price:'무료', tip:'해변 파라솔 대여 50,000동~, 아침 일찍이 한적'},
+       {e:'🏔️', name:'바나힐 케이블카', loc:'다낭 서쪽', price:'850,000동', tip:'골든 브릿지(손 조형물)가 포토 스팟, 오전 방문'},
+       {e:'🏘️', name:'호이안 올드타운', loc:'호이안', price:'12만동(구역권)', tip:'야간 등불 축제가 메인, 자전거 대여 추천'},
+       {e:'⛰️', name:'마블 마운틴', loc:'다낭 남쪽', price:'40,000동', tip:'동굴 사원·파노라마 뷰, 엘리베이터 추가 비용'},
+       {e:'🌉', name:'드래곤 브릿지', loc:'다낭 중심', price:'무료', tip:'토·일 밤 9시 불·물 뿜기 쇼 놓치지 말 것'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍜', name:'미꽝·까올러우', loc:'호이안 구시가', price:'30,000동~', tip:'호이안 까올러우는 이곳 물로만 만드는 향토 면'},
+       {e:'🥖', name:'반미·쌀국수', loc:'다낭 전역', price:'20,000동~', tip:'반미 프엉(호이안)이 한국인 입소문 1위'},
+       {e:'🦞', name:'해산물 구이', loc:'다낭 해산물 거리', price:'200,000동~', tip:'안뚜옹 야시장 해산물 거리, 흥정 필수'},
+       {e:'☕', name:'베트남 커피', loc:'전역', price:'20,000동~', tip:'연유 넣은 카페 쓰어다(아이스)가 국민 음료'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://vietnam.travel/ko'}]},
@@ -3065,22 +3094,18 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><path d="M4 28 Q8 20 12 22 Q14 18 18 20 Q20 14 24 18 Q27 15 30 20 Q33 18 36 24L36 32H4z" fill="#A5D6A7" opacity=".6"/><path d="M4 32 Q10 28 16 32 Q22 36 28 32 Q32 28 36 32" stroke="#4CAF50" fill="none" stroke-width="1.2"/></svg>',
    name:'베트남 · 하노이·하롱베이', cityKey:'hanoi', cities:'호안끼엠 호수 · 구시가지 · 하롱베이 · 닌빈', desc:'천 개의 섬 하롱베이. 유네스코 자연유산', rating:4.7,
    tips:'하롱베이 크루즈 1박2일 필수, 10~4월 건기 추천',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 퍼보(소고기 쌀국수) 로컬 식당 (40,000동~)',
-       '🥘 분짜 숯불 돼지고기 쌀국수 (50,000동~)',
-       '🥖 반미 바게트 샌드위치 (20,000동~)',
-       '🍢 분보남보 야시장 먹거리 (30,000동~)',
-       '🍵 하노이 에그커피·연꽃차 (25,000동~)',
-       '🦐 타인쑤언 씨푸드 골목 (100,000동~)',
-       '🌮 구시가지 36거리 노점 먹거리 (30,000동~)',
-     ]},
+      cats:[
      {key:'sight', label:'🚢 관광·자연', items:[
-       '🚢 하롱베이 크루즈',
-       '⛪ 호안끼엠 호수 (무료)',
-       '🌄 닌빈 땀꼭 보트',
-       '🏙️ 하노이 구시가지',
-       '🛍️ 동쑤안 시장',
+       {e:'🚢', name:'하롱베이 크루즈', loc:'꽝닌성', price:'1박 크루즈 150USD~', tip:'2박 크루즈가 가성비 최고, 카약 포함 투어 추천'},
+       {e:'🏙️', name:'호안끼엠 호수', loc:'하노이 구시가', price:'무료', tip:'주말 보행자 천국, 36거리 야시장과 연계'},
+       {e:'🌿', name:'닌빈 땀꼭', loc:'닌빈성', price:'200,000동', tip:'육지의 하롱베이, 보트 투어 2시간 코스'},
+       {e:'🏛️', name:'호찌민 묘소', loc:'하노이 바딘광장', price:'무료', tip:'월·금 휴관, 반바지·민소매 입장 불가'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍜', name:'하노이 쌀국수 포', loc:'구시가 전역', price:'50,000동~', tip:'포 틴·포 바 작 24시간 영업 유명 맛집'},
+       {e:'🥗', name:'분짜·넴루이', loc:'구시가', price:'60,000동~', tip:'분짜 흐엉리엔이 오바마가 방문한 바로 그곳'},
+       {e:'🍳', name:'반쏘이·바인미', loc:'노점·시장', price:'15,000동~', tip:'아침 노점 반쏘이(찹쌀밥)이 현지인 아침 식사'},
+       {e:'🍺', name:'하노이 비아호이', loc:'구시가 비아호이 코너', price:'5,000동~', tip:'세계 최저가 생맥주 한 잔, 약 300원'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://vietnam.travel/ko'}]},
@@ -3088,22 +3113,19 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF9C4"/><path d="M14 18h12l2 4H12z" fill="#FFB300" rx="1"/><path d="M12 22h16l3 5H9z" fill="#FF8F00" rx="1"/><rect x="11" y="27" width="4" height="9" fill="#FF8F00" rx="1"/><rect x="25" y="27" width="4" height="9" fill="#FF8F00" rx="1"/><rect x="17" y="25" width="6" height="11" fill="#FFA000" rx="1"/><path d="M18 25 Q20 22 22 25" fill="#FFD54F"/><circle cx="20" cy="15" r="1.5" fill="#FDD835"/></svg>',
    name:'태국 · 방콕', cityKey:'bangkok', cities:'카오산로드 · 짜뚜짝 · 왓포 · 왓아룬 · 아시아티크', desc:'사원·쇼핑·맛집·나이트라이프 완벽 조화', rating:4.7,
    tips:'4~5월 송끄란 축제, BTS(방콕 지상철) 활용 이동 / 방콕은 미슐랭 스트릿푸드 맛집 다수',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 팟타이 로컬 노점·레스토랑 (60바트~)',
-       '🥘 쏨땀(파파야 샐러드)·카우팟 (60바트~)',
-       '🦐 차오프라야 리버사이드 씨푸드 (200바트~)',
-       '🍢 짜뚜짝 주말시장 로컬 먹거리 (50바트~)',
-       '🌮 야오와랏(차이나타운) 야시장 딤섬·굴전 (100바트~)',
-       '🍹 아시아티크 야시장 타이 스타일 커피 (80바트~)',
-       '🌮 후알람퐁 인근 카오만까이(닭밥) (60바트~)',
-     ]},
+      cats:[
      {key:'sight', label:'⛩️ 관광·명소', items:[
-       '⛩️ 왓포 사원 (100B)',
-       '🌅 왓아룬 (100B)',
-       '🛍️ 짜뚜짝 주말시장 (무료)',
-       '🌆 야시장 아시아티크',
-       '🚢 차오프라야 보트투어',
+       {e:'⛩️', name:'왓 포(와불 사원)', loc:'라따나코신섬', price:'200바트', tip:'15m 황금 와불이 압도적, 타이 마사지 발상지'},
+       {e:'🌅', name:'왓 아룬(새벽의 사원)', loc:'차오프라야 강변', price:'100바트', tip:'일몰 직후 조명 켜진 뷰가 최고'},
+       {e:'🛍️', name:'짜뚜짝 주말 시장', loc:'모칫역 인근', price:'무료', tip:'토·일만 오픈, 8,000개 부스 미로 같은 구조'},
+       {e:'🌿', name:'룸피니 공원', loc:'실롬 인근', price:'무료', tip:'도심 속 오아시스, 아침 타이치·이구아나 서식'},
+       {e:'🌃', name:'아시아티크 야시장', loc:'차오프라야 강변', price:'무료', tip:'선착장 무료 보트 운행, 저녁 6시 이후 활기'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍜', name:'팟타이·팟씨유', loc:'야시장·카오산', price:'60바트~', tip:'팁싸마이(Thip Samai)가 방콕 팟타이 원조'},
+       {e:'🍛', name:'카오만가이·쏨땀', loc:'전역 노점', price:'50바트~', tip:'게이 쏨땀이 줄 서는 맛집, 매운 정도 조절 가능'},
+       {e:'🦞', name:'방콕 씨푸드', loc:'아시아티크·수안룸', price:'500바트~', tip:'짜런씨푸드·소이포차나가 유명, 랍스터 시가'},
+       {e:'☕', name:'카오산 루프탑 바', loc:'카오산로드', price:'200바트~', tip:'저녁 8시 이후 라이브 음악과 함께 분위기 최고'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourismthailand.org/ko'}]},
@@ -3111,22 +3133,18 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F2F1"/><circle cx="28" cy="12" r="5" fill="#FFD54F" opacity=".8"/><path d="M6 28 Q10 22 14 24 Q16 20 20 22 Q22 18 24 20 Q26 22 28 28L28 36H6z" fill="#4DB6AC" opacity=".5"/><path d="M8 26 Q10 20 12 22" fill="none" stroke="#00695C" stroke-width="1.5"/><path d="M18 22 Q20 16 22 18" fill="none" stroke="#00695C" stroke-width="1.5"/></svg>',
    name:'태국 · 치앙마이·푸켓', cityKey:'chiangmai', cities:'도이수텝 · 님만해민 · 피피섬 · 빠통해변 · 팡아만', desc:'힐링 사원·코끼리·에메랄드 바다', rating:4.7,
    tips:'치앙마이 11월 이펑(등불)축제, 푸켓 11~4월 건기',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 카오소이 북부 카레라면 (60바트~)',
-       '🥘 카이 양(그릴 치킨)·쏨땀 (70바트~)',
-       '🍢 님만해민 야시장 먹거리 (50바트~)',
-       '🌮 치앙마이 선데이 나이트마켓 로컬 푸드 (80바트~)',
-       '🦐 푸켓 빠통 씨푸드 바 (200바트~)',
-       '🍹 카오락·라와이 씨푸드 레스토랑 (300바트~)',
-       '🍵 치앙마이 도이창 커피 (60바트~)',
-     ]},
+      cats:[
      {key:'sight', label:'🐘 관광·자연', items:[
-       '🐘 코끼리 보호소 체험',
-       '⛩️ 도이수텝 사원',
-       '🏖️ 피피섬 투어',
-       '🌊 팡아만 보트 투어',
-       '🌿 님만해민 카페거리',
+       {e:'⛩️', name:'도이수텝 사원', loc:'치앙마이 산중', price:'30바트', tip:'306개 계단 또는 나가 계단, 전망 절경'},
+       {e:'🐘', name:'코끼리 생추어리', loc:'치앙마이 외곽', price:'2,500바트~', tip:'윤리적 관광, 타기 금지 기관 선택 중요'},
+       {e:'🏖️', name:'피피섬', loc:'끄라비 인근', price:'피피 투어 1,500바트~', tip:'마야베이는 사전 예약제, 6~10월 비수기 저렴'},
+       {e:'🌊', name:'팡아만·제임스본드 섬', loc:'푸켓 북쪽', price:'투어 1,200바트~', tip:'카약으로 석회암 동굴 탐험이 하이라이트'},
+       {e:'🌴', name:'빠통 해변', loc:'푸켓 서해안', price:'무료', tip:'파라솔 대여 200바트, 방라로드 야시장 인근'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍜', name:'카오소이(코코넛 커리 라멘)', loc:'치앙마이 님만해민', price:'80바트~', tip:'카오소이 람두안이 유명 맛집, 에그누들 필수'},
+       {e:'🌮', name:'님만해민 카페 거리', loc:'치앙마이 님만해민', price:'150바트~', tip:'힙스터 카페 밀집, 아트 갤러리와 함께 산책'},
+       {e:'🍢', name:'치앙마이 나이트 바자', loc:'치앙마이 중심', price:'50바트~', tip:'토·일 워킹 스트릿이 가장 큰 규모'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourismthailand.org/ko'}]},
@@ -3134,22 +3152,18 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF3E0"/><path d="M5 28 Q10 24 15 28 Q20 32 25 28 Q30 24 35 28L35 36H5z" fill="#4FC3F7" opacity=".4"/><circle cx="28" cy="10" r="4" fill="#FF8F00"/><path d="M18 28 L18 18 Q20 14 22 18 L22 28" fill="none" stroke="#8D6E63" stroke-width="2"/><path d="M14 18 Q18 14 22 16 Q18 20 14 18z" fill="#66BB6A"/><path d="M22 16 Q26 12 30 14 Q26 18 22 16z" fill="#4CAF50"/><rect x="15" y="28" width="3" height="8" fill="#5D4037" rx="1"/><rect x="22" y="28" width="3" height="8" fill="#5D4037" rx="1"/></svg>',
    name:'발리 (인도네시아)', cityKey:'bali', cities:'꾸따 · 우붓 · 세미냑 · 누사두아 · 울루와투', desc:'한국인 허니문 1위. 신성한 사원과 에메랄드 바다', rating:4.8,
    tips:'4~10월 건기 최적, 우붓 라이스테라스 아침 방문 추천',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 나시고렝(볶음밥)·미고렝 로컬 식당 (30,000루피아~)',
-       '🥘 바비굴링(발리 통돼지구이) 시우 식당 (50,000루피아~)',
-       '🍢 우붓 나이트마켓 새틴·사테 (20,000루피아~)',
-       '🦐 짐바란 씨푸드 해변 BBQ 저녁 (150,000루피아~)',
-       '🍹 세미냑 비치 선셋바 칵테일 (80,000루피아~)',
-       '🍰 우붓 카페거리 아사이볼·바나나 팬케이크 (50,000루피아~)',
-     ]},
+      cats:[
      {key:'sight', label:'🌅 관광·자연', items:[
-       '🌅 따나롯 사원 일몰 (무료)',
-       '🌾 떼갈랄랑 라이스테라스',
-       '💆 우붓 스파 (300,000루피아~)',
-       '🏖️ 꾸따·스미냑 해변',
-       '⛩️ 울루와투 사원 케착댄스',
-       '🌊 누사페니다 스노클링',
+       {e:'⛩️', name:'우붓 따나롯 사원', loc:'발리 서쪽 해안', price:'60,000루피아', tip:'일몰 시 바다 위 사원 실루엣이 압도적'},
+       {e:'🌊', name:'울루와투 절벽 사원', loc:'발리 남쪽', price:'50,000루피아', tip:'저녁 6시 케착 댄스 공연과 함께 일몰 감상'},
+       {e:'🌾', name:'우붓 테구랄랑 계단식 논', loc:'우붓 북쪽', price:'35,000루피아', tip:'아침 안개 걷히는 오전 8~9시가 촬영 최적'},
+       {e:'🐒', name:'우붓 원숭이 숲', loc:'우붓 중심', price:'80,000루피아', tip:'가방·선글라스·음식 철저히 숨기기'},
+       {e:'🏄', name:'꾸따·스미냑 서핑', loc:'발리 서쪽', price:'강습 200,000루피아~', tip:'꾸따가 초보자, 짱구가 중급 이상 서퍼 성지'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍛', name:'나시고랭·미고랭', loc:'전역', price:'30,000루피아~', tip:'인도네시아 국민 볶음밥·볶음면, 계란 추가 필수'},
+       {e:'🥩', name:'사테·바비굴링', loc:'우붓·스미냑', price:'50,000루피아~', tip:'이부오카 우붓 본점 바비굴링이 발리 최고'},
+       {e:'☕', name:'짱구 카페 투어', loc:'짱구', price:'50,000루피아~', tip:'선셋 로드 카페 거리, 인스타 명소 밀집'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.indonesia.travel'}]},
@@ -3157,25 +3171,21 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E3F2FD"/><rect x="16" y="10" width="8" height="22" fill="#0288D1" rx="2"/><path d="M16 10 Q20 6 24 10" fill="#0288D1"/><ellipse cx="20" cy="10" rx="8" ry="3" fill="#29B6F6"/><circle cx="20" cy="9" r="4" fill="#B3E5FC"/><circle cx="14" cy="22" r="2.5" fill="#66BB6A"/><circle cx="26" cy="22" r="2.5" fill="#66BB6A"/><text x="17" y="20" font-size="5" fill="white" font-weight="900">MBS</text></svg>',
    name:'싱가포르', cityKey:'singapore', cities:'마리나베이 · 가든스바이더베이 · 센토사 · 차이나타운', desc:'아시아 최고 도시 국가. 깨끗하고 안전한 여행', rating:4.7,
    tips:'비자 무료(30일), 그랩 앱 필수, EZ-Link 카드 교통 편리',
-   cats:[
+      cats:[
+     {key:'sight', label:'🌿 관광·명소', items:[
+       {e:'🌿', name:'가든스바이더베이', loc:'마리나베이', price:'28SGD', tip:'슈퍼트리 그로브 야간 조명 쇼 오후 7:45'},
+       {e:'🌃', name:'마리나베이 샌즈 전망', loc:'베이프런트역', price:'29SGD(스카이파크)', tip:'인피니티 풀은 투숙객 전용, 전망대만 가능'},
+       {e:'🦁', name:'싱가포르 동물원·나이트 사파리', loc:'만다이', price:'49SGD~', tip:'나이트 사파리는 밤 7시 30분 오픈, 예약 추천'},
+       {e:'🎡', name:'센토사 유니버설 스튜디오', loc:'센토사섬', price:'83SGD', tip:'평일 오픈 직후 인기 어트랙션 먼저 공략'},
+       {e:'🕌', name:'차이나타운·리틀인디아', loc:'차이나타운·리틀인디아', price:'무료', tip:'문화 다양성 체험, 불아사·스리비라마칼리암만'},
+     ]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🦀 칠리크랩·블랙페퍼크랩 점보 식당 (60SGD~)',
-       '🍜 하이난 치킨라이스 티엔티엔 (5SGD~)',
-       '🥘 호커센터 로컬 먹거리 (3SGD~)',
-       '🍢 뉴튼 서커스 호커센터 씨푸드 (20SGD~)',
-       '🍱 차이나타운 딤섬·바쿠테 (10SGD~)',
-       '🌮 리틀인디아 로티프라타·커리 (5SGD~)',
-       '🍰 카야토스트·코피오 야쿤 아침식사 (5SGD~)',
+       {e:'🍗', name:'하이난 치킨라이스', loc:'호커센터', price:'5SGD~', tip:'맥스웰 호커센터 티엔티엔이 가장 유명'},
+       {e:'🦀', name:'칠리크랩', loc:'점보씨푸드·롱비치', price:'50SGD~', tip:'번(빵)에 찍어 먹는 소스가 메인, 1인 1/2마리'},
+       {e:'🍜', name:'락사·바쿠테', loc:'호커센터', price:'5SGD~', tip:'328 카통 락사가 싱가포르 락사 원조 경쟁'},
      ]},
      {key:'cafe', label:'🍹 바·카페', items:[
-       '🍹 클락키 루프탑 바·칵테일 (20SGD~)',
-     ]},
-     {key:'sight', label:'🌿 관광·명소', items:[
-       '🌿 가든스바이더베이 (무료~28SGD)',
-       '🏙️ 마리나베이샌즈 전망',
-       '🌊 센토사섬 유니버설스튜디오',
-       '🛍️ 오차드 로드 쇼핑',
-       '🌉 클락키 리버사이드',
+       {e:'🍸', name:'루프탑 바·클락키', loc:'클락키·CBD', price:'20SGD~', tip:'레벨33·1-알티튜드 루프탑 뷰 압도적'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visitsingapore.com/ko_kr'}]},
@@ -3183,22 +3193,18 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F7FA"/><circle cx="28" cy="10" r="4" fill="#FFD54F" opacity=".9"/><path d="M5 26 Q10 20 15 24 Q20 28 25 24 Q30 20 35 24L35 36H5z" fill="#26C6DA" opacity=".5"/><path d="M12 24 Q14 18 16 22" fill="none" stroke="#0097A7" stroke-width="1.5"/><path d="M22 22 Q24 16 26 20" fill="none" stroke="#0097A7" stroke-width="1.5"/></svg>',
    name:'필리핀 · 세부·보라카이', cityKey:'cebu', cities:'세부 · 막탄섬 · 보라카이 · 팔라완 · 코론', desc:'다이빙·스노클링 천국. 투명한 바다', rating:4.6,
    tips:'11~5월 건기 최적, 보라카이 입장료 75페소',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍖 세부 레촌(통돼지구이) 안톤스 (200페소~)',
-       '🦐 이사왁 해산물 찜요리 (300페소~)',
-       '🍜 시눌록·아도보 필리핀 전통음식 (150페소~)',
-       '🥘 망고·타호 현지 과일 디저트 (50페소~)',
-       '🍢 보라카이 D몰 야시장 먹거리 (100페소~)',
-       '🌮 D몰 해산물 바비큐 (500페소~)',
-       '🍹 망고마가리타·불락불락 현지 칵테일 (150페소~)',
-     ]},
+      cats:[
      {key:'sight', label:'🌊 관광·자연', items:[
-       '🌊 보라카이 화이트비치',
-       '🤿 세부 오슬롭 고래상어',
-       '🐢 모알보알 스노클링',
-       '🏝️ 팔라완 엘니도 투어',
-       '⛩️ 막탄 세부 세인트피터 성당',
+       {e:'🌊', name:'보라카이 화이트비치', loc:'보라카이섬', price:'페리+환승', tip:'4km 파우더 백사장, 선셋 뷰가 전 세계 10위'},
+       {e:'🤿', name:'팔라완 엘니도 투어', loc:'엘니도', price:'투어A 1,500페소~', tip:'4가지 투어 코스 중 A·C 코스가 가장 인기'},
+       {e:'🏝️', name:'막탄섬 스노클링', loc:'세부 막탄', price:'1,500페소~', tip:'세부 시내서 차량 30분, 숙소 연계 투어 편리'},
+       {e:'⛪', name:'산토니뇨 성당', loc:'세부 시내', price:'무료', tip:'필리핀 가톨릭 발상지, 마젤란 십자가 옆 위치'},
+       {e:'🐋', name:'오슬롭 고래상어 투어', loc:'세부 오슬롭', price:'1,000페소~', tip:'새벽 4시 출발 필요, 윤리 논란 있어 선택적'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🥩', name:'세부 레촌(통돼지 구이)', loc:'세부 시내', price:'500페소~', tip:'라 페라 레촌·CnT가 유명, 바삭한 껍데기가 핵심'},
+       {e:'🍢', name:'안토이 바베큐', loc:'세부 라호그', price:'20페소~/꼬치', tip:'야간 바비큐 노점 문화, 현지인 저녁 회식 장소'},
+       {e:'🦞', name:'보라카이 씨푸드', loc:'보라카이 D몰', price:'300페소~', tip:'디탈탈·파사파사 레스토랑 씨푸드 플래터'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourism.gov.ph'}]},
@@ -3206,20 +3212,17 @@ const INTL_DESTS = [
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8EAF6"/><rect x="14" y="20" width="5" height="16" fill="#5C6BC0" rx="1"/><rect x="21" y="20" width="5" height="16" fill="#7986CB" rx="1"/><rect x="12" y="16" width="7" height="5" fill="#3949AB" rx="1"/><rect x="21" y="16" width="7" height="5" fill="#5C6BC0" rx="1"/><path d="M14 16 Q17.5 8 18.5 16" fill="#3949AB" opacity=".8"/><path d="M21 16 Q24.5 6 25.5 16" fill="#5C6BC0" opacity=".8"/><path d="M11 20h18" stroke="#3949AB" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="2.5" fill="#FFCC02" opacity=".8"/></svg>',
    name:'말레이시아 · 쿠알라룸푸르', cityKey:'kl', cities:'KLCC · 페트로나스 트윈타워 · 부킷빈탕 · 바투동굴', desc:'다민족 문화 도시. 음식 다양성과 저렴한 물가', rating:4.5,
    tips:'비자 무료(90일), KL센트럴에서 도심 연결 편리',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 나시레막(코코넛밥) 로컬 식당 (5링깃~)',
-       '🥘 바쿠테(갈비탕) 클랑 원조 (15링깃~)',
-       '🍢 잘란 알로 야시장 먹거리 (10링깃~)',
-       '🦐 차이나타운 페탈링 야시장 딤섬·해산물 (10링깃~)',
-       '🍹 이폥 화이트커피·올드타운 카페 (10링깃~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏙️ 관광·명소', items:[
-       '🏙️ 페트로나스 트윈타워 (95링깃)',
-       '⛩️ 바투동굴 (무료)',
-       '🛍️ 부킷빈탕 쇼핑',
-       '🌿 KLCC 공원 (무료)',
-       '🎠 선웨이 라군 워터파크',
+       {e:'🏙️', name:'페트로나스 트윈타워', loc:'KLCC', price:'무료(외관)/85RM(전망대)', tip:'스카이브릿지 입장권 온라인 사전 예약 필수'},
+       {e:'🦇', name:'바투 동굴', loc:'KL 북쪽', price:'무료', tip:'272개 계단, 황금 무루간 신상이 42m 위용'},
+       {e:'🛍️', name:'부킷빈탕 쇼핑', loc:'부킷빈탕', price:'무료', tip:'파빌리온·버자야타임스 스퀘어 연결 대형 몰'},
+       {e:'🕌', name:'국립 모스크·메르데카 광장', loc:'KL 중심', price:'무료', tip:'모스크 내부 관람 시 복장 규정 엄격'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍛', name:'나시르막', loc:'호커센터 전역', price:'3RM~', tip:'말레이시아 국민 아침밥, 코코넛 밥+삼발 소스'},
+       {e:'🍜', name:'차쿠에테오·호켄미', loc:'차이나타운', price:'8RM~', tip:'페탈링 스트릿 야시장 주변 노점 차이니즈 면'},
+       {e:'🥘', name:'바쿠테·로티 차나이', loc:'전역', price:'10RM~', tip:'클랑 바쿠테가 원조, 로티 차나이는 아침 필수'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourism.gov.my/ko'}]},
@@ -3228,22 +3231,21 @@ const INTL_DESTS = [
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FCE4EC"/><path d="M20 4 L17 28 L23 28z" fill="none" stroke="#AD1457" stroke-width="1.5" stroke-linejoin="round"/><line x1="17.5" y1="14" x2="22.5" y2="14" stroke="#AD1457" stroke-width="1.2"/><line x1="17" y1="20" x2="23" y2="20" stroke="#AD1457" stroke-width="1.2"/><rect x="16" y="28" width="8" height="2" fill="#AD1457" rx="1"/><rect x="13" y="32" width="14" height="4" fill="#AD1457" rx="1"/><circle cx="30" cy="10" r="2.5" fill="#FFD54F"/></svg>',
    name:'프랑스 · 파리', cityKey:'paris', cities:'에펠탑 · 루브르 · 베르사유 · 샹젤리제 · 몽마르트', desc:'예술·낭만·패션의 도시. 한국인 유럽 여행 1위', rating:4.9,
    tips:'박물관 패스(파리 뮤지엄 패스) 2/4/6일권 추천, 지하철(Metro) 활용',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🥐 파리 크루아상·에끌레어 베이커리 (2€~)',
-       '🧀 마레 지구 치즈·와인 바 (15€~)',
-       '🍷 몽마르트 비스트로 코스 요리 (20€~)',
-       '🥗 생제르맹 카페 크레이프·갈레트 (8€~)',
-       '🦪 몽파르나스 굴·해산물 플래터 (30€~)',
-       '🍰 라뒤레·피에르에르메 마카롱 (3€~)',
-       '🥩 파리 스테이크 프리트·오뇨그라탱 (20€~)',
-     ]},
+      cats:[
      {key:'sight', label:'🗼 관광·명소', items:[
-       '🗼 에펠탑 (26.1€~야경 필수)',
-       '🏛️ 루브르 박물관 (17€)',
-       '🏰 베르사유 궁전 (20€)',
-       '🎨 오르세 미술관 (16€)',
-       '🛍️ 샹젤리제·마레지구 쇼핑',
+       {e:'🗼', name:'에펠탑', loc:'7구 샹드마르스', price:'26.8€~', tip:'꼭대기 층 표는 온라인 사전 구매 필수 (1~3개월 전)'},
+       {e:'🏛️', name:'루브르 박물관', loc:'1구 루브르', price:'22€', tip:'수·금 야간 오픈, 수요일이 가장 한산'},
+       {e:'🌸', name:'베르사유 궁전', loc:'파리 외곽', price:'21.5€', tip:'RER C선 40분, 정원 무료, 화요일 휴관'},
+       {e:'⛪', name:'노트르담 대성당', loc:'4구 시테섬', price:'무료', tip:'2025년 재개관, 내부 복원 완료 확인 후 방문'},
+       {e:'🎨', name:'오르세 미술관', loc:'7구 센 강변', price:'16€', tip:'인상파 작품 집결, 모네·르누아르·반 고흐'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🥐', name:'파리 크루아상·베이커리', loc:'전역 불랑제리', price:'1.5€~', tip:'동네 빵집이 진짜, 고파스트·위베르 불랑제리 추천'},
+       {e:'🍷', name:'파리 비스트로 와인바', loc:'마레·몽마르트', price:'30€~', tip:'르 바 뒤 마르쉐·카브 뒤 팔레가 현지인 픽'},
+       {e:'🧅', name:'파리 어니언 수프·스테이크', loc:'비스트로 전역', price:'15€~', tip:'오 피에 드 코숑은 24시간 영업 파리 명물'},
+     ]},
+     {key:'cafe', label:'☕ 카페·디저트', items:[
+       {e:'☕', name:'파리 카페 테라스', loc:'생제르맹·마레', price:'3€~', tip:'카페 드 플로르·레 두 마고가 100년 전통 카페'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 쉥겐비자',url:'https://www.schengenvisainfo.com/ko'},{lbl:'🗺️ 관광정보',url:'https://kr.france.fr/ko'}]},
@@ -3251,23 +3253,18 @@ const INTL_DESTS = [
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF8E1"/><path d="M18 26 Q14 22 14 18 Q14 12 20 10 Q26 12 26 18 Q26 22 22 26z" fill="none" stroke="#F57F17" stroke-width="1.5"/><ellipse cx="20" cy="18" rx="4" ry="6" fill="#FFE0B2" opacity=".5"/><rect x="19" y="26" width="2" height="10" fill="#795548" rx="1"/></svg>',
    name:'이탈리아 · 로마·피렌체', cityKey:'rome', cities:'콜로세움 · 바티칸 · 두오모 · 베네치아 · 아말피', desc:'역사·예술·미식의 나라. 유네스코 세계유산 최다', rating:4.8,
    tips:'콜로세움·바티칸 사전 예약 필수, 베네치아 관광세 별도',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍕 나폴리 원조 마르게리타 피자 (5€~)',
-       '🍝 로마 까르보나라·아마트리치아나 (12€~)',
-       '🍦 피렌체 젤라또 (2€~)',
-       '🧀 파르마 프로슈토·파르미지아노 (10€~)',
-       '🍷 토스카나 와이너리 투어·시음 (30€~)',
-       '🥩 피렌체 비스테까 알라 피오렌티나 (50€~)',
-       '🍜 베네치아 시칠리안 해산물 리조또 (20€~)',
-       '🍰 티라미수·판나코타 이탈리아 디저트 (5€~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏛️ 관광·역사', items:[
-       '🏛️ 콜로세움 (16€)',
-       '⛪ 바티칸 시스티나 예배당 (17€)',
-       '🌸 피렌체 두오모 (15€)',
-       '🚢 베네치아 수상버스',
-       '🌊 아말피 해안 드라이브',
+       {e:'🏛️', name:'콜로세움', loc:'로마 중심', price:'16€', tip:'온라인 사전 예약 필수, 포로 로마노 세트권 추천'},
+       {e:'⛪', name:'바티칸 시스티나 예배당', loc:'바티칸', price:'20€', tip:'오전 8시 개관 직후 혼잡 덜함, 미켈란젤로 천장화'},
+       {e:'⛲', name:'트레비 분수', loc:'로마 3구', price:'무료', tip:'새벽 5~7시가 가장 한산, 야경도 아름다움'},
+       {e:'🎨', name:'피렌체 우피치 미술관', loc:'피렌체 중심', price:'25€', tip:'온라인 사전 예약 필수, 보티첼리·레오나르도'},
+       {e:'🚤', name:'베네치아 수상버스', loc:'베네치아', price:'9.5€/회', tip:'1·2번 바포레토로 대운하 전체 구경 가능'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍕', name:'나폴리 마르게리타 피자', loc:'나폴리·로마', price:'8€~', tip:'피제리아 브란디가 마르게리타 발원지'},
+       {e:'🍝', name:'로마 카르보나라·트라토리아', loc:'트라스테베레', price:'12€~', tip:'리오체사리나·치체루아케오가 현지인 추천'},
+       {e:'🍦', name:'피렌체 젤라토', loc:'전역 젤라테리아', price:'2.5€~', tip:'페르케노·카르베·데이 네리가 피렌체 3대 젤라토'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.italia.it/ko'}]},
@@ -3275,22 +3272,18 @@ const INTL_DESTS = [
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF3E0"/><path d="M12 36 L12 22 Q12 14 20 10 Q28 14 28 22 L28 36" fill="none" stroke="#E65100" stroke-width="1.5"/><path d="M14 18 Q17 14 20 16 Q23 14 26 18" fill="none" stroke="#EF6C00" stroke-width="1.2"/><circle cx="20" cy="8" r="3" fill="#FDD835"/></svg>',
    name:'스페인 · 바르셀로나·마드리드', cityKey:'barcelona', cities:'사그라다파밀리아 · 구엘공원 · 프라도미술관 · 플라멩코', desc:'가우디 건축과 열정의 나라. 타파스·와인', rating:4.8,
    tips:'사그라다파밀리아 예약 필수(수개월 전), 스페인 물가 서유럽 최저',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍤 라 보케리아 시장 타파스·하몽 (10€~)',
-       '🥘 파에야 해산물·고기 (15€~)',
-       '🍷 마드리드 타파스 바 (5€~)',
-       '🦑 갈리시아 문어 요리 뿔뽀 알라 가예가 (15€~)',
-       '🥗 가스파초·살모레호 (5€~)',
-       '🍺 상그리아·모히또 바르셀로나 해변바 (8€~)',
-       '🌮 마드리드 보카디요·추로스 (3€~)',
-     ]},
+      cats:[
      {key:'sight', label:'⛪ 관광·건축', items:[
-       '⛪ 사그라다파밀리아 (26€)',
-       '🌈 구엘공원 (10€)',
-       '🏛️ 프라도미술관 (15€)',
-       '💃 플라멩코 공연',
-       '🌊 바르셀로네타 해변',
+       {e:'⛪', name:'사그라다 파밀리아', loc:'에이샴플레', price:'26€~', tip:'2026년 완공 예정, 온라인 사전 예약 필수'},
+       {e:'🌿', name:'구엘 공원', loc:'그라시아', price:'10€', tip:'모자이크 테라스는 시간제 입장, 비수기도 예약'},
+       {e:'🏖️', name:'바르셀로네타 해변', loc:'해안가', price:'무료', tip:'도심 해수욕장, 7~8월 성수기 붐빔'},
+       {e:'🎨', name:'피카소 미술관', loc:'고딕 지구', price:'14€', tip:'월 무료 입장, 줄 없이 오전 10시 전 도착'},
+       {e:'💃', name:'플라멩코 공연', loc:'바르셀로나 시내', price:'30€~', tip:'타블라오 코르도베스가 가장 정통, 저녁 공연 추천'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🥘', name:'보케리아 시장 하몽·타파스', loc:'람블라스 거리', price:'10€~', tip:'시장 내 바 엘퀴뮤·핀호가 신선한 하몽 타파스'},
+       {e:'🦑', name:'카탈루냐 빠에야·씨푸드', loc:'바르셀로네타', price:'15€~', tip:'바르셀로나식 피데오(국수) 빠에야도 별미'},
+       {e:'🍷', name:'고딕 지구 와인바·베르무트', loc:'고딕 지구', price:'3€~', tip:'점심 전 베르무트 타임이 현지 문화'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.spain.info/ko'}]},
@@ -3298,23 +3291,18 @@ const INTL_DESTS = [
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8EAF6"/><rect x="17" y="4" width="6" height="32" fill="#1A237E" rx="1"/><rect x="19.5" y="4" width="1" height="32" fill="#C62828"/><rect x="4" y="17" width="32" height="6" fill="#1A237E" rx="1"/><rect x="4" y="19.5" width="32" height="1" fill="#C62828"/><rect x="17" y="17" width="6" height="6" fill="#C62828"/></svg>',
    name:'영국 · 런던', cityKey:'london', cities:'버킹엄 궁전 · 빅벤 · 대영박물관 · 타워브리지 · 해리포터', desc:'왕실·박물관·역사의 나라. 해리포터 성지', rating:4.7,
    tips:'대영박물관·국립미술관 무료, 굴뚝카페·피시앤칩스 필수',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🐟 피시 앤 칩스 해리스피시앤칩스 (10£~)',
-       '🥩 선데이 로스트·비프웰링턴 (20£~)',
-       '🍺 펍 에일맥주·포테이토웨지 (8£~)',
-       '🧁 노팅힐 포토벨로 마켓 스트릿푸드 (5£~)',
-       '🍛 브릭레인 커리 인도 식당 (12£~)',
-       '🥐 코벤트가든 카페·애프터눈티 (30£~)',
-       '🌮 버러마켓 세계 길거리음식 (8£~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏰 관광·역사', items:[
-       '🏛️ 대영박물관 (무료)',
-       '🏰 버킹엄 궁전 근위병 교대식',
-       '🌉 타워브리지·타워오브런던',
-       '⚡ 해리포터 스튜디오 (59.5£)',
-       '🎡 런던아이 (34£)',
-       '🛍️ 카나비 스트리트·코벤트가든',
+       {e:'🏰', name:'타워 오브 런던', loc:'타워 힐', price:'33.6£', tip:'비프이터 가이드 투어 무료 포함, 왕관 보석 전시'},
+       {e:'🏛️', name:'대영 박물관', loc:'블룸즈버리', price:'무료', tip:'로제타석·이집트 미라, 예약 없이 입장 가능'},
+       {e:'🎡', name:'런던 아이', loc:'사우스뱅크', price:'33£~', tip:'일몰 30분 전 탑승이 야경+노을 동시 감상'},
+       {e:'⚡', name:'해리포터 스튜디오', loc:'왓포드 정션', price:'55£~', tip:'사전 예약 2~3개월 전 필수'},
+       {e:'👑', name:'버킹엄 궁전 근위병 교대식', loc:'세인트 제임스', price:'무료', tip:'월·수·금·일 11시, 우천 취소될 수 있음'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🐟', name:'피시앤칩스', loc:'전역', price:'10£~', tip:'록앤솔레·골든 유니온이 런던 명물'},
+       {e:'☕', name:'버러 마켓', loc:'런던 브릿지', price:'5£~', tip:'수~토 오픈, 세계 각국 길거리 음식 천국'},
+       {e:'🍛', name:'브릭레인 커리', loc:'이스트 런던', price:'12£~', tip:'방글라데시 커리 골목, 일요일 빈티지 마켓도 함께'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visitbritain.com/ko/ko'}]},
@@ -3322,21 +3310,18 @@ const INTL_DESTS = [
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E3F2FD"/><path d="M4 30 L11 16 L16 22 L20 10 L24 22 L29 16 L36 30z" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 22 L20 10 L24 22z" fill="white" stroke="#90CAF9" stroke-width="1"/><path d="M4 30h32v4H4z" fill="#90CAF9" rx="1"/><rect x="23" y="8" width="8" height="8" rx="2" fill="#C62828" opacity=".85"/><path d="M25.5 12h3M27 10v4" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>',
    name:'스위스 · 인터라켄·취리히', cityKey:'swiss', cities:'융프라우 · 루체른 · 마테호른 · 베른 · 제네바', desc:'알프스 설경과 자연. 한국인 유럽 허니문 1위', rating:4.9,
    tips:'스위스 패스(기차·버스 무제한) 추천, 유럽에서 가장 물가 높음',
-   cats:[
-     {key:'food', label:'🧀 맛집·먹거리', items:[
-       '🧀 퐁뒤·라클렛 치즈 요리 (25CHF~)',
-       '🍫 린트·슈프링글리 초콜릿 (5CHF~)',
-       '🥩 취리히 칼브스게슈네첼테스 송아지 요리 (30CHF~)',
-       '🍺 루체른 로스테리 비어 (6CHF~)',
-       '🥐 제네바 크루아상·케이크 (3CHF~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏔️ 관광·자연', items:[
-       '🏔️ 융프라우요흐 (243CHF)',
-       '🏔️ 마테호른 뷰 체르마트',
-       '🌊 루체른 호수·카펠교',
-       '🚞 산악열차 골든패스',
-       '🌿 라인폭포 유럽 최대',
-       '🏛️ 베른 구시가지 (유네스코)',
+       {e:'🏔️', name:'융프라우요흐', loc:'인터라켄', price:'220CHF~', tip:'날씨 예보 확인 필수, 흐린 날 헛걸음 주의'},
+       {e:'⛰️', name:'마테호른 전망(체르마트)', loc:'체르마트', price:'108CHF(고르너그라트)', tip:'무공해 도시 체르마트, 차 없이 전기차만 운행'},
+       {e:'🦁', name:'루체른 카펠교·사자 기념비', loc:'루체른', price:'무료', tip:'14세기 목조다리, 마크 트웨인이 극찬한 사자상'},
+       {e:'🏛️', name:'베른 구시가', loc:'베른', price:'무료', tip:'유네스코 세계유산 아케이드 거리, 시계탑 1분 전 대기'},
+       {e:'🌊', name:'제네바 분수(제토)', loc:'제네바 호수', price:'무료', tip:'140m 분수가 호수에서 솟구침, 야간 조명도 장관'},
+     ]},
+     {key:'food', label:'🧀 맛집·먹거리', items:[
+       {e:'🧀', name:'퐁뒤·라클렛', loc:'인터라켄·체르마트', price:'30CHF~', tip:'산장 레스토랑 퐁뒤가 분위기 최고, 화이트 와인 필수'},
+       {e:'🍫', name:'스위스 초콜릿·시식', loc:'린트·슈프륑리', price:'10CHF~', tip:'린트 초콜릿 공장 투어(쾰른), 슈프륑리는 취리히 본점'},
+       {e:'🥣', name:'뮤즐리·뢰스티', loc:'전역', price:'15CHF~', tip:'스위스식 감자전 뢰스티, 호텔 아침식사로 많이 나옴'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🚞 스위스패스',url:'https://www.sbb.ch/ko'},{lbl:'🗺️ 관광정보',url:'https://www.myswitzerland.com/ko'}]},
@@ -3344,21 +3329,18 @@ const INTL_DESTS = [
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#EFEBE9"/><path d="M16 8 Q16 4 20 4 Q24 4 24 8 L24 18 L16 18z" fill="#5D4037"/><path d="M14 16h12l2 3H12z" fill="#6D4C41"/><rect x="12" y="19" width="16" height="17" fill="#8D6E63" rx="1"/><rect x="14" y="22" width="4" height="5" fill="#BCAAA4" rx="1"/><rect x="22" y="22" width="4" height="5" fill="#BCAAA4" rx="1"/><rect x="17" y="27" width="6" height="9" fill="#6D4C41" rx="1"/><circle cx="20" cy="12" r="2.5" fill="#FDD835" opacity=".8"/><path d="M6 18h5v18H6z" fill="#D32F2F" rx="1"/><path d="M6 18h5v6H6z" fill="#1B5E20" rx="1"/></svg>',
    name:'독일 · 뮌헨·베를린', cityKey:'munich', cities:'노이슈반슈타인 성 · 브란덴부르크 · 체크포인트 찰리 · 옥토버페스트', desc:'동화 같은 성과 역사의 나라. 맥주·소시지', rating:4.6,
    tips:'10월 옥토버페스트, 노이슈반슈타인 성 예약 필수',
-   cats:[
-     {key:'food', label:'🍺 맛집·먹거리', items:[
-       '🍺 뮌헨 호프브로이하우스 바이에른 맥주·프레첼 (5€~)',
-       '🥩 바이스부르스트·슈바이네브라텐 (10€~)',
-       '🌭 뉘른베르크 브라트부르스트 소시지 (3€~)',
-       '🍲 자우어크라우트·아이스바인 독일 전통 (15€~)',
-       '🥐 베를린 커리부르스트 (3€~)',
-       '🍷 라인강 와인 마을 라인가우 (5€~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏰 관광·역사', items:[
-       '🏰 노이슈반슈타인 성 (15€)',
-       '🏛️ 브란덴부르크 문 (무료)',
-       '🍺 옥토버페스트 (9~10월)',
-       '🏛️ 베를린 박물관섬',
-       '🚞 로맨틱 가도 드라이브',
+       {e:'🏰', name:'노이슈반슈타인 성', loc:'퓌센', price:'15€', tip:'디즈니 성 모델, 온라인 사전 예약 필수'},
+       {e:'🏛️', name:'독일 박물관', loc:'뮌헨 이자르섬', price:'15€', tip:'세계 최대 과학기술 박물관, 반나절 이상 소요'},
+       {e:'🏗️', name:'브란덴부르크 문', loc:'베를린 파리저 광장', price:'무료', tip:'야간 조명 장관, 인근 홀로코스트 메모리얼 함께'},
+       {e:'🧱', name:'이스트사이드 갤러리', loc:'베를린 프리드리히스하인', price:'무료', tip:'베를린 장벽 1.3km 야외 갤러리'},
+       {e:'🍺', name:'옥토버페스트 행사장', loc:'뮌헨 테레지엔비제', price:'입장 무료', tip:'9월 말~10월 초, 텐트 내 테이블 사전 예약 필수'},
+     ]},
+     {key:'food', label:'🍺 맛집·먹거리', items:[
+       {e:'🍺', name:'호프브로이하우스 맥주', loc:'뮌헨 구시가', price:'10€~', tip:'1598년 왕실 양조장, 1L 마스 stein 기본'},
+       {e:'🌭', name:'뮌헨 소시지·프레첼', loc:'빅투알리엔 시장', price:'5€~', tip:'바이스부어스트 아침 전통(10시 전에 먹어야)'},
+       {e:'🥩', name:'슈바인스학세(족발)', loc:'호프브로이·가스트하우스', price:'14€~', tip:'바삭한 껍데기가 핵심, 자우어크라우트와 함께'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.germany.travel/ko'}]},
@@ -3367,24 +3349,19 @@ const INTL_DESTS = [
   {region:'usa', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8EAF6"/><rect x="6" y="16" width="5" height="20" fill="#3949AB" rx="1"/><rect x="13" y="10" width="5" height="26" fill="#5C6BC0" rx="1"/><rect x="20" y="14" width="5" height="22" fill="#3949AB" rx="1"/><rect x="27" y="8" width="5" height="28" fill="#7986CB" rx="1"/><path d="M4 36h32" stroke="#3949AB" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="14" r="1.2" fill="#FFD54F"/><circle cx="15.5" cy="8" r="1.2" fill="#FFD54F"/><circle cx="22.5" cy="12" r="1.2" fill="#FFD54F"/><circle cx="29.5" cy="6" r="1.5" fill="#FFD54F"/></svg>',
    name:'미국 · 뉴욕', cityKey:'newyork', cities:'맨해튼 · 타임스퀘어 · 센트럴파크 · 자유의여신상 · 브루클린', desc:'세계의 수도. 한국인 미국 여행 1위 도시', rating:4.8,
    tips:'ESTA 신청 필수(72시간 전), 지하철 7일 무제한 패스 추천',
-   cats:[
-     {key:'food', label:'🍕 맛집·먹거리', items:[
-       '🍕 뉴욕 스타일 씬 피자 한 슬라이스 (4$~)',
-       '🥯 베이글 크림치즈 에이스베이글리 (3$~)',
-       '🍔 쉐이크쉑·파이브가이즈 버거 (10$~)',
-       '🌮 코리아타운 한국 BBQ·치맥 (30$~)',
-       '🦞 메인 로브스터롤 루크스 (28$~)',
-       '🍰 뉴욕 치즈케이크 주니어스 (8$~)',
-       '🥩 피터루거 스테이크하우스 (60$~)',
-       '🍜 플러싱 차이나타운 딤섬 (15$~)',
-     ]},
+      cats:[
      {key:'sight', label:'🗽 관광·명소', items:[
-       '🗽 자유의여신상 (23.5$)',
-       '🌆 타임스퀘어 야경 (무료)',
-       '🌿 센트럴파크 (무료)',
-       '🏛️ 메트로폴리탄 미술관 (30$)',
-       '🌉 브루클린 브릿지 (무료)',
-       '🗺️ 맨해튼 야경 크루즈',
+       {e:'🗽', name:'자유의 여신상', loc:'리버티섬', price:'24$~', tip:'왕관 입장은 수개월 전 예약, 크라운 뷰 압도적'},
+       {e:'🏙️', name:'엠파이어 스테이트 빌딩', loc:'미드타운', price:'44$~', tip:'탑오브더록에서 엠파이어 빌딩 뷰가 더 멋짐'},
+       {e:'🌿', name:'센트럴 파크', loc:'어퍼 맨해튼', price:'무료', tip:'자전거 대여 15$/시간, 더 몰 단풍길이 가을 명소'},
+       {e:'🎭', name:'브로드웨이 뮤지컬', loc:'타임스퀘어 인근', price:'50~250$', tip:'TKTS 부스서 당일 반값 티켓, 오전 10시 오픈'},
+       {e:'🖼️', name:'메트로폴리탄 미술관', loc:'어퍼 이스트사이드', price:'30$', tip:'이집트관·무기갑옷관이 무료 구역 포함 명소'},
+     ]},
+     {key:'food', label:'🍕 맛집·먹거리', items:[
+       {e:'🍕', name:'뉴욕 피자', loc:'맨해튼 전역', price:'3$~', tip:'조스 피자(그리니치빌리지)·디파라가 원조 뉴요커 픽'},
+       {e:'🥯', name:'베이글', loc:'어퍼 웨스트·미드타운', price:'3$~', tip:'H&H·에스의 에콜로뉴·에자이가 뉴욕 3대 베이글'},
+       {e:'🍔', name:'쉐이크쉑·J.G 멜론 버거', loc:'맨해튼 전역', price:'10$~', tip:'쉐이크쉑 원조 매디슨 스퀘어 파크점, 줄 30분'},
+       {e:'🦞', name:'첼시 마켓 씨푸드', loc:'첼시', price:'15$~', tip:'첼시 마켓 랍스터 플레이스, 점심이 가성비'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 ESTA',url:'https://esta.cbp.dhs.gov'},{lbl:'🗺️ 관광정보',url:'https://www.visittheusa.kr'}]},
@@ -3392,22 +3369,18 @@ const INTL_DESTS = [
   {region:'usa', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#1A237E"/><text x="7" y="16" font-size="7" fill="#FF4081" font-weight="900" opacity=".9">★</text><text x="14" y="12" font-size="6" fill="#FFD740" font-weight="900" opacity=".9">★</text><text x="22" y="10" font-size="8" fill="#FF6E40" font-weight="900">★</text><text x="29" y="14" font-size="6" fill="#69F0AE" font-weight="900">★</text><text x="26" y="22" font-size="7" fill="#FF4081" font-weight="900">★</text><text x="10" y="22" font-size="5" fill="#FFD740" font-weight="900">★</text><rect x="4" y="28" width="32" height="8" fill="#0D47A1" rx="1"/></svg>',
    name:'미국 · LA·라스베이거스', cityKey:'la', cities:'할리우드 · 비버리힐스 · 그랜드캐니언 · 라스베이거스 스트립', desc:'영화의 도시·사막의 카지노 도시', rating:4.7,
    tips:'라스베이거스~그랜드캐니언 당일 투어 가능(버스/경비행기)',
-   cats:[
-     {key:'food', label:'🍔 맛집·먹거리', items:[
-       '🌮 LA 코리아타운 곱창·순두부찌개 (15$~)',
-       '🍔 인앤아웃 버거 더블더블 (6$~)',
-       '🌯 LA 멕시칸 타코·부리토 (5$~)',
-       '🦀 라스베이거스 뷔페 (30$~)',
-       '🍜 라스베이거스 고든램지 레스토랑 (40$~)',
-       '🥗 베니스비치 아사이볼·주스바 (10$~)',
-     ]},
+      cats:[
      {key:'sight', label:'🎬 관광·명소', items:[
-       '🎬 할리우드 명예의거리 (무료)',
-       '🎰 라스베이거스 스트립 야경',
-       '🏜️ 그랜드캐니언 (35$)',
-       '🌁 산타모니카 피어 (무료)',
-       '🎡 유니버설스튜디오 LA (109$)',
-       '🛍️ 비버리힐스 쇼핑',
+       {e:'🎬', name:'할리우드 사인·그리피스 천문대', loc:'할리우드 힐스', price:'무료', tip:'그리피스 파크 천문대 뷰가 LA 최고 전망 포인트'},
+       {e:'🎡', name:'산타모니카 피어', loc:'산타모니카', price:'무료', tip:'루트66 종점, 선셋 시간대 롤러코스터 야경'},
+       {e:'🌵', name:'그랜드캐니언', loc:'애리조나주', price:'35$/차', tip:'라스베이거스에서 투어 버스 당일치기 가능'},
+       {e:'🎰', name:'라스베이거스 스트립', loc:'라스베이거스', price:'무료(거리)', tip:'시저스팰리스·MGM·벨라지오 분수 쇼 무료'},
+       {e:'🌴', name:'로데오 드라이브', loc:'비버리힐스', price:'무료', tip:'명품 쇼핑 거리 구경, 리조나 드라이브인 카페'},
+     ]},
+     {key:'food', label:'🍔 맛집·먹거리', items:[
+       {e:'🍔', name:'인앤아웃 버거', loc:'LA 전역', price:'6$~', tip:'시크릿 메뉴 더블더블 머스타드 온리가 현지인 픽'},
+       {e:'🌮', name:'코리안타운 & 멕시칸 타코', loc:'코리아타운·이스트LA', price:'3$~', tip:'한국 음식도 LA가 미국 최고 수준, 밤새 영업 많음'},
+       {e:'🍣', name:'LA 오마카세·퓨전 일식', loc:'웨스트할리우드', price:'80$~', tip:'노조미·스가·로코미스가 LA 일식 빅3'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visittheusa.kr'}]},
@@ -3415,22 +3388,18 @@ const INTL_DESTS = [
   {region:'usa', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F7FA"/><circle cx="28" cy="10" r="5" fill="#FFD54F"/><path d="M5 26 Q10 22 15 26 Q20 30 25 26 Q30 22 35 26L35 36H5z" fill="#26C6DA" opacity=".5"/><path d="M20 28 L20 20 Q18 16 16 20 Q18 24 20 24 Q22 24 24 20 Q22 16 20 20z" fill="#66BB6A" opacity=".8"/></svg>',
    name:'미국 · 하와이', cityKey:'hawaii', cities:'와이키키 · 다이아몬드헤드 · 마우이 · 빅아일랜드 화산', desc:'남태평양 낙원. 한국인 허니문·신혼여행 최다 목적지', rating:4.9,
    tips:'오아후+마우이 or 빅아일랜드 2개 섬 추천, 12~3월 혹등고래',
-   cats:[
-     {key:'food', label:'🍤 맛집·먹거리', items:[
-       '🍤 하와이안 포케볼 (13$~)',
-       '🌮 하와이 로코모코 라이스+햄버거 (12$~)',
-       '🍦 하와이 쉐이브아이스 마쓰모토 (4$~)',
-       '🦞 노스쇼어 새우트럭 가릭슈림프 (15$~)',
-       '🍍 할레이와 트로피컬 스무디·과일 (8$~)',
-       '🍹 마이타이·블루하와이 칵테일 (15$~)',
+      cats:[
+     {key:'sight', label:'🌺 관광·자연', items:[
+       {e:'🌺', name:'다이아몬드 헤드 하이킹', loc:'오아후 와이키키 인근', price:'5$/인', tip:'새벽 6시 입장, 정상 전망대서 와이키키 파노라마'},
+       {e:'🌊', name:'노스쇼어 서핑·스노클링', loc:'오아후 노스쇼어', price:'무료~', tip:'겨울 빅웨이브 서핑 대회, 여름엔 수영 가능'},
+       {e:'🐢', name:'마우이 할레아칼라 일출', loc:'마우이 화산', price:'30$/차', tip:'새벽 3시 출발 필수, 구름 위 일출 환상적'},
+       {e:'🌋', name:'빅아일랜드 화산 국립공원', loc:'하와이섬', price:'35$/차', tip:'용암 흐름 실시간 확인, 야간 화구 빛이 장관'},
+       {e:'🐳', name:'마우이 고래 관람 투어', loc:'마우이 라하이나', price:'50$~', tip:'12~4월 혹등고래 시즌, 새벽 투어가 날씨 안정적'},
      ]},
-     {key:'sight', label:'🏖️ 관광·자연', items:[
-       '🏖️ 와이키키 비치 (무료)',
-       '🌋 다이아몬드헤드 하이킹 (5$)',
-       '🌺 화산국립공원 (15$)',
-       '🐢 할레이와 터틀 비치',
-       '🌊 마우이 로드투하나 드라이브',
-       '🤿 몰로키니 분화구 스노클링',
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🍚', name:'포케 보울', loc:'하와이 전역', price:'13$~', tip:'아이나 하이나·오노 씨푸드가 로컬 포케 맛집'},
+       {e:'🍍', name:'마우이 파인애플 농장', loc:'마우이', price:'65$~', tip:'라나이섬 돌 팜 투어, 파인애플 빙수 필수'},
+       {e:'🍤', name:'가르릭 쉬림프 트럭', loc:'오아후 노스쇼어', price:'14$~', tip:'지오반니 새우 트럭이 원조, 현금만 받음'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.gohawaii.com/ko'}]},
@@ -3439,20 +3408,18 @@ const INTL_DESTS = [
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFEBEE"/><path d="M8 18h24l2 4H6z" fill="#D32F2F" rx="1"/><path d="M10 14h20l2 4H8z" fill="#C62828" rx="1"/><path d="M8 18h24v16H8z" fill="#EFEBE9"/><rect x="7" y="24" width="4" height="12" fill="#B71C1C" rx="1"/><rect x="29" y="24" width="4" height="12" fill="#B71C1C" rx="1"/><rect x="16" y="24" width="8" height="12" fill="#C62828" rx="1"/><path d="M17 24 Q20 20 23 24" fill="#FFCC02"/><text x="18" y="13" font-size="5" fill="#FFD700">★</text></svg>',
    name:'중국 · 베이징', cityKey:'beijing', cities:'만리장성 · 자금성 · 천안문 · 이화원 · 798예술구', desc:'5천년 역사의 황제 도시. 유네스코 세계유산 집결', rating:4.7,
    tips:'중국 비자(관광 L비자) 사전 신청 필수, VPN 앱 출국 전 설치 권장',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🥩 베이징덕 전취덕·다동 (100위안~)',
-       '🍢 왕부정 거리 꼬치·스콜피온 먹거리 (10위안~)',
-       '🥟 교자(만두)·탕후루 (30위안~)',
-       '🍜 자징 오리 훠궈 (50위안~)',
-       '🥗 후통 골목 로컬 북경 요리 (40위안~)',
+      cats:[
+     {key:'sight', label:'🧱 관광·역사', items:[
+       {e:'🧱', name:'만리장성(무티안위)', loc:'베이징 북쪽 70km', price:'40위안', tip:'무티안위 구간이 보존 상태 최고, 케이블카 이용 편리'},
+       {e:'🏯', name:'자금성(고궁 박물관)', loc:'베이징 중심', price:'60위안', tip:'온라인 사전 예약 필수, 하루 8만명 제한'},
+       {e:'🏛️', name:'천안문 광장·인민영웅기념비', loc:'베이징 중심', price:'무료', tip:'여권 지참 신분 확인 필수, 일출 국기 게양식 장관'},
+       {e:'🌿', name:'이화원(이허위안)', loc:'베이징 서쪽', price:'30위안', tip:'곤명호 유람선·장랑(회랑)이 포토 스팟'},
+       {e:'🎨', name:'798 예술구', loc:'차오양구', price:'무료', tip:'폐공장 개조 갤러리·카페, 현대 중국 예술 중심지'},
      ]},
-     {key:'sight', label:'🏯 관광·역사', items:[
-       '🏯 자금성(고궁박물관) (60위안)',
-       '🏔️ 만리장성 바달링 (45위안)',
-       '🌿 이화원 (30위안)',
-       '🦁 천단 공원 (28위안)',
-       '🎨 798 예술특구 (무료)',
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🦆', name:'베이징 오리구이(카오야)', loc:'베이징 전역', price:'200위안~', tip:'취안쥐더·다동이 양대 명가, 런치 코스가 저렴'},
+       {e:'🍜', name:'자장면·루러우 덮밥', loc:'후통 골목', price:'30위안~', tip:'인민대학 근처 라오베이징 자장면 맛집 밀집'},
+       {e:'🥟', name:'왕푸징 먹자골목·탕후루', loc:'왕푸징', price:'10위안~', tip:'전갈·불가사리 꼬치 체험, 탕후루 원조는 베이징'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'📄 비자',url:'https://www.visaforchina.cn/SEL2_KO'}]},
@@ -3460,20 +3427,17 @@ const INTL_DESTS = [
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8EAF6"/><rect x="10" y="8" width="5" height="28" fill="#5C6BC0" rx="1"/><rect x="18" y="14" width="5" height="22" fill="#7986CB" rx="1"/><rect x="26" y="18" width="5" height="18" fill="#5C6BC0" rx="1"/><rect x="7" y="34" width="26" height="2" fill="#3949AB" rx="1"/><circle cx="12.5" cy="6" r="1.5" fill="#FFD54F"/></svg>',
    name:'중국 · 상하이', cityKey:'shanghai', cities:'와이탄 · 예원 · 푸동 · 디즈니랜드 · 신천지', desc:'동양의 파리. 근대 서구 건축과 현대 마천루의 조화', rating:4.7,
    tips:'마그레브 열차로 공항 이동 7분, 지하철 앱 편리',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🥟 성황묘 소룡포·생추이 (30위안~)',
-       '🍜 상해 쑤저우 면 요리 (40위안~)',
-       '🍖 상해 홍샤오러우(동파육) (50위안~)',
-       '🦀 상해 따자시에(게요리) 10월~12월 (100위안~)',
-       '🍢 예원 야시장 탕후루·취두부 (20위안~)',
-     ]},
+      cats:[
      {key:'sight', label:'🌆 관광·명소', items:[
-       '🌆 와이탄 야경 (무료)',
-       '🏙️ 푸동 루자쭈이 스카이라인',
-       '🏛️ 예원 정원 (75위안)',
-       '🎠 디즈니랜드 (499위안~)',
-       '🛍️ 신천지 쇼핑&카페',
+       {e:'🌆', name:'와이탄 야경', loc:'황푸구 강변', price:'무료', tip:'저녁 7~9시 건너편 루자쭈이 마천루 조명 최고'},
+       {e:'🏯', name:'예원(위위안)', loc:'황푸구', price:'75위안', tip:'명나라 정원, 주변 예원 상점가 쇼핑·간식'},
+       {e:'🎡', name:'상하이 디즈니랜드', loc:'푸동 신구', price:'499위안~', tip:'앱으로 패스트패스 선점, 평일 오픈 직후 전략'},
+       {e:'🌃', name:'외탄(더 번드)~난징루', loc:'황푸구', price:'무료', tip:'도보 연결 코스, 난징루는 차 없는 보행자 쇼핑 거리'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🥟', name:'소룡포(샤오룽바오)', loc:'난샹·전역', price:'40위안~', tip:'난샹만터우뎬이 100년 전통 소룡포 원조'},
+       {e:'🦀', name:'상하이 게 요리·홍샤오로', loc:'황푸·징안', price:'100위안~', tip:'가을 9~11월 상하이게(다자시에) 제철'},
+       {e:'🛍️', name:'신천지·따중리 카페', loc:'신천지', price:'40위안~', tip:'구식민지 건물+현대 카페 조화, 인스타 명소'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://kr.travelchina.com'}]},
@@ -3481,20 +3445,17 @@ const INTL_DESTS = [
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><path d="M4 30 L10 18 L14 24 L20 8 L26 24 L30 18 L36 30z" fill="#E8F5E9" stroke="#388E3C" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 24 L20 8 L26 24z" fill="#C8E6C9"/><circle cx="10" cy="12" r="3.5" fill="white" stroke="#388E3C" stroke-width="1"/><ellipse cx="10" cy="12" rx="1.5" ry="2.5" fill="#1B5E20"/><path d="M8 9 Q10 7 12 9" fill="#4CAF50" opacity=".7"/></svg>',
    name:'중국 · 청두·장자제', cityKey:'chengdu', cities:'판다기지 · 쓰촨 요리 · 장가계 · 황룡 · 구채구', desc:'귀여운 판다와 신선경 자연. 아바타 배경지', rating:4.8,
    tips:'청두에서 장가계 국내선 이용, 구채구·황룡은 도보+케이블카 조합',
-   cats:[
-     {key:'food', label:'🌶️ 맛집·먹거리', items:[
-       '🍜 쓰촨 훠궈 하이디라오·샤부샤부 (60위안~)',
-       '🥘 마파두부·수주이위(생선요리) (40위안~)',
-       '🍢 청두 관마지 야시장 꼬치·얼꽈이 (20위안~)',
-       '🥗 랜요우마라탕 마라 향신료 뷔페 (50위안~)',
-       '🍵 관부 찻집 쓰촨 전통차 문화 (30위안~)',
-     ]},
+      cats:[
      {key:'sight', label:'🐼 관광·자연', items:[
-       '🐼 청두 판다기지 (90위안)',
-       '🌄 장가계 국가삼림공원 (248위안)',
-       '💧 구채구 (169위안)',
-       '🌿 황룡 (200위안)',
-       '🚡 장가계 텐먼산 케이블카',
+       {e:'🐼', name:'청두 판다기지', loc:'청두 북쪽', price:'58위안', tip:'오전 8~10시 밥 먹는 판다 활동적, 이른 방문 필수'},
+       {e:'🏔️', name:'황룡 경관지구', loc:'쓰촨 아바', price:'200위안', tip:'해발 3,500m 오색 연못, 고산병 주의·산소 준비'},
+       {e:'🌊', name:'구채구 계곡', loc:'쓰촨 아바', price:'220위안', tip:'아바타 배경지, 겨울 설경이 가장 아름다움'},
+       {e:'🗻', name:'장가계 천문산', loc:'후난성', price:'258위안', tip:'케이블카+엘리베이터 세트, 운해 경치 장관'},
+     ]},
+     {key:'food', label:'🌶️ 맛집·먹거리', items:[
+       {e:'🌶️', name:'마라훠궈(사천 샤부샤부)', loc:'청두 전역', price:'80위안~', tip:'하이디라오가 유명하지만 현지 소규모 가게가 더 진함'},
+       {e:'🥟', name:'단단면·수이쟈오', loc:'청두 관광 구역', price:'20위안~', tip:'쓰촨식 마라 소스 단단면이 한국인 입맛에 인기'},
+       {e:'🍢', name:'콴자이 골목 길거리 음식', loc:'청두 콴자이 골목', price:'10위안~', tip:'청두 대표 관광 거리, 각종 쓰촨 간식 총집합'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://kr.travelchina.com'}]},
@@ -3502,21 +3463,18 @@ const INTL_DESTS = [
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FCE4EC"/><path d="M5 26 Q10 22 15 26 Q20 30 25 26 Q30 22 35 26L35 36H5z" fill="#F48FB1" opacity=".4"/><rect x="10" y="10" width="5" height="22" fill="#AD1457" rx="1"/><rect x="18" y="6" width="5" height="26" fill="#C2185B" rx="1"/><rect x="26" y="14" width="5" height="18" fill="#AD1457" rx="1"/><path d="M3 32h34" stroke="#C2185B" stroke-width="1.2"/><circle cx="30" cy="8" r="3" fill="#E91E63" opacity=".5"/></svg>',
    name:'홍콩', cityKey:'hongkong', cities:'빅토리아 피크 · 침사추이 · 몽콕 · 란카이펑 · 홍콩 디즈니랜드', desc:'동서 문화 융합의 국제 도시. 야경이 세계 3대 미항', rating:4.7,
    tips:'한국 무비자 90일, 옥토퍼스 카드 편의점 구매, MTR 교통망 편리',
-   cats:[
-     {key:'food', label:'🥟 맛집·먹거리', items:[
-       '🥟 딤섬(하가우·샤오마이) 점심 (80HKD~)',
-       '🍜 완탄면·비프볼 국수 (40HKD~)',
-       '🍞 에그타르트·파인애플빵 (15HKD~)',
-       '🦀 스팀크랩·씨푸드 레스토랑 (150HKD~)',
-       '🍢 몽콕 야시장 길거리 음식·오이스터오믈렛 (30HKD~)',
-       '🍹 망고디저트·두리안 소프트 허발리스트 (50HKD~)',
+      cats:[
+     {key:'sight', label:'🌃 관광·명소', items:[
+       {e:'🌃', name:'빅토리아 피크 야경', loc:'중서구', price:'트램 왕복 62HKD', tip:'시간절약은 피크 트램, 걸어서 올라가도 30분'},
+       {e:'🛳️', name:'스타페리·침사추이 거리', loc:'첨사추이', price:'3.4HKD', tip:'바다 건너 홍콩 섬 야경 감상, 오후 8시 심포니 오브 라이츠'},
+       {e:'🌆', name:'몽콕 야시장·레이디스 마켓', loc:'몽콕', price:'무료', tip:'저녁 6시 이후 활기, 흥정 필수 현금 거래'},
+       {e:'🎡', name:'홍콩 디즈니랜드', loc:'란타우섬', price:'619HKD~', tip:'도쿄·상하이보다 소규모이나 덜 붐빔'},
+       {e:'⛩️', name:'만모 사원', loc:'홍콩섬 상완', price:'무료', tip:'문신·무신을 모신 곳, 향 연기 가득한 분위기'},
      ]},
-     {key:'sight', label:'🌆 관광·명소', items:[
-       '🌆 빅토리아 피크 야경 (100HKD~)',
-       '🚂 침사추이 스타의 거리 (무료)',
-       '🛍️ 몽콕 야시장·여인거리',
-       '🎠 홍콩 디즈니랜드 (689HKD~)',
-       '🌊 빅 부다 (란타우섬)',
+     {key:'food', label:'🍱 맛집·먹거리', items:[
+       {e:'🍱', name:'딤섬', loc:'전통 주가(茶家)', price:'100HKD~', tip:'점심 얌차(飲茶)가 홍콩 전통, 딘타이펑보다 로컬 추천'},
+       {e:'🥚', name:'에그타르트·파인애플 번', loc:'전역 빵집', price:'6HKD~', tip:'타이청 베이커리·혼로 카페가 홍콩 에그타르트 원조'},
+       {e:'🍜', name:'완탕면·우육면', loc:'구룡 전통 국수집', price:'50HKD~', tip:'마크의 완탕면이 홍콩 빅3, 아침 8시 오픈 줄'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.discoverhongkong.com/kr'}]},
@@ -3524,22 +3482,19 @@ const INTL_DESTS = [
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><rect x="16" y="4" width="8" height="32" fill="#1B5E20" rx="1"/><rect x="4" y="17" width="32" height="6" fill="#1B5E20" rx="1"/><rect x="15" y="18" width="10" height="4" fill="#F9A825" rx="1"/><circle cx="20" cy="20" r="3" fill="#F57F17"/><path d="M18 20h4M20 18v4" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>',
    name:'대만 · 타이베이', cityKey:'taipei', cities:'지우펀 · 예류 · 타이베이101 · 스린 야시장 · 단수이', desc:'미식과 온천의 섬. 한국과 가장 가까운 아시아 감성', rating:4.8,
    tips:'무비자 90일, 이지카드로 교통·편의점 결제, 지우펀 저녁 방문 추천 / 대만 야시장은 아시아 최고 수준',
-   cats:[
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       '🍜 스린 야시장 굴전·대만 소시지 (50NT$~)',
-       '🥟 딘타이펑 샤오롱바오(소룡포) (200NT$~)',
-       '🧋 천인당·공관 버블티 원조 (50NT$~)',
-       '🍢 루로우판(돼지고기 덮밥) (50NT$~)',
-       '🥛 예스25 벌집빙수·망고빙수 (150NT$~)',
-       '🥐 우에이도 대만 카스텔라·파인애플케이크 (50NT$~)',
-       '🍛 닝샤 야시장 굴탕·선지요리 (60NT$~)',
+      cats:[
+     {key:'sight', label:'🏙️ 관광·명소', items:[
+       {e:'🏙️', name:'타이베이 101 전망대', loc:'신이구', price:'600NT', tip:'89층 실내+91층 야외, 맑은 날 오전이 시야 최고'},
+       {e:'🏘️', name:'지우펀 홍등 골목', loc:'신베이시', price:'무료', tip:'센과 치히로 모티브, 오후 5시 이후 홍등 불 켜짐'},
+       {e:'🌊', name:'예류 지질공원', loc:'신베이시', price:'80NT', tip:'여왕머리 바위가 포토 스팟, 오전이 덜 붐빔'},
+       {e:'🌙', name:'스린 야시장', loc:'스린구', price:'무료', tip:'저녁 6시 이후, 지하 먹자골목 굴전·해산물'},
+       {e:'♨️', name:'베이터우 온천', loc:'베이터우구', price:'公共 90NT~', tip:'MRT 종점에서 도보 10분, 유황 온천 라돈 함유'},
      ]},
-     {key:'sight', label:'🏮 관광·명소', items:[
-       '🏮 지우펀 야경 (무료)',
-       '🌊 예류 지질공원 (200NT$)',
-       '🏙️ 타이베이101 전망대 (600NT$)',
-       '♨️ 베이터우 온천',
-       '🌅 단수이 노을 (무료)',
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🥟', name:'소룡포·딘타이펑 본점', loc:'신이구 101 맞은편', price:'350NT~', tip:'본점 101점이 가장 줄 김, 오픈 1시간 전 대기'},
+       {e:'🌙', name:'야시장 굴전·루로우판', loc:'스린·닝샤 야시장', price:'50NT~', tip:'닝샤 야시장이 현지인 픽, 루로우판 10NT 규동'},
+       {e:'🍵', name:'진먼 펄 밀크티·카페', loc:'융캉 거리', price:'70NT~', tip:'청핀 춘수이탕이 버블티 원조 발상지 논쟁 중'},
+       {e:'🫔', name:'지우펀 타로 경단·딸기빙수', loc:'지우펀 골목', price:'100NT~', tip:'아메이 찻집 앞 경단과 망고빙수가 인생 음식'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.taiwan.net.tw'}]},
@@ -3548,21 +3503,18 @@ const INTL_DESTS = [
   {region:'oceania', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E3F2FD"/><path d="M5 26 Q8 14 13 26 Z" fill="#4FC3F7" opacity=".9"/><path d="M11 26 Q15 12 20 26 Z" fill="#29B6F6"/><path d="M17 26 Q21 15 26 26 Z" fill="#4FC3F7" opacity=".9"/><path d="M22 26 Q25 18 29 26 Z" fill="#0288D1" opacity=".8"/><rect x="3" y="26" width="30" height="2" fill="#0277BD" rx="1"/><circle cx="30" cy="9" r="1" fill="white"/><circle cx="33" cy="12" r="1" fill="white"/><circle cx="28" cy="13" r="1" fill="white"/></svg>',
    name:'호주 · 시드니·멜버른', cityKey:'sydney', cities:'오페라하우스 · 하버브릿지 · 그레이트 배리어 리프 · 울루루', desc:'한국인 워홀·이민 1위 국가. 자연 경관 압도적', rating:4.8,
    tips:'비자(ETA) 미리 신청, 7~8월 한국 여름이지만 호주는 겨울',
-   cats:[
-     {key:'food', label:'🥩 맛집·먹거리', items:[
-       '🥩 호주 BBQ 바베큐·새우그릴 (30AUD~)',
-       '🥗 시드니 록스 시장 씨푸드·오이스터 (15AUD~)',
-       '🍷 야라밸리 와이너리 투어 시음 (30AUD~)',
-       '🍕 멜버른 퀸빅토리아 마켓 먹거리 (10AUD~)',
-       '☕ 멜버른 플랫화이트·스페셜티 커피 (5AUD~)',
+      cats:[
+     {key:'sight', label:'🏛️ 관광·자연', items:[
+       {e:'🏛️', name:'시드니 오페라하우스', loc:'서큘러키', price:'외관 무료/투어 43AUD', tip:'내부 가이드 투어로 뒷이야기 듣기, 야경도 필수'},
+       {e:'🌉', name:'하버브릿지 클라이밍', loc:'밀슨스 포인트', price:'298AUD~', tip:'정상에서 시드니 항구 360도 뷰, 3.5시간 소요'},
+       {e:'🐠', name:'그레이트 배리어 리프', loc:'퀸즐랜드 케언스', price:'다이브 투어 200AUD~', tip:'세계 최대 산호초, 6~10월 비수기가 날씨 쾌적'},
+       {e:'🏖️', name:'본다이 비치', loc:'시드니 동쪽', price:'무료', tip:'서퍼들의 성지, 클리프 워크 트레킹 2시간 추천'},
+       {e:'🌿', name:'블루 마운틴스·에코 포인트', loc:'시드니 서쪽 90km', price:'무료', tip:'세 자매봉 뷰포인트, 시닉 레일웨이 체험 추천'},
      ]},
-     {key:'sight', label:'🦘 관광·자연', items:[
-       '🏛️ 시드니 오페라하우스 (43AUD~)',
-       '🌉 하버브릿지 투어',
-       '🐠 그레이트 배리어 리프 (150AUD~)',
-       '🦘 울루루 선셋 투어',
-       '🌊 본다이비치 (무료)',
-       '🐨 필립아일랜드 펭귄퍼레이드',
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🦞', name:'시드니 씨푸드 마켓', loc:'피어몬트', price:'30AUD~', tip:'세계 2위 규모 수산시장, 신선 랍스터·굴 현장 취식'},
+       {e:'🥩', name:'호주 와규 스테이크', loc:'CBD 레스토랑', price:'50AUD~', tip:'울루루 스테이크하우스·록스 지역 레스토랑 추천'},
+       {e:'🍷', name:'헌터밸리 와이너리', loc:'시드니 근교', price:'투어 80AUD~', tip:'당일 와이너리 투어, 시라즈·샤르도네가 대표 품종'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 ETA비자',url:'https://immi.homeaffairs.gov.au'},{lbl:'🗺️ 관광정보',url:'https://www.australia.com/ko-kr'}]},
@@ -3593,21 +3545,18 @@ const INTL_DESTS = [
   {region:'mideast', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF8E1"/><rect x="17" y="4" width="6" height="32" fill="#FF8F00" rx="1"/><path d="M17 4 Q20 2 23 4" fill="#FF8F00"/><circle cx="20" cy="4" r="2" fill="#FFD54F"/><rect x="4" y="28" width="32" height="8" fill="#FF8F00" opacity=".15" rx="1"/><path d="M4 28h32" stroke="#FFA000" stroke-width="1.2"/><rect x="8" y="16" width="4" height="16" fill="#FFB300" rx="1"/><rect x="28" y="20" width="4" height="12" fill="#FFB300" rx="1"/></svg>',
    name:'두바이 (UAE)', cityKey:'dubai', cities:'버즈칼리파 · 팜주메이라 · 두바이 쇼핑몰 · 사막사파리', desc:'사막 위 미래도시. 초호화 럭셔리 여행', rating:4.7,
    tips:'10~4월이 적절, 라마단 기간 공공 음식·음주 자제',
-   cats:[
-     {key:'food', label:'🥘 맛집·먹거리', items:[
-       '🥘 샤와르마·팔라펠 현지 아랍 음식 (15AED~)',
-       '🍢 두바이 스파이스 수크 야시장 먹거리 (30AED~)',
-       '🦞 두바이 씨푸드 레스토랑 (100AED~)',
-       '☕ 아랍 카르다몸 커피·대추야자 (10AED~)',
-       '🍖 두바이 럭셔리 뷔페 (150AED~)',
-     ]},
+      cats:[
      {key:'sight', label:'🏙️ 관광·명소', items:[
-       '🏙️ 버즈칼리파 (149AED~)',
-       '🌊 팜주메이라 모노레일',
-       '🛍️ 두바이 쇼핑몰 최대 규모',
-       '🏜️ 사막 사파리 (250AED~)',
-       '🌊 주메이라 비치 (무료)',
-       '🌙 두바이 크릭 아브라 보트',
+       {e:'🏙️', name:'부르즈 칼리파 전망대', loc:'두바이 다운타운', price:'149AED~', tip:'124층 앳더탑, 148층 스카이는 사전 예약 필수'},
+       {e:'🌊', name:'두바이 분수 쇼', loc:'두바이몰 앞 호수', price:'무료', tip:'저녁 6시부터 매 30분, 275m 물줄기 음악 공연'},
+       {e:'🌴', name:'팜 주메이라', loc:'주메이라', price:'모노레일 25AED', tip:'아틀란티스 호텔 수영장 데이패스(399AED~)'},
+       {e:'🏜️', name:'두바이 사막 사파리', loc:'두바이 외곽', price:'200AED~', tip:'저녁 사파리+바베큐 패키지가 가성비, 샌드보딩 포함'},
+       {e:'🛍️', name:'두바이몰·골드 수크', loc:'다운타운·데이라', price:'무료', tip:'세계 최대 몰, 아이스링크·아쿠아리움·폭포 내부'},
+     ]},
+     {key:'food', label:'🥙 맛집·먹거리', items:[
+       {e:'🥙', name:'샤와르마·팔라펠', loc:'알 파히디 구시가', price:'10AED~', tip:'레바논·팔레스타인 스타일, 24시간 영업 많음'},
+       {e:'🦞', name:'두바이 씨푸드·아라빅 BBQ', loc:'주메이라·DIFC', price:'100AED~', tip:'노부·피에르 가니에르 두바이점이 미슐랭급'},
+       {e:'☕', name:'두바이 카르다멈 커피·대추야자', loc:'전통 카페', price:'20AED~', tip:'아라빅 커피(카와)는 쓴맛, 대추야자와 함께 마심'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visitdubai.com/ko'}]},
@@ -3616,19 +3565,18 @@ const INTL_DESTS = [
    name:'인도 · 델리·아그라·라자스탄', cityKey:'india', cities:'타지마할 · 자이푸르 핑크시티 · 갠지스강 바라나시 · 델리', desc:'다채로운 색깔과 향신료의 나라. 황금삼각형', rating:4.3,
    tips:'비자(e-Visa) 사전 신청, 황금삼각형(델리-아그라-자이푸르) 추천 코스',
    cats:[
-     {key:'food', label:'🍛 맛집·먹거리', items:[
-       '🍛 버터치킨 카레·난 현지 식당 (200루피~)',
-       '🥘 마살라 차이·사모사 길거리 음식 (30루피~)',
-       '🌮 자이푸르 달바티·처마 라자스탄 전통 (150루피~)',
-       '🍚 비리야니 쌀 요리·라씨 (100루피~)',
-       '🍢 델리 찬드니 초크 거리 음식 (50루피~)',
-     ]},
      {key:'sight', label:'🕌 관광·역사', items:[
-       '🕌 타지마할 (1300루피)',
-       '🏯 자이푸르 암베르 성 (500루피)',
-       '🌊 갠지스강 가트 보트 투어',
-       '🕌 델리 꾸뜹 미나르',
-       '🛍️ 자이살메르 낙타 사파리',
+       {e:'🕌', name:'타지마할', loc:'아그라', price:'1,300루피', tip:'일출 30분 후 도착이 황금빛 사진, 금요일 휴관'},
+       {e:'🏯', name:'자이푸르 암베르 성', loc:'자이푸르', price:'500루피', tip:'코끼리 타기 금지 권고, 지프 투어 권장'},
+       {e:'🌊', name:'갠지스강 가트 보트 투어', loc:'바라나시', price:'200루피~', tip:'새벽 아르티 의식(푸자)이 가장 신성한 볼거리'},
+       {e:'🕌', name:'델리 꾸뜹 미나르', loc:'델리 남부', price:'650루피', tip:'유네스코 세계유산 72m 미나렛, 인도-이슬람 건축'},
+       {e:'🐪', name:'자이살메르 낙타 사파리', loc:'자이살메르', price:'투어 1,500루피~', tip:'황금 도시 자이살메르, 사막 1박 캠핑 추천'},
+     ]},
+     {key:'food', label:'🍛 맛집·먹거리', items:[
+       {e:'🍛', name:'버터치킨 카레·난', loc:'전역 현지 식당', price:'200루피~', tip:'무굴 제국 발원 요리, 델리 올드 쿼터가 원조 지역'},
+       {e:'🥘', name:'마살라 차이·사모사', loc:'길거리 노점', price:'30루피~', tip:'짜이왈라(차 파는 상인)의 마살라 차이가 인생 차'},
+       {e:'🌮', name:'달바티·처마(라자스탄 전통)', loc:'자이푸르·조드푸르', price:'150루피~', tip:'라자스탄 콩 수프+밀 빵 세트, 현지인 주식'},
+       {e:'🍚', name:'비리야니·라씨', loc:'하이데라바드·전역', price:'100루피~', tip:'하이데라바디 비리야니가 인도 최고, 민트 라씨와 함께'},
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 e-Visa',url:'https://indianvisaonline.gov.in'},{lbl:'🗺️ 관광정보',url:'https://www.incredibleindia.org/content/incredible-india-v2/en.html'}]},
@@ -3845,8 +3793,8 @@ function selectIntlRegion(regionKey) {
   document.querySelectorAll('[id^="intlRTab_"]').forEach(t => {
     t.classList.remove('on');
     t.style.color = '';
-    t.style.borderBottomColor = '';
     t.style.background = '';
+    t.style.boxShadow = '';
   });
   const activeTab = document.getElementById('intlRTab_' + regionKey);
   if (activeTab) {
@@ -3966,16 +3914,86 @@ function renderIntlCityHeader(city, elId) {
 function renderIntlSpotsList(city, elId) {
   const el = document.getElementById(elId || 'intlSpotsList');
   if (!el) return;
-  let html = '';
-  city.cats.forEach(cat => {
-    html += `<div style="font-size:13px;font-weight:800;color:var(--sky800);padding:12px 0 8px">${cat.label}</div>`;
-    cat.items.forEach((item, idx) => {
-      html += `<div style="padding:8px 0;${idx < cat.items.length - 1 ? 'border-bottom:1px solid var(--border2)' : ''}">
-        <div style="font-size:14px;color:var(--txt)">${item}</div>
-      </div>`;
-    });
+
+  const CAT_THEME = {
+    sight:  {bg:'var(--purple50)', border:'var(--purple100)', txt:'var(--purple800)', hdr:'var(--purple800)', icon:'⛩️'},
+    food:   {bg:'var(--amber50)',  border:'var(--amber100)',  txt:'var(--amber800)',  hdr:'var(--amber800)',  icon:'🍽️'},
+    cafe:   {bg:'var(--pink50)',   border:'var(--pink100)',   txt:'var(--pink800)',   hdr:'var(--pink800)',   icon:'☕'},
+    shop:   {bg:'var(--sky50)',    border:'var(--sky100)',    txt:'var(--sky800)',    hdr:'var(--sky800)',    icon:'🛍️'},
+    night:  {bg:'var(--purple50)',border:'var(--purple100)', txt:'var(--purple800)', hdr:'var(--purple800)', icon:'🌙'},
+    nature: {bg:'var(--green50)', border:'var(--green100)',  txt:'var(--green800)',  hdr:'var(--green800)',  icon:'🌿'},
+    culture:{bg:'var(--amber50)', border:'var(--amber100)',  txt:'var(--amber800)',  hdr:'var(--amber800)',  icon:'🎭'},
+  };
+
+  const ordered = [...(city.cats||[])].sort((a,b) => {
+    const order = {sight:0, food:1, cafe:2, shop:3, night:4, nature:5, culture:6};
+    return (order[a.key]??99) - (order[b.key]??99);
   });
-  el.innerHTML = html;
+
+  let html = '';
+  ordered.forEach((cat, ci) => {
+    const th = CAT_THEME[cat.key] || {bg:'var(--sky50)', border:'var(--sky100)', txt:'var(--sky800)', hdr:'var(--sky800)', icon:'📍'};
+    const isOpen = ci === 0;
+    const catId = `icat_${elId||'a'}_${ci}`;
+
+    const itemsHtml = cat.items.map(item => {
+      if (typeof item === 'object') {
+        const mapBtn = item.map
+          ? `<button onclick="window.open('${item.map}','_blank')" style="display:inline-flex;align-items:center;gap:2px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--sky50);border:1.5px solid var(--sky100);color:var(--sky800);cursor:pointer;font-family:inherit;flex-shrink:0">🗺️ 지도</button>`
+          : '';
+        const priceBadge = item.price
+          ? `<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:${th.bg};border:1.5px solid ${th.border};color:${th.txt};flex-shrink:0">${item.price}</span>`
+          : '';
+        const tipLine = item.tip
+          ? `<div style="font-size:13px;font-weight:600;color:var(--txt2);margin-top:4px;line-height:1.5;padding:4px 8px;background:var(--bg);border-radius:var(--r8);word-break:keep-all">💡 ${item.tip}</div>`
+          : '';
+        return `<div class="spot" style="cursor:default;margin-bottom:6px;padding:9px 12px">
+          <div class="spot-body">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px">
+              <div class="spot-name" style="margin-bottom:0;flex:1;min-width:0;font-size:15px;font-weight:700;color:var(--txt);word-break:keep-all;line-height:1.4">${item.name}</div>
+              ${priceBadge}
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+              <div class="spot-region" style="margin-bottom:0;font-size:13px;font-weight:600;color:var(--txt2)">📍 ${item.loc}</div>
+              ${mapBtn}
+            </div>
+            ${tipLine}
+          </div>
+        </div>`;
+      }
+      const priceMatch = item.match(/\(([^)]+엔[^)]*|무료[^)]*)\)/);
+      const priceStr = priceMatch ? priceMatch[1] : '';
+      const cleanName = item.replace(/\([^)]+\)/g,'').trim();
+      const priceBadgeLegacy = priceStr
+        ? `<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:${th.bg};border:1.5px solid ${th.border};color:${th.txt};flex-shrink:0">${priceStr}</span>`
+        : '';
+      return `<div class="spot" style="cursor:default;margin-bottom:6px;padding:9px 12px">
+        <div class="spot-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+            <div class="spot-name" style="margin-bottom:0;font-size:15px;font-weight:700;color:var(--txt);word-break:keep-all;line-height:1.4">${cleanName}</div>
+            ${priceBadgeLegacy}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    html += `
+    <div style="margin-bottom:10px;border:1.5px solid ${th.border};border-radius:var(--r14);overflow:hidden;box-shadow:var(--shadow)">
+      <button onclick="(function(btn){const body=document.getElementById('${catId}');const arr=btn.querySelector('.acc-arr');const open=body.style.display==='none';body.style.display=open?'block':'none';arr.style.transform=open?'rotate(0deg)':'rotate(-90deg)'})(this)"
+        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:${th.bg};border:none;cursor:pointer;font-family:inherit">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:15px;font-weight:700;color:${th.hdr}">${cat.label}</span>
+          <span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--card);border:1.5px solid ${th.border};color:${th.hdr}">${cat.items.length}곳</span>
+        </div>
+        <span class="acc-arr" style="font-size:16px;color:${th.hdr};transition:transform .2s;transform:${isOpen?'rotate(0deg)':'rotate(-90deg)'}">▾</span>
+      </button>
+      <div id="${catId}" style="display:${isOpen?'block':'none'};padding:8px;background:var(--bg)">
+        ${itemsHtml}
+      </div>
+    </div>`;
+  });
+
+  el.innerHTML = html || `<div class="empty-state"><div class="empty-ico">🗺️</div><div class="empty-msg">명소 정보가 없습니다</div></div>`;
 }
 
 function deleteTrip(id) {
