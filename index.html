@@ -204,18 +204,6 @@ body{
 
 /* 지역 그리드 */
 .rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:18px}
-.ritem{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:4px;padding:10px 4px 9px;
-  background:var(--card);border:2px solid var(--border);border-radius:var(--r12);
-  cursor:pointer;transition:all .2s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:var(--shadow);text-align:center
-}
-.ritem:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
-.ritem.on{border-color:var(--sky);background:var(--sky50);border-width:2.5px}
-.r-ico{font-size:22px;line-height:1;filter:drop-shadow(0 1px 3px rgba(0,0,0,.1))}
-.r-lbl{font-size:13px;font-weight:700;color:var(--txt);line-height:1.3;word-break:keep-all}
-.r-cnt{font-size:12px;font-weight:600;color:var(--txt2);margin-top:-1px}
 
 
 /* ── 강원도 내장 앱 ── */
@@ -1114,15 +1102,13 @@ const COLOR_MAP = {
   coral:  {bg:'#FAECE7',border:'#F5C4B3',txt:'#712B13'},
   purple: {bg:'#EEEDFE',border:'#CECBF6',txt:'#3C3489'},
   pink:   {bg:'#FBEAF0',border:'#F4C0D1',txt:'#72243E'},
-  gray:   {bg:'#F1EFE8',border:'#D3D1C7',txt:'#5F5E5A'},
-};
+  gray:   {bg:'#F1EFE8',border:'#D3D1C7',txt:'#5F5E5A'}};
 
 const TAG_COLORS = [
   {bg:'#E6F1FB',txt:'#0C447C'},{bg:'#E1F5EE',txt:'#085041'},
   {bg:'#FAEEDA',txt:'#633806'},{bg:'#FAECE7',txt:'#712B13'},
   {bg:'#EAF3DE',txt:'#27500A'},{bg:'#EEEDFE',txt:'#3C3489'},
-  {bg:'#FBEAF0',txt:'#72243E'},{bg:'#F1EFE8',txt:'#5F5E5A'},
-];
+  {bg:'#FBEAF0',txt:'#72243E'},{bg:'#F1EFE8',txt:'#5F5E5A'}];
 
 let currentArea = 'all';
 
@@ -1183,8 +1169,7 @@ const IC = {
   list:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>`,
   clock:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
   eye:       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
-  external:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`,
-};
+  external:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`};
 // 인라인 SVG 생성 헬퍼
 function icon(name, size=16, cls='') {
   const svg = IC[name];
@@ -1250,8 +1235,7 @@ const TRIP_COLORS = {
   coral:  {bg:'#FAECE7',border:'#F5C4B3',txt:'#712B13'},
   amber:  {bg:'#FAEEDA',border:'#FAC775',txt:'#633806'},
   purple: {bg:'#EEEDFE',border:'#CECBF6',txt:'#3C3489'},
-  green:  {bg:'#EAF3DE',border:'#C0DD97',txt:'#27500A'},
-};
+  green:  {bg:'#EAF3DE',border:'#C0DD97',txt:'#27500A'}};
 /* ── localStorage 저장·불러오기 ── */
 const STORAGE_KEY_TRIPS  = 'travelon_trips_v5';
 const STORAGE_KEY_IDS    = 'travelon_ids_v5';
@@ -1275,8 +1259,7 @@ const DEFAULT_TRIPS = [
         { id:18, time:'',     emoji:'🚗', placeType:'move',    name:'증평 → 떡바위산장펜션 이동', shopName:'', note:'약 40km / 50분', address:'', phone:'', rating:'', cost:'', hours:'' },
         { id:19, time:'15:00', emoji:'🏕️', placeType:'lodging', name:'떡바위산장펜션 체크인', shopName:'떡바위산장펜션', note:'체크인 15:00~', address:'충북 괴산군 칠성면 쌍곡로 168-2', phone:'010-2250-0048', rating:'4.0', cost:'', hours:'체크인 15:00', bookingStatus:'confirmed' },
         { id:20, time:'15:30', emoji:'🌊', placeType:'sight',   name:'쌍곡계곡 산책 (추천)', shopName:'쌍곡계곡', note:'봄 계곡 바람 쐬기 · 펜션 인근 도보 이동', address:'충북 괴산군 칠성면 쌍곡리', phone:'043-832-5550', rating:'4.3', cost:'무료', hours:'상시' },
-        { id:21, time:'18:00', emoji:'🔥', placeType:'',        name:'펜션 바베큐', note:'야외 바베큐 · 봄밤 힐링', address:'', phone:'', rating:'', cost:'', hours:'' },
-      ]},
+        { id:21, time:'18:00', emoji:'🔥', placeType:'',        name:'펜션 바베큐', note:'야외 바베큐 · 봄밤 힐링', address:'', phone:'', rating:'', cost:'', hours:'' }]},
       { date: '2026-04-26', places: [
         { id:22, time:'11:00', emoji:'🏕️', placeType:'lodging',    name:'떡바위산장펜션 체크아웃', shopName:'떡바위산장펜션', note:'체크아웃 11:00', address:'충북 괴산군 칠성면 쌍곡로 168-2', phone:'010-2250-0048', rating:'', cost:'', hours:'체크아웃 11:00' },
         { id:23, time:'12:00', emoji:'🐔', placeType:'restaurant', name:'[점심 ①] 쌍곡휴게소', shopName:'쌍곡휴게소', note:'자연산버섯전골·토종닭백숙 · 쌍곡계곡 로컬 맛집 ★4.5', address:'충북 괴산군 칠성면 쌍곡로 699', phone:'043-832-1003', rating:'4.5', cost:'15,000원~', hours:'09:00-20:00' },
@@ -1285,9 +1268,7 @@ const DEFAULT_TRIPS = [
         { id:30, time:'13:30', emoji:'💐', placeType:'cafe',       name:'[카페 ②] 이드니크', shopName:'이드니크', note:'유럽수국 감성 정원카페 · 모던인테리어 · 인스타 핫플 ★4.4', address:'충북 괴산군 청안면 청안읍내로 300-12', phone:'', rating:'4.4', cost:'5,500원~', hours:'10:00-19:00 (일 휴무)' },
         { id:24, time:'14:30', emoji:'🥾', placeType:'sight',      name:'산막이옛길 (추천 관광지)', shopName:'산막이옛길', note:'괴산호 호숫가 산책로 · 2km 코스', address:'충북 괴산군 칠성면 사은리', phone:'043-830-3903', rating:'4.4', cost:'무료', hours:'상시' },
         { id:25, time:'16:30', emoji:'🚗', placeType:'move',       name:'괴산 → 증평 귀가', shopName:'', note:'약 30km / 40분', address:'', phone:'', rating:'', cost:'', hours:'' },
-        { id:26, time:'17:30', emoji:'🏠', placeType:'move',       name:'증평 도착', shopName:'', note:'저녁 전 귀가', address:'', phone:'', rating:'', cost:'', hours:'' },
-      ]},
-    ]
+        { id:26, time:'17:30', emoji:'🏠', placeType:'move',       name:'증평 도착', shopName:'', note:'저녁 전 귀가', address:'', phone:'', rating:'', cost:'', hours:'' }]}]
   },
   {
     id: 1,
@@ -1304,8 +1285,7 @@ const DEFAULT_TRIPS = [
         { id:1, time:'12:00', emoji:'🚗', placeType:'move', name:'증평 출발', note:'점심 후 출발', address:'', phone:'', rating:'', cost:'', hours:'' },
         { id:2, time:'',      emoji:'🚗', placeType:'move',        name:'증평 → 봉평 이동', note:'약 130km / 1시간 40분', address:'', phone:'', rating:'', cost:'', hours:'' },
         { id:3, time:'15:00', emoji:'🏡', placeType:'lodging',     name:'숲속의요정펜션 체크인', shopName:'숲속의요정펜션', note:'체크인 15:00~', address:'강원 평창군 봉평면 태기로 174-11', phone:'', rating:'4.5', cost:'', hours:'체크인 15:00', bookingStatus:'confirmed' },
-        { id:4, time:'18:00', emoji:'🔥', placeType:'',            name:'펜션 바베큐 & 별 감상', note:'산속 맑은 하늘 아래 바베큐 🌟', address:'', phone:'', rating:'', cost:'', hours:'' },
-      ]},
+        { id:4, time:'18:00', emoji:'🔥', placeType:'',            name:'펜션 바베큐 & 별 감상', note:'산속 맑은 하늘 아래 바베큐 🌟', address:'', phone:'', rating:'', cost:'', hours:'' }]},
       { date: '2026-05-02', places: [
         { id:5,  time:'11:00', emoji:'🏡', placeType:'lodging',    name:'숲속의요정펜션 체크아웃', shopName:'숲속의요정펜션', note:'체크아웃 11:00', address:'강원 평창군 봉평면 태기로 174-11', phone:'', rating:'', cost:'', hours:'체크아웃 11:00' },
         { id:6,  time:'11:30', emoji:'🌾', placeType:'restaurant', name:'[점심 ①] 봉평메밀 미가연', shopName:'봉평메밀 미가연', note:'100% 메밀막국수·육회비빔국수 · 방송 출연 ★4.5', address:'강원 평창군 봉평면 기풍로 108', phone:'', rating:'4.5', cost:'9,000원~', hours:'10:00-17:00 (수 휴무)' },
@@ -1314,17 +1294,14 @@ const DEFAULT_TRIPS = [
         { id:8, time:'14:00', emoji:'🌲', placeType:'sight',       name:'월정사 전나무 숲길', shopName:'월정사', note:'약 1~2시간 코스 · 오대산국립공원', address:'강원 평창군 진부면 오대산로 374-8', phone:'033-339-6800', rating:'4.7', cost:'무료', hours:'일출~일몰' },
         { id:9, time:'',      emoji:'🚗', placeType:'move',        name:'월정사 → 내린천아름펜션 이동', note:'약 65km / 1시간 10분', address:'', phone:'', rating:'', cost:'', hours:'' },
         { id:10, time:'17:00', emoji:'🏕️', placeType:'lodging',   name:'내린천아름펜션 체크인', shopName:'내린천아름펜션', note:'내린천 계곡 옆 감성 펜션 · 체크인 15:00~', address:'강원 인제군 인제읍 내린천로 332', phone:'010-4805-8704', rating:'4.5', cost:'', hours:'체크인 15:00', bookingStatus:'confirmed' },
-        { id:11, time:'18:30', emoji:'🔥', placeType:'',           name:'펜션 바베큐', note:'', address:'', phone:'', rating:'', cost:'', hours:'' },
-      ]},
+        { id:11, time:'18:30', emoji:'🔥', placeType:'',           name:'펜션 바베큐', note:'', address:'', phone:'', rating:'', cost:'', hours:'' }]},
       { date: '2026-05-03', places: [
         { id:12, time:'11:00', emoji:'🏕️', placeType:'lodging',   name:'내린천아름펜션 체크아웃', shopName:'내린천아름펜션', note:'체크아웃 11:00', address:'강원 인제군 인제읍 내린천로 332', phone:'010-4805-8704', rating:'', cost:'', hours:'체크아웃 11:00' },
         { id:13, time:'11:30', emoji:'🐟', placeType:'restaurant', name:'[점심 ①] 자작나무집', shopName:'자작나무집', note:'황태정식·더덕구이 세트 · 자작나무숲 인근 · 양 푸짐 ★4.4', address:'강원 인제군 인제읍 자작나무숲길 1113', phone:'', rating:'4.4', cost:'15,000원~', hours:'10:00-17:30 (목 휴무)' },
         { id:33, time:'11:30', emoji:'🌿', placeType:'restaurant', name:'[점심 ②] 고향집', shopName:'고향집', note:'손두부전골·산채비빔밥 · 다이닝코드 인제 1위 ★4.5', address:'강원 인제군 인제읍 자작나무숲길 932', phone:'', rating:'4.5', cost:'10,000원~', hours:'08:00-20:00' },
         { id:14, time:'',      emoji:'🚗', placeType:'move',       name:'인제 → 백담사 입구 이동', note:'약 20km / 25분', address:'', phone:'', rating:'', cost:'', hours:'' },
         { id:15, time:'14:00', emoji:'🙏', placeType:'sight',      name:'백담사', shopName:'백담사', note:'셔틀버스 15분 · 막차 17시 전 출발 필수', address:'강원 인제군 북면 백담로 746', phone:'033-462-6969', rating:'4.6', cost:'셔틀 왕복 5,000원', hours:'셔틀 07:00~17:00' },
-        { id:16, time:'17:00', emoji:'🚗', placeType:'move',       name:'백담사 → 증평 귀가', note:'약 170km / 2시간 10분 · 서울양양고속도로', address:'', phone:'', rating:'', cost:'', hours:'' },
-      ]},
-    ]
+        { id:16, time:'17:00', emoji:'🚗', placeType:'move',       name:'백담사 → 증평 귀가', note:'약 170km / 2시간 10분 · 서울양양고속도로', address:'', phone:'', rating:'', cost:'', hours:'' }]}]
   }
 ];
 
@@ -1335,7 +1312,7 @@ function loadFromStorage() {
     const savedIds     = localStorage.getItem(STORAGE_KEY_IDS);
     return {
       trips:   savedTrips   ? JSON.parse(savedTrips)   : DEFAULT_TRIPS,
-      ids:     savedIds     ? JSON.parse(savedIds)     : { nextTripId: 3, nextPlaceId: 31, nextSpotId: 6, recentCount: 0 }
+      ids:     savedIds     ? JSON.parse(savedIds)     : { nextTripId: 3, nextPlaceId: 31 }
     };
   } catch(e) {
     return { trips: DEFAULT_TRIPS, ids: { nextTripId: 3, nextPlaceId: 31 } };
@@ -1808,8 +1785,7 @@ const THEME_META = {
 
   drive:      { label:'🚗 드라이브·뷰',color:'#72243E', bg:'#FBEAF0', keys:['드라이브','뷰맛집','야경','일몰','일출','포토존','전망','낙조'] },
   cafe:       { label:'☕ 카페·감성',  color:'#633806', bg:'#FAEEDA', keys:['카페','감성','커피','카페거리','티','녹차','힙플'] },
-  all:        { label:'🗺️ 전체 명소',  color:'#1a2533', bg:'#F1EFE8', keys:[] },
-};
+  all:        { label:'🗺️ 전체 명소',  color:'#1a2533', bg:'#F1EFE8', keys:[] }};
 
 function getThemeSpots(themeKey) {
   const meta = THEME_META[themeKey];
@@ -1903,21 +1879,14 @@ function renderThemeRegionBar() {
     {key:'domestic',  label:'국내전체'},
     {key:'jeju',      label:'제주'},
     {key:'seoul',     label:'서울'},
-    {key:'busan',     label:'부산'},
     {key:'gangwon',   label:'강원'},
-    {key:'gyeongju',  label:'경주'},
     {key:'gyeongbuk', label:'경북'},
-    {key:'jeonju',    label:'전주'},
-    {key:'gyeongnam', label:'경남·통영'},
-    {key:'jeonnam',   label:'전남·여수'},
-    {key:'incheon',   label:'인천·경기'},
-    {key:'daegu',     label:'대구'},
+    {key:'gyeongnam', label:'경남'},
+    {key:'jeonnam',   label:'전남'},
+    {key:'incheon',   label:'수도권'},
     {key:'jeonbuk',   label:'전북'},
-    {key:'gwangju',   label:'광주'},
-    {key:'daejeon',   label:'대전·세종'},
     {key:'chungnam',  label:'충남'},
-    {key:'chungbuk',  label:'충북'},
-  ];
+    {key:'chungbuk',  label:'충북'}];
   const INTL = [
     {key:'intl',        label:'해외전체'},
     {key:'japan',       label:'일본'},
@@ -1929,8 +1898,7 @@ function renderThemeRegionBar() {
     {key:'usa',         label:'미주'},
     {key:'china',       label:'중화권'},
     {key:'oceania',     label:'오세아니아'},
-    {key:'mideast',     label:'중동·인도'},
-  ];
+    {key:'mideast',     label:'중동·인도'}];
 
   function chipHtml(chip) {
     const isOn = chip.key === currentRegionFilter;
@@ -1958,13 +1926,12 @@ function setThemeRegionFilter(key) {
 function getRegionFilterLabel() {
   const map = {
     domestic:'국내전체', intl:'해외전체',
-    gangwon:'강원', jeju:'제주', busan:'부산', gyeongju:'경주',
-    jeonju:'전주', seoul:'서울', jeonnam:'전남·여수', gyeongnam:'경남·통영',
-    chungbuk:'충북', chungnam:'충남', daejeon:'대전·세종', incheon:'인천·경기', daegu:'대구',
-    jeonbuk:'전북', gwangju:'광주',
+    gangwon:'강원', jeju:'제주', seoul:'서울',
+    gyeongbuk:'경북', gyeongnam:'경남', jeonnam:'전남',
+    chungbuk:'충북', chungnam:'충남', incheon:'수도권',
+    jeonbuk:'전북',
     japan:'일본', sea:'동남아전체', philippines:'필리핀', vietnam:'베트남', thailand:'태국',
-    europe:'유럽', usa:'미주', china:'중화권', oceania:'오세아니아', mideast:'중동·인도',
-  };
+    europe:'유럽', usa:'미주', china:'중화권', oceania:'오세아니아', mideast:'중동·인도'};
   return map[currentRegionFilter] || '전체';
 }
 
@@ -1991,8 +1958,7 @@ const THEME_CARDS = [
   { key:'valley',     emoji:'🌊', shortLabel:'계곡·워터'},
   { key:'beach',      emoji:'🏖️', shortLabel:'바다·해변'},
   { key:'restaurant', emoji:'🍽️', shortLabel:'맛집'    },
-  { key:'cafe',       emoji:'☕', shortLabel:'카페'    },
-];
+  { key:'cafe',       emoji:'☕', shortLabel:'카페'    }];
 
 function renderThemeIconGrid() {
   const grid = document.getElementById('themeIconGrid');
@@ -2085,15 +2051,11 @@ function renderInlineRegionBar() {
   const DOMESTIC = [
     {key:'domestic',  label:'전체'},
     {key:'jeju',      label:'제주'},     {key:'seoul',    label:'서울'},
-    {key:'busan',     label:'부산'},     {key:'gangwon',  label:'강원'},
-    {key:'gyeongju',  label:'경주'},     {key:'gyeongbuk', label:'경북'},
-    {key:'jeonju',   label:'전주'},
-    {key:'gyeongnam', label:'경남·통영'},{key:'jeonnam',  label:'전남·여수'},
-    {key:'incheon',   label:'인천·경기'},{key:'daegu',    label:'대구'},
-    {key:'jeonbuk',   label:'전북'},     {key:'gwangju',  label:'광주'},
-    {key:'daejeon',   label:'대전·세종'},{key:'chungnam', label:'충남'},
-    {key:'chungbuk',  label:'충북'},
-  ];
+    {key:'gangwon',  label:'강원'},
+    {key:'gyeongbuk', label:'경북'},
+    {key:'gyeongnam', label:'경남'},{key:'jeonnam',  label:'전남'},
+    {key:'incheon',   label:'수도권'},{key:'jeonbuk',   label:'전북'},     {key:'chungnam', label:'충남'},
+    {key:'chungbuk',  label:'충북'}];
   const chip = (r) => {
     const on = r.key === inlineRegionFilter;
     return `<div data-active="${on?1:0}" onclick="inlineSetRegion('${r.key}')" style="flex-shrink:0;padding:5px 12px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;border:1.5px solid ${on?'var(--sky)':'var(--border)'};background:${on?'var(--sky50)':'var(--card)'};color:${on?'var(--sky800)':'var(--txt2)'};transition:all .15s;white-space:nowrap">${r.label}</div>`;
@@ -2113,12 +2075,12 @@ function renderInlineTheme() {
 
   const regionLabelMap = {
     domestic:'국내전체',
-    gangwon:'강원', jeju:'제주', busan:'부산', gyeongju:'경주',
+    gangwon:'강원', jeju:'제주',
     gyeongbuk:'경북',
-    jeonju:'전주', seoul:'서울', jeonnam:'전남·여수', gyeongnam:'경남·통영',
-    chungbuk:'충북', chungnam:'충남', daejeon:'대전·세종', incheon:'인천·경기', daegu:'대구',
-    jeonbuk:'전북', gwangju:'광주',
-  };
+ seoul:'서울', jeonnam:'전남·여수', gyeongnam:'경남·통영',
+    chungbuk:'충북', chungnam:'충남',
+ incheon:'인천·경기',
+    jeonbuk:'전북'};
   const areaLabel = regionLabelMap[inlineRegionFilter] || '전체';
   if (cntEl) cntEl.textContent = `${areaLabel} ${list.length}곳 · 별점 높은 순`;
 
@@ -2150,7 +2112,7 @@ function renderInlineTheme() {
 /* ── 지역별 명소 데이터 + 렌더링 ── */
 /* ── 13개 지역 데이터 + 통합 앱 엔진 ── */
 const REGIONS = [
-  { key:'gangwon', idx:1, name:'강원도', emoji:'🌿', grad:'linear-gradient(135deg,#1D9E75,#378ADD)', sub:'설악·강릉·춘천·속초·평창의 자연',
+  { key:'gangwon', idx:1, name:'강원', emoji:'🌿', grad:'linear-gradient(135deg,#1D9E75,#378ADD)', sub:'설악·강릉·춘천·속초·평창의 자연',
     links:[{lbl:'강원관광',url:'https://tour.gangwon.go.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏔️',name:'설악산 국립공원',meta:'강원 속초시 · 3,500원',mapQ:'설악산 국립공원',rating:4.8,tags:['등산','자연','국립공원'],tip:'울산바위 코스 왕복 4시간, 케이블카도 운영'},
@@ -2185,10 +2147,9 @@ const REGIONS = [
       {emoji:'🌿',name:'오대산 선재길',meta:'강원 평창군 · 무료',mapQ:'오대산 선재길',rating:4.5,tags:['트레킹','숲길','무료'],tip:'9km 평탄한 숲길, 가을 단풍이 압도적'},
       {emoji:'🌊',name:'삼척 해상케이블카',meta:'강원 삼척시 · 12,000원',mapQ:'삼척 해상케이블카',rating:4.3,tags:['바다뷰','케이블카'],tip:'국내 최장 해상케이블카 1.8km'},
       {emoji:'🏕️',name:'내린천 래프팅',meta:'강원 인제군 · 35,000원~',mapQ:'내린천 래프팅',rating:4.6,tags:['액티비티','래프팅','여름','계곡'],tip:'여름 최고 인기 액티비티, 7~8월 예약 필수'},
-      {emoji:'🍁',name:'설악 오색약수터',meta:'강원 양양군 · 무료',mapQ:'오색약수터 양양',rating:4.1,tags:['약수터','트레킹','무료'],tip:'철분 풍부 탄산수, 주전골 단풍길과 연계'},
-    ]
+      {emoji:'🍁',name:'설악 오색약수터',meta:'강원 양양군 · 무료',mapQ:'오색약수터 양양',rating:4.1,tags:['약수터','트레킹','무료'],tip:'철분 풍부 탄산수, 주전골 단풍길과 연계'}]
   },
-  { key:'jeju', idx:2, name:'제주도', emoji:'🌸', grad:'linear-gradient(135deg,#e84f4f,#e07b2a)', sub:'사계절 아름다운 화산섬 여행',
+  { key:'jeju', idx:2, name:'제주', emoji:'🌸', grad:'linear-gradient(135deg,#e84f4f,#e07b2a)', sub:'사계절 아름다운 화산섬 여행',
     links:[{lbl:'제주관광',url:'https://www.visitjeju.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'클룩투어',url:'https://www.klook.com/ko'}],
     spots:[
       {emoji:'🌋',name:'한라산 국립공원',meta:'제주시 · 무료(성판악 탐방)',mapQ:'한라산 국립공원',rating:4.9,tags:['등산','유네스코','자연'],tip:'성판악 탐방로 예약 필수(숲이나숲), 왕복 9시간'},
@@ -2218,8 +2179,7 @@ const REGIONS = [
       {emoji:'🍖',name:'제주 돔베고기',meta:'제주시 · 18,000원~',mapQ:'제주 돔베고기',rating:4.5,tags:['맛집','향토','돼지고기'],tip:'삶은 돼지고기 제주 향토 음식, 제주몸국과 함께'},
       {emoji:'🥩',name:'서귀포 은갈치 구이',meta:'서귀포시 · 25,000원~',mapQ:'서귀포 갈치구이',rating:4.6,tags:['맛집','갈치','생선구이'],tip:'매일올레시장 인근 갈치 전문점, 제주 은갈치 최고'},
       {emoji:'🦐',name:'제주 전복뚝배기',meta:'서귀포시 · 20,000원~',mapQ:'제주 전복뚝배기',rating:4.5,tags:['맛집','전복','해산물'],tip:'제주 전복 산지 직구매, 전복죽·전복뚝배기 추천'},
-      {emoji:'🍰',name:'제주 오메기·흑임자 빙수',meta:'제주시 · 12,000원~',mapQ:'제주 빙수 카페',rating:4.4,tags:['맛집','빙수','디저트'],tip:'제주 카페거리 특산 빙수, 오메기술 전통 카페 추천'},
-    ]
+      {emoji:'🍰',name:'제주 오메기·흑임자 빙수',meta:'제주시 · 12,000원~',mapQ:'제주 빙수 카페',rating:4.4,tags:['맛집','빙수','디저트'],tip:'제주 카페거리 특산 빙수, 오메기술 전통 카페 추천'}]
   },
   { key:'seoul', idx:3, name:'서울', emoji:'🏙️', grad:'linear-gradient(135deg,#667eea,#764ba2)', sub:'전통과 현대가 공존하는 수도',
     links:[{lbl:'서울관광',url:'https://www.visitseoul.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'클룩투어',url:'https://www.klook.com/ko'}],
@@ -2261,12 +2221,103 @@ const REGIONS = [
       {emoji:'🍖',name:'망원동 곱창골목',meta:'마포구 · 15,000원~',mapQ:'망원동 곱창',rating:4.5,tags:['맛집','곱창','야식'],tip:'홍대 인근 망원동 곱창 밀집, 막창·대창 함께 주문'},
       {emoji:'🦑',name:'인사동 전통 음식거리',meta:'종로구 · 8,000원~',mapQ:'인사동 음식',rating:4.3,tags:['맛집','전통음식','골목'],tip:'쌈지길 주변 전통주·녹두전·비빔밥 골목'},
       {emoji:'🐄',name:'서울 삼각지 해장국거리',meta:'용산구 · 9,000원~',mapQ:'삼각지 해장국',rating:4.4,tags:['맛집','해장','해장국'],tip:'새벽부터 운영, 선지·내장·뼈다귀 해장국 원조 거리'},
-      {emoji:'🍱',name:'청담·압구정 오마카세',meta:'강남구 · 50,000원~',mapQ:'청담동 오마카세',rating:4.6,tags:['맛집','고급','일식'],tip:'미슐랭·블루리본 식당 밀집, 스시·한식 코스 다수'},
-    ]
+      {emoji:'🍱',name:'청담·압구정 오마카세',meta:'강남구 · 50,000원~',mapQ:'청담동 오마카세',rating:4.6,tags:['맛집','고급','일식'],tip:'미슐랭·블루리본 식당 밀집, 스시·한식 코스 다수'}]
   },
-  { key:'busan', idx:4, name:'부산', emoji:'🐟', grad:'linear-gradient(135deg,#0575e6,#021b79)', sub:'바다와 도시가 만나는 항구도시',
-    links:[{lbl:'부산관광',url:'https://www.visitbusan.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버맛집',url:'https://map.naver.com'}],
+
+  { key:'gyeongbuk', idx:5, name:'경북', emoji:'🏯', grad:'linear-gradient(135deg,#c87d2f,#a85e10)', sub:'신라·팔공산·안동·포항의 경상북도',
+    links:[{lbl:'경북관광',url:'https://www.gbtour.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'문화재청',url:'https://www.cha.go.kr'}],
     spots:[
+      {emoji:'🏛️',name:'불국사',meta:'경주시 · 6,000원',mapQ:'불국사 경주',rating:4.8,tags:['유네스코','사찰','국보'],tip:'다보탑·석가탑 국보 보유, 봄 벚꽃길이 장관'},
+      {emoji:'🗿',name:'석굴암',meta:'경주시 · 6,000원(불국사 통합)',mapQ:'석굴암',rating:4.7,tags:['유네스코','국보','조각'],tip:'불국사와 통합권 구매 추천, 이른 오전 방문'},
+      {emoji:'🌙',name:'동궁과 월지',meta:'경주시 · 3,000원',mapQ:'동궁과월지 경주',rating:4.8,tags:['야경','야간개장','신라'],tip:'야간 조명 연출이 낮보다 10배 아름다움'},
+      {emoji:'🌸',name:'대릉원·첨성대',meta:'경주시 · 3,000원',mapQ:'대릉원 경주',rating:4.6,tags:['능묘','역사','천문대'],tip:'봄 유채꽃·가을 코스모스 시즌에 최고'},
+      {emoji:'🛕',name:'황리단길',meta:'경주시 · 무료',mapQ:'황리단길 경주',rating:4.5,tags:['카페','한옥','분위기'],tip:'경주 핫플, 한복 입고 인생샷 스폿 가득'},
+      {emoji:'🏯',name:'안동 하회마을',meta:'안동시 · 5,000원',mapQ:'안동 하회마을',rating:4.7,tags:['유네스코','전통마을','민속'],tip:'하회별신굿탈놀이 공연(토·일) 무료 관람'},
+      {emoji:'🍎',name:'주왕산 국립공원',meta:'청송군 · 3,500원',mapQ:'주왕산 국립공원',rating:4.6,tags:['등산','단풍','국립공원'],tip:'주방천 페달보트+트레킹 코스, 10월 단풍이 압도적'},
+      {emoji:'🌊',name:'포항 호미곶',meta:'포항시 · 무료',mapQ:'호미곶 포항',rating:4.5,tags:['일출','드라이브','무료'],tip:'한반도 최동단, 1월 1일 해맞이 축제 전국 인파'},
+      {emoji:'🏺',name:'국립경주박물관',meta:'경주시 · 무료',mapQ:'국립경주박물관',rating:4.6,tags:['박물관','신라','무료'],tip:'성덕대왕신종(에밀레종) 보유, 야외 전시도 풍성'},
+      {emoji:'🌿',name:'경주 남산',meta:'경주시 · 무료',mapQ:'경주 남산 탐방로',rating:4.4,tags:['등산','불상','무료'],tip:'곳곳에 신라 불상·석탑, 반나절 트레킹 코스'},
+      {emoji:'🌸',name:'영주 부석사',meta:'영주시 · 3,000원',mapQ:'부석사 영주',rating:4.7,tags:['유네스코','사찰','은행나무','은행나무','단풍'],tip:'11월 은행나무 단풍이 전국 최고, 무량수전 국보'},
+      {emoji:'🏯',name:'안동 봉정사',meta:'안동시 · 1,500원',mapQ:'봉정사 안동',rating:4.6,tags:['사찰','산사','유네스코'],tip:'현존 최고(最古) 목조건물 극락전 보유, 유네스코 산사'},
+      {emoji:'⛩️',name:'의성 고운사',meta:'의성군 · 2,000원',mapQ:'고운사 의성',rating:4.4,tags:['사찰','산사','힐링'],tip:'최치원 창건 유서 깊은 사찰, 가을 단풍 명소'},
+      {emoji:'🌿',name:'청도 운문사',meta:'청도군 · 2,000원',mapQ:'운문사 청도',rating:4.5,tags:['사찰','산사','비구니'],tip:'국내 최대 비구니 승가대학, 솔밭길 산책로 아름다움'},
+      {emoji:'💐',name:'영천 은해사',meta:'영천시 · 무료',mapQ:'은해사 영천',rating:4.5,tags:['사찰','산사','봄꽃'],tip:'팔공산 봄 벚꽃·진달래 군락 절경, 거조암 국보 보유'},
+      {emoji:'🍂',name:'청송 대전사',meta:'청송군 · 무료',mapQ:'대전사 청송',rating:4.5,tags:['사찰','산사','단풍'],tip:'주왕산 국립공원 입구 사찰, 가을 단풍 국내 TOP5'},
+      {emoji:'🏔️',name:'문경 봉암사',meta:'문경시 · 부처님오신날만 개방',mapQ:'봉암사 문경',rating:4.5,tags:['사찰','산사','수행'],tip:'조계종 특별수도원, 일 년 중 하루만 개방, 희소가치 최고'},
+      {emoji:'🌸',name:'팔공산 동화사',meta:'대구 동구 · 2,500원',mapQ:'동화사 팔공산',rating:4.5,tags:['사찰','산사','봄꽃'],tip:'팔공산 대표 사찰, 통일약사여래대불 33m, 봄 벚꽃 명소'},
+      {emoji:'🌼',name:'영양 흥국사',meta:'영양군 · 무료',mapQ:'흥국사 영양',rating:4.2,tags:['사찰','산사','힐링'],tip:'일월산 자락 조용한 산사, 봄 진달래 군락이 아름다움'},
+      {emoji:'🌾',name:'안동 찜닭골목',meta:'안동시 · 15,000원~',mapQ:'안동 찜닭골목',rating:4.5,tags:['맛집','전통음식'],tip:'원조 안동찜닭, 간고등어·헛제삿밥도 필수'},
+      {emoji:'🎭',name:'영덕 대게거리',meta:'영덕군 · 시가',mapQ:'영덕 대게거리',rating:4.3,tags:['맛집','해산물','대게'],tip:'11월~4월 제철, 강구항 현지 구매가 저렴'},
+      {emoji:'🍜',name:'경주 황리단길 식당골목',meta:'경주시 · 10,000원~',mapQ:'황리단길 맛집',rating:4.5,tags:['맛집','한식','카페'],tip:'한옥 개조 식당·카페 밀집, 쌈밥·비빔밥·한과 추천'},
+      {emoji:'🌾',name:'안동 헛제삿밥',meta:'안동시 · 12,000원~',mapQ:'안동 헛제삿밥',rating:4.6,tags:['맛집','향토','전통음식'],tip:'제사 음식 모아 차린 안동 향토 정식, 간고등어 포함'},
+      {emoji:'🐟',name:'포항 구룡포 과메기',meta:'포항시 · 15,000원~',mapQ:'구룡포 과메기',rating:4.5,tags:['맛집','과메기','겨울'],tip:'11월~2월 제철, 꽁치 혹은 청어 과메기 직구매'},
+      {emoji:'🦑',name:'울진 대게·킹크랩',meta:'울진군 · 시가',mapQ:'울진 대게 직판',rating:4.6,tags:['맛집','대게','해산물'],tip:'후포항 대게 경매 구경 가능, 제철 1~5월 추천'},
+      {emoji:'🍡',name:'경주 황남빵 본점',meta:'경주 황남동 · 1,500원~',mapQ:'황남빵 경주 본점',rating:4.7,tags:['맛집','기념품','전통'],tip:'1939년부터 이어온 경주 대표 기념품, 줄 서서 구매'},
+      {emoji:'🥩',name:'안동 간고등어 구이',meta:'안동시 · 12,000원~',mapQ:'안동 간고등어',rating:4.5,tags:['맛집','생선구이','향토'],tip:'소금에 절여 숙성한 안동 명물, 찜닭·헛제삿밥과 세트'},
+      {emoji:'🍖',name:'경산 갈비·닭볶음탕',meta:'경산시 · 20,000원~',mapQ:'경산 갈비 맛집',rating:4.3,tags:['맛집','갈비','한식'],tip:'대구 인근 경산 갈비촌, 닭볶음탕도 함께 유명'},
+      {emoji:'🌸',name:'비슬산 참꽃군락',meta:'달성군 · 무료',mapQ:'비슬산 참꽃',rating:4.7,tags:['봄','진달래','등산','진달래','봄꽃'],tip:'4월 말 참꽃(진달래) 100만 평 군락, 케이블카 운영'},
+      {emoji:'🌿',name:'팔공산 도립공원',meta:'동구 · 무료',mapQ:'팔공산 대구',rating:4.6,tags:['등산','단풍','케이블카'],tip:'갓바위 소원성취 유명, 동화사 연계 추천'},
+      {emoji:'🙏',name:'팔공산 갓바위 관봉석조여래좌상',meta:'경산시 · 무료',mapQ:'팔공산 갓바위',rating:4.6,tags:['사찰','산사','소원'],tip:'수능·취업·합격 기도 명소, 정상까지 1시간 등산'},
+      {emoji:'💐',name:'비슬산 용연사',meta:'달성군 · 무료',mapQ:'용연사 비슬산',rating:4.4,tags:['사찰','산사','봄꽃'],tip:'비슬산 진달래 군락 입구, 금강계단 진신사리 봉안'},
+      {emoji:'🍂',name:'팔공산 파계사',meta:'대구 동구 · 무료',mapQ:'파계사 팔공산',rating:4.3,tags:['사찰','산사','단풍'],tip:'숙종 어의 치료 인연 사찰, 가을 단풍이 아름다움'},
+      {emoji:'🏛️',name:'대구 근대골목투어',meta:'중구 · 무료',mapQ:'대구 근대골목투어',rating:4.5,tags:['역사','골목','무료'],tip:'5개 코스, 3·1만세운동길·이상화고택 포함'},
+      {emoji:'🛍️',name:'동성로 거리',meta:'중구 · 무료',mapQ:'동성로 대구',rating:4.4,tags:['쇼핑','젊음','무료'],tip:'대구 최대 번화가, 교동시장 납작만두 필수'},
+      {emoji:'🍖',name:'안지랑 곱창골목',meta:'남구 · 15,000원~',mapQ:'안지랑 곱창골목',rating:4.6,tags:['맛집','곱창','야식'],tip:'전국 최대 곱창골목 50여 곳, 저녁 8시 이후 피크'},
+      {emoji:'🍜',name:'대구 막창·뼈찜',meta:'중구·달서구 · 10,000원~',mapQ:'대구 막창골목',rating:4.5,tags:['맛집','야식','전통'],tip:'막창은 전국 최고, 안지랑 or 평화시장 추천'},
+      {emoji:'🥢',name:'대구 납작만두·교동시장',meta:'중구 · 3,000원~',mapQ:'교동시장 납작만두',rating:4.6,tags:['맛집','분식','시장'],tip:'납작만두+떡볶이 세트 필수, 동성로 여행 코스'},
+      {emoji:'🍲',name:'대구 뭉티기 육회',meta:'중구 · 20,000원~',mapQ:'대구 뭉티기',rating:4.5,tags:['맛집','육회','향토'],tip:'대구 전통 육사시미, 참기름+마늘 비빔 형태 독특'},
+      {emoji:'🍜',name:'대구 불고기·찜갈비',meta:'북구 · 20,000원~',mapQ:'대구 찜갈비',rating:4.5,tags:['맛집','갈비','한식'],tip:'대구식 달콤한 양념 불고기, 동인동 찜갈비 유명'},
+      {emoji:'🥘',name:'대구 동성로 순대국밥',meta:'중구 · 8,000원~',mapQ:'대구 순대국밥',rating:4.4,tags:['맛집','해장','국밥'],tip:'대구 식도락 여행 시작점, 동성로 주변 밀집'},
+      {emoji:'🍡',name:'대구 서문시장 칼국수',meta:'중구 · 7,000원~',mapQ:'서문시장 칼국수',rating:4.5,tags:['맛집','칼국수','시장'],tip:'서문시장 내 칼국수 골목, 야시장과 함께 즐기기'},
+      {emoji:'🥗',name:'청도 감 와인·곶감',meta:'청도군 · 시가',mapQ:'청도 감 와인',rating:4.3,tags:['맛집','와인','체험'],tip:'청도 특산 감와인 시음·구매, 곶감 직거래 추천'},
+      {emoji:'🏔️',name:'가야산 국립공원',meta:'성주군 · 3,500원',mapQ:'가야산 국립공원',rating:4.6,tags:['등산','국립공원','가을','단풍'],tip:'해인사 팔만대장경 유네스코, 단풍 전국 10대 명소'},
+      {emoji:'🌊',name:'구미 낙동강 체육공원',meta:'구미시 · 무료',mapQ:'구미 낙동강 체육공원',rating:4.1,tags:['자전거','강변','무료'],tip:'강변 자전거길, 4월 벚꽃 명소'},
+      {emoji:'🌸',name:'청도 와인터널',meta:'청도군 · 5,000원',mapQ:'청도 와인터널',rating:4.3,tags:['와인','터널','이색'],tip:'1927년 철도터널 와인 저장, 감와인 시음 가능'},
+      {emoji:'🎭',name:'대구 약령시',meta:'중구 · 무료',mapQ:'대구 약령시',rating:4.2,tags:['한약','시장','전통'],tip:'350년 전통 한약재 시장, 한의약박물관 연계'},
+      {emoji:'🌊',name:'고령 대가야박물관',meta:'고령군 · 3,000원',mapQ:'대가야박물관 고령',rating:4.3,tags:['역사','박물관','가야'],tip:'가야 왕릉 지산동 고분군 인접, 세계유산 신청'},
+      {emoji:'🌿',name:'경주 남산 탐방로',meta:'경주시 · 무료',mapQ:'경주 남산 탐방로',rating:4.4,tags:['등산','불상','무료','힐링'],tip:'곳곳에 신라 불상·석탑, 반나절 트레킹 코스'},
+      {emoji:'🌊',name:'문무대왕릉 (수중릉)',meta:'양북면 · 무료',mapQ:'문무대왕릉 경주',rating:4.5,tags:['역사','해변','무료'],tip:'바다 위 수중 왕릉, 이견대에서 보는 일출 절경'},
+      {emoji:'🍜',name:'경주 교촌 닭갈비',meta:'교동 · 12,000원~',mapQ:'경주 교촌 닭갈비',rating:4.6,tags:['맛집','닭갈비','한옥'],tip:'교촌한옥마을 인근 닭갈비 골목, 경주 대표 먹거리'},
+      {emoji:'🍡',name:'황남빵 본점',meta:'황남동 · 1,500원~',mapQ:'황남빵 경주 본점',rating:4.7,tags:['맛집','기념품','전통'],tip:'1939년부터 이어온 경주 대표 기념품, 줄 서서 구매'},
+      {emoji:'🍲',name:'경주 한정식·쌈밥',meta:'황남동 · 15,000원~',mapQ:'경주 한정식',rating:4.5,tags:['맛집','한정식','한식'],tip:'황리단길·황남동 한정식 골목, 제철 나물 반찬 풍성'},
+      {emoji:'🌾',name:'경주 찰보리빵',meta:'경주시 · 1,000원~',mapQ:'경주 찰보리빵',rating:4.4,tags:['맛집','기념품','빵'],tip:'경주 토산 먹거리, 찰보리 가득한 쫄깃한 간식'},
+      {emoji:'🥘',name:'경주 돼지국밥',meta:'경주시 · 8,000원~',mapQ:'경주 돼지국밥',rating:4.5,tags:['맛집','국밥','해장'],tip:'경주 시장 인근 돼지국밥 골목, 부산식과는 다른 경주식'},
+      {emoji:'🍜',name:'경주 냉면·막국수',meta:'황남동 · 9,000원~',mapQ:'경주 냉면',rating:4.4,tags:['맛집','냉면','여름'],tip:'경주 여름 대표 음식, 황남동 냉면집 인기'},
+      {emoji:'🦑',name:'경주 감포항 해산물',meta:'감포읍 · 시가',mapQ:'감포항 해산물',rating:4.5,tags:['맛집','해산물','항구'],tip:'동해 감포항 직판장, 문어·물가자미·대게 저렴'},
+      {emoji:'🍰',name:'황리단길 디저트·빵집',meta:'황남동 · 5,000원~',mapQ:'황리단길 카페 디저트',rating:4.5,tags:['맛집','디저트','카페'],tip:'한옥 개조 카페 수제 디저트, 경주빵·약과 맛집'},
+      {emoji:'🛕',name:'분황사',meta:'경주시 · 1,000원',mapQ:'분황사 경주',rating:4.3,tags:['사찰','산사','신라'],tip:'신라 최초 황룡사 인근, 모전석탑 국보 보유'},
+      {emoji:'⛩️',name:'경주 기림사',meta:'양북면 · 4,000원',mapQ:'기림사 경주',rating:4.4,tags:['사찰','산사','숲'],tip:'경주 북쪽 깊은 산속 천년 사찰, 단풍 명소'},
+      {emoji:'🌿',name:'감은사지',meta:'경주시 · 무료',mapQ:'감은사지 경주',rating:4.2,tags:['사찰','산사','역사'],tip:'삼층석탑 2기 국보, 문무왕 추모 동해안 위치'}]
+  },
+  { key:'gyeongnam', idx:6, name:'경남', emoji:'🌊', grad:'linear-gradient(135deg,#00b4db,#0083b0)', sub:'경남·부산·남해·통영의 바다와 도시',
+    links:[{lbl:'경남관광',url:'https://www.gyeongnam.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
+    spots:[
+      {emoji:'🚡',name:'통영 케이블카',meta:'통영시 · 왕복 15,000원',mapQ:'통영 케이블카',rating:4.7,tags:['뷰맛집','케이블카','한려수도'],tip:'정상 미륵산에서 한려수도 전망, 일몰 추천'},
+      {emoji:'🏝️',name:'거제 외도 보타니아',meta:'거제시 · 11,000원',mapQ:'외도 보타니아 거제',rating:4.6,tags:['섬여행','정원','배'],tip:'장승포·도장포선착장 출발, 2시간 코스'},
+      {emoji:'🌸',name:'하동 쌍계사 벚꽃길',meta:'하동군 · 무료',mapQ:'하동 쌍계사 벚꽃',rating:4.8,tags:['벚꽃','봄','드라이브'],tip:'4월 초 최절정, 쌍계사~화개장터 10리 벚꽃길'},
+      {emoji:'🏔️',name:'합천 해인사',meta:'합천군 · 3,000원',mapQ:'해인사 합천',rating:4.8,tags:['사찰','산사','유네스코'],tip:'팔만대장경 봉안, 가야산 단풍과 어우러진 절경'},
+      {emoji:'⛩️',name:'양산 통도사',meta:'양산시 · 3,000원',mapQ:'통도사 양산',rating:4.7,tags:['사찰','산사','유네스코'],tip:'불보 사찰, 석가모니 진신사리 봉안, 국내 최대 사찰'},
+      {emoji:'🌿',name:'남해 화방사',meta:'남해군 · 무료',mapQ:'화방사 남해',rating:4.2,tags:['사찰','산사','힐링'],tip:'금산 자락 조용한 산사, 보리암 연계 트레킹 코스'},
+      {emoji:'🌸',name:'남해 보리암',meta:'남해군 · 1,000원',mapQ:'보리암 남해',rating:4.7,tags:['사찰','산사','바다뷰'],tip:'금산 정상 해수관음상, 남해 바다 파노라마 절경 국내 최고'},
+      {emoji:'💐',name:'창원 성주사',meta:'창원시 · 무료',mapQ:'성주사 창원',rating:4.3,tags:['사찰','산사','봄꽃'],tip:'봄 왕벚꽃 군락 아름다움, 천주산 진달래 능선 연계'},
+      {emoji:'🍂',name:'밀양 표충사',meta:'밀양시 · 2,000원',mapQ:'표충사 밀양',rating:4.5,tags:['사찰','산사','단풍'],tip:'사명대사 호국 사찰, 가을 재약산 단풍이 압도적'},
+      {emoji:'🏯',name:'산청 대원사',meta:'산청군 · 1,500원',mapQ:'대원사 산청',rating:4.4,tags:['사찰','산사','계곡'],tip:'지리산 계곡 따라 들어가는 산사, 여름 피서 명소'},
+      {emoji:'🌼',name:'고성 옥천사',meta:'고성군 · 무료',mapQ:'옥천사 고성',rating:4.3,tags:['사찰','산사','힐링'],tip:'연화산 자락 천년 사찰, 봄 연꽃·가을 단풍 아름다움'},
+      {emoji:'🐢',name:'남해 독일마을',meta:'남해군 · 무료',mapQ:'남해 독일마을',rating:4.4,tags:['이색','드라이브','무료'],tip:'독일 이주 노동자 마을, 남해 물건리 방조어부림 연계'},
+      {emoji:'🏯',name:'진주성',meta:'진주시 · 2,000원',mapQ:'진주성',rating:4.5,tags:['역사','야경','남강'],tip:'10월 진주 남강 유등축제 개최, 야경 절경'},
+      {emoji:'🌿',name:'함양 상림숲',meta:'함양군 · 무료',mapQ:'함양 상림숲',rating:4.5,tags:['숲길','힐링','천연기념물'],tip:'최치원 조성 1100년 된 천연기념물 숲'},
+      {emoji:'🌅',name:'남해 바래길',meta:'남해군 · 무료',mapQ:'남해 바래길',rating:4.4,tags:['트레킹','해안길','무료'],tip:'11개 코스 총 96km, 3코스 물건리~앵강 추천'},
+      {emoji:'🦀',name:'마산 어시장',meta:'창원시 · 무료',mapQ:'마산 어시장 창원',rating:4.3,tags:['해산물','시장','무료'],tip:'아귀찜·곰장어 맛집 밀집, 합포만 야시장 인기'},
+      {emoji:'🌊',name:'거제 바람의언덕',meta:'거제시 · 무료',mapQ:'거제 바람의언덕',rating:4.4,tags:['뷰맛집','해안','무료'],tip:'TV 촬영 명소, 도장포마을 포토존'},
+      {emoji:'🍜',name:'통영 한정식·굴요리',meta:'통영시 · 15,000원~',mapQ:'통영 굴요리',rating:4.6,tags:['맛집','굴','해산물'],tip:'11~3월 굴 제철, 통영 꿀빵도 필수 아이템'},
+      {emoji:'🦑',name:'진주 냉면·비빔밥',meta:'진주시 · 10,000원~',mapQ:'진주 냉면 맛집',rating:4.6,tags:['맛집','냉면','전통음식'],tip:'진주냉면은 육전 올린 향토 음식, 천황식당 유명'},
+      {emoji:'🦀',name:'고성 공룡나라 장어구이',meta:'고성군 · 25,000원~',mapQ:'고성 장어구이',rating:4.4,tags:['맛집','장어','해산물'],tip:'남해안 민물장어·바다장어 최대 산지, 숯불구이 추천'},
+      {emoji:'🦀',name:'마산 아귀찜',meta:'창원시 · 20,000원~',mapQ:'마산 아귀찜',rating:4.7,tags:['맛집','아귀찜','향토'],tip:'전국 아귀찜 원조 마산, 오동동 아구찜 골목 필수'},
+      {emoji:'🐄',name:'함양 흑돼지 숯불구이',meta:'함양군 · 20,000원~',mapQ:'함양 흑돼지',rating:4.4,tags:['맛집','돼지고기','고기'],tip:'산청·함양 흑돼지 산지, 숯불향 오겹살 추천'},
+      {emoji:'🦑',name:'거제 성게·물회',meta:'거제시 · 18,000원~',mapQ:'거제 물회',rating:4.5,tags:['맛집','물회','해산물'],tip:'거제 통영 수산시장 연계, 성게미역국도 별미'},
+      {emoji:'🐙',name:'남해 멸치쌈밥',meta:'남해군 · 12,000원~',mapQ:'남해 멸치쌈밥',rating:4.5,tags:['맛집','멸치','향토'],tip:'국내 최대 멸치 생산지 남해, 쌈밥·구이 세트 유명'},
+      {emoji:'🍲',name:'하동 재첩국',meta:'하동군 · 8,000원~',mapQ:'하동 재첩국',rating:4.6,tags:['맛집','재첩','향토'],tip:'섬진강 재첩 원산지, 새벽 해장국 최고, 재첩회무침도'},
+      {emoji:'🥩',name:'밀양 돼지갈비',meta:'밀양시 · 20,000원~',mapQ:'밀양 돼지갈비',rating:4.4,tags:['맛집','갈비','야식'],tip:'밀양 갈비 단지, 양념·생갈비 모두 유명'},
       {emoji:'🌊',name:'해운대해수욕장',meta:'해운대구 · 무료',mapQ:'해운대해수욕장',rating:4.7,tags:['해변','여름','무료'],tip:'7~8월 극성수기 숙소 3개월 전 예약, 마린시티 야경 추천'},
       {emoji:'🎨',name:'감천문화마을',meta:'사하구 · 2,000원',mapQ:'감천문화마을',rating:4.6,tags:['포토존','벽화','골목'],tip:'스탬프 지도 구매 후 투어, 평일 오전이 한산'},
       {emoji:'🐟',name:'자갈치시장',meta:'중구 · 무료',mapQ:'자갈치시장',rating:4.5,tags:['해산물','시장','무료'],tip:'2층 식당가에서 활어 직접 구매 후 조리 가능'},
@@ -2298,74 +2349,9 @@ const REGIONS = [
       {emoji:'🏖️',name:'송정해수욕장',meta:'해운대구 · 무료',mapQ:'송정해수욕장',rating:4.5,tags:['서핑','해변','여유'],tip:'해운대보다 한적, 서핑 명소·게스트하우스 밀집'},
       {emoji:'🍢',name:'부산 어묵·튀김 골목',meta:'남포동 · 2,000원~',mapQ:'부산 어묵 남포동',rating:4.6,tags:['맛집','어묵','분식'],tip:'삼진어묵·고래사어묵 직영점, 고로케·어묵탕 인기'},
       {emoji:'🦞',name:'해운대 암남공원 해산물',meta:'해운대구 · 시가',mapQ:'해운대 횟집',rating:4.5,tags:['맛집','해산물','횟집'],tip:'미포 오른쪽 해안 횟집 밀집, 살아있는 물회 추천'},
-      {emoji:'🍜',name:'초량 이바구길 밀면',meta:'동구 · 8,000원~',mapQ:'부산 밀면 초량',rating:4.5,tags:['맛집','밀면','전통음식'],tip:'부산 향토음식 밀면 원조 골목, 개금밀면도 유명'},
-    ]
+      {emoji:'🍜',name:'초량 이바구길 밀면',meta:'동구 · 8,000원~',mapQ:'부산 밀면 초량',rating:4.5,tags:['맛집','밀면','전통음식'],tip:'부산 향토음식 밀면 원조 골목, 개금밀면도 유명'}]
   },
-  { key:'gyeongbuk', idx:5, name:'경주·경북', emoji:'🏯', grad:'linear-gradient(135deg,#c87d2f,#a85e10)', sub:'신라 천년 역사와 경북의 문화',
-    links:[{lbl:'경북관광',url:'https://www.gbtour.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'문화재청',url:'https://www.cha.go.kr'}],
-    spots:[
-      {emoji:'🏛️',name:'불국사',meta:'경주시 · 6,000원',mapQ:'불국사 경주',rating:4.8,tags:['유네스코','사찰','국보'],tip:'다보탑·석가탑 국보 보유, 봄 벚꽃길이 장관'},
-      {emoji:'🗿',name:'석굴암',meta:'경주시 · 6,000원(불국사 통합)',mapQ:'석굴암',rating:4.7,tags:['유네스코','국보','조각'],tip:'불국사와 통합권 구매 추천, 이른 오전 방문'},
-      {emoji:'🌙',name:'동궁과 월지',meta:'경주시 · 3,000원',mapQ:'동궁과월지 경주',rating:4.8,tags:['야경','야간개장','신라'],tip:'야간 조명 연출이 낮보다 10배 아름다움'},
-      {emoji:'🌸',name:'대릉원·첨성대',meta:'경주시 · 3,000원',mapQ:'대릉원 경주',rating:4.6,tags:['능묘','역사','천문대'],tip:'봄 유채꽃·가을 코스모스 시즌에 최고'},
-      {emoji:'🛕',name:'황리단길',meta:'경주시 · 무료',mapQ:'황리단길 경주',rating:4.5,tags:['카페','한옥','분위기'],tip:'경주 핫플, 한복 입고 인생샷 스폿 가득'},
-      {emoji:'🏯',name:'안동 하회마을',meta:'안동시 · 5,000원',mapQ:'안동 하회마을',rating:4.7,tags:['유네스코','전통마을','민속'],tip:'하회별신굿탈놀이 공연(토·일) 무료 관람'},
-      {emoji:'🍎',name:'주왕산 국립공원',meta:'청송군 · 3,500원',mapQ:'주왕산 국립공원',rating:4.6,tags:['등산','단풍','국립공원'],tip:'주방천 페달보트+트레킹 코스, 10월 단풍이 압도적'},
-      {emoji:'🌊',name:'포항 호미곶',meta:'포항시 · 무료',mapQ:'호미곶 포항',rating:4.5,tags:['일출','드라이브','무료'],tip:'한반도 최동단, 1월 1일 해맞이 축제 전국 인파'},
-      {emoji:'🏺',name:'국립경주박물관',meta:'경주시 · 무료',mapQ:'국립경주박물관',rating:4.6,tags:['박물관','신라','무료'],tip:'성덕대왕신종(에밀레종) 보유, 야외 전시도 풍성'},
-      {emoji:'🌿',name:'경주 남산',meta:'경주시 · 무료',mapQ:'경주 남산 탐방로',rating:4.4,tags:['등산','불상','무료'],tip:'곳곳에 신라 불상·석탑, 반나절 트레킹 코스'},
-      {emoji:'🌸',name:'영주 부석사',meta:'영주시 · 3,000원',mapQ:'부석사 영주',rating:4.7,tags:['유네스코','사찰','은행나무','은행나무','단풍'],tip:'11월 은행나무 단풍이 전국 최고, 무량수전 국보'},
-      {emoji:'🏯',name:'안동 봉정사',meta:'안동시 · 1,500원',mapQ:'봉정사 안동',rating:4.6,tags:['사찰','산사','유네스코'],tip:'현존 최고(最古) 목조건물 극락전 보유, 유네스코 산사'},
-      {emoji:'⛩️',name:'의성 고운사',meta:'의성군 · 2,000원',mapQ:'고운사 의성',rating:4.4,tags:['사찰','산사','힐링'],tip:'최치원 창건 유서 깊은 사찰, 가을 단풍 명소'},
-      {emoji:'🌿',name:'청도 운문사',meta:'청도군 · 2,000원',mapQ:'운문사 청도',rating:4.5,tags:['사찰','산사','비구니'],tip:'국내 최대 비구니 승가대학, 솔밭길 산책로 아름다움'},
-      {emoji:'💐',name:'영천 은해사',meta:'영천시 · 무료',mapQ:'은해사 영천',rating:4.5,tags:['사찰','산사','봄꽃'],tip:'팔공산 봄 벚꽃·진달래 군락 절경, 거조암 국보 보유'},
-      {emoji:'🍂',name:'청송 대전사',meta:'청송군 · 무료',mapQ:'대전사 청송',rating:4.5,tags:['사찰','산사','단풍'],tip:'주왕산 국립공원 입구 사찰, 가을 단풍 국내 TOP5'},
-      {emoji:'🏔️',name:'문경 봉암사',meta:'문경시 · 부처님오신날만 개방',mapQ:'봉암사 문경',rating:4.5,tags:['사찰','산사','수행'],tip:'조계종 특별수도원, 일 년 중 하루만 개방, 희소가치 최고'},
-      {emoji:'🌸',name:'팔공산 동화사',meta:'대구 동구 · 2,500원',mapQ:'동화사 팔공산',rating:4.5,tags:['사찰','산사','봄꽃'],tip:'팔공산 대표 사찰, 통일약사여래대불 33m, 봄 벚꽃 명소'},
-      {emoji:'🌼',name:'영양 흥국사',meta:'영양군 · 무료',mapQ:'흥국사 영양',rating:4.2,tags:['사찰','산사','힐링'],tip:'일월산 자락 조용한 산사, 봄 진달래 군락이 아름다움'},
-      {emoji:'🌾',name:'안동 찜닭골목',meta:'안동시 · 15,000원~',mapQ:'안동 찜닭골목',rating:4.5,tags:['맛집','전통음식'],tip:'원조 안동찜닭, 간고등어·헛제삿밥도 필수'},
-      {emoji:'🎭',name:'영덕 대게거리',meta:'영덕군 · 시가',mapQ:'영덕 대게거리',rating:4.3,tags:['맛집','해산물','대게'],tip:'11월~4월 제철, 강구항 현지 구매가 저렴'},
-      {emoji:'🍜',name:'경주 황리단길 식당골목',meta:'경주시 · 10,000원~',mapQ:'황리단길 맛집',rating:4.5,tags:['맛집','한식','카페'],tip:'한옥 개조 식당·카페 밀집, 쌈밥·비빔밥·한과 추천'},
-      {emoji:'🌾',name:'안동 헛제삿밥',meta:'안동시 · 12,000원~',mapQ:'안동 헛제삿밥',rating:4.6,tags:['맛집','향토','전통음식'],tip:'제사 음식 모아 차린 안동 향토 정식, 간고등어 포함'},
-      {emoji:'🐟',name:'포항 구룡포 과메기',meta:'포항시 · 15,000원~',mapQ:'구룡포 과메기',rating:4.5,tags:['맛집','과메기','겨울'],tip:'11월~2월 제철, 꽁치 혹은 청어 과메기 직구매'},
-      {emoji:'🦑',name:'울진 대게·킹크랩',meta:'울진군 · 시가',mapQ:'울진 대게 직판',rating:4.6,tags:['맛집','대게','해산물'],tip:'후포항 대게 경매 구경 가능, 제철 1~5월 추천'},
-      {emoji:'🍡',name:'경주 황남빵 본점',meta:'경주 황남동 · 1,500원~',mapQ:'황남빵 경주 본점',rating:4.7,tags:['맛집','기념품','전통'],tip:'1939년부터 이어온 경주 대표 기념품, 줄 서서 구매'},
-      {emoji:'🥩',name:'안동 간고등어 구이',meta:'안동시 · 12,000원~',mapQ:'안동 간고등어',rating:4.5,tags:['맛집','생선구이','향토'],tip:'소금에 절여 숙성한 안동 명물, 찜닭·헛제삿밥과 세트'},
-      {emoji:'🍖',name:'경산 갈비·닭볶음탕',meta:'경산시 · 20,000원~',mapQ:'경산 갈비 맛집',rating:4.3,tags:['맛집','갈비','한식'],tip:'대구 인근 경산 갈비촌, 닭볶음탕도 함께 유명'},
-    ]
-  },
-  { key:'gyeongnam', idx:6, name:'경남', emoji:'🌊', grad:'linear-gradient(135deg,#00b4db,#0083b0)', sub:'남해·통영·거제의 아름다운 바다',
-    links:[{lbl:'경남관광',url:'https://www.gyeongnam.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
-    spots:[
-      {emoji:'🚡',name:'통영 케이블카',meta:'통영시 · 왕복 15,000원',mapQ:'통영 케이블카',rating:4.7,tags:['뷰맛집','케이블카','한려수도'],tip:'정상 미륵산에서 한려수도 전망, 일몰 추천'},
-      {emoji:'🏝️',name:'거제 외도 보타니아',meta:'거제시 · 11,000원',mapQ:'외도 보타니아 거제',rating:4.6,tags:['섬여행','정원','배'],tip:'장승포·도장포선착장 출발, 2시간 코스'},
-      {emoji:'🌸',name:'하동 쌍계사 벚꽃길',meta:'하동군 · 무료',mapQ:'하동 쌍계사 벚꽃',rating:4.8,tags:['벚꽃','봄','드라이브'],tip:'4월 초 최절정, 쌍계사~화개장터 10리 벚꽃길'},
-      {emoji:'🏔️',name:'합천 해인사',meta:'합천군 · 3,000원',mapQ:'해인사 합천',rating:4.8,tags:['사찰','산사','유네스코'],tip:'팔만대장경 봉안, 가야산 단풍과 어우러진 절경'},
-      {emoji:'⛩️',name:'양산 통도사',meta:'양산시 · 3,000원',mapQ:'통도사 양산',rating:4.7,tags:['사찰','산사','유네스코'],tip:'불보 사찰, 석가모니 진신사리 봉안, 국내 최대 사찰'},
-      {emoji:'🌿',name:'남해 화방사',meta:'남해군 · 무료',mapQ:'화방사 남해',rating:4.2,tags:['사찰','산사','힐링'],tip:'금산 자락 조용한 산사, 보리암 연계 트레킹 코스'},
-      {emoji:'🌸',name:'남해 보리암',meta:'남해군 · 1,000원',mapQ:'보리암 남해',rating:4.7,tags:['사찰','산사','바다뷰'],tip:'금산 정상 해수관음상, 남해 바다 파노라마 절경 국내 최고'},
-      {emoji:'💐',name:'창원 성주사',meta:'창원시 · 무료',mapQ:'성주사 창원',rating:4.3,tags:['사찰','산사','봄꽃'],tip:'봄 왕벚꽃 군락 아름다움, 천주산 진달래 능선 연계'},
-      {emoji:'🍂',name:'밀양 표충사',meta:'밀양시 · 2,000원',mapQ:'표충사 밀양',rating:4.5,tags:['사찰','산사','단풍'],tip:'사명대사 호국 사찰, 가을 재약산 단풍이 압도적'},
-      {emoji:'🏯',name:'산청 대원사',meta:'산청군 · 1,500원',mapQ:'대원사 산청',rating:4.4,tags:['사찰','산사','계곡'],tip:'지리산 계곡 따라 들어가는 산사, 여름 피서 명소'},
-      {emoji:'🌼',name:'고성 옥천사',meta:'고성군 · 무료',mapQ:'옥천사 고성',rating:4.3,tags:['사찰','산사','힐링'],tip:'연화산 자락 천년 사찰, 봄 연꽃·가을 단풍 아름다움'},
-      {emoji:'🐢',name:'남해 독일마을',meta:'남해군 · 무료',mapQ:'남해 독일마을',rating:4.4,tags:['이색','드라이브','무료'],tip:'독일 이주 노동자 마을, 남해 물건리 방조어부림 연계'},
-      {emoji:'🏯',name:'진주성',meta:'진주시 · 2,000원',mapQ:'진주성',rating:4.5,tags:['역사','야경','남강'],tip:'10월 진주 남강 유등축제 개최, 야경 절경'},
-      {emoji:'🌿',name:'함양 상림숲',meta:'함양군 · 무료',mapQ:'함양 상림숲',rating:4.5,tags:['숲길','힐링','천연기념물'],tip:'최치원 조성 1100년 된 천연기념물 숲'},
-      {emoji:'🌅',name:'남해 바래길',meta:'남해군 · 무료',mapQ:'남해 바래길',rating:4.4,tags:['트레킹','해안길','무료'],tip:'11개 코스 총 96km, 3코스 물건리~앵강 추천'},
-      {emoji:'🦀',name:'마산 어시장',meta:'창원시 · 무료',mapQ:'마산 어시장 창원',rating:4.3,tags:['해산물','시장','무료'],tip:'아귀찜·곰장어 맛집 밀집, 합포만 야시장 인기'},
-      {emoji:'🌊',name:'거제 바람의언덕',meta:'거제시 · 무료',mapQ:'거제 바람의언덕',rating:4.4,tags:['뷰맛집','해안','무료'],tip:'TV 촬영 명소, 도장포마을 포토존'},
-      {emoji:'🍜',name:'통영 한정식·굴요리',meta:'통영시 · 15,000원~',mapQ:'통영 굴요리',rating:4.6,tags:['맛집','굴','해산물'],tip:'11~3월 굴 제철, 통영 꿀빵도 필수 아이템'},
-      {emoji:'🦑',name:'진주 냉면·비빔밥',meta:'진주시 · 10,000원~',mapQ:'진주 냉면 맛집',rating:4.6,tags:['맛집','냉면','전통음식'],tip:'진주냉면은 육전 올린 향토 음식, 천황식당 유명'},
-      {emoji:'🦀',name:'고성 공룡나라 장어구이',meta:'고성군 · 25,000원~',mapQ:'고성 장어구이',rating:4.4,tags:['맛집','장어','해산물'],tip:'남해안 민물장어·바다장어 최대 산지, 숯불구이 추천'},
-      {emoji:'🦀',name:'마산 아귀찜',meta:'창원시 · 20,000원~',mapQ:'마산 아귀찜',rating:4.7,tags:['맛집','아귀찜','향토'],tip:'전국 아귀찜 원조 마산, 오동동 아구찜 골목 필수'},
-      {emoji:'🐄',name:'함양 흑돼지 숯불구이',meta:'함양군 · 20,000원~',mapQ:'함양 흑돼지',rating:4.4,tags:['맛집','돼지고기','고기'],tip:'산청·함양 흑돼지 산지, 숯불향 오겹살 추천'},
-      {emoji:'🦑',name:'거제 성게·물회',meta:'거제시 · 18,000원~',mapQ:'거제 물회',rating:4.5,tags:['맛집','물회','해산물'],tip:'거제 통영 수산시장 연계, 성게미역국도 별미'},
-      {emoji:'🐙',name:'남해 멸치쌈밥',meta:'남해군 · 12,000원~',mapQ:'남해 멸치쌈밥',rating:4.5,tags:['맛집','멸치','향토'],tip:'국내 최대 멸치 생산지 남해, 쌈밥·구이 세트 유명'},
-      {emoji:'🍲',name:'하동 재첩국',meta:'하동군 · 8,000원~',mapQ:'하동 재첩국',rating:4.6,tags:['맛집','재첩','향토'],tip:'섬진강 재첩 원산지, 새벽 해장국 최고, 재첩회무침도'},
-      {emoji:'🥩',name:'밀양 돼지갈비',meta:'밀양시 · 20,000원~',mapQ:'밀양 돼지갈비',rating:4.4,tags:['맛집','갈비','야식'],tip:'밀양 갈비 단지, 양념·생갈비 모두 유명'},
-    ]
-  },
-  { key:'chungnam', idx:7, name:'충남', emoji:'🌾', grad:'linear-gradient(135deg,#2d7a1f,#4a9e2f)', sub:'자연과 역사가 조화로운 중심지',
+  { key:'chungnam', idx:7, name:'충남', emoji:'🌾', grad:'linear-gradient(135deg,#2d7a1f,#4a9e2f)', sub:'충남·대전·세종의 백제 역사와 자연',
     links:[{lbl:'충북관광',url:'https://www.chungbuk.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🌿',name:'쌍곡계곡',meta:'괴산군 · 무료',mapQ:'쌍곡계곡 괴산',rating:4.6,tags:['계곡','힐링','무료'],tip:'총 9곳 명소, 쌍곡폭포·쌍곡소 구간 추천'},
@@ -2399,9 +2385,22 @@ const REGIONS = [
       {emoji:'🥘',name:'단양 마늘 소시지·빵',meta:'단양군 · 5,000원~',mapQ:'단양 마늘 음식',rating:4.5,tags:['맛집','전통음식','마늘'],tip:'단양 마늘 특산품, 마늘 소시지·마늘 빵 별미'},
       {emoji:'🍜',name:'충주 올갱이국',meta:'충주시 · 9,000원~',mapQ:'충주 올갱이국',rating:4.4,tags:['맛집','해장','향토'],tip:'남한강 다슬기로 끓인 충북 향토 해장국'},
       {emoji:'🦑',name:'태안 조개구이',meta:'태안군 · 20,000원~',mapQ:'태안 조개구이',rating:4.5,tags:['맛집','조개','해산물'],tip:'서해 조개 직구매 구이, 안면도·몽산포 해변 식당'},
-    ]
+      {emoji:'🔬',name:'국립중앙과학관',meta:'유성구 · 무료',mapQ:'국립중앙과학관 대전',rating:4.6,tags:['과학','가족','무료'],tip:'어린이관·천체투영관 유료, 야외전시 무료'},
+      {emoji:'🌿',name:'계족산 황톳길',meta:'대덕구 · 무료',mapQ:'계족산 황톳길 대전',rating:4.6,tags:['맨발','힐링','무료'],tip:'14.5km 맨발 황톳길, 맨발 걷기 전국 1위 명소'},
+      {emoji:'🍜',name:'성심당 본점',meta:'중구 · 빵 2,000원~',mapQ:'성심당 대전',rating:4.8,tags:['빵','맛집','필수'],tip:'대전 여행 필수 코스, 튀김소보로·판타롱 부추빵'},
+      {emoji:'🍖',name:'대전 성게알덮밥',meta:'중구 · 25,000원~',mapQ:'대전 성게알덮밥',rating:4.4,tags:['맛집','해산물'],tip:'대전 숨은 맛집, 선화동 일대 밀집'},
+      {emoji:'🥘',name:'대전 두부두루치기',meta:'대전 · 10,000원~',mapQ:'대전 두부두루치기',rating:4.5,tags:['맛집','두부','향토'],tip:'대전 향토 음식, 매콤달콤 두부와 돼지고기 볶음'},
+      {emoji:'🍜',name:'대전 칼국수 거리',meta:'중구 · 9,000원~',mapQ:'대전 칼국수',rating:4.5,tags:['맛집','칼국수','해장'],tip:'은행동 칼국수 골목, 손칼국수+수제비 콤보 인기'},
+      {emoji:'🍱',name:'대전 삼겹살·된장찌개 거리',meta:'중구·서구 · 15,000원~',mapQ:'대전 삼겹살 맛집',rating:4.3,tags:['맛집','삼겹살','한식'],tip:'대전 서구 도마동 삼겹살 골목, 가성비 최고'},
+      {emoji:'🦑',name:'유성 온천거리 해산물',meta:'유성구 · 시가',mapQ:'유성 해산물 맛집',rating:4.3,tags:['맛집','해산물','온천'],tip:'유성온천 인근 해산물 식당, 대게·새우 세트 추천'},
+      {emoji:'🍰',name:'대전 카페 골목',meta:'대덕구·중구 · 5,000원~',mapQ:'대전 카페 골목',rating:4.4,tags:['맛집','카페','디저트'],tip:'성심당 근처 카페 밀집, 수제 케이크·마카롱 유명'},
+      {emoji:'🌿',name:'계룡산 국립공원',meta:'충남 계룡시 · 무료',mapQ:'계룡산 국립공원',rating:4.6,tags:['등산','단풍','국립공원'],tip:'동학사·갑사 코스 2~3시간, 봄 벚꽃 절경'},
+      {emoji:'🌊',name:'금강 로하스길',meta:'세종·공주 · 무료',mapQ:'금강 로하스길',rating:4.3,tags:['자전거','강변','무료'],tip:'세종~공주 자전거길 43km, 경치 아름다움'},
+      {emoji:'🔭',name:'대전 천문대',meta:'유성구 · 5,000원',mapQ:'대전 천문대',rating:4.3,tags:['별보기','가족','야간'],tip:'주말 야간 천체 관측, 사전 예약 필수'},
+      {emoji:'🌸',name:'세종 방축천 벚꽃',meta:'세종 · 무료',mapQ:'세종 방축천 벚꽃',rating:4.5,tags:['벚꽃','봄','무료'],tip:'4월 초 1.5km 벚꽃 터널, 세종 최고 봄 명소'},
+      {emoji:'🎠',name:'대전 오월드',meta:'중구 · 25,000원~',mapQ:'대전 오월드',rating:4.2,tags:['동물원','놀이공원','가족'],tip:'동물원+플라워랜드 복합, 주말 동물쇼 운영'}]
   },
-  { key:'jeonnam', idx:8, name:'전남', emoji:'🍃', grad:'linear-gradient(135deg,#1a6b3c,#4caf50)', sub:'남도의 풍요로운 문화와 미식',
+  { key:'jeonnam', idx:8, name:'전남', emoji:'🍃', grad:'linear-gradient(135deg,#1a6b3c,#4caf50)', sub:'전남·광주·남도의 풍요로운 문화와 미식',
     links:[{lbl:'전남관광',url:'https://tour.jeonnam.go.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버맛집',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🌸',name:'순천만 국가정원',meta:'순천시 · 8,000원',mapQ:'순천만 국가정원',rating:4.8,tags:['정원','자연','세계정원박람회'],tip:'국내 최대 정원, 4~5월 튤립·철쭉 최절정'},
@@ -2435,9 +2434,25 @@ const REGIONS = [
       {emoji:'🍜',name:'담양 대통밥·떡갈비',meta:'담양군 · 15,000원~',mapQ:'담양 대통밥 떡갈비',rating:4.6,tags:['맛집','전통음식','한식'],tip:'대나무통에 찐 대통밥+담양 떡갈비 세트 필수 코스'},
       {emoji:'🦐',name:'완도 전복 요리',meta:'완도군 · 20,000원~',mapQ:'완도 전복 요리',rating:4.7,tags:['맛집','전복','해산물'],tip:'국내 최대 전복 산지 완도, 전복죽·구이·회 직구매'},
       {emoji:'🥘',name:'구례 산수유 막걸리·향토밥상',meta:'구례군 · 15,000원~',mapQ:'구례 향토밥상',rating:4.4,tags:['맛집','향토','한식'],tip:'지리산 자락 산채 밥상, 두부·된장찌개 시골밥상'},
-    ]
+      {emoji:'🕊️',name:'5·18 민주화운동 성지',meta:'북구 · 무료',mapQ:'5.18 국립민주묘지',rating:4.7,tags:['역사','추모','민주주의'],tip:'국립묘지·구 전남도청·금남로 역사 코스 추천'},
+      {emoji:'🎨',name:'국립아시아문화전당',meta:'동구 · 무료~',mapQ:'국립아시아문화전당',rating:4.6,tags:['문화','전시','예술'],tip:'아시아 최대 문화 복합단지, 무료 공연 상시'},
+      {emoji:'🌿',name:'무등산 국립공원',meta:'동구 · 무료',mapQ:'무등산 국립공원',rating:4.7,tags:['등산','국립공원','무료'],tip:'주상절리 서석대 절경, 원효사 코스 왕복 4시간'},
+      {emoji:'⛩️',name:'무등산 원효사',meta:'광주 동구 · 무료',mapQ:'원효사 광주',rating:4.4,tags:['사찰','산사','무등산'],tip:'무등산 자락 신라 고찰, 등산 코스 기점, 단풍 명소'},
+      {emoji:'🛕',name:'증심사',meta:'광주 동구 · 무료',mapQ:'증심사 광주',rating:4.3,tags:['사찰','산사','힐링','계곡'],tip:'무등산 증심사 계곡, 오백전(500불상) 인상적'},
+      {emoji:'🌊',name:'광주 동명동 카페거리',meta:'동구 · 무료',mapQ:'동명동 카페거리 광주',rating:4.5,tags:['카페','힐링','무료'],tip:'한옥·근대건물 개조 카페, 광주 최고 힙플레이스'},
+      {emoji:'🍽️',name:'광주 양동시장',meta:'서구 · 무료',mapQ:'양동시장 광주',rating:4.4,tags:['전통시장','먹거리','무료'],tip:'새벽부터 운영, 재래시장 먹거리 다채로움'},
+      {emoji:'🌸',name:'광주 대인예술시장',meta:'동구 · 무료',mapQ:'대인예술시장 광주',rating:4.4,tags:['예술','문화','무료'],tip:'매주 토요일 야시장, 예술가 작품 직거래'},
+      {emoji:'🏛️',name:'국립광주박물관',meta:'북구 · 무료',mapQ:'국립광주박물관',rating:4.4,tags:['박물관','역사','무료'],tip:'신안 해저 유물 상설 전시, 연간 무료'},
+      {emoji:'🍜',name:'광주 한정식',meta:'동구 · 30,000원~',mapQ:'광주 한정식',rating:4.7,tags:['맛집','남도음식','한정식'],tip:'전국 최고 한정식, 일미집·궁전 등 명가 다수'},
+      {emoji:'🍜',name:'광주 상무지구 먹거리',meta:'서구 · 10,000원~',mapQ:'광주 상무지구 맛집',rating:4.4,tags:['맛집','야식'],tip:'광주 최고 맛집 밀집 지역, 오리불고기·보리밥'},
+      {emoji:'🥘',name:'광주 오리불고기',meta:'서구 · 15,000원~',mapQ:'광주 오리불고기',rating:4.6,tags:['맛집','오리','향토'],tip:'광주 대표 향토 음식, 상무지구·운천지구 전문점 밀집'},
+      {emoji:'🌾',name:'광주 보리밥거리',meta:'서구 · 8,000원~',mapQ:'광주 보리밥 거리',rating:4.5,tags:['맛집','향토','보리밥'],tip:'남도식 강된장 보리밥정식, 반찬 20가지 이상 한상'},
+      {emoji:'🐄',name:'광주 일곡동 한우거리',meta:'북구 · 50,000원~',mapQ:'광주 한우 맛집',rating:4.5,tags:['맛집','한우','고기'],tip:'광주 한우 직판 단지, 등심·갈비·육회 현지 가격'},
+      {emoji:'🦑',name:'광주 남광주 수산시장',meta:'남구 · 시가',mapQ:'남광주 시장 해산물',rating:4.4,tags:['맛집','해산물','시장'],tip:'남도 수산물 집결지, 낙지·꼴뚜기·굴 직거래'},
+      {emoji:'🍡',name:'광주 떡·한과',meta:'동구 · 3,000원~',mapQ:'광주 전통 떡집',rating:4.3,tags:['맛집','전통','디저트'],tip:'남도식 떡·한과, 시루떡·꿀떡 명인 가게 다수'},
+      {emoji:'🥘',name:'담양 순창 고추장 요리',meta:'담양·순창 · 15,000원~',mapQ:'순창 고추장 맛집',rating:4.5,tags:['맛집','고추장','향토'],tip:'순창 고추장 원산지, 고추장 불고기·된장찌개 정식'}]
   },
-  { key:'jeonbuk', idx:9, name:'전북', emoji:'🌻', grad:'linear-gradient(135deg,#d4820a,#c05a1f)', sub:'전주한옥마을과 내장산 단풍의 고장',
+  { key:'jeonbuk', idx:9, name:'전북', emoji:'🌻', grad:'linear-gradient(135deg,#d4820a,#c05a1f)', sub:'전주 한옥마을·내장산·변산반도의 고장',
     links:[{lbl:'전북관광',url:'https://www.jeonbuk.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏡',name:'전주 한옥마을',meta:'전주시 · 무료',mapQ:'전주 한옥마을',rating:4.7,tags:['전통','포토존','무료'],tip:'700여 채 한옥 밀집, 한복 대여 후 인생샷 필수'},
@@ -2467,59 +2482,25 @@ const REGIONS = [
       {emoji:'🍖',name:'남원 추어탕',meta:'남원시 · 10,000원~',mapQ:'남원 추어탕',rating:4.6,tags:['맛집','추어탕','향토'],tip:'섬진강 미꾸라지 원조, 남원 추어탕 골목 전국 1위'},
       {emoji:'🦑',name:'부안 백합죽',meta:'부안군 · 12,000원~',mapQ:'부안 백합죽',rating:4.4,tags:['맛집','백합','해산물'],tip:'변산반도 백합 산지, 죽·탕·구이 어디서나 맛있음'},
       {emoji:'🥗',name:'임실 치즈피자',meta:'임실군 · 15,000원~',mapQ:'임실 치즈피자',rating:4.4,tags:['맛집','치즈','피자'],tip:'국내 치즈 발상지 임실 치즈, 공방 식당 직접 제조'},
-    ]
+      {emoji:'🌸',name:'경기전',meta:'완산구 · 3,000원',mapQ:'경기전 전주',rating:4.6,tags:['역사','조선','왕릉'],tip:'태조 이성계 어진 봉안, 어진박물관 무료 관람'},
+      {emoji:'☕',name:'전주 남부시장 야시장',meta:'완산구 · 무료',mapQ:'전주 남부시장 야시장',rating:4.6,tags:['야시장','먹거리','무료'],tip:'매주 금·토 운영, 전국 최고 야시장 분위기'},
+      {emoji:'🌿',name:'전주 오목대',meta:'완산구 · 무료',mapQ:'오목대 전주',rating:4.4,tags:['전망','역사','무료'],tip:'한옥마을 전경이 한눈에, 노을 사진 명소'},
+      {emoji:'🎭',name:'한국전통문화전당',meta:'완산구 · 무료',mapQ:'한국전통문화전당 전주',rating:4.4,tags:['전통','문화','공연'],tip:'한지·한식·한음악 체험 프로그램 풍성'},
+      {emoji:'🌊',name:'전주천 벚꽃길',meta:'완산구 · 무료',mapQ:'전주천 벚꽃 산책로',rating:4.6,tags:['벚꽃','산책','힐링','무료'],tip:'4월 벚꽃 터널, 한옥마을과 함께 봄 코스'},
+      {emoji:'🍡',name:'전주 초코파이',meta:'완산구 · 2,000원~',mapQ:'전주 초코파이',rating:4.5,tags:['맛집','기념품','디저트'],tip:'전주 한옥마을 명물, 수제 초코파이 항상 줄섬'},
+      {emoji:'🏛️',name:'전주향교',meta:'완산구 · 무료',mapQ:'전주향교',rating:4.3,tags:['역사','유교','무료'],tip:'조선 최대 향교, 무료 관람에 사진 명소'},
+      {emoji:'🌲',name:'덕진공원',meta:'덕진구 · 무료',mapQ:'덕진공원 전주',rating:4.4,tags:['연꽃','공원','무료','힐링'],tip:'7~8월 연꽃 장관, 덕진호 보트 체험 가능'},
+      {emoji:'☕',name:'전주 객리단길',meta:'완산구 · 무료',mapQ:'객리단길 전주',rating:4.5,tags:['카페','힐링','드라이브'],tip:'한옥마을 인근 트렌디한 카페·맛집 골목'},
+      {emoji:'🎠',name:'완주 대둔산',meta:'완주군 · 2,000원',mapQ:'대둔산 도립공원',rating:4.6,tags:['등산','케이블카','단풍'],tip:'기암절벽 케이블카, 가을 단풍 전국 TOP5'},
+      {emoji:'🌿',name:'전주 봉황동 유적',meta:'완산구 · 무료',mapQ:'봉황동 유적 전주',rating:4.2,tags:['역사','무료','문화재'],tip:'도심 속 백제 유적지, 한옥마을 산책과 연계'},
+      {emoji:'🌾',name:'전주 한정식',meta:'완산구 · 25,000원~',mapQ:'전주 한정식 골목',rating:4.6,tags:['맛집','한정식','남도음식'],tip:'남도 전통 한정식 밥상, 20가지 이상 반찬 한상차림'},
+      {emoji:'🍜',name:'전주 피순대',meta:'완산구 · 7,000원~',mapQ:'전주 피순대',rating:4.5,tags:['맛집','순대','향토'],tip:'남부시장 피순대 골목, 당면 없이 찹쌀+선지 전통방식'},
+      {emoji:'🍱',name:'전주 막걸리 골목',meta:'완산구 · 5,000원~',mapQ:'전주 막걸리 골목',rating:4.5,tags:['맛집','막걸리','향토'],tip:'삼천동·한옥마을 막걸리골목, 안주 무한리필 전통'},
+      {emoji:'🍰',name:'전주 베이커리·한과',meta:'완산구 · 3,000원~',mapQ:'전주 한과 베이커리',rating:4.4,tags:['맛집','한과','디저트'],tip:'한옥마을 내 전통 한과·수제 빵, 약과·강정 쇼핑'},
+      {emoji:'🌿',name:'전주 객리단길 음식점',meta:'완산구 · 10,000원~',mapQ:'객리단길 맛집',rating:4.5,tags:['맛집','트렌드','카페'],tip:'트렌디한 퓨전 한식·카페, 인스타 맛집 밀집'}]
   },
-  { key:'daegu', idx:10, name:'대구', emoji:'🏙', grad:'linear-gradient(135deg,#e96c6c,#c0392b)', sub:'대구·경산·구미의 도심 여행',
-    links:[{lbl:'대구관광',url:'https://www.daegutour.or.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
-    spots:[
-      {emoji:'🌸',name:'비슬산 참꽃군락',meta:'달성군 · 무료',mapQ:'비슬산 참꽃',rating:4.7,tags:['봄','진달래','등산','진달래','봄꽃'],tip:'4월 말 참꽃(진달래) 100만 평 군락, 케이블카 운영'},
-      {emoji:'🌿',name:'팔공산 도립공원',meta:'동구 · 무료',mapQ:'팔공산 대구',rating:4.6,tags:['등산','단풍','케이블카'],tip:'갓바위 소원성취 유명, 동화사 연계 추천'},
-      {emoji:'🌸',name:'팔공산 동화사',meta:'대구 동구 · 2,500원',mapQ:'동화사 팔공산',rating:4.6,tags:['사찰','산사','봄꽃'],tip:'팔공산 대표 사찰, 통일약사여래대불 33m, 봄 벚꽃·진달래 명소'},
-      {emoji:'🙏',name:'팔공산 갓바위 관봉석조여래좌상',meta:'경산시 · 무료',mapQ:'팔공산 갓바위',rating:4.6,tags:['사찰','산사','소원'],tip:'수능·취업·합격 기도 명소, 정상까지 1시간 등산'},
-      {emoji:'💐',name:'비슬산 용연사',meta:'달성군 · 무료',mapQ:'용연사 비슬산',rating:4.4,tags:['사찰','산사','봄꽃'],tip:'비슬산 진달래 군락 입구, 금강계단 진신사리 봉안'},
-      {emoji:'🍂',name:'팔공산 파계사',meta:'대구 동구 · 무료',mapQ:'파계사 팔공산',rating:4.3,tags:['사찰','산사','단풍'],tip:'숙종 어의 치료 인연 사찰, 가을 단풍이 아름다움'},
-      {emoji:'🏛️',name:'대구 근대골목투어',meta:'중구 · 무료',mapQ:'대구 근대골목투어',rating:4.5,tags:['역사','골목','무료'],tip:'5개 코스, 3·1만세운동길·이상화고택 포함'},
-      {emoji:'🛍️',name:'동성로 거리',meta:'중구 · 무료',mapQ:'동성로 대구',rating:4.4,tags:['쇼핑','젊음','무료'],tip:'대구 최대 번화가, 교동시장 납작만두 필수'},
-      {emoji:'🍖',name:'안지랑 곱창골목',meta:'남구 · 15,000원~',mapQ:'안지랑 곱창골목',rating:4.6,tags:['맛집','곱창','야식'],tip:'전국 최대 곱창골목 50여 곳, 저녁 8시 이후 피크'},
-      {emoji:'🍜',name:'대구 막창·뼈찜',meta:'중구·달서구 · 10,000원~',mapQ:'대구 막창골목',rating:4.5,tags:['맛집','야식','전통'],tip:'막창은 전국 최고, 안지랑 or 평화시장 추천'},
-      {emoji:'🥢',name:'대구 납작만두·교동시장',meta:'중구 · 3,000원~',mapQ:'교동시장 납작만두',rating:4.6,tags:['맛집','분식','시장'],tip:'납작만두+떡볶이 세트 필수, 동성로 여행 코스'},
-      {emoji:'🍲',name:'대구 뭉티기 육회',meta:'중구 · 20,000원~',mapQ:'대구 뭉티기',rating:4.5,tags:['맛집','육회','향토'],tip:'대구 전통 육사시미, 참기름+마늘 비빔 형태 독특'},
-      {emoji:'🍜',name:'대구 불고기·찜갈비',meta:'북구 · 20,000원~',mapQ:'대구 찜갈비',rating:4.5,tags:['맛집','갈비','한식'],tip:'대구식 달콤한 양념 불고기, 동인동 찜갈비 유명'},
-      {emoji:'🥘',name:'대구 동성로 순대국밥',meta:'중구 · 8,000원~',mapQ:'대구 순대국밥',rating:4.4,tags:['맛집','해장','국밥'],tip:'대구 식도락 여행 시작점, 동성로 주변 밀집'},
-      {emoji:'🍡',name:'대구 서문시장 칼국수',meta:'중구 · 7,000원~',mapQ:'서문시장 칼국수',rating:4.5,tags:['맛집','칼국수','시장'],tip:'서문시장 내 칼국수 골목, 야시장과 함께 즐기기'},
-      {emoji:'🥗',name:'청도 감 와인·곶감',meta:'청도군 · 시가',mapQ:'청도 감 와인',rating:4.3,tags:['맛집','와인','체험'],tip:'청도 특산 감와인 시음·구매, 곶감 직거래 추천'},
-      {emoji:'🏔️',name:'가야산 국립공원',meta:'성주군 · 3,500원',mapQ:'가야산 국립공원',rating:4.6,tags:['등산','국립공원','가을','단풍'],tip:'해인사 팔만대장경 유네스코, 단풍 전국 10대 명소'},
-      {emoji:'🌊',name:'구미 낙동강 체육공원',meta:'구미시 · 무료',mapQ:'구미 낙동강 체육공원',rating:4.1,tags:['자전거','강변','무료'],tip:'강변 자전거길, 4월 벚꽃 명소'},
-      {emoji:'🌸',name:'청도 와인터널',meta:'청도군 · 5,000원',mapQ:'청도 와인터널',rating:4.3,tags:['와인','터널','이색'],tip:'1927년 철도터널 와인 저장, 감와인 시음 가능'},
-      {emoji:'🎭',name:'대구 약령시',meta:'중구 · 무료',mapQ:'대구 약령시',rating:4.2,tags:['한약','시장','전통'],tip:'350년 전통 한약재 시장, 한의약박물관 연계'},
-      {emoji:'🌊',name:'고령 대가야박물관',meta:'고령군 · 3,000원',mapQ:'대가야박물관 고령',rating:4.3,tags:['역사','박물관','가야'],tip:'가야 왕릉 지산동 고분군 인접, 세계유산 신청'},
-    ]
-  },
-  { key:'daejeon', idx:11, name:'대전·세종', emoji:'🌇', grad:'linear-gradient(135deg,#1a7abf,#0a5a9e)', sub:'과학도시 대전과 행정수도 세종',
-    links:[{lbl:'대전관광',url:'https://www.daejeon.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
-    spots:[
-      {emoji:'🔬',name:'국립중앙과학관',meta:'유성구 · 무료',mapQ:'국립중앙과학관 대전',rating:4.6,tags:['과학','가족','무료'],tip:'어린이관·천체투영관 유료, 야외전시 무료'},
-      {emoji:'🌿',name:'계족산 황톳길',meta:'대덕구 · 무료',mapQ:'계족산 황톳길 대전',rating:4.6,tags:['맨발','힐링','무료'],tip:'14.5km 맨발 황톳길, 맨발 걷기 전국 1위 명소'},
-      {emoji:'🍜',name:'성심당 본점',meta:'중구 · 빵 2,000원~',mapQ:'성심당 대전',rating:4.8,tags:['빵','맛집','필수'],tip:'대전 여행 필수 코스, 튀김소보로·판타롱 부추빵'},
-      {emoji:'🍖',name:'대전 성게알덮밥',meta:'중구 · 25,000원~',mapQ:'대전 성게알덮밥',rating:4.4,tags:['맛집','해산물'],tip:'대전 숨은 맛집, 선화동 일대 밀집'},
-      {emoji:'🥘',name:'대전 두부두루치기',meta:'대전 · 10,000원~',mapQ:'대전 두부두루치기',rating:4.5,tags:['맛집','두부','향토'],tip:'대전 향토 음식, 매콤달콤 두부와 돼지고기 볶음'},
-      {emoji:'🍜',name:'대전 칼국수 거리',meta:'중구 · 9,000원~',mapQ:'대전 칼국수',rating:4.5,tags:['맛집','칼국수','해장'],tip:'은행동 칼국수 골목, 손칼국수+수제비 콤보 인기'},
-      {emoji:'🍱',name:'대전 삼겹살·된장찌개 거리',meta:'중구·서구 · 15,000원~',mapQ:'대전 삼겹살 맛집',rating:4.3,tags:['맛집','삼겹살','한식'],tip:'대전 서구 도마동 삼겹살 골목, 가성비 최고'},
-      {emoji:'🦑',name:'유성 온천거리 해산물',meta:'유성구 · 시가',mapQ:'유성 해산물 맛집',rating:4.3,tags:['맛집','해산물','온천'],tip:'유성온천 인근 해산물 식당, 대게·새우 세트 추천'},
-      {emoji:'🍰',name:'대전 카페 골목',meta:'대덕구·중구 · 5,000원~',mapQ:'대전 카페 골목',rating:4.4,tags:['맛집','카페','디저트'],tip:'성심당 근처 카페 밀집, 수제 케이크·마카롱 유명'},
-      {emoji:'🌿',name:'계룡산 국립공원',meta:'충남 계룡시 · 무료',mapQ:'계룡산 국립공원',rating:4.6,tags:['등산','단풍','국립공원'],tip:'동학사·갑사 코스 2~3시간, 봄 벚꽃 절경'},
-      {emoji:'🏯',name:'공주 마곡사',meta:'공주시 · 3,000원',mapQ:'마곡사 공주',rating:4.5,tags:['유네스코','사찰','산사','벚꽃','단풍'],tip:'산사 세계유산 등재, 봄 벚꽃·솔향기길 연계'},
-      {emoji:'🌿',name:'보령 성주사',meta:'보령시 · 무료',mapQ:'성주사 보령',rating:4.2,tags:['사찰','산사','힐링'],tip:'낭혜화상탑비 국보 보유, 고즈넉한 산사 분위기'},
-      {emoji:'⛩️',name:'청양 장곡사',meta:'청양군 · 2,000원',mapQ:'장곡사 청양',rating:4.4,tags:['사찰','산사','철 불상'],tip:'철조비로자나불 2기 국보 보유, 칠갑산 자락 산사'},
-      {emoji:'⛩️',name:'계룡산 갑사',meta:'충남 계룡시 · 2,000원',mapQ:'갑사 계룡산',rating:4.5,tags:['사찰','산사','단풍'],tip:'계룡산 4대 사찰, 가을 단풍 전국 10대 명소'},
-      {emoji:'🌸',name:'계룡산 동학사',meta:'충남 계룡시 · 2,000원',mapQ:'동학사 계룡',rating:4.5,tags:['사찰','산사','벚꽃'],tip:'봄 벚꽃터널 유명, 신라시대 창건 비구니 교육원'},
-      {emoji:'🌊',name:'금강 로하스길',meta:'세종·공주 · 무료',mapQ:'금강 로하스길',rating:4.3,tags:['자전거','강변','무료'],tip:'세종~공주 자전거길 43km, 경치 아름다움'},
-      {emoji:'🔭',name:'대전 천문대',meta:'유성구 · 5,000원',mapQ:'대전 천문대',rating:4.3,tags:['별보기','가족','야간'],tip:'주말 야간 천체 관측, 사전 예약 필수'},
-      {emoji:'🌸',name:'세종 방축천 벚꽃',meta:'세종 · 무료',mapQ:'세종 방축천 벚꽃',rating:4.5,tags:['벚꽃','봄','무료'],tip:'4월 초 1.5km 벚꽃 터널, 세종 최고 봄 명소'},
-      {emoji:'🎠',name:'대전 오월드',meta:'중구 · 25,000원~',mapQ:'대전 오월드',rating:4.2,tags:['동물원','놀이공원','가족'],tip:'동물원+플라워랜드 복합, 주말 동물쇼 운영'},
-    ]
-  },
-  { key:'incheon', idx:12, name:'인천·경기', emoji:'🌁', grad:'linear-gradient(135deg,#2a7bbf,#1a4fa0)', sub:'수도권 나들이·인천 항구·수원화성',
+
+  { key:'incheon', idx:12, name:'수도권', emoji:'🌁', grad:'linear-gradient(135deg,#2a7bbf,#1a4fa0)', sub:'서울 근교·인천 항구·수원화성',
     links:[{lbl:'인천관광',url:'https://itour.incheon.go.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🏯',name:'수원화성',meta:'수원시 · 1,000원',mapQ:'수원화성',rating:4.7,tags:['유네스코','역사','성곽'],tip:'성곽 5.7km 둘레길, 야간개장·화성행궁 추천'},
@@ -2547,80 +2528,10 @@ const REGIONS = [
       {emoji:'🍡',name:'파주 통일동산 장단콩 두부',meta:'파주시 · 10,000원~',mapQ:'파주 장단콩 두부',rating:4.4,tags:['맛집','두부','향토'],tip:'장단콩 원산지 파주, 순두부·두부구이 정식 추천'},
       {emoji:'🦑',name:'포천 이동갈비',meta:'포천시 · 30,000원~',mapQ:'포천 이동갈비',rating:4.6,tags:['맛집','갈비','명물'],tip:'포천 이동 갈비 원조, 숯불 양념갈비 전국 3대 갈비'},
       {emoji:'🥩',name:'용인 백암순대',meta:'용인시 · 8,000원~',mapQ:'백암순대 용인',rating:4.5,tags:['맛집','순대','향토'],tip:'백암 시장 순대 원조, 국밥+순대 세트 저렴'},
-      {emoji:'🍰',name:'가평 카페·베이커리거리',meta:'가평군 · 6,000원~',mapQ:'가평 카페거리',rating:4.4,tags:['맛집','카페','디저트'],tip:'남이섬 인근 카페 밀집, 강변 뷰 베이커리 인기'},
-    ]
+      {emoji:'🍰',name:'가평 카페·베이커리거리',meta:'가평군 · 6,000원~',mapQ:'가평 카페거리',rating:4.4,tags:['맛집','카페','디저트'],tip:'남이섬 인근 카페 밀집, 강변 뷰 베이커리 인기'}]
   },
-  { key:'gwangju', idx:13, name:'광주', emoji:'🌿', grad:'linear-gradient(135deg,#c94040,#c05e20)', sub:'예향의 도시·5·18 민주화운동의 고장',
-    links:[{lbl:'광주관광',url:'https://www.gwangjutour.or.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
-    spots:[
-      {emoji:'🕊️',name:'5·18 민주화운동 성지',meta:'북구 · 무료',mapQ:'5.18 국립민주묘지',rating:4.7,tags:['역사','추모','민주주의'],tip:'국립묘지·구 전남도청·금남로 역사 코스 추천'},
-      {emoji:'🎨',name:'국립아시아문화전당',meta:'동구 · 무료~',mapQ:'국립아시아문화전당',rating:4.6,tags:['문화','전시','예술'],tip:'아시아 최대 문화 복합단지, 무료 공연 상시'},
-      {emoji:'🌿',name:'무등산 국립공원',meta:'동구 · 무료',mapQ:'무등산 국립공원',rating:4.7,tags:['등산','국립공원','무료'],tip:'주상절리 서석대 절경, 원효사 코스 왕복 4시간'},
-      {emoji:'⛩️',name:'무등산 원효사',meta:'광주 동구 · 무료',mapQ:'원효사 광주',rating:4.4,tags:['사찰','산사','무등산'],tip:'무등산 자락 신라 고찰, 등산 코스 기점, 단풍 명소'},
-      {emoji:'🛕',name:'증심사',meta:'광주 동구 · 무료',mapQ:'증심사 광주',rating:4.3,tags:['사찰','산사','힐링','계곡'],tip:'무등산 증심사 계곡, 오백전(500불상) 인상적'},
-      {emoji:'🌊',name:'광주 동명동 카페거리',meta:'동구 · 무료',mapQ:'동명동 카페거리 광주',rating:4.5,tags:['카페','힐링','무료'],tip:'한옥·근대건물 개조 카페, 광주 최고 힙플레이스'},
-      {emoji:'🍽️',name:'광주 양동시장',meta:'서구 · 무료',mapQ:'양동시장 광주',rating:4.4,tags:['전통시장','먹거리','무료'],tip:'새벽부터 운영, 재래시장 먹거리 다채로움'},
-      {emoji:'🌸',name:'광주 대인예술시장',meta:'동구 · 무료',mapQ:'대인예술시장 광주',rating:4.4,tags:['예술','문화','무료'],tip:'매주 토요일 야시장, 예술가 작품 직거래'},
-      {emoji:'🏛️',name:'국립광주박물관',meta:'북구 · 무료',mapQ:'국립광주박물관',rating:4.4,tags:['박물관','역사','무료'],tip:'신안 해저 유물 상설 전시, 연간 무료'},
-      {emoji:'🍜',name:'광주 한정식',meta:'동구 · 30,000원~',mapQ:'광주 한정식',rating:4.7,tags:['맛집','남도음식','한정식'],tip:'전국 최고 한정식, 일미집·궁전 등 명가 다수'},
-      {emoji:'🍜',name:'광주 상무지구 먹거리',meta:'서구 · 10,000원~',mapQ:'광주 상무지구 맛집',rating:4.4,tags:['맛집','야식'],tip:'광주 최고 맛집 밀집 지역, 오리불고기·보리밥'},
-      {emoji:'🥘',name:'광주 오리불고기',meta:'서구 · 15,000원~',mapQ:'광주 오리불고기',rating:4.6,tags:['맛집','오리','향토'],tip:'광주 대표 향토 음식, 상무지구·운천지구 전문점 밀집'},
-      {emoji:'🌾',name:'광주 보리밥거리',meta:'서구 · 8,000원~',mapQ:'광주 보리밥 거리',rating:4.5,tags:['맛집','향토','보리밥'],tip:'남도식 강된장 보리밥정식, 반찬 20가지 이상 한상'},
-      {emoji:'🐄',name:'광주 일곡동 한우거리',meta:'북구 · 50,000원~',mapQ:'광주 한우 맛집',rating:4.5,tags:['맛집','한우','고기'],tip:'광주 한우 직판 단지, 등심·갈비·육회 현지 가격'},
-      {emoji:'🦑',name:'광주 남광주 수산시장',meta:'남구 · 시가',mapQ:'남광주 시장 해산물',rating:4.4,tags:['맛집','해산물','시장'],tip:'남도 수산물 집결지, 낙지·꼴뚜기·굴 직거래'},
-      {emoji:'🍡',name:'광주 떡·한과',meta:'동구 · 3,000원~',mapQ:'광주 전통 떡집',rating:4.3,tags:['맛집','전통','디저트'],tip:'남도식 떡·한과, 시루떡·꿀떡 명인 가게 다수'},
-      {emoji:'🥘',name:'담양 순창 고추장 요리',meta:'담양·순창 · 15,000원~',mapQ:'순창 고추장 맛집',rating:4.5,tags:['맛집','고추장','향토'],tip:'순창 고추장 원산지, 고추장 불고기·된장찌개 정식'},
-    ]
-  },
-  { key:'gyeongju', idx:14, name:'경주', emoji:'🏯', grad:'linear-gradient(135deg,#c87d2f,#a85e10)', sub:'신라 천년 고도, 야외 박물관 도시',
-    links:[{lbl:'경주관광',url:'https://www.gyeongju.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
-    spots:[
-      {emoji:'🏛️',name:'불국사',meta:'경주시 · 6,000원',mapQ:'불국사 경주',rating:4.8,tags:['유네스코','사찰','국보','역사'],tip:'다보탑·석가탑 국보 보유, 봄 벚꽃길이 장관'},
-      {emoji:'🗿',name:'석굴암',meta:'경주시 · 6,000원(불국사 통합)',mapQ:'석굴암',rating:4.7,tags:['유네스코','국보','조각','역사'],tip:'불국사와 통합권 구매 추천, 이른 오전 방문'},
-      {emoji:'🌙',name:'동궁과 월지',meta:'경주시 · 3,000원',mapQ:'동궁과월지 경주',rating:4.8,tags:['야경','야간개장','신라','역사'],tip:'야간 조명 연출이 낮보다 10배 아름다움'},
-      {emoji:'🌸',name:'대릉원·첨성대',meta:'경주시 · 3,000원',mapQ:'대릉원 경주',rating:4.6,tags:['능묘','역사','천문대'],tip:'봄 유채꽃·가을 코스모스 시즌에 최고'},
-      {emoji:'🛕',name:'황리단길',meta:'경주시 · 무료',mapQ:'황리단길 경주',rating:4.5,tags:['카페','한옥','힐링','드라이브'],tip:'경주 핫플, 한복 입고 인생샷 스폿 가득'},
-      {emoji:'🏺',name:'국립경주박물관',meta:'경주시 · 무료',mapQ:'국립경주박물관',rating:4.6,tags:['박물관','신라','무료','역사'],tip:'성덕대왕신종(에밀레종) 보유, 야외 전시도 풍성'},
-      {emoji:'🌿',name:'경주 남산 탐방로',meta:'경주시 · 무료',mapQ:'경주 남산 탐방로',rating:4.4,tags:['등산','불상','무료','힐링'],tip:'곳곳에 신라 불상·석탑, 반나절 트레킹 코스'},
-      {emoji:'🌊',name:'문무대왕릉 (수중릉)',meta:'양북면 · 무료',mapQ:'문무대왕릉 경주',rating:4.5,tags:['역사','해변','무료'],tip:'바다 위 수중 왕릉, 이견대에서 보는 일출 절경'},
-      {emoji:'🍜',name:'경주 교촌 닭갈비',meta:'교동 · 12,000원~',mapQ:'경주 교촌 닭갈비',rating:4.6,tags:['맛집','닭갈비','한옥'],tip:'교촌한옥마을 인근 닭갈비 골목, 경주 대표 먹거리'},
-      {emoji:'🍡',name:'황남빵 본점',meta:'황남동 · 1,500원~',mapQ:'황남빵 경주 본점',rating:4.7,tags:['맛집','기념품','전통'],tip:'1939년부터 이어온 경주 대표 기념품, 줄 서서 구매'},
-      {emoji:'🍲',name:'경주 한정식·쌈밥',meta:'황남동 · 15,000원~',mapQ:'경주 한정식',rating:4.5,tags:['맛집','한정식','한식'],tip:'황리단길·황남동 한정식 골목, 제철 나물 반찬 풍성'},
-      {emoji:'🌾',name:'경주 찰보리빵',meta:'경주시 · 1,000원~',mapQ:'경주 찰보리빵',rating:4.4,tags:['맛집','기념품','빵'],tip:'경주 토산 먹거리, 찰보리 가득한 쫄깃한 간식'},
-      {emoji:'🥘',name:'경주 돼지국밥',meta:'경주시 · 8,000원~',mapQ:'경주 돼지국밥',rating:4.5,tags:['맛집','국밥','해장'],tip:'경주 시장 인근 돼지국밥 골목, 부산식과는 다른 경주식'},
-      {emoji:'🍜',name:'경주 냉면·막국수',meta:'황남동 · 9,000원~',mapQ:'경주 냉면',rating:4.4,tags:['맛집','냉면','여름'],tip:'경주 여름 대표 음식, 황남동 냉면집 인기'},
-      {emoji:'🦑',name:'경주 감포항 해산물',meta:'감포읍 · 시가',mapQ:'감포항 해산물',rating:4.5,tags:['맛집','해산물','항구'],tip:'동해 감포항 직판장, 문어·물가자미·대게 저렴'},
-      {emoji:'🍰',name:'황리단길 디저트·빵집',meta:'황남동 · 5,000원~',mapQ:'황리단길 카페 디저트',rating:4.5,tags:['맛집','디저트','카페'],tip:'한옥 개조 카페 수제 디저트, 경주빵·약과 맛집'},
-      {emoji:'🛕',name:'분황사',meta:'경주시 · 1,000원',mapQ:'분황사 경주',rating:4.3,tags:['사찰','산사','신라'],tip:'신라 최초 황룡사 인근, 모전석탑 국보 보유'},
-      {emoji:'⛩️',name:'경주 기림사',meta:'양북면 · 4,000원',mapQ:'기림사 경주',rating:4.4,tags:['사찰','산사','숲'],tip:'경주 북쪽 깊은 산속 천년 사찰, 단풍 명소'},
-      {emoji:'🌿',name:'감은사지',meta:'경주시 · 무료',mapQ:'감은사지 경주',rating:4.2,tags:['사찰','산사','역사'],tip:'삼층석탑 2기 국보, 문무왕 추모 동해안 위치'},
-    ]
-  },
-  { key:'jeonju', idx:15, name:'전주', emoji:'🏘️', grad:'linear-gradient(135deg,#d4820a,#c05a1f)', sub:'한옥마을과 비빔밥의 도시',
-    links:[{lbl:'전주관광',url:'https://www.jeonju.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
-    spots:[
-      {emoji:'🏘️',name:'전주 한옥마을',meta:'완산구 · 무료',mapQ:'전주 한옥마을',rating:4.7,tags:['한옥','역사','무료','사진'],tip:'700여 채 한옥 밀집, 한복 대여 후 산책 필수'},
-      {emoji:'🍚',name:'전주 비빔밥',meta:'완산구 · 12,000원~',mapQ:'전주 비빔밥 명가',rating:4.8,tags:['맛집','전통음식','한식'],tip:'고궁·한국관 등 70년 전통 비빔밥 명가 즐비'},
-      {emoji:'🌸',name:'경기전',meta:'완산구 · 3,000원',mapQ:'경기전 전주',rating:4.6,tags:['역사','조선','왕릉'],tip:'태조 이성계 어진 봉안, 어진박물관 무료 관람'},
-      {emoji:'☕',name:'전주 남부시장 야시장',meta:'완산구 · 무료',mapQ:'전주 남부시장 야시장',rating:4.6,tags:['야시장','먹거리','무료'],tip:'매주 금·토 운영, 전국 최고 야시장 분위기'},
-      {emoji:'🌿',name:'전주 오목대',meta:'완산구 · 무료',mapQ:'오목대 전주',rating:4.4,tags:['전망','역사','무료'],tip:'한옥마을 전경이 한눈에, 노을 사진 명소'},
-      {emoji:'🎭',name:'한국전통문화전당',meta:'완산구 · 무료',mapQ:'한국전통문화전당 전주',rating:4.4,tags:['전통','문화','공연'],tip:'한지·한식·한음악 체험 프로그램 풍성'},
-      {emoji:'🌊',name:'전주천 벚꽃길',meta:'완산구 · 무료',mapQ:'전주천 벚꽃 산책로',rating:4.6,tags:['벚꽃','산책','힐링','무료'],tip:'4월 벚꽃 터널, 한옥마을과 함께 봄 코스'},
-      {emoji:'🍡',name:'전주 초코파이',meta:'완산구 · 2,000원~',mapQ:'전주 초코파이',rating:4.5,tags:['맛집','기념품','디저트'],tip:'전주 한옥마을 명물, 수제 초코파이 항상 줄섬'},
-      {emoji:'🏛️',name:'전주향교',meta:'완산구 · 무료',mapQ:'전주향교',rating:4.3,tags:['역사','유교','무료'],tip:'조선 최대 향교, 무료 관람에 사진 명소'},
-      {emoji:'🌲',name:'덕진공원',meta:'덕진구 · 무료',mapQ:'덕진공원 전주',rating:4.4,tags:['연꽃','공원','무료','힐링'],tip:'7~8월 연꽃 장관, 덕진호 보트 체험 가능'},
-      {emoji:'🍜',name:'전주 콩나물국밥',meta:'완산구 · 8,000원~',mapQ:'전주 콩나물국밥',rating:4.7,tags:['맛집','해장','전통음식'],tip:'현대옥·삼백집 등 전국 명성, 해장 음식 1위'},
-      {emoji:'☕',name:'전주 객리단길',meta:'완산구 · 무료',mapQ:'객리단길 전주',rating:4.5,tags:['카페','힐링','드라이브'],tip:'한옥마을 인근 트렌디한 카페·맛집 골목'},
-      {emoji:'🎠',name:'완주 대둔산',meta:'완주군 · 2,000원',mapQ:'대둔산 도립공원',rating:4.6,tags:['등산','케이블카','단풍'],tip:'기암절벽 케이블카, 가을 단풍 전국 TOP5'},
-      {emoji:'🌺',name:'마이산 도립공원',meta:'진안군 · 3,000원',mapQ:'마이산 도립공원',rating:4.5,tags:['등산','기암','역사'],tip:'말 귀처럼 솟은 기암, 탑사 돌탑군 신비로움'},
-      {emoji:'🌿',name:'전주 봉황동 유적',meta:'완산구 · 무료',mapQ:'봉황동 유적 전주',rating:4.2,tags:['역사','무료','문화재'],tip:'도심 속 백제 유적지, 한옥마을 산책과 연계'},
-      {emoji:'🌾',name:'전주 한정식',meta:'완산구 · 25,000원~',mapQ:'전주 한정식 골목',rating:4.6,tags:['맛집','한정식','남도음식'],tip:'남도 전통 한정식 밥상, 20가지 이상 반찬 한상차림'},
-      {emoji:'🍜',name:'전주 피순대',meta:'완산구 · 7,000원~',mapQ:'전주 피순대',rating:4.5,tags:['맛집','순대','향토'],tip:'남부시장 피순대 골목, 당면 없이 찹쌀+선지 전통방식'},
-      {emoji:'🍱',name:'전주 막걸리 골목',meta:'완산구 · 5,000원~',mapQ:'전주 막걸리 골목',rating:4.5,tags:['맛집','막걸리','향토'],tip:'삼천동·한옥마을 막걸리골목, 안주 무한리필 전통'},
-      {emoji:'🍰',name:'전주 베이커리·한과',meta:'완산구 · 3,000원~',mapQ:'전주 한과 베이커리',rating:4.4,tags:['맛집','한과','디저트'],tip:'한옥마을 내 전통 한과·수제 빵, 약과·강정 쇼핑'},
-      {emoji:'🌿',name:'전주 객리단길 음식점',meta:'완산구 · 10,000원~',mapQ:'객리단길 맛집',rating:4.5,tags:['맛집','트렌드','카페'],tip:'트렌디한 퓨전 한식·카페, 인스타 맛집 밀집'},
-    ]
-  },
+
+
   { key:'chungbuk', idx:16, name:'충북', emoji:'🌾', grad:'linear-gradient(135deg,#2d7a1f,#4a9e2f)', sub:'단양·충주·청주의 내륙 자연',
     links:[{lbl:'충북관광',url:'https://www.chungbuk.go.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
@@ -2651,12 +2562,10 @@ const REGIONS = [
       {emoji:'🌾',name:'단양 마늘 순대·소시지',meta:'단양군 · 5,000원~',mapQ:'단양 시장 마늘소시지',rating:4.5,tags:['맛집','시장','마늘'],tip:'단양 구경시장 마늘 소시지, 기념품으로도 인기'},
       {emoji:'🍎',name:'충주 사과 음식·주스',meta:'충주시 · 5,000원~',mapQ:'충주 사과 음식',rating:4.4,tags:['맛집','사과','음료'],tip:'충주 사과 직거래 시장, 사과 주스·사과 막걸리 추천'},
       {emoji:'🦑',name:'제천 약채락 건강 정식',meta:'제천시 · 15,000원~',mapQ:'제천 약채락',rating:4.4,tags:['맛집','건강식','한식'],tip:'제천 한방 건강 식재료 요리, 약초 비빔밥 별미'},
-      {emoji:'🥘',name:'보은 대추 요리',meta:'보은군 · 12,000원~',mapQ:'보은 대추 음식',rating:4.3,tags:['맛집','대추','향토'],tip:'속리산 인근 보은 대추 특산, 대추 갈비찜·대추차'},
-    ]
-  },
-];
+      {emoji:'🥘',name:'보은 대추 요리',meta:'보은군 · 12,000원~',mapQ:'보은 대추 음식',rating:4.3,tags:['맛집','대추','향토'],tip:'속리산 인근 보은 대추 특산, 대추 갈비찜·대추차'}]
+  }];
 /* ── 국내 지역 인기순 배열 ── */
-const DOMESTIC_ORDER = ['jeju','seoul','busan','gangwon','gyeongbuk','gyeongnam','incheon','jeonnam','jeonbuk','chungnam','chungbuk','daegu','daejeon','gwangju'];
+const DOMESTIC_ORDER = ['jeju','seoul','gyeongnam','gyeongbuk','jeonnam','jeonbuk','chungnam','chungbuk','gangwon','incheon'];
 
 let currentDomesticRegion = 'all';
 
@@ -2670,7 +2579,7 @@ function renderDomesticRegionGrid() {
     onclick="selectDomesticRegion('all')">
     <div style="font-size:26px;line-height:1;margin-bottom:2px">🗺️</div>
     <div class="tic-label" style="color:${allIsOn?'var(--sky800)':'var(--txt)'}">전체</div>
-    <div class="tic-cnt" style="color:${allIsOn?'var(--sky800)':'var(--txt2)'}">14곳</div>
+    <div class="tic-cnt" style="color:${allIsOn?'var(--sky800)':'var(--txt2)'}">${DOMESTIC_ORDER.length}곳</div>
   </div>`;
   const regionCards = DOMESTIC_ORDER.map(key => {
     const r = REGIONS.find(r => r.key === key);
@@ -2751,60 +2660,15 @@ function initDomesticDests() {
   renderDomesticDests();
 }
 
-function renderRegionGrid() {
-  const el = document.getElementById('domesticRegionGrid');
-  if (!el) return;
-  el.innerHTML = REGIONS.map(r => `
-    <div class="ritem" onclick="swSub(${r.idx},null);highlightRegionCard('${r.key}')">
-      <div class="r-ico">${r.emoji}</div>
-      <div class="r-lbl">${r.name}</div>
-      <div class="r-cnt" id="rcnt-${r.key}">로딩중</div>
-    </div>`).join('');
-  updateRegionCounts();
-}
-
-function highlightRegionCard(key) {
-  document.querySelectorAll('.ritem').forEach(el => el.classList.remove('on'));
-  const idx = REGIONS.findIndex(r => r.key === key);
-  if (idx >= 0) document.querySelectorAll('.ritem')[idx]?.classList.add('on');
-}
-
-function updateRegionCounts() {
-  REGIONS.forEach(r => {
-    const stored = getRegionSpots(r.key);
-    const el = document.getElementById(`rcnt-${r.key}`);
-    if (el) el.textContent = stored.length + '곳';
-  });
-}
-
-/* ── 지역별 spots localStorage 키 ── */
-/* ── 지역 spots 버전 (데이터 변경 시 숫자 올리면 캐시 초기화) ── */
-const REGION_DATA_VERSION = 'v4';
-const REGION_VER_KEY = 'travelon_region_ver';
-
-// 버전 불일치 시 region 캐시 전체 초기화
-(function clearStaleRegionCache() {
-  if (localStorage.getItem(REGION_VER_KEY) !== REGION_DATA_VERSION) {
-    Object.keys(localStorage).filter(k => k.startsWith('travelon_region_') && k !== REGION_VER_KEY)
-      .forEach(k => localStorage.removeItem(k));
-    localStorage.setItem(REGION_VER_KEY, REGION_DATA_VERSION);
-  }
-})();
-
-function regionStorageKey(key) { return `travelon_region_${key}`; }
 
 function getRegionSpots(key) {
   const region = REGIONS.find(r => r.key === key);
   if (!region) return [];
-  try {
-    const saved = localStorage.getItem(regionStorageKey(key));
-    return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(region.spots));
-  } catch(e) { return JSON.parse(JSON.stringify(region.spots)); }
+  return JSON.parse(JSON.stringify(region.spots));
 }
 
 /* ── 지역 앱 패널 동적 렌더링 (강원도 방식 통일) ── */
 function initRegionSpots() {
-  renderRegionGrid();
   initDomesticDests();
   REGIONS.forEach(r => renderRegionPanel(r));
 }
@@ -2914,8 +2778,7 @@ const INTL_DESTS = [
        {e:'🏯', name:'에도성터·황궁 외원', loc:'치요다', price:'무료', tip:'주변 산책로와 함께 2시간 코스', map:'https://maps.app.goo.gl/imperialpalace'},
        {e:'🎡', name:'오다이바', loc:'미나토구', price:'무료~', tip:'레인보우브릿지 야경·쇼핑 복합', map:'https://maps.app.goo.gl/odaiba'},
        {e:'🛍️', name:'시부야 스크램블 교차로', loc:'시부야', price:'무료', tip:'스타벅스 2층에서 내려다보기', map:'https://maps.app.goo.gl/shibuya'},
-       {e:'🎮', name:'아키하바라 전자·오타쿠 거리', loc:'치요다', price:'무료~', tip:'전자부품·피규어·메이드카페', map:'https://maps.app.goo.gl/akihabara'},
-     ]},
+       {e:'🎮', name:'아키하바라 전자·오타쿠 거리', loc:'치요다', price:'무료~', tip:'전자부품·피규어·메이드카페', map:'https://maps.app.goo.gl/akihabara'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍣', name:'쓰키지 외시장 스시·해산물', loc:'추오구', price:'300엔~', tip:'오전 10시 전에 가야 신선하고 덜 붐빔', map:'https://maps.app.goo.gl/tsukiji'},
        {e:'🍜', name:'이케부쿠로·신주쿠 라멘 골목', loc:'신주쿠·이케부쿠로', price:'800엔~', tip:'신주쿠 오이시 로쿠롯폰기 추천', map:'https://maps.app.goo.gl/shinjukuramen'},
@@ -2924,18 +2787,14 @@ const INTL_DESTS = [
        {e:'🍺', name:'신주쿠 오모이데요코초', loc:'신주쿠', price:'1,000엔~', tip:'좁은 골목 이자카야·야키토리 분위기 최고', map:'https://maps.app.goo.gl/omoide'},
        {e:'🥟', name:'아사쿠사 교자·텐동 전문점', loc:'아사쿠사', price:'1,200엔~', tip:'가미나리몬 근처 골목 탐방', map:'https://maps.app.goo.gl/asakusagyoza'},
        {e:'🦞', name:'도요스 시장 해산물', loc:'고토구', price:'5,000엔~', tip:'참치경매 관람은 사전 예약 필수', map:'https://maps.app.goo.gl/toyosu'},
-       {e:'🍱', name:'긴자 오마카세 스시', loc:'긴자', price:'런치 5,000엔~', tip:'런치 타임이 저녁의 절반 가격', map:'https://maps.app.goo.gl/ginzasushi'},
-     ]},
+       {e:'🍱', name:'긴자 오마카세 스시', loc:'긴자', price:'런치 5,000엔~', tip:'런치 타임이 저녁의 절반 가격', map:'https://maps.app.goo.gl/ginzasushi'}]},
      {key:'cafe', label:'☕ 카페·디저트', items:[
        {e:'🍰', name:'하라주쿠 크레이프·카와이 디저트', loc:'하라주쿠', price:'500엔~', tip:'타케시타 거리 구경과 함께', map:'https://maps.app.goo.gl/harajuku'},
        {e:'🍦', name:'편의점 디저트', loc:'전국', price:'150엔~', tip:'세븐일레븐 롤케이크·팸마 푸딩 추천', map:'https://maps.app.goo.gl/7eleven'},
-       {e:'🍡', name:'시모키타자와 빈티지 카페', loc:'시모키타자와', price:'1,000엔~', tip:'도쿄 힙스터 성지·레코드샵 동반', map:'https://maps.app.goo.gl/shimokita'},
-     ]},
+       {e:'🍡', name:'시모키타자와 빈티지 카페', loc:'시모키타자와', price:'1,000엔~', tip:'도쿄 힙스터 성지·레코드샵 동반', map:'https://maps.app.goo.gl/shimokita'}]},
      {key:'shop', label:'🛍️ 쇼핑·문화', items:[
        {e:'👗', name:'하라주쿠·오모테산도', loc:'시부야구', price:'무료~', tip:'명품가와 빈티지 숍이 공존', map:'https://maps.app.goo.gl/omotesando'},
-       {e:'📚', name:'진보초 헌책방 거리', loc:'치요다', price:'무료~', tip:'오래된 책·만화·엽서 보물 탐방', map:'https://maps.app.goo.gl/jinbocho'},
-     ]},
-   ],
+       {e:'📚', name:'진보초 헌책방 거리', loc:'치요다', price:'무료~', tip:'오래된 책·만화·엽서 보물 탐방', map:'https://maps.app.goo.gl/jinbocho'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🚆 JR패스',url:'https://www.japanrailpass.net/ko'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
 
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF3E0"/><path d="M8 32l6-20 2 4 4-12 4 12 2-4 6 20z" fill="none" stroke="#FF7043" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 20h8" stroke="#FF7043" stroke-width="1.2"/><path d="M14 25h12" stroke="#FF7043" stroke-width="1.2"/><path d="M8 32h24" stroke="#FF7043" stroke-width="1.5"/><path d="M18 8l2-5 2 5z" fill="white"/><path d="M5 26h5v6H5z" fill="#FFCCBC" rx="1"/><path d="M30 26h5v6h-5z" fill="#FFCCBC" rx="1"/><circle cx="30" cy="8" r="3" fill="#FF8A65" opacity=".6"/><path d="M27 8 Q30 5 33 8" fill="none" stroke="#FF8A65" stroke-width="1.5"/></svg>',
@@ -2947,21 +2806,17 @@ const INTL_DESTS = [
        {e:'⛩️', name:'후시미이나리', loc:'교토 후시미', price:'무료', tip:'이른 아침 방문 필수, 수천 개 도리이 터널'},
        {e:'🎋', name:'아라시야마 대나무숲', loc:'교토 아라시야마', price:'무료', tip:'오전 7시 이전이 가장 한적하고 사진 명소'},
        {e:'🦌', name:'나라 사슴공원', loc:'나라시', price:'무료', tip:'사슴 센베이(150엔) 구매해서 사슴과 교감'},
-       {e:'🌸', name:'철학의 길', loc:'교토 히가시야마', price:'무료', tip:'3~4월 벚꽃·11월 단풍 시즌이 절정'},
-     ]},
+       {e:'🌸', name:'철학의 길', loc:'교토 히가시야마', price:'무료', tip:'3~4월 벚꽃·11월 단풍 시즌이 절정'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍢', name:'도톤보리 타코야키', loc:'난바 도톤보리', price:'200엔~', tip:'아지노야·오타코 등 원조 가게 줄 서서 먹기'},
        {e:'🥩', name:'오사카 오코노미야키', loc:'오사카 전역', price:'800엔~', tip:'오사카식(혼합)과 히로시마식(층층) 구분'},
        {e:'🍜', name:'신세카이 쿠시카츠', loc:'신세카이', price:'100엔~/꼬치', tip:'소스 두 번 찍기 금지! 현지 룰 준수'},
        {e:'🦀', name:'난바 카니도라쿠 게 요리', loc:'난바', price:'3,000엔~', tip:'런치 코스가 저녁 대비 40% 저렴'},
        {e:'🍱', name:'구로몬 시장 해산물', loc:'구로몬 시장', price:'1,000엔~', tip:'오전 10시~낮 1시가 가장 신선'},
-       {e:'🍣', name:'회전초밥', loc:'우메다·도톤보리', price:'100엔~/접시', tip:'무텐쿠라 스시·하마즈시 추천'},
-     ]},
+       {e:'🍣', name:'회전초밥', loc:'우메다·도톤보리', price:'100엔~/접시', tip:'무텐쿠라 스시·하마즈시 추천'}]},
      {key:'cafe', label:'☕ 카페·디저트', items:[
        {e:'🍵', name:'기온 말차 디저트', loc:'교토 기온', price:'600엔~', tip:'나나나나 입장 줄 길어 오전 개점 직후 방문'},
-       {e:'🥧', name:'나라 미타라시단고', loc:'나라 공원 주변', price:'300엔~', tip:'사슴공원 산책 후 간식으로 딱'},
-     ]},
-   ],
+       {e:'🥧', name:'나라 미타라시단고', loc:'나라 공원 주변', price:'300엔~', tip:'사슴공원 산책 후 간식으로 딱'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
 
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><path d="M20 6 Q10 16 10 26 Q10 34 20 34 Q30 34 30 26 Q30 16 20 6z" fill="none" stroke="#66BB6A" stroke-width="1.5"/><path d="M12 28 Q14 22 20 20 Q26 22 28 28" fill="#A5D6A7" opacity=".5"/><rect x="18" y="18" width="4" height="14" fill="#795548" rx="1"/><path d="M14 18h12l2 2H12z" fill="#4CAF50" rx="1"/><path d="M16 16h8l1 2H15z" fill="#388E3C" rx="1"/><path d="M17 14l3-6 3 6z" fill="#2E7D32" rx="1"/><ellipse cx="14" cy="30" rx="3" ry="2" fill="#F57F17" opacity=".6"/><ellipse cx="26" cy="30" rx="3" ry="2" fill="#F57F17" opacity=".6"/></svg>',
@@ -2973,16 +2828,13 @@ const INTL_DESTS = [
        {e:'🏰', name:'구마모토성', loc:'구마모토시', price:'800엔', tip:'2016 지진 복구 중, 천수각 내부 전시 충실'},
        {e:'🌋', name:'아소산 화산', loc:'구마모토 아소', price:'무료~', tip:'분화 상황에 따라 접근 제한, 사전 확인 필수'},
        {e:'⛩️', name:'다자이후 텐만구', loc:'다자이후시', price:'무료', tip:'수험생 합격 기원 신사, 우메가에 모찌 필수'},
-       {e:'🛍️', name:'캐널시티', loc:'하카타', price:'무료', tip:'분수 쇼 매시 정각·30분, 라멘 스타디움 있음'},
-     ]},
+       {e:'🛍️', name:'캐널시티', loc:'하카타', price:'무료', tip:'분수 쇼 매시 정각·30분, 라멘 스타디움 있음'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍜', name:'하카타 돈코츠 라멘', loc:'하카타역 주변', price:'800엔~', tip:'이치란·신신·잇푸도 본점이 모두 후쿠오카'},
        {e:'🍢', name:'나카스 야타이 포장마차', loc:'나카스 강변', price:'1,000엔~', tip:'저녁 6시 이후 오픈, 현금만 가능한 곳 많음'},
        {e:'🥩', name:'후쿠오카 모츠나베', loc:'하카타·텐진', price:'2,500엔~', tip:'곱창 전골, 마지막에 챙쿄 면 추가가 정석'},
        {e:'🐟', name:'하카타 명란젓 직구매', loc:'아뮤프라자·시장', price:'500엔~', tip:'후쿠야·야마야 공장 직영점이 가성비 최고'},
-       {e:'🐖', name:'나가사키 짬폰·사라우동', loc:'나가사키 차이나타운', price:'1,000엔~', tip:'링거헛 체인도 있지만 시카이로 본점 추천'},
-     ]},
-   ],
+       {e:'🐖', name:'나가사키 짬폰·사라우동', loc:'나가사키 차이나타운', price:'1,000엔~', tip:'링거헛 체인도 있지만 시카이로 본점 추천'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🚢 부산~후쿠오카',url:'https://www.beetles.co.jp/ko'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
 
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E3F2FD"/><path d="M5 28 L12 14 L16 19 L20 8 L24 19 L28 14 L35 28z" fill="#E3F2FD" stroke="#42A5F5" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 19 L20 8 L24 19z" fill="white"/><path d="M5 28h30v4H5z" fill="#B3E5FC" rx="1"/><circle cx="30" cy="12" r="3" fill="#FFD54F" opacity=".8"/></svg>',
@@ -2994,15 +2846,12 @@ const INTL_DESTS = [
        {e:'🏔️', name:'비에이 파노라마 로드', loc:'비에이', price:'무료', tip:'렌터카 필수, 패치워크 언덕이 포토 스팟'},
        {e:'💜', name:'후라노 라벤더밭', loc:'후라노', price:'무료', tip:'7월 중순~8월 초가 절정, 패밀리 팜 추천'},
        {e:'⛵', name:'오타루 운하', loc:'오타루시', price:'무료', tip:'저녁 조명이 낭만적, 유리공예·오르골 쇼핑'},
-       {e:'🌊', name:'노보리베츠 온천', loc:'노보리베츠시', price:'500엔~', tip:'지옥 계곡 산책 무료, 호텔 당일 온천 가능'},
-     ]},
+       {e:'🌊', name:'노보리베츠 온천', loc:'노보리베츠시', price:'500엔~', tip:'지옥 계곡 산책 무료, 호텔 당일 온천 가능'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🦀', name:'삿포로 게 요리·카이센동', loc:'스스키노·니조 시장', price:'2,000엔~', tip:'니조 시장 아침 해산물이 가장 신선'},
        {e:'🍜', name:'삿포로 미소 라멘', loc:'삿포로 라멘 골목', price:'900엔~', tip:'스스키노역 인근 삿포로 라멘 코쿄 추천'},
        {e:'🧀', name:'홋카이도 유제품·치즈', loc:'오타루·비에이', price:'300엔~', tip:'비에이 치즈공방 소프트아이스크림 필수'},
-       {e:'🥩', name:'징기스칸 양고기 구이', loc:'삿포로 전역', price:'1,500엔~', tip:'다루마 본점이 원조, 저녁 웨이팅 필수'},
-     ]},
-   ],
+       {e:'🥩', name:'징기스칸 양고기 구이', loc:'삿포로 전역', price:'1,500엔~', tip:'다루마 본점이 원조, 저녁 웨이팅 필수'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🚆 JR패스',url:'https://www.japanrailpass.net/ko'},{lbl:'🗺️ 관광정보',url:'https://www.japan.travel/ko'}]},
 
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F2F1"/><path d="M8 28 Q14 18 20 16 Q26 18 32 28" fill="none" stroke="#00897B" stroke-width="1.5"/><circle cx="20" cy="14" r="4" fill="#E0F2F1" stroke="#26A69A" stroke-width="1.2"/><path d="M10 30 Q15 26 20 28 Q25 26 30 30" fill="#80CBC4" opacity=".4"/></svg>',
@@ -3014,14 +2863,11 @@ const INTL_DESTS = [
        {e:'🐠', name:'추라우미 수족관', loc:'모토부', price:'2,180엔', tip:'고래상어 매일 3회 먹이주기 쇼 시간 확인'},
        {e:'🏖️', name:'에메랄드 비치', loc:'모토부', price:'무료', tip:'수족관 인근, 스노클링 장비 현지 렌탈 가능'},
        {e:'🛤️', name:'나하 국제거리', loc:'나하 중심', price:'무료', tip:'도보 1.6km 쇼핑 거리, 류큐 유리 기념품'},
-       {e:'⛵', name:'이시가키·고토섬', loc:'야에야마 제도', price:'페리 왕복 3,000엔~', tip:'케라마 제도 산호초 다이빙이 세계 최고급'},
-     ]},
+       {e:'⛵', name:'이시가키·고토섬', loc:'야에야마 제도', price:'페리 왕복 3,000엔~', tip:'케라마 제도 산호초 다이빙이 세계 최고급'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🐷', name:'오키나와 소바·라후테', loc:'나하 전역', price:'800엔~', tip:'돼지 삼겹살 라후테는 오키나와 소울푸드'},
        {e:'🥤', name:'블루씰 아이스크림', loc:'전국 체인', price:'300엔~', tip:'홍이모·소금 카라멜 맛이 오키나와 한정'},
-       {e:'🍺', name:'오리온 맥주 공장 견학', loc:'나고시', price:'500엔~', tip:'공장 투어 후 갓 만든 생맥주 시음 포함'},
-     ]},
-   ],
+       {e:'🍺', name:'오리온 맥주 공장 견학', loc:'나고시', price:'500엔~', tip:'공장 투어 후 갓 만든 생맥주 시음 포함'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩',url:'https://www.klook.com/ko'},{lbl:'🗺️ 오키나와 관광',url:'https://visitokinawa.jp/ko/'}]},
 
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF8F0"/><rect x="5" y="18" width="30" height="16" fill="#F57F17" rx="2" opacity=".2"/><path d="M8 20h24v10H8z" fill="none" stroke="#FF8F00" stroke-width="1.2" rx="1"/><path d="M8 24h24" stroke="#FF8F00" stroke-width="1"/><path d="M14 16 Q20 10 26 16" fill="none" stroke="#FF7043" stroke-width="1.5"/><circle cx="20" cy="10" r="3" fill="#FFB300" opacity=".8"/></svg>',
@@ -3032,13 +2878,10 @@ const INTL_DESTS = [
        {e:'🏯', name:'나고야성', loc:'나고야 중심', price:'500엔', tip:'금 샤치호코 천수각이 상징, 혼마루 어전 무료'},
        {e:'⛩️', name:'이세신궁', loc:'이세시', price:'무료', tip:'외궁→내궁 순서 참배, 오하라이마치 도보 쇼핑'},
        {e:'🏘️', name:'시라카와고 합장마을', loc:'기후현', price:'무료', tip:'유네스코 세계유산, 겨울 설경이 압도적'},
-       {e:'🚗', name:'도요타 박물관', loc:'나가쿠테시', price:'1,200엔', tip:'자동차 역사 전시, 아이와 함께 인기'},
-     ]},
+       {e:'🚗', name:'도요타 박물관', loc:'나가쿠테시', price:'1,200엔', tip:'자동차 역사 전시, 아이와 함께 인기'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍗', name:'나고야 데바사키·미소카츠', loc:'나고야 전역', price:'1,000엔~', tip:'세카이노야마짱 닭날개·야바톤 미소카츠'},
-       {e:'🍜', name:'히츠마부시', loc:'나고야 중심', price:'1,500엔~', tip:'3가지 방법으로 먹는 장어덮밥이 나고야 명물'},
-     ]},
-   ],
+       {e:'🍜', name:'히츠마부시', loc:'나고야 중심', price:'1,500엔~', tip:'3가지 방법으로 먹는 장어덮밥이 나고야 명물'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩',url:'https://www.klook.com/ko'},{lbl:'🗺️ 나고야 관광',url:'https://www.nagoya-info.jp/ko/'}]},
 
   {region:'japan', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF9C4"/><path d="M10 28 Q20 8 30 28" fill="#FFF176" stroke="#F9A825" stroke-width="1.2"/><path d="M14 22 Q20 14 26 22" fill="#FFE082" stroke="#FFB300" stroke-width="1"/><circle cx="20" cy="22" r="3" fill="#F57F17" opacity=".7"/><rect x="18" y="25" width="4" height="6" fill="#795548" rx="1"/></svg>',
@@ -3049,14 +2892,11 @@ const INTL_DESTS = [
        {e:'☮️', name:'히로시마 평화기념공원', loc:'히로시마 중심', price:'무료', tip:'원폭 돔과 평화 박물관 세트 관람, 약 2시간'},
        {e:'⛩️', name:'이쓰쿠시마 신사', loc:'미야지마섬', price:'300엔', tip:'썰물 시 바다 위 도리이 걸어서 접근 가능'},
        {e:'🦌', name:'미야지마 사슴', loc:'미야지마섬', price:'무료', tip:'페리 20분, 사슴이 자유롭게 돌아다님'},
-       {e:'🏰', name:'히로시마성', loc:'히로시마 중심', price:'370엔', tip:'평화공원 도보 20분, 성 내부 역사 전시'},
-     ]},
+       {e:'🏰', name:'히로시마성', loc:'히로시마 중심', price:'370엔', tip:'평화공원 도보 20분, 성 내부 역사 전시'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🥞', name:'히로시마식 오코노미야키', loc:'히로시마 전역', price:'1,000엔~', tip:'밀가루 반죽 위에 층층이 쌓는 방식이 특징'},
        {e:'🦪', name:'미야지마 굴 요리', loc:'미야지마', price:'1,000엔~', tip:'10~3월 제철, 구이·튀김·그라탱 모두 맛있음'},
-       {e:'🍁', name:'모미지만쥬', loc:'미야지마', price:'130엔~', tip:'단풍잎 모양 화과자, 튀김 버전도 별미'},
-     ]},
-   ],
+       {e:'🍁', name:'모미지만쥬', loc:'미야지마', price:'130엔~', tip:'단풍잎 모양 화과자, 튀김 버전도 별미'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩',url:'https://www.klook.com/ko'},{lbl:'🗺️ 히로시마 관광',url:'https://www.visit-hiroshima.com/ko/'}]},
 
   /* ── 동남아 ── */
@@ -3069,15 +2909,12 @@ const INTL_DESTS = [
        {e:'🏔️', name:'바나힐 케이블카', loc:'다낭 서쪽', price:'850,000동', tip:'골든 브릿지(손 조형물)가 포토 스팟, 오전 방문'},
        {e:'🏘️', name:'호이안 올드타운', loc:'호이안', price:'12만동(구역권)', tip:'야간 등불 축제가 메인, 자전거 대여 추천'},
        {e:'⛰️', name:'마블 마운틴', loc:'다낭 남쪽', price:'40,000동', tip:'동굴 사원·파노라마 뷰, 엘리베이터 추가 비용'},
-       {e:'🌉', name:'드래곤 브릿지', loc:'다낭 중심', price:'무료', tip:'토·일 밤 9시 불·물 뿜기 쇼 놓치지 말 것'},
-     ]},
+       {e:'🌉', name:'드래곤 브릿지', loc:'다낭 중심', price:'무료', tip:'토·일 밤 9시 불·물 뿜기 쇼 놓치지 말 것'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍜', name:'미꽝·까올러우', loc:'호이안 구시가', price:'30,000동~', tip:'호이안 까올러우는 이곳 물로만 만드는 향토 면'},
        {e:'🥖', name:'반미·쌀국수', loc:'다낭 전역', price:'20,000동~', tip:'반미 프엉(호이안)이 한국인 입소문 1위'},
        {e:'🦞', name:'해산물 구이', loc:'다낭 해산물 거리', price:'200,000동~', tip:'안뚜옹 야시장 해산물 거리, 흥정 필수'},
-       {e:'☕', name:'베트남 커피', loc:'전역', price:'20,000동~', tip:'연유 넣은 카페 쓰어다(아이스)가 국민 음료'},
-     ]},
-   ],
+       {e:'☕', name:'베트남 커피', loc:'전역', price:'20,000동~', tip:'연유 넣은 카페 쓰어다(아이스)가 국민 음료'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://vietnam.travel/ko'}]},
 
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><path d="M4 28 Q8 20 12 22 Q14 18 18 20 Q20 14 24 18 Q27 15 30 20 Q33 18 36 24L36 32H4z" fill="#A5D6A7" opacity=".6"/><path d="M4 32 Q10 28 16 32 Q22 36 28 32 Q32 28 36 32" stroke="#4CAF50" fill="none" stroke-width="1.2"/></svg>',
@@ -3088,15 +2925,12 @@ const INTL_DESTS = [
        {e:'🚢', name:'하롱베이 크루즈', loc:'꽝닌성', price:'1박 크루즈 150USD~', tip:'2박 크루즈가 가성비 최고, 카약 포함 투어 추천'},
        {e:'🏙️', name:'호안끼엠 호수', loc:'하노이 구시가', price:'무료', tip:'주말 보행자 천국, 36거리 야시장과 연계'},
        {e:'🌿', name:'닌빈 땀꼭', loc:'닌빈성', price:'200,000동', tip:'육지의 하롱베이, 보트 투어 2시간 코스'},
-       {e:'🏛️', name:'호찌민 묘소', loc:'하노이 바딘광장', price:'무료', tip:'월·금 휴관, 반바지·민소매 입장 불가'},
-     ]},
+       {e:'🏛️', name:'호찌민 묘소', loc:'하노이 바딘광장', price:'무료', tip:'월·금 휴관, 반바지·민소매 입장 불가'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍜', name:'하노이 쌀국수 포', loc:'구시가 전역', price:'50,000동~', tip:'포 틴·포 바 작 24시간 영업 유명 맛집'},
        {e:'🥗', name:'분짜·넴루이', loc:'구시가', price:'60,000동~', tip:'분짜 흐엉리엔이 오바마가 방문한 바로 그곳'},
        {e:'🍳', name:'반쏘이·바인미', loc:'노점·시장', price:'15,000동~', tip:'아침 노점 반쏘이(찹쌀밥)이 현지인 아침 식사'},
-       {e:'🍺', name:'하노이 비아호이', loc:'구시가 비아호이 코너', price:'5,000동~', tip:'세계 최저가 생맥주 한 잔, 약 300원'},
-     ]},
-   ],
+       {e:'🍺', name:'하노이 비아호이', loc:'구시가 비아호이 코너', price:'5,000동~', tip:'세계 최저가 생맥주 한 잔, 약 300원'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://vietnam.travel/ko'}]},
 
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF9C4"/><path d="M14 18h12l2 4H12z" fill="#FFB300" rx="1"/><path d="M12 22h16l3 5H9z" fill="#FF8F00" rx="1"/><rect x="11" y="27" width="4" height="9" fill="#FF8F00" rx="1"/><rect x="25" y="27" width="4" height="9" fill="#FF8F00" rx="1"/><rect x="17" y="25" width="6" height="11" fill="#FFA000" rx="1"/><path d="M18 25 Q20 22 22 25" fill="#FFD54F"/><circle cx="20" cy="15" r="1.5" fill="#FDD835"/></svg>',
@@ -3108,15 +2942,12 @@ const INTL_DESTS = [
        {e:'🌅', name:'왓 아룬(새벽의 사원)', loc:'차오프라야 강변', price:'100바트', tip:'일몰 직후 조명 켜진 뷰가 최고'},
        {e:'🛍️', name:'짜뚜짝 주말 시장', loc:'모칫역 인근', price:'무료', tip:'토·일만 오픈, 8,000개 부스 미로 같은 구조'},
        {e:'🌿', name:'룸피니 공원', loc:'실롬 인근', price:'무료', tip:'도심 속 오아시스, 아침 타이치·이구아나 서식'},
-       {e:'🌃', name:'아시아티크 야시장', loc:'차오프라야 강변', price:'무료', tip:'선착장 무료 보트 운행, 저녁 6시 이후 활기'},
-     ]},
+       {e:'🌃', name:'아시아티크 야시장', loc:'차오프라야 강변', price:'무료', tip:'선착장 무료 보트 운행, 저녁 6시 이후 활기'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍜', name:'팟타이·팟씨유', loc:'야시장·카오산', price:'60바트~', tip:'팁싸마이(Thip Samai)가 방콕 팟타이 원조'},
        {e:'🍛', name:'카오만가이·쏨땀', loc:'전역 노점', price:'50바트~', tip:'게이 쏨땀이 줄 서는 맛집, 매운 정도 조절 가능'},
        {e:'🦞', name:'방콕 씨푸드', loc:'아시아티크·수안룸', price:'500바트~', tip:'짜런씨푸드·소이포차나가 유명, 랍스터 시가'},
-       {e:'☕', name:'카오산 루프탑 바', loc:'카오산로드', price:'200바트~', tip:'저녁 8시 이후 라이브 음악과 함께 분위기 최고'},
-     ]},
-   ],
+       {e:'☕', name:'카오산 루프탑 바', loc:'카오산로드', price:'200바트~', tip:'저녁 8시 이후 라이브 음악과 함께 분위기 최고'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourismthailand.org/ko'}]},
 
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F2F1"/><circle cx="28" cy="12" r="5" fill="#FFD54F" opacity=".8"/><path d="M6 28 Q10 22 14 24 Q16 20 20 22 Q22 18 24 20 Q26 22 28 28L28 36H6z" fill="#4DB6AC" opacity=".5"/><path d="M8 26 Q10 20 12 22" fill="none" stroke="#00695C" stroke-width="1.5"/><path d="M18 22 Q20 16 22 18" fill="none" stroke="#00695C" stroke-width="1.5"/></svg>',
@@ -3128,14 +2959,11 @@ const INTL_DESTS = [
        {e:'🐘', name:'코끼리 생추어리', loc:'치앙마이 외곽', price:'2,500바트~', tip:'윤리적 관광, 타기 금지 기관 선택 중요'},
        {e:'🏖️', name:'피피섬', loc:'끄라비 인근', price:'피피 투어 1,500바트~', tip:'마야베이는 사전 예약제, 6~10월 비수기 저렴'},
        {e:'🌊', name:'팡아만·제임스본드 섬', loc:'푸켓 북쪽', price:'투어 1,200바트~', tip:'카약으로 석회암 동굴 탐험이 하이라이트'},
-       {e:'🌴', name:'빠통 해변', loc:'푸켓 서해안', price:'무료', tip:'파라솔 대여 200바트, 방라로드 야시장 인근'},
-     ]},
+       {e:'🌴', name:'빠통 해변', loc:'푸켓 서해안', price:'무료', tip:'파라솔 대여 200바트, 방라로드 야시장 인근'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍜', name:'카오소이(코코넛 커리 라멘)', loc:'치앙마이 님만해민', price:'80바트~', tip:'카오소이 람두안이 유명 맛집, 에그누들 필수'},
        {e:'🌮', name:'님만해민 카페 거리', loc:'치앙마이 님만해민', price:'150바트~', tip:'힙스터 카페 밀집, 아트 갤러리와 함께 산책'},
-       {e:'🍢', name:'치앙마이 나이트 바자', loc:'치앙마이 중심', price:'50바트~', tip:'토·일 워킹 스트릿이 가장 큰 규모'},
-     ]},
-   ],
+       {e:'🍢', name:'치앙마이 나이트 바자', loc:'치앙마이 중심', price:'50바트~', tip:'토·일 워킹 스트릿이 가장 큰 규모'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourismthailand.org/ko'}]},
 
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF3E0"/><path d="M5 28 Q10 24 15 28 Q20 32 25 28 Q30 24 35 28L35 36H5z" fill="#4FC3F7" opacity=".4"/><circle cx="28" cy="10" r="4" fill="#FF8F00"/><path d="M18 28 L18 18 Q20 14 22 18 L22 28" fill="none" stroke="#8D6E63" stroke-width="2"/><path d="M14 18 Q18 14 22 16 Q18 20 14 18z" fill="#66BB6A"/><path d="M22 16 Q26 12 30 14 Q26 18 22 16z" fill="#4CAF50"/><rect x="15" y="28" width="3" height="8" fill="#5D4037" rx="1"/><rect x="22" y="28" width="3" height="8" fill="#5D4037" rx="1"/></svg>',
@@ -3147,14 +2975,11 @@ const INTL_DESTS = [
        {e:'🌊', name:'울루와투 절벽 사원', loc:'발리 남쪽', price:'50,000루피아', tip:'저녁 6시 케착 댄스 공연과 함께 일몰 감상'},
        {e:'🌾', name:'우붓 테구랄랑 계단식 논', loc:'우붓 북쪽', price:'35,000루피아', tip:'아침 안개 걷히는 오전 8~9시가 촬영 최적'},
        {e:'🐒', name:'우붓 원숭이 숲', loc:'우붓 중심', price:'80,000루피아', tip:'가방·선글라스·음식 철저히 숨기기'},
-       {e:'🏄', name:'꾸따·스미냑 서핑', loc:'발리 서쪽', price:'강습 200,000루피아~', tip:'꾸따가 초보자, 짱구가 중급 이상 서퍼 성지'},
-     ]},
+       {e:'🏄', name:'꾸따·스미냑 서핑', loc:'발리 서쪽', price:'강습 200,000루피아~', tip:'꾸따가 초보자, 짱구가 중급 이상 서퍼 성지'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍛', name:'나시고랭·미고랭', loc:'전역', price:'30,000루피아~', tip:'인도네시아 국민 볶음밥·볶음면, 계란 추가 필수'},
        {e:'🥩', name:'사테·바비굴링', loc:'우붓·스미냑', price:'50,000루피아~', tip:'이부오카 우붓 본점 바비굴링이 발리 최고'},
-       {e:'☕', name:'짱구 카페 투어', loc:'짱구', price:'50,000루피아~', tip:'선셋 로드 카페 거리, 인스타 명소 밀집'},
-     ]},
-   ],
+       {e:'☕', name:'짱구 카페 투어', loc:'짱구', price:'50,000루피아~', tip:'선셋 로드 카페 거리, 인스타 명소 밀집'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.indonesia.travel'}]},
 
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E3F2FD"/><rect x="16" y="10" width="8" height="22" fill="#0288D1" rx="2"/><path d="M16 10 Q20 6 24 10" fill="#0288D1"/><ellipse cx="20" cy="10" rx="8" ry="3" fill="#29B6F6"/><circle cx="20" cy="9" r="4" fill="#B3E5FC"/><circle cx="14" cy="22" r="2.5" fill="#66BB6A"/><circle cx="26" cy="22" r="2.5" fill="#66BB6A"/><text x="17" y="20" font-size="5" fill="white" font-weight="900">MBS</text></svg>',
@@ -3166,17 +2991,13 @@ const INTL_DESTS = [
        {e:'🌃', name:'마리나베이 샌즈 전망', loc:'베이프런트역', price:'29SGD(스카이파크)', tip:'인피니티 풀은 투숙객 전용, 전망대만 가능'},
        {e:'🦁', name:'싱가포르 동물원·나이트 사파리', loc:'만다이', price:'49SGD~', tip:'나이트 사파리는 밤 7시 30분 오픈, 예약 추천'},
        {e:'🎡', name:'센토사 유니버설 스튜디오', loc:'센토사섬', price:'83SGD', tip:'평일 오픈 직후 인기 어트랙션 먼저 공략'},
-       {e:'🕌', name:'차이나타운·리틀인디아', loc:'차이나타운·리틀인디아', price:'무료', tip:'문화 다양성 체험, 불아사·스리비라마칼리암만'},
-     ]},
+       {e:'🕌', name:'차이나타운·리틀인디아', loc:'차이나타운·리틀인디아', price:'무료', tip:'문화 다양성 체험, 불아사·스리비라마칼리암만'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍗', name:'하이난 치킨라이스', loc:'호커센터', price:'5SGD~', tip:'맥스웰 호커센터 티엔티엔이 가장 유명'},
        {e:'🦀', name:'칠리크랩', loc:'점보씨푸드·롱비치', price:'50SGD~', tip:'번(빵)에 찍어 먹는 소스가 메인, 1인 1/2마리'},
-       {e:'🍜', name:'락사·바쿠테', loc:'호커센터', price:'5SGD~', tip:'328 카통 락사가 싱가포르 락사 원조 경쟁'},
-     ]},
+       {e:'🍜', name:'락사·바쿠테', loc:'호커센터', price:'5SGD~', tip:'328 카통 락사가 싱가포르 락사 원조 경쟁'}]},
      {key:'cafe', label:'🍹 바·카페', items:[
-       {e:'🍸', name:'루프탑 바·클락키', loc:'클락키·CBD', price:'20SGD~', tip:'레벨33·1-알티튜드 루프탑 뷰 압도적'},
-     ]},
-   ],
+       {e:'🍸', name:'루프탑 바·클락키', loc:'클락키·CBD', price:'20SGD~', tip:'레벨33·1-알티튜드 루프탑 뷰 압도적'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visitsingapore.com/ko_kr'}]},
 
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F7FA"/><circle cx="28" cy="10" r="4" fill="#FFD54F" opacity=".9"/><path d="M5 26 Q10 20 15 24 Q20 28 25 24 Q30 20 35 24L35 36H5z" fill="#26C6DA" opacity=".5"/><path d="M12 24 Q14 18 16 22" fill="none" stroke="#0097A7" stroke-width="1.5"/><path d="M22 22 Q24 16 26 20" fill="none" stroke="#0097A7" stroke-width="1.5"/></svg>',
@@ -3188,14 +3009,11 @@ const INTL_DESTS = [
        {e:'🤿', name:'팔라완 엘니도 투어', loc:'엘니도', price:'투어A 1,500페소~', tip:'4가지 투어 코스 중 A·C 코스가 가장 인기'},
        {e:'🏝️', name:'막탄섬 스노클링', loc:'세부 막탄', price:'1,500페소~', tip:'세부 시내서 차량 30분, 숙소 연계 투어 편리'},
        {e:'⛪', name:'산토니뇨 성당', loc:'세부 시내', price:'무료', tip:'필리핀 가톨릭 발상지, 마젤란 십자가 옆 위치'},
-       {e:'🐋', name:'오슬롭 고래상어 투어', loc:'세부 오슬롭', price:'1,000페소~', tip:'새벽 4시 출발 필요, 윤리 논란 있어 선택적'},
-     ]},
+       {e:'🐋', name:'오슬롭 고래상어 투어', loc:'세부 오슬롭', price:'1,000페소~', tip:'새벽 4시 출발 필요, 윤리 논란 있어 선택적'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🥩', name:'세부 레촌(통돼지 구이)', loc:'세부 시내', price:'500페소~', tip:'라 페라 레촌·CnT가 유명, 바삭한 껍데기가 핵심'},
        {e:'🍢', name:'안토이 바베큐', loc:'세부 라호그', price:'20페소~/꼬치', tip:'야간 바비큐 노점 문화, 현지인 저녁 회식 장소'},
-       {e:'🦞', name:'보라카이 씨푸드', loc:'보라카이 D몰', price:'300페소~', tip:'디탈탈·파사파사 레스토랑 씨푸드 플래터'},
-     ]},
-   ],
+       {e:'🦞', name:'보라카이 씨푸드', loc:'보라카이 D몰', price:'300페소~', tip:'디탈탈·파사파사 레스토랑 씨푸드 플래터'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourism.gov.ph'}]},
 
   {region:'sea', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8EAF6"/><rect x="14" y="20" width="5" height="16" fill="#5C6BC0" rx="1"/><rect x="21" y="20" width="5" height="16" fill="#7986CB" rx="1"/><rect x="12" y="16" width="7" height="5" fill="#3949AB" rx="1"/><rect x="21" y="16" width="7" height="5" fill="#5C6BC0" rx="1"/><path d="M14 16 Q17.5 8 18.5 16" fill="#3949AB" opacity=".8"/><path d="M21 16 Q24.5 6 25.5 16" fill="#5C6BC0" opacity=".8"/><path d="M11 20h18" stroke="#3949AB" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="2.5" fill="#FFCC02" opacity=".8"/></svg>',
@@ -3206,14 +3024,11 @@ const INTL_DESTS = [
        {e:'🏙️', name:'페트로나스 트윈타워', loc:'KLCC', price:'무료(외관)/85RM(전망대)', tip:'스카이브릿지 입장권 온라인 사전 예약 필수'},
        {e:'🦇', name:'바투 동굴', loc:'KL 북쪽', price:'무료', tip:'272개 계단, 황금 무루간 신상이 42m 위용'},
        {e:'🛍️', name:'부킷빈탕 쇼핑', loc:'부킷빈탕', price:'무료', tip:'파빌리온·버자야타임스 스퀘어 연결 대형 몰'},
-       {e:'🕌', name:'국립 모스크·메르데카 광장', loc:'KL 중심', price:'무료', tip:'모스크 내부 관람 시 복장 규정 엄격'},
-     ]},
+       {e:'🕌', name:'국립 모스크·메르데카 광장', loc:'KL 중심', price:'무료', tip:'모스크 내부 관람 시 복장 규정 엄격'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍛', name:'나시르막', loc:'호커센터 전역', price:'3RM~', tip:'말레이시아 국민 아침밥, 코코넛 밥+삼발 소스'},
        {e:'🍜', name:'차쿠에테오·호켄미', loc:'차이나타운', price:'8RM~', tip:'페탈링 스트릿 야시장 주변 노점 차이니즈 면'},
-       {e:'🥘', name:'바쿠테·로티 차나이', loc:'전역', price:'10RM~', tip:'클랑 바쿠테가 원조, 로티 차나이는 아침 필수'},
-     ]},
-   ],
+       {e:'🥘', name:'바쿠테·로티 차나이', loc:'전역', price:'10RM~', tip:'클랑 바쿠테가 원조, 로티 차나이는 아침 필수'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.tourism.gov.my/ko'}]},
 
   /* ── 유럽 ── */
@@ -3226,17 +3041,13 @@ const INTL_DESTS = [
        {e:'🏛️', name:'루브르 박물관', loc:'1구 루브르', price:'22€', tip:'수·금 야간 오픈, 수요일이 가장 한산'},
        {e:'🌸', name:'베르사유 궁전', loc:'파리 외곽', price:'21.5€', tip:'RER C선 40분, 정원 무료, 화요일 휴관'},
        {e:'⛪', name:'노트르담 대성당', loc:'4구 시테섬', price:'무료', tip:'2025년 재개관, 내부 복원 완료 확인 후 방문'},
-       {e:'🎨', name:'오르세 미술관', loc:'7구 센 강변', price:'16€', tip:'인상파 작품 집결, 모네·르누아르·반 고흐'},
-     ]},
+       {e:'🎨', name:'오르세 미술관', loc:'7구 센 강변', price:'16€', tip:'인상파 작품 집결, 모네·르누아르·반 고흐'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🥐', name:'파리 크루아상·베이커리', loc:'전역 불랑제리', price:'1.5€~', tip:'동네 빵집이 진짜, 고파스트·위베르 불랑제리 추천'},
        {e:'🍷', name:'파리 비스트로 와인바', loc:'마레·몽마르트', price:'30€~', tip:'르 바 뒤 마르쉐·카브 뒤 팔레가 현지인 픽'},
-       {e:'🧅', name:'파리 어니언 수프·스테이크', loc:'비스트로 전역', price:'15€~', tip:'오 피에 드 코숑은 24시간 영업 파리 명물'},
-     ]},
+       {e:'🧅', name:'파리 어니언 수프·스테이크', loc:'비스트로 전역', price:'15€~', tip:'오 피에 드 코숑은 24시간 영업 파리 명물'}]},
      {key:'cafe', label:'☕ 카페·디저트', items:[
-       {e:'☕', name:'파리 카페 테라스', loc:'생제르맹·마레', price:'3€~', tip:'카페 드 플로르·레 두 마고가 100년 전통 카페'},
-     ]},
-   ],
+       {e:'☕', name:'파리 카페 테라스', loc:'생제르맹·마레', price:'3€~', tip:'카페 드 플로르·레 두 마고가 100년 전통 카페'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 쉥겐비자',url:'https://www.schengenvisainfo.com/ko'},{lbl:'🗺️ 관광정보',url:'https://kr.france.fr/ko'}]},
 
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF8E1"/><path d="M18 26 Q14 22 14 18 Q14 12 20 10 Q26 12 26 18 Q26 22 22 26z" fill="none" stroke="#F57F17" stroke-width="1.5"/><ellipse cx="20" cy="18" rx="4" ry="6" fill="#FFE0B2" opacity=".5"/><rect x="19" y="26" width="2" height="10" fill="#795548" rx="1"/></svg>',
@@ -3248,14 +3059,11 @@ const INTL_DESTS = [
        {e:'⛪', name:'바티칸 시스티나 예배당', loc:'바티칸', price:'20€', tip:'오전 8시 개관 직후 혼잡 덜함, 미켈란젤로 천장화'},
        {e:'⛲', name:'트레비 분수', loc:'로마 3구', price:'무료', tip:'새벽 5~7시가 가장 한산, 야경도 아름다움'},
        {e:'🎨', name:'피렌체 우피치 미술관', loc:'피렌체 중심', price:'25€', tip:'온라인 사전 예약 필수, 보티첼리·레오나르도'},
-       {e:'🚤', name:'베네치아 수상버스', loc:'베네치아', price:'9.5€/회', tip:'1·2번 바포레토로 대운하 전체 구경 가능'},
-     ]},
+       {e:'🚤', name:'베네치아 수상버스', loc:'베네치아', price:'9.5€/회', tip:'1·2번 바포레토로 대운하 전체 구경 가능'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍕', name:'나폴리 마르게리타 피자', loc:'나폴리·로마', price:'8€~', tip:'피제리아 브란디가 마르게리타 발원지'},
        {e:'🍝', name:'로마 카르보나라·트라토리아', loc:'트라스테베레', price:'12€~', tip:'리오체사리나·치체루아케오가 현지인 추천'},
-       {e:'🍦', name:'피렌체 젤라토', loc:'전역 젤라테리아', price:'2.5€~', tip:'페르케노·카르베·데이 네리가 피렌체 3대 젤라토'},
-     ]},
-   ],
+       {e:'🍦', name:'피렌체 젤라토', loc:'전역 젤라테리아', price:'2.5€~', tip:'페르케노·카르베·데이 네리가 피렌체 3대 젤라토'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.italia.it/ko'}]},
 
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF3E0"/><path d="M12 36 L12 22 Q12 14 20 10 Q28 14 28 22 L28 36" fill="none" stroke="#E65100" stroke-width="1.5"/><path d="M14 18 Q17 14 20 16 Q23 14 26 18" fill="none" stroke="#EF6C00" stroke-width="1.2"/><circle cx="20" cy="8" r="3" fill="#FDD835"/></svg>',
@@ -3267,14 +3075,11 @@ const INTL_DESTS = [
        {e:'🌿', name:'구엘 공원', loc:'그라시아', price:'10€', tip:'모자이크 테라스는 시간제 입장, 비수기도 예약'},
        {e:'🏖️', name:'바르셀로네타 해변', loc:'해안가', price:'무료', tip:'도심 해수욕장, 7~8월 성수기 붐빔'},
        {e:'🎨', name:'피카소 미술관', loc:'고딕 지구', price:'14€', tip:'월 무료 입장, 줄 없이 오전 10시 전 도착'},
-       {e:'💃', name:'플라멩코 공연', loc:'바르셀로나 시내', price:'30€~', tip:'타블라오 코르도베스가 가장 정통, 저녁 공연 추천'},
-     ]},
+       {e:'💃', name:'플라멩코 공연', loc:'바르셀로나 시내', price:'30€~', tip:'타블라오 코르도베스가 가장 정통, 저녁 공연 추천'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🥘', name:'보케리아 시장 하몽·타파스', loc:'람블라스 거리', price:'10€~', tip:'시장 내 바 엘퀴뮤·핀호가 신선한 하몽 타파스'},
        {e:'🦑', name:'카탈루냐 빠에야·씨푸드', loc:'바르셀로네타', price:'15€~', tip:'바르셀로나식 피데오(국수) 빠에야도 별미'},
-       {e:'🍷', name:'고딕 지구 와인바·베르무트', loc:'고딕 지구', price:'3€~', tip:'점심 전 베르무트 타임이 현지 문화'},
-     ]},
-   ],
+       {e:'🍷', name:'고딕 지구 와인바·베르무트', loc:'고딕 지구', price:'3€~', tip:'점심 전 베르무트 타임이 현지 문화'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.spain.info/ko'}]},
 
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8EAF6"/><rect x="17" y="4" width="6" height="32" fill="#1A237E" rx="1"/><rect x="19.5" y="4" width="1" height="32" fill="#C62828"/><rect x="4" y="17" width="32" height="6" fill="#1A237E" rx="1"/><rect x="4" y="19.5" width="32" height="1" fill="#C62828"/><rect x="17" y="17" width="6" height="6" fill="#C62828"/></svg>',
@@ -3286,14 +3091,11 @@ const INTL_DESTS = [
        {e:'🏛️', name:'대영 박물관', loc:'블룸즈버리', price:'무료', tip:'로제타석·이집트 미라, 예약 없이 입장 가능'},
        {e:'🎡', name:'런던 아이', loc:'사우스뱅크', price:'33£~', tip:'일몰 30분 전 탑승이 야경+노을 동시 감상'},
        {e:'⚡', name:'해리포터 스튜디오', loc:'왓포드 정션', price:'55£~', tip:'사전 예약 2~3개월 전 필수'},
-       {e:'👑', name:'버킹엄 궁전 근위병 교대식', loc:'세인트 제임스', price:'무료', tip:'월·수·금·일 11시, 우천 취소될 수 있음'},
-     ]},
+       {e:'👑', name:'버킹엄 궁전 근위병 교대식', loc:'세인트 제임스', price:'무료', tip:'월·수·금·일 11시, 우천 취소될 수 있음'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🐟', name:'피시앤칩스', loc:'전역', price:'10£~', tip:'록앤솔레·골든 유니온이 런던 명물'},
        {e:'☕', name:'버러 마켓', loc:'런던 브릿지', price:'5£~', tip:'수~토 오픈, 세계 각국 길거리 음식 천국'},
-       {e:'🍛', name:'브릭레인 커리', loc:'이스트 런던', price:'12£~', tip:'방글라데시 커리 골목, 일요일 빈티지 마켓도 함께'},
-     ]},
-   ],
+       {e:'🍛', name:'브릭레인 커리', loc:'이스트 런던', price:'12£~', tip:'방글라데시 커리 골목, 일요일 빈티지 마켓도 함께'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visitbritain.com/ko/ko'}]},
 
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E3F2FD"/><path d="M4 30 L11 16 L16 22 L20 10 L24 22 L29 16 L36 30z" fill="#E3F2FD" stroke="#1565C0" stroke-width="1.5" stroke-linejoin="round"/><path d="M16 22 L20 10 L24 22z" fill="white" stroke="#90CAF9" stroke-width="1"/><path d="M4 30h32v4H4z" fill="#90CAF9" rx="1"/><rect x="23" y="8" width="8" height="8" rx="2" fill="#C62828" opacity=".85"/><path d="M25.5 12h3M27 10v4" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>',
@@ -3305,14 +3107,11 @@ const INTL_DESTS = [
        {e:'⛰️', name:'마테호른 전망(체르마트)', loc:'체르마트', price:'108CHF(고르너그라트)', tip:'무공해 도시 체르마트, 차 없이 전기차만 운행'},
        {e:'🦁', name:'루체른 카펠교·사자 기념비', loc:'루체른', price:'무료', tip:'14세기 목조다리, 마크 트웨인이 극찬한 사자상'},
        {e:'🏛️', name:'베른 구시가', loc:'베른', price:'무료', tip:'유네스코 세계유산 아케이드 거리, 시계탑 1분 전 대기'},
-       {e:'🌊', name:'제네바 분수(제토)', loc:'제네바 호수', price:'무료', tip:'140m 분수가 호수에서 솟구침, 야간 조명도 장관'},
-     ]},
+       {e:'🌊', name:'제네바 분수(제토)', loc:'제네바 호수', price:'무료', tip:'140m 분수가 호수에서 솟구침, 야간 조명도 장관'}]},
      {key:'food', label:'🧀 맛집·먹거리', items:[
        {e:'🧀', name:'퐁뒤·라클렛', loc:'인터라켄·체르마트', price:'30CHF~', tip:'산장 레스토랑 퐁뒤가 분위기 최고, 화이트 와인 필수'},
        {e:'🍫', name:'스위스 초콜릿·시식', loc:'린트·슈프륑리', price:'10CHF~', tip:'린트 초콜릿 공장 투어(쾰른), 슈프륑리는 취리히 본점'},
-       {e:'🥣', name:'뮤즐리·뢰스티', loc:'전역', price:'15CHF~', tip:'스위스식 감자전 뢰스티, 호텔 아침식사로 많이 나옴'},
-     ]},
-   ],
+       {e:'🥣', name:'뮤즐리·뢰스티', loc:'전역', price:'15CHF~', tip:'스위스식 감자전 뢰스티, 호텔 아침식사로 많이 나옴'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🚞 스위스패스',url:'https://www.sbb.ch/ko'},{lbl:'🗺️ 관광정보',url:'https://www.myswitzerland.com/ko'}]},
 
   {region:'europe', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#EFEBE9"/><path d="M16 8 Q16 4 20 4 Q24 4 24 8 L24 18 L16 18z" fill="#5D4037"/><path d="M14 16h12l2 3H12z" fill="#6D4C41"/><rect x="12" y="19" width="16" height="17" fill="#8D6E63" rx="1"/><rect x="14" y="22" width="4" height="5" fill="#BCAAA4" rx="1"/><rect x="22" y="22" width="4" height="5" fill="#BCAAA4" rx="1"/><rect x="17" y="27" width="6" height="9" fill="#6D4C41" rx="1"/><circle cx="20" cy="12" r="2.5" fill="#FDD835" opacity=".8"/><path d="M6 18h5v18H6z" fill="#D32F2F" rx="1"/><path d="M6 18h5v6H6z" fill="#1B5E20" rx="1"/></svg>',
@@ -3324,14 +3123,11 @@ const INTL_DESTS = [
        {e:'🏛️', name:'독일 박물관', loc:'뮌헨 이자르섬', price:'15€', tip:'세계 최대 과학기술 박물관, 반나절 이상 소요'},
        {e:'🏗️', name:'브란덴부르크 문', loc:'베를린 파리저 광장', price:'무료', tip:'야간 조명 장관, 인근 홀로코스트 메모리얼 함께'},
        {e:'🧱', name:'이스트사이드 갤러리', loc:'베를린 프리드리히스하인', price:'무료', tip:'베를린 장벽 1.3km 야외 갤러리'},
-       {e:'🍺', name:'옥토버페스트 행사장', loc:'뮌헨 테레지엔비제', price:'입장 무료', tip:'9월 말~10월 초, 텐트 내 테이블 사전 예약 필수'},
-     ]},
+       {e:'🍺', name:'옥토버페스트 행사장', loc:'뮌헨 테레지엔비제', price:'입장 무료', tip:'9월 말~10월 초, 텐트 내 테이블 사전 예약 필수'}]},
      {key:'food', label:'🍺 맛집·먹거리', items:[
        {e:'🍺', name:'호프브로이하우스 맥주', loc:'뮌헨 구시가', price:'10€~', tip:'1598년 왕실 양조장, 1L 마스 stein 기본'},
        {e:'🌭', name:'뮌헨 소시지·프레첼', loc:'빅투알리엔 시장', price:'5€~', tip:'바이스부어스트 아침 전통(10시 전에 먹어야)'},
-       {e:'🥩', name:'슈바인스학세(족발)', loc:'호프브로이·가스트하우스', price:'14€~', tip:'바삭한 껍데기가 핵심, 자우어크라우트와 함께'},
-     ]},
-   ],
+       {e:'🥩', name:'슈바인스학세(족발)', loc:'호프브로이·가스트하우스', price:'14€~', tip:'바삭한 껍데기가 핵심, 자우어크라우트와 함께'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.germany.travel/ko'}]},
 
   /* ── 미주 ── */
@@ -3344,15 +3140,12 @@ const INTL_DESTS = [
        {e:'🏙️', name:'엠파이어 스테이트 빌딩', loc:'미드타운', price:'44$~', tip:'탑오브더록에서 엠파이어 빌딩 뷰가 더 멋짐'},
        {e:'🌿', name:'센트럴 파크', loc:'어퍼 맨해튼', price:'무료', tip:'자전거 대여 15$/시간, 더 몰 단풍길이 가을 명소'},
        {e:'🎭', name:'브로드웨이 뮤지컬', loc:'타임스퀘어 인근', price:'50~250$', tip:'TKTS 부스서 당일 반값 티켓, 오전 10시 오픈'},
-       {e:'🖼️', name:'메트로폴리탄 미술관', loc:'어퍼 이스트사이드', price:'30$', tip:'이집트관·무기갑옷관이 무료 구역 포함 명소'},
-     ]},
+       {e:'🖼️', name:'메트로폴리탄 미술관', loc:'어퍼 이스트사이드', price:'30$', tip:'이집트관·무기갑옷관이 무료 구역 포함 명소'}]},
      {key:'food', label:'🍕 맛집·먹거리', items:[
        {e:'🍕', name:'뉴욕 피자', loc:'맨해튼 전역', price:'3$~', tip:'조스 피자(그리니치빌리지)·디파라가 원조 뉴요커 픽'},
        {e:'🥯', name:'베이글', loc:'어퍼 웨스트·미드타운', price:'3$~', tip:'H&H·에스의 에콜로뉴·에자이가 뉴욕 3대 베이글'},
        {e:'🍔', name:'쉐이크쉑·J.G 멜론 버거', loc:'맨해튼 전역', price:'10$~', tip:'쉐이크쉑 원조 매디슨 스퀘어 파크점, 줄 30분'},
-       {e:'🦞', name:'첼시 마켓 씨푸드', loc:'첼시', price:'15$~', tip:'첼시 마켓 랍스터 플레이스, 점심이 가성비'},
-     ]},
-   ],
+       {e:'🦞', name:'첼시 마켓 씨푸드', loc:'첼시', price:'15$~', tip:'첼시 마켓 랍스터 플레이스, 점심이 가성비'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 ESTA',url:'https://esta.cbp.dhs.gov'},{lbl:'🗺️ 관광정보',url:'https://www.visittheusa.kr'}]},
 
   {region:'usa', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#1A237E"/><text x="7" y="16" font-size="7" fill="#FF4081" font-weight="900" opacity=".9">★</text><text x="14" y="12" font-size="6" fill="#FFD740" font-weight="900" opacity=".9">★</text><text x="22" y="10" font-size="8" fill="#FF6E40" font-weight="900">★</text><text x="29" y="14" font-size="6" fill="#69F0AE" font-weight="900">★</text><text x="26" y="22" font-size="7" fill="#FF4081" font-weight="900">★</text><text x="10" y="22" font-size="5" fill="#FFD740" font-weight="900">★</text><rect x="4" y="28" width="32" height="8" fill="#0D47A1" rx="1"/></svg>',
@@ -3364,14 +3157,11 @@ const INTL_DESTS = [
        {e:'🎡', name:'산타모니카 피어', loc:'산타모니카', price:'무료', tip:'루트66 종점, 선셋 시간대 롤러코스터 야경'},
        {e:'🌵', name:'그랜드캐니언', loc:'애리조나주', price:'35$/차', tip:'라스베이거스에서 투어 버스 당일치기 가능'},
        {e:'🎰', name:'라스베이거스 스트립', loc:'라스베이거스', price:'무료(거리)', tip:'시저스팰리스·MGM·벨라지오 분수 쇼 무료'},
-       {e:'🌴', name:'로데오 드라이브', loc:'비버리힐스', price:'무료', tip:'명품 쇼핑 거리 구경, 리조나 드라이브인 카페'},
-     ]},
+       {e:'🌴', name:'로데오 드라이브', loc:'비버리힐스', price:'무료', tip:'명품 쇼핑 거리 구경, 리조나 드라이브인 카페'}]},
      {key:'food', label:'🍔 맛집·먹거리', items:[
        {e:'🍔', name:'인앤아웃 버거', loc:'LA 전역', price:'6$~', tip:'시크릿 메뉴 더블더블 머스타드 온리가 현지인 픽'},
        {e:'🌮', name:'코리안타운 & 멕시칸 타코', loc:'코리아타운·이스트LA', price:'3$~', tip:'한국 음식도 LA가 미국 최고 수준, 밤새 영업 많음'},
-       {e:'🍣', name:'LA 오마카세·퓨전 일식', loc:'웨스트할리우드', price:'80$~', tip:'노조미·스가·로코미스가 LA 일식 빅3'},
-     ]},
-   ],
+       {e:'🍣', name:'LA 오마카세·퓨전 일식', loc:'웨스트할리우드', price:'80$~', tip:'노조미·스가·로코미스가 LA 일식 빅3'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visittheusa.kr'}]},
 
   {region:'usa', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E0F7FA"/><circle cx="28" cy="10" r="5" fill="#FFD54F"/><path d="M5 26 Q10 22 15 26 Q20 30 25 26 Q30 22 35 26L35 36H5z" fill="#26C6DA" opacity=".5"/><path d="M20 28 L20 20 Q18 16 16 20 Q18 24 20 24 Q22 24 24 20 Q22 16 20 20z" fill="#66BB6A" opacity=".8"/></svg>',
@@ -3383,14 +3173,11 @@ const INTL_DESTS = [
        {e:'🌊', name:'노스쇼어 서핑·스노클링', loc:'오아후 노스쇼어', price:'무료~', tip:'겨울 빅웨이브 서핑 대회, 여름엔 수영 가능'},
        {e:'🐢', name:'마우이 할레아칼라 일출', loc:'마우이 화산', price:'30$/차', tip:'새벽 3시 출발 필수, 구름 위 일출 환상적'},
        {e:'🌋', name:'빅아일랜드 화산 국립공원', loc:'하와이섬', price:'35$/차', tip:'용암 흐름 실시간 확인, 야간 화구 빛이 장관'},
-       {e:'🐳', name:'마우이 고래 관람 투어', loc:'마우이 라하이나', price:'50$~', tip:'12~4월 혹등고래 시즌, 새벽 투어가 날씨 안정적'},
-     ]},
+       {e:'🐳', name:'마우이 고래 관람 투어', loc:'마우이 라하이나', price:'50$~', tip:'12~4월 혹등고래 시즌, 새벽 투어가 날씨 안정적'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🍚', name:'포케 보울', loc:'하와이 전역', price:'13$~', tip:'아이나 하이나·오노 씨푸드가 로컬 포케 맛집'},
        {e:'🍍', name:'마우이 파인애플 농장', loc:'마우이', price:'65$~', tip:'라나이섬 돌 팜 투어, 파인애플 빙수 필수'},
-       {e:'🍤', name:'가르릭 쉬림프 트럭', loc:'오아후 노스쇼어', price:'14$~', tip:'지오반니 새우 트럭이 원조, 현금만 받음'},
-     ]},
-   ],
+       {e:'🍤', name:'가르릭 쉬림프 트럭', loc:'오아후 노스쇼어', price:'14$~', tip:'지오반니 새우 트럭이 원조, 현금만 받음'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.gohawaii.com/ko'}]},
 
   /* ── 중화권 ── */
@@ -3403,14 +3190,11 @@ const INTL_DESTS = [
        {e:'🏯', name:'자금성(고궁 박물관)', loc:'베이징 중심', price:'60위안', tip:'온라인 사전 예약 필수, 하루 8만명 제한'},
        {e:'🏛️', name:'천안문 광장·인민영웅기념비', loc:'베이징 중심', price:'무료', tip:'여권 지참 신분 확인 필수, 일출 국기 게양식 장관'},
        {e:'🌿', name:'이화원(이허위안)', loc:'베이징 서쪽', price:'30위안', tip:'곤명호 유람선·장랑(회랑)이 포토 스팟'},
-       {e:'🎨', name:'798 예술구', loc:'차오양구', price:'무료', tip:'폐공장 개조 갤러리·카페, 현대 중국 예술 중심지'},
-     ]},
+       {e:'🎨', name:'798 예술구', loc:'차오양구', price:'무료', tip:'폐공장 개조 갤러리·카페, 현대 중국 예술 중심지'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🦆', name:'베이징 오리구이(카오야)', loc:'베이징 전역', price:'200위안~', tip:'취안쥐더·다동이 양대 명가, 런치 코스가 저렴'},
        {e:'🍜', name:'자장면·루러우 덮밥', loc:'후통 골목', price:'30위안~', tip:'인민대학 근처 라오베이징 자장면 맛집 밀집'},
-       {e:'🥟', name:'왕푸징 먹자골목·탕후루', loc:'왕푸징', price:'10위안~', tip:'전갈·불가사리 꼬치 체험, 탕후루 원조는 베이징'},
-     ]},
-   ],
+       {e:'🥟', name:'왕푸징 먹자골목·탕후루', loc:'왕푸징', price:'10위안~', tip:'전갈·불가사리 꼬치 체험, 탕후루 원조는 베이징'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'📄 비자',url:'https://www.visaforchina.cn/SEL2_KO'}]},
 
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8EAF6"/><rect x="10" y="8" width="5" height="28" fill="#5C6BC0" rx="1"/><rect x="18" y="14" width="5" height="22" fill="#7986CB" rx="1"/><rect x="26" y="18" width="5" height="18" fill="#5C6BC0" rx="1"/><rect x="7" y="34" width="26" height="2" fill="#3949AB" rx="1"/><circle cx="12.5" cy="6" r="1.5" fill="#FFD54F"/></svg>',
@@ -3421,14 +3205,11 @@ const INTL_DESTS = [
        {e:'🌆', name:'와이탄 야경', loc:'황푸구 강변', price:'무료', tip:'저녁 7~9시 건너편 루자쭈이 마천루 조명 최고'},
        {e:'🏯', name:'예원(위위안)', loc:'황푸구', price:'75위안', tip:'명나라 정원, 주변 예원 상점가 쇼핑·간식'},
        {e:'🎡', name:'상하이 디즈니랜드', loc:'푸동 신구', price:'499위안~', tip:'앱으로 패스트패스 선점, 평일 오픈 직후 전략'},
-       {e:'🌃', name:'외탄(더 번드)~난징루', loc:'황푸구', price:'무료', tip:'도보 연결 코스, 난징루는 차 없는 보행자 쇼핑 거리'},
-     ]},
+       {e:'🌃', name:'외탄(더 번드)~난징루', loc:'황푸구', price:'무료', tip:'도보 연결 코스, 난징루는 차 없는 보행자 쇼핑 거리'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🥟', name:'소룡포(샤오룽바오)', loc:'난샹·전역', price:'40위안~', tip:'난샹만터우뎬이 100년 전통 소룡포 원조'},
        {e:'🦀', name:'상하이 게 요리·홍샤오로', loc:'황푸·징안', price:'100위안~', tip:'가을 9~11월 상하이게(다자시에) 제철'},
-       {e:'🛍️', name:'신천지·따중리 카페', loc:'신천지', price:'40위안~', tip:'구식민지 건물+현대 카페 조화, 인스타 명소'},
-     ]},
-   ],
+       {e:'🛍️', name:'신천지·따중리 카페', loc:'신천지', price:'40위안~', tip:'구식민지 건물+현대 카페 조화, 인스타 명소'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://kr.travelchina.com'}]},
 
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><path d="M4 30 L10 18 L14 24 L20 8 L26 24 L30 18 L36 30z" fill="#E8F5E9" stroke="#388E3C" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 24 L20 8 L26 24z" fill="#C8E6C9"/><circle cx="10" cy="12" r="3.5" fill="white" stroke="#388E3C" stroke-width="1"/><ellipse cx="10" cy="12" rx="1.5" ry="2.5" fill="#1B5E20"/><path d="M8 9 Q10 7 12 9" fill="#4CAF50" opacity=".7"/></svg>',
@@ -3439,14 +3220,11 @@ const INTL_DESTS = [
        {e:'🐼', name:'청두 판다기지', loc:'청두 북쪽', price:'58위안', tip:'오전 8~10시 밥 먹는 판다 활동적, 이른 방문 필수'},
        {e:'🏔️', name:'황룡 경관지구', loc:'쓰촨 아바', price:'200위안', tip:'해발 3,500m 오색 연못, 고산병 주의·산소 준비'},
        {e:'🌊', name:'구채구 계곡', loc:'쓰촨 아바', price:'220위안', tip:'아바타 배경지, 겨울 설경이 가장 아름다움'},
-       {e:'🗻', name:'장가계 천문산', loc:'후난성', price:'258위안', tip:'케이블카+엘리베이터 세트, 운해 경치 장관'},
-     ]},
+       {e:'🗻', name:'장가계 천문산', loc:'후난성', price:'258위안', tip:'케이블카+엘리베이터 세트, 운해 경치 장관'}]},
      {key:'food', label:'🌶️ 맛집·먹거리', items:[
        {e:'🌶️', name:'마라훠궈(사천 샤부샤부)', loc:'청두 전역', price:'80위안~', tip:'하이디라오가 유명하지만 현지 소규모 가게가 더 진함'},
        {e:'🥟', name:'단단면·수이쟈오', loc:'청두 관광 구역', price:'20위안~', tip:'쓰촨식 마라 소스 단단면이 한국인 입맛에 인기'},
-       {e:'🍢', name:'콴자이 골목 길거리 음식', loc:'청두 콴자이 골목', price:'10위안~', tip:'청두 대표 관광 거리, 각종 쓰촨 간식 총집합'},
-     ]},
-   ],
+       {e:'🍢', name:'콴자이 골목 길거리 음식', loc:'청두 콴자이 골목', price:'10위안~', tip:'청두 대표 관광 거리, 각종 쓰촨 간식 총집합'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://kr.travelchina.com'}]},
 
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FCE4EC"/><path d="M5 26 Q10 22 15 26 Q20 30 25 26 Q30 22 35 26L35 36H5z" fill="#F48FB1" opacity=".4"/><rect x="10" y="10" width="5" height="22" fill="#AD1457" rx="1"/><rect x="18" y="6" width="5" height="26" fill="#C2185B" rx="1"/><rect x="26" y="14" width="5" height="18" fill="#AD1457" rx="1"/><path d="M3 32h34" stroke="#C2185B" stroke-width="1.2"/><circle cx="30" cy="8" r="3" fill="#E91E63" opacity=".5"/></svg>',
@@ -3458,14 +3236,11 @@ const INTL_DESTS = [
        {e:'🛳️', name:'스타페리·침사추이 거리', loc:'첨사추이', price:'3.4HKD', tip:'바다 건너 홍콩 섬 야경 감상, 오후 8시 심포니 오브 라이츠'},
        {e:'🌆', name:'몽콕 야시장·레이디스 마켓', loc:'몽콕', price:'무료', tip:'저녁 6시 이후 활기, 흥정 필수 현금 거래'},
        {e:'🎡', name:'홍콩 디즈니랜드', loc:'란타우섬', price:'619HKD~', tip:'도쿄·상하이보다 소규모이나 덜 붐빔'},
-       {e:'⛩️', name:'만모 사원', loc:'홍콩섬 상완', price:'무료', tip:'문신·무신을 모신 곳, 향 연기 가득한 분위기'},
-     ]},
+       {e:'⛩️', name:'만모 사원', loc:'홍콩섬 상완', price:'무료', tip:'문신·무신을 모신 곳, 향 연기 가득한 분위기'}]},
      {key:'food', label:'🍱 맛집·먹거리', items:[
        {e:'🍱', name:'딤섬', loc:'전통 주가(茶家)', price:'100HKD~', tip:'점심 얌차(飲茶)가 홍콩 전통, 딘타이펑보다 로컬 추천'},
        {e:'🥚', name:'에그타르트·파인애플 번', loc:'전역 빵집', price:'6HKD~', tip:'타이청 베이커리·혼로 카페가 홍콩 에그타르트 원조'},
-       {e:'🍜', name:'완탕면·우육면', loc:'구룡 전통 국수집', price:'50HKD~', tip:'마크의 완탕면이 홍콩 빅3, 아침 8시 오픈 줄'},
-     ]},
-   ],
+       {e:'🍜', name:'완탕면·우육면', loc:'구룡 전통 국수집', price:'50HKD~', tip:'마크의 완탕면이 홍콩 빅3, 아침 8시 오픈 줄'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.discoverhongkong.com/kr'}]},
 
   {region:'china', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><rect x="16" y="4" width="8" height="32" fill="#1B5E20" rx="1"/><rect x="4" y="17" width="32" height="6" fill="#1B5E20" rx="1"/><rect x="15" y="18" width="10" height="4" fill="#F9A825" rx="1"/><circle cx="20" cy="20" r="3" fill="#F57F17"/><path d="M18 20h4M20 18v4" stroke="white" stroke-width="1.2" stroke-linecap="round"/></svg>',
@@ -3477,15 +3252,12 @@ const INTL_DESTS = [
        {e:'🏘️', name:'지우펀 홍등 골목', loc:'신베이시', price:'무료', tip:'센과 치히로 모티브, 오후 5시 이후 홍등 불 켜짐'},
        {e:'🌊', name:'예류 지질공원', loc:'신베이시', price:'80NT', tip:'여왕머리 바위가 포토 스팟, 오전이 덜 붐빔'},
        {e:'🌙', name:'스린 야시장', loc:'스린구', price:'무료', tip:'저녁 6시 이후, 지하 먹자골목 굴전·해산물'},
-       {e:'♨️', name:'베이터우 온천', loc:'베이터우구', price:'公共 90NT~', tip:'MRT 종점에서 도보 10분, 유황 온천 라돈 함유'},
-     ]},
+       {e:'♨️', name:'베이터우 온천', loc:'베이터우구', price:'公共 90NT~', tip:'MRT 종점에서 도보 10분, 유황 온천 라돈 함유'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🥟', name:'소룡포·딘타이펑 본점', loc:'신이구 101 맞은편', price:'350NT~', tip:'본점 101점이 가장 줄 김, 오픈 1시간 전 대기'},
        {e:'🌙', name:'야시장 굴전·루로우판', loc:'스린·닝샤 야시장', price:'50NT~', tip:'닝샤 야시장이 현지인 픽, 루로우판 10NT 규동'},
        {e:'🍵', name:'진먼 펄 밀크티·카페', loc:'융캉 거리', price:'70NT~', tip:'청핀 춘수이탕이 버블티 원조 발상지 논쟁 중'},
-       {e:'🫔', name:'지우펀 타로 경단·딸기빙수', loc:'지우펀 골목', price:'100NT~', tip:'아메이 찻집 앞 경단과 망고빙수가 인생 음식'},
-     ]},
-   ],
+       {e:'🫔', name:'지우펀 타로 경단·딸기빙수', loc:'지우펀 골목', price:'100NT~', tip:'아메이 찻집 앞 경단과 망고빙수가 인생 음식'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.agoda.com/ko-kr'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.taiwan.net.tw'}]},
 
   /* ── 오세아니아 ── */
@@ -3498,14 +3270,11 @@ const INTL_DESTS = [
        {e:'🌉', name:'하버브릿지 클라이밍', loc:'밀슨스 포인트', price:'298AUD~', tip:'정상에서 시드니 항구 360도 뷰, 3.5시간 소요'},
        {e:'🐠', name:'그레이트 배리어 리프', loc:'퀸즐랜드 케언스', price:'다이브 투어 200AUD~', tip:'세계 최대 산호초, 6~10월 비수기가 날씨 쾌적'},
        {e:'🏖️', name:'본다이 비치', loc:'시드니 동쪽', price:'무료', tip:'서퍼들의 성지, 클리프 워크 트레킹 2시간 추천'},
-       {e:'🌿', name:'블루 마운틴스·에코 포인트', loc:'시드니 서쪽 90km', price:'무료', tip:'세 자매봉 뷰포인트, 시닉 레일웨이 체험 추천'},
-     ]},
+       {e:'🌿', name:'블루 마운틴스·에코 포인트', loc:'시드니 서쪽 90km', price:'무료', tip:'세 자매봉 뷰포인트, 시닉 레일웨이 체험 추천'}]},
      {key:'food', label:'🍽️ 맛집·먹거리', items:[
        {e:'🦞', name:'시드니 씨푸드 마켓', loc:'피어몬트', price:'30AUD~', tip:'세계 2위 규모 수산시장, 신선 랍스터·굴 현장 취식'},
        {e:'🥩', name:'호주 와규 스테이크', loc:'CBD 레스토랑', price:'50AUD~', tip:'울루루 스테이크하우스·록스 지역 레스토랑 추천'},
-       {e:'🍷', name:'헌터밸리 와이너리', loc:'시드니 근교', price:'투어 80AUD~', tip:'당일 와이너리 투어, 시라즈·샤르도네가 대표 품종'},
-     ]},
-   ],
+       {e:'🍷', name:'헌터밸리 와이너리', loc:'시드니 근교', price:'투어 80AUD~', tip:'당일 와이너리 투어, 시라즈·샤르도네가 대표 품종'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 ETA비자',url:'https://immi.homeaffairs.gov.au'},{lbl:'🗺️ 관광정보',url:'https://www.australia.com/ko-kr'}]},
 
   {region:'oceania', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#E8F5E9"/><path d="M8 32 L16 12 L20 20 L24 8 L28 20 L32 12" fill="none" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 28 Q10 22 15 26 Q20 30 25 26 Q30 22 35 26" fill="none" stroke="#0288D1" stroke-width="1.5"/><circle cx="30" cy="10" r="1.2" fill="#B71C1C"/><circle cx="33" cy="14" r="1.2" fill="#B71C1C"/><circle cx="28" cy="16" r="1.2" fill="#B71C1C"/></svg>',
@@ -3517,17 +3286,14 @@ const INTL_DESTS = [
        '🦞 크레이피시(뉴질랜드 랍스터) (50NZD~)',
        '🍦 오클랜드 핵슬리 아이스크림 (5NZD~)',
        '🍷 말보로 소비뇽블랑 와인 투어 (30NZD~)',
-       '🥐 퀸스타운 베이커리·파이 (5NZD~)',
-     ]},
+       '🥐 퀸스타운 베이커리·파이 (5NZD~)']},
      {key:'sight', label:'🎯 관광·자연', items:[
        '🎯 퀸스타운 번지점프 (275NZD~)',
        '🏔️ 밀퍼드사운드 크루즈 (90NZD~)',
        '🌋 로토루아 지열지대',
        '⛵ 호비튼(반지의제왕 촬영지)',
        '🌊 와나카 호수 포토존',
-       '🦜 마오리 문화 공연',
-     ]},
-   ],
+       '🦜 마오리 문화 공연']}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.newzealand.com/kr'}]},
 
   /* ── 중동·인도 ── */
@@ -3540,14 +3306,11 @@ const INTL_DESTS = [
        {e:'🌊', name:'두바이 분수 쇼', loc:'두바이몰 앞 호수', price:'무료', tip:'저녁 6시부터 매 30분, 275m 물줄기 음악 공연'},
        {e:'🌴', name:'팜 주메이라', loc:'주메이라', price:'모노레일 25AED', tip:'아틀란티스 호텔 수영장 데이패스(399AED~)'},
        {e:'🏜️', name:'두바이 사막 사파리', loc:'두바이 외곽', price:'200AED~', tip:'저녁 사파리+바베큐 패키지가 가성비, 샌드보딩 포함'},
-       {e:'🛍️', name:'두바이몰·골드 수크', loc:'다운타운·데이라', price:'무료', tip:'세계 최대 몰, 아이스링크·아쿠아리움·폭포 내부'},
-     ]},
+       {e:'🛍️', name:'두바이몰·골드 수크', loc:'다운타운·데이라', price:'무료', tip:'세계 최대 몰, 아이스링크·아쿠아리움·폭포 내부'}]},
      {key:'food', label:'🥙 맛집·먹거리', items:[
        {e:'🥙', name:'샤와르마·팔라펠', loc:'알 파히디 구시가', price:'10AED~', tip:'레바논·팔레스타인 스타일, 24시간 영업 많음'},
        {e:'🦞', name:'두바이 씨푸드·아라빅 BBQ', loc:'주메이라·DIFC', price:'100AED~', tip:'노부·피에르 가니에르 두바이점이 미슐랭급'},
-       {e:'☕', name:'두바이 카르다멈 커피·대추야자', loc:'전통 카페', price:'20AED~', tip:'아라빅 커피(카와)는 쓴맛, 대추야자와 함께 마심'},
-     ]},
-   ],
+       {e:'☕', name:'두바이 카르다멈 커피·대추야자', loc:'전통 카페', price:'20AED~', tip:'아라빅 커피(카와)는 쓴맛, 대추야자와 함께 마심'}]}],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 클룩 투어',url:'https://www.klook.com/ko'},{lbl:'🗺️ 관광정보',url:'https://www.visitdubai.com/ko'}]},
 
   {region:'mideast', flag:'<svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="10" fill="#FFF3E0"/><path d="M12 32 Q12 20 20 16 Q28 20 28 32" fill="none" stroke="#E65100" stroke-width="1.5"/><ellipse cx="20" cy="16" rx="4" ry="3" fill="#E65100" opacity=".8"/><path d="M20 13 L20 10" stroke="#E65100" stroke-width="1.5" stroke-linecap="round"/><path d="M18 10 Q20 7 22 10" fill="none" stroke="#FF8F00" stroke-width="1.5"/><rect x="10" y="32" width="20" height="4" fill="#FF8F00" rx="1"/></svg>',
@@ -3559,179 +3322,13 @@ const INTL_DESTS = [
        {e:'🏯', name:'자이푸르 암베르 성', loc:'자이푸르', price:'500루피', tip:'코끼리 타기 금지 권고, 지프 투어 권장'},
        {e:'🌊', name:'갠지스강 가트 보트 투어', loc:'바라나시', price:'200루피~', tip:'새벽 아르티 의식(푸자)이 가장 신성한 볼거리'},
        {e:'🕌', name:'델리 꾸뜹 미나르', loc:'델리 남부', price:'650루피', tip:'유네스코 세계유산 72m 미나렛, 인도-이슬람 건축'},
-       {e:'🐪', name:'자이살메르 낙타 사파리', loc:'자이살메르', price:'투어 1,500루피~', tip:'황금 도시 자이살메르, 사막 1박 캠핑 추천'},
-     ]},
+       {e:'🐪', name:'자이살메르 낙타 사파리', loc:'자이살메르', price:'투어 1,500루피~', tip:'황금 도시 자이살메르, 사막 1박 캠핑 추천'}]},
      {key:'food', label:'🍛 맛집·먹거리', items:[
        {e:'🍛', name:'버터치킨 카레·난', loc:'전역 현지 식당', price:'200루피~', tip:'무굴 제국 발원 요리, 델리 올드 쿼터가 원조 지역'},
        {e:'🥘', name:'마살라 차이·사모사', loc:'길거리 노점', price:'30루피~', tip:'짜이왈라(차 파는 상인)의 마살라 차이가 인생 차'},
        {e:'🌮', name:'달바티·처마(라자스탄 전통)', loc:'자이푸르·조드푸르', price:'150루피~', tip:'라자스탄 콩 수프+밀 빵 세트, 현지인 주식'},
-       {e:'🍚', name:'비리야니·라씨', loc:'하이데라바드·전역', price:'100루피~', tip:'하이데라바디 비리야니가 인도 최고, 민트 라씨와 함께'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 e-Visa',url:'https://indianvisaonline.gov.in'},{lbl:'🗺️ 관광정보',url:'https://www.incredibleindia.org/content/incredible-india-v2/en.html'}]},
-
-  // ── 튀르키예 ──
-  { country:'turkey', region:'mideast', flag:'🇹🇷',
-   name:'튀르키예 · 이스탄불·카파도키아', cityKey:'istanbul', cities:'블루모스크 · 그랜드바자르 · 카파도키아 열기구 · 에페소 · 파묵칼레', desc:'두 대륙에 걸친 문명의 교차로. 열기구와 석회대지 절경', rating:4.8,
-   tips:'이스탄불 카드 구매 권장, 카파도키아 열기구 새벽 4시 픽업 준비',
-   cats:[
-     {key:'sight', label:'🕌 관광·역사', items:[
-       {e:'🕌', name:'블루모스크 (술탄아흐메트)', loc:'이스탄불', price:'무료', tip:'예배 시간 외 관광 가능, 히잡 착용 필수'},
-       {e:'🏛️', name:'아야소피아', loc:'이스탄불', price:'무료', tip:'비잔틴·오스만 역사 교차, 내부 모자이크 필수 관람'},
-       {e:'🛒', name:'그랜드바자르', loc:'이스탄불', price:'무료', tip:'4,000개 상점 세계 최대 시장, 카펫·도자기·향신료'},
-       {e:'🎈', name:'카파도키아 열기구', loc:'괴레메', price:'200달러~', tip:'새벽 일출 시 운항, 3개월 전 예약 필수'},
-       {e:'🏖️', name:'파묵칼레 석회대지', loc:'파묵칼레', price:'$12~', tip:'흰 온천 계단식 지형, 히에라폴리스 고대 도시 인접'},
-       {e:'🏛️', name:'에페소 고대 도시', loc:'이즈미르 근교', price:'$18~', tip:'세계 7대 불가사의 아르테미스 신전, 셀수스 도서관'},
-       {e:'🕌', name:'톱카프 궁전', loc:'이스탄불', price:'$15~', tip:'오스만 제국 황실 궁전, 다이아몬드 전시 유명'},
-       {e:'🌊', name:'보스포러스 크루즈', loc:'이스탄불', price:'50리라~', tip:'유럽·아시아 두 대륙 바다 유람, 일몰 크루즈 추천'},
-     ]},
-     {key:'food', label:'🍢 맛집·먹거리', items:[
-       {e:'🥙', name:'케밥·되네르케밥', loc:'전역 식당', price:'100리라~', tip:'이스탄불 카라쾨이 시장 주변 유명 케밥집 밀집'},
-       {e:'🍮', name:'터키 아이스크림·바클라바', loc:'이스탄불', price:'50리라~', tip:'마라쉬 아이스크림 퍼포먼스, 바클라바 카라쾨이 최고'},
-       {e:'☕', name:'터키 차이·커피', loc:'전역 카페', price:'30리라~', tip:'사모바르 터키차이는 공짜 제공하는 곳 多, 점치기 커피도'},
-       {e:'🐟', name:'고등어 케밥·발릭 에크메크', loc:'이스탄불 에미뇌뉘', price:'80리라~', tip:'갈라타다리 아래 생선 샌드위치, 이스탄불 대표 길거리 음식'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.goturkey.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-
-  // ── 캄보디아·라오스 ──
-  { country:'cambodia', region:'sea', flag:'🇰🇭',
-   name:'캄보디아·라오스 · 앙코르왓·루앙프라방', cityKey:'cambodia', cities:'앙코르왓 · 씨엠립 · 루앙프라방 · 비엔티안 · 방비엥', desc:'동남아 최대 유산 앙코르왓과 메콩강의 전통 도시', rating:4.7,
-   tips:'앙코르왓 일출 투어 새벽 4시 출발, 루앙프라방 탁발 의식은 조용히 관람',
-   cats:[
-     {key:'sight', label:'🏛️ 관광·역사', items:[
-       {e:'🏛️', name:'앙코르왓', loc:'씨엠립', price:'$37~', tip:'1일권·3일권 선택, 일출 시 반영 사진 포인트 서쪽 연못'},
-       {e:'🌿', name:'따프롬 사원 (나무 뿌리)', loc:'씨엠립', price:'앙코르 패스 포함', tip:'나무 뿌리가 사원을 감싼 신비 절경, 라라크로프트 촬영지'},
-       {e:'🎎', name:'루앙프라방 탁발 의식', loc:'루앙프라방', price:'무료 관람', tip:'새벽 6시, 스님들 줄지어 걷는 장관, 관람 거리 유지'},
-       {e:'🌊', name:'방비엥 카약·블루라군', loc:'방비엥', price:'$10~', tip:'메콩강 카약·튜빙 액티비티, 블루라군 수영 필수'},
-       {e:'🏯', name:'비엔티안 탓루앙', loc:'비엔티안', price:'10,000낍~', tip:'라오스 국보 불탑, 황금빛 전경 일몰 포토존'},
-     ]},
-     {key:'food', label:'🍜 맛집·먹거리', items:[
-       {e:'🍜', name:'쌀국수·아모크 (캄보디아)', loc:'씨엠립 나이트마켓', price:'$3~', tip:'아모크는 코코넛 카레 생선찜, 캄보디아 대표 음식'},
-       {e:'🍱', name:'카오니아오·러프(라오스)', loc:'루앙프라방', price:'$2~', tip:'찹쌀밥+허브 쌈, 라오스 길거리 대표 한 끼'},
-       {e:'🥘', name:'라오스 커피·아이스커피', loc:'루앙프라방 카페', price:'$2~', tip:'볼라벤 고원 원두 라오스 커피, 진하고 달달한 맛'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 앙코르패스',url:'https://www.angkorwatticket.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-
-  // ── 포르투갈 ──
-  { country:'portugal', region:'europe', flag:'🇵🇹',
-   name:'포르투갈 · 리스본·포르투', cityKey:'lisbon', cities:'벨렘탑 · 알파마 · 파두 · 포르투 와인 · 신트라 궁전', desc:'서유럽 가성비 1위. 파두 음악과 타일 벽화의 나라', rating:4.7,
-   tips:'리스본 28번 트램 반드시 탑승, 파두 공연은 저녁 9시 이후 식당 공연 추천',
-   cats:[
-     {key:'sight', label:'🏰 관광·역사', items:[
-       {e:'🏰', name:'벨렘탑', loc:'리스본', price:'€6~', tip:'대항해시대 상징 탑, 조에로니모스 수도원 통합권 추천'},
-       {e:'🚃', name:'리스본 28번 트램', loc:'리스본 알파마', price:'€3~', tip:'알파마 구시가 언덕 구불구불 코스, 창문으로 빨래 흔들'},
-       {e:'🏯', name:'신트라 궁전·페나성', loc:'신트라', price:'€14~', tip:'리스본에서 40분, 동화 같은 알록달록 궁전'},
-       {e:'🌉', name:'포르투 동루이스 다리', loc:'포르투', price:'무료', tip:'구스타브 에펠 설계, 두 층 모두 걸어서 도우루 강 전망'},
-       {e:'🏺', name:'아줄레주 타일 박물관', loc:'리스본', price:'€5~', tip:'포르투갈 특유 파란 타일 아줄레주 역사 전시'},
-     ]},
-     {key:'food', label:'🍷 맛집·먹거리', items:[
-       {e:'🥐', name:'파스텔드나타 에그타르트', loc:'벨렘·전역 카페', price:'€1.5~', tip:'벨렘 원조 파스티스드벨렘 본점이 가장 맛있음, 줄 필수'},
-       {e:'🐟', name:'바칼랴우 (소금대구 요리)', loc:'포르투갈 전역', price:'€12~', tip:'365가지 조리법, 그릴·크로켓·리조토 형태 다양'},
-       {e:'🍷', name:'포르투 와인 투어', loc:'포르투 와이너리', price:'€20~', tip:'빌라노바 강 건너편 와이너리, 포트와인·화이트 테이스팅'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitportugal.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-
-  // ── 캐나다 ──
-  { country:'canada', region:'usa', flag:'🇨🇦',
-   name:'캐나다 · 밴쿠버·퀘벡', cityKey:'canada', cities:'밴쿠버 · 토론토 · 나이아가라 · 밴프 · 퀘벡시티', desc:'대자연과 다문화 도시. 북미 여행의 안전한 선택', rating:4.7,
-   tips:'밴프 국립공원 숙소 6개월 전 예약, 나이아가라는 저녁 조명이 2배 아름다움',
-   cats:[
-     {key:'sight', label:'🏔️ 관광·자연', items:[
-       {e:'🏔️', name:'밴프 국립공원', loc:'앨버타주', price:'C$11~', tip:'루이즈 호수·에메랄드 레이크 빙하 호수, 가을 단풍 절경'},
-       {e:'💧', name:'나이아가라 폭포', loc:'온타리오주', price:'무료~', tip:'미국 측보다 캐나다 측 전망이 훨씬 좋음, 저녁 조명 쇼 추천'},
-       {e:'🌉', name:'밴쿠버 스탠리파크', loc:'밴쿠버', price:'무료', tip:'1,000에이커 도심 속 숲 공원, 자전거 코스 8km'},
-       {e:'🏙️', name:'퀘벡 올드타운', loc:'퀘벡시티', price:'무료', tip:'유네스코 세계유산 북미 유일 성곽도시, 유럽 감성 100%'},
-       {e:'🌊', name:'토론토 CN타워', loc:'토론토', price:'C$43~', tip:'유리 바닥 에지워크 체험, 나이아가라 방문과 당일 코스'},
-     ]},
-     {key:'food', label:'🍁 맛집·먹거리', items:[
-       {e:'🍟', name:'푸틴 (감자튀김+그레이비+치즈)', loc:'전역', price:'C$12~', tip:'캐나다 국민 음식, 몬트리올 오리지널 레스토랑 La Banquise'},
-       {e:'🦞', name:'랍스터·연어 요리', loc:'밴쿠버·해안도시', price:'C$30~', tip:'밴쿠버 그랜빌 아일랜드 수산시장, 생연어·훈제연어 저렴'},
-       {e:'🍁', name:'메이플 시럽·BeaverTail', loc:'퀘벡·전역', price:'C$5~', tip:'비버테일 튀긴 빵 + 메이플 시럽 조합이 캐나다 대표 디저트'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.destinationcanada.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-
-  // ── 멕시코 ──
-  { country:'mexico', region:'usa', flag:'🇲🇽',
-   name:'멕시코 · 칸쿤·멕시코시티', cityKey:'mexico', cities:'칸쿤 · 치첸이사 · 멕시코시티 · 과나후아토 · 오악사카', desc:'마야 문명과 열대 카리브해. 컬러풀 문화의 나라', rating:4.5,
-   tips:'칸쿤 올인클루시브 리조트 가성비 최고, 치첸이사 방문 전날 숙소 예약 필수',
-   cats:[
-     {key:'sight', label:'🏛️ 관광·역사', items:[
-       {e:'🌊', name:'칸쿤 카리브해 해변', loc:'칸쿤', price:'무료~', tip:'에메랄드 투명한 카리브해, 세노테(지하 샘) 스노클링 필수'},
-       {e:'🏛️', name:'치첸이사 마야 피라미드', loc:'유카탄주', price:'$20~', tip:'유네스코 세계유산, 낮 12시 피라미드 그림자 뱀 모양 현상'},
-       {e:'🎨', name:'과나후아토 골목 도시', loc:'과나후아토', price:'무료', tip:'형형색색 언덕 마을, 코코 배경지, 미이라 박물관 이색'},
-       {e:'🗿', name:'멕시코시티 아즈텍 유적', loc:'멕시코시티', price:'$5~', tip:'테오티우아칸 피라미드 당일 투어 권장'},
-       {e:'🌮', name:'오악사카 전통 시장', loc:'오악사카', price:'무료', tip:'멕시코 최고 음식 도시, 베니토 후아레스 시장 먹거리 탐방'},
-     ]},
-     {key:'food', label:'🌮 맛집·먹거리', items:[
-       {e:'🌮', name:'타코 알파스토르', loc:'멕시코시티', price:'30페소~', tip:'회전 꼬치 돼지고기 타코, 멕시코 대표 길거리 음식'},
-       {e:'🥑', name:'과카몰리·세비체', loc:'전역 레스토랑', price:'50페소~', tip:'신선 아보카도 과카몰리, 해산물 세비체는 칸쿤 추천'},
-       {e:'🍫', name:'오악사카 초콜릿·모레', loc:'오악사카', price:'50페소~', tip:'초콜릿 원산지 오악사카, 모레 소스(초콜릿 기반 치킨 요리) 별미'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitmexico.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-
-  // ── 모로코 ──
-  { country:'morocco', region:'mideast', flag:'🇲🇦',
-   name:'모로코 · 마라케시·사하라', cityKey:'morocco', cities:'마라케시 메디나 · 사하라 사막 · 페스 · 쉐프샤우엔 · 카사블랑카', desc:'사막과 메디나. 1001야화의 나라, 아프리카와 아랍의 조화', rating:4.6,
-   tips:'마라케시 제마엘프나 광장 저녁 필수, 사하라 1박 텐트 캠핑 경험 강추',
-   cats:[
-     {key:'sight', label:'🏰 관광·자연', items:[
-       {e:'🕌', name:'마라케시 메디나', loc:'마라케시', price:'무료', tip:'제마엘프나 광장 저녁 뱀 부리기·마술사·먹거리 시장'},
-       {e:'🏜️', name:'사하라 사막 낙타 투어', loc:'메르주가', price:'$60~', tip:'1박 2일 낙타 트레킹+텐트 캠핑, 별이 가득한 사막 하늘'},
-       {e:'💙', name:'쉐프샤우엔 블루시티', loc:'쉐프샤우엔', price:'무료', tip:'온 마을이 파란색, 포토그래퍼들의 성지'},
-       {e:'🏛️', name:'페스 메디나 (유네스코)', loc:'페스', price:'무료', tip:'세계에서 가장 복잡한 미로 도시, 가이드 동행 권장'},
-       {e:'🌅', name:'아이트벤하두 카스바', loc:'와르자자트', price:'$2~', tip:'글래디에이터 등 수백 편 영화 촬영지, 일출 절경'},
-     ]},
-     {key:'food', label:'🫖 맛집·먹거리', items:[
-       {e:'🥘', name:'타진·쿠스쿠스', loc:'전역 식당', price:'60디르함~', tip:'타진은 원뿔 토기 찜 요리, 쿠스쿠스는 금요일 특식'},
-       {e:'🫖', name:'모로칸 민트차', loc:'전역 카페', price:'10디르함~', tip:'달달한 설탕+민트 넣은 녹차, 모로코 환대 문화 상징'},
-       {e:'🥪', name:'모로코 빵·바스티야', loc:'마라케시 시장', price:'30디르함~', tip:'바스티야는 비둘기고기 파이 모로코 전통 요리, 고급 레스토랑'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitmorocco.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-
-  // ── 페루 ──
-  { country:'peru', region:'usa', flag:'🇵🇪',
-   name:'페루 · 마추픽추·쿠스코', cityKey:'peru', cities:'마추픽추 · 쿠스코 · 나스카 · 티티카카 호수 · 리마', desc:'잉카 문명의 성지. 하늘 위 공중도시 마추픽추', rating:4.8,
-   tips:'고산병 예방 쿠스코 1~2일 적응 필수, 마추픽추 입장권 2~3개월 전 예약',
-   cats:[
-     {key:'sight', label:'🏔️ 관광·역사', items:[
-       {e:'🏔️', name:'마추픽추', loc:'아구아스칼리엔테스', price:'$25~', tip:'선라이즈 게이트 오전 6시 입장, 와이나픽추 정상 등반 추천'},
-       {e:'🏯', name:'쿠스코 구시가지', loc:'쿠스코', price:'무료~', tip:'유네스코 세계유산, 잉카 석벽 위 스페인 건물 공존'},
-       {e:'🌊', name:'티티카카 호수 우로스섬', loc:'푸노', price:'$10~', tip:'갈대로 만든 떠 있는 인공섬 마을, 원주민 체험'},
-       {e:'🌵', name:'나스카 지상화 비행 투어', loc:'나스카', price:'$90~', tip:'경비행기로 30분, 나스카 라인 전체 조망'},
-     ]},
-     {key:'food', label:'🍽️ 맛집·먹거리', items:[
-       {e:'🐟', name:'세비체 (리마)', loc:'리마 미라플로레스', price:'30솔~', tip:'페루 국민 음식, 신선 생선 레몬 마리네이드, 리마 최고'},
-       {e:'🦙', name:'알파카 스테이크·쿠이 (기니피그)', loc:'쿠스코', price:'40솔~', tip:'쿠스코 전통 식사, 잉카 원주민 음식 체험'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 마추픽추',url:'https://www.machupicchu.gob.pe'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-
-  // ── 그리스 ──
-  { country:'greece', region:'europe', flag:'🇬🇷',
-   name:'그리스 · 아테네·산토리니', cityKey:'greece', cities:'산토리니 · 아크로폴리스 · 미코노스 · 크레타 · 메테오라', desc:'신화와 에게해의 나라. 새하얀 집과 파란 돔 세계 최고 절경', rating:4.9,
-   tips:'산토리니 이아 마을 일몰 1시간 전 자리 잡기 필수, 7~8월 극성수기 숙소 6개월 전',
-   cats:[
-     {key:'sight', label:'🏛️ 관광·자연', items:[
-       {e:'🌅', name:'산토리니 이아 마을', loc:'산토리니', price:'무료', tip:'세계 최고 일몰, 파란 돔·하얀 벽 골목 미로 탐방'},
-       {e:'🏛️', name:'아테네 아크로폴리스', loc:'아테네', price:'€20~', tip:'파르테논 신전·에렉테이온, 이른 오전 방문으로 인파 피하기'},
-       {e:'🏖️', name:'미코노스 리틀베니스', loc:'미코노스', price:'무료', tip:'파라포르티아니 교회·리틀베니스 골목, 바 거리'},
-       {e:'⛪', name:'메테오라 수도원', loc:'칼람바카', price:'€3~', tip:'바위산 위 중세 수도원, UNESCO 세계유산, 일출 절경'},
-       {e:'🌊', name:'크레타 바로스 해변', loc:'크레타', price:'무료', tip:'그리스 최고 투명 해변, 세계 Top10 해변 선정'},
-     ]},
-     {key:'food', label:'🫒 맛집·먹거리', items:[
-       {e:'🫒', name:'그리스 샐러드·무사카', loc:'전역 타베르나', price:'€8~', tip:'페타치즈·올리브 듬뿍 그리스 샐러드, 무사카 가지 요리'},
-       {e:'🐟', name:'그릴 문어·생선구이', loc:'산토리니·미코노스', price:'€20~', tip:'에게해 직배 문어 그릴, 항구 레스토랑이 최고'},
-       {e:'🍯', name:'그리스 요거트·꿀', loc:'전역', price:'€5~', tip:'진하고 부드러운 그릭 요거트+타임꿀, 아침 식사 최고'},
-     ]},
-   ],
-   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitgreece.gr'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
-];
+       {e:'🍚', name:'비리야니·라씨', loc:'하이데라바드·전역', price:'100루피~', tip:'하이데라바디 비리야니가 인도 최고, 민트 라씨와 함께'}]}],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 e-Visa',url:'https://indianvisaonline.gov.in'},{lbl:'🗺️ 관광정보',url:'https://www.incredibleindia.org/content/incredible-india-v2/en.html'}]}];
 
 
 const INTL_REGION_ICONS = {
@@ -3864,8 +3461,7 @@ const INTL_REGION_ICONS = {
     <rect x="5" y="29" width="26" height="3" fill="#7E57C2" rx="1"/>
     <!-- 별 -->
     <text x="20" y="8" font-size="4" fill="#FFD54F">★</text>
-  </svg>`,
-};
+  </svg>`};
 
 const INTL_REGIONS = [
   { key:'japan',   name:'일본',       icon: INTL_REGION_ICONS.japan   },
@@ -3874,8 +3470,7 @@ const INTL_REGIONS = [
   { key:'usa',     name:'미주',       icon: INTL_REGION_ICONS.usa     },
   { key:'china',   name:'중화권',     icon: INTL_REGION_ICONS.china   },
   { key:'oceania', name:'오세아니아', icon: INTL_REGION_ICONS.oceania },
-  { key:'mideast', name:'중동·인도',  icon: INTL_REGION_ICONS.mideast },
-];
+  { key:'mideast', name:'중동·인도',  icon: INTL_REGION_ICONS.mideast }];
 
 /* ── 나라별 그룹 (해외 탭 1단계 카드) ── */
 const INTL_COUNTRIES = [
@@ -3899,16 +3494,7 @@ const INTL_COUNTRIES = [
   { key:'au',      flag:'🇦🇺', name:'호주',           cities:['sydney'] },
   { key:'nz',      flag:'🇳🇿', name:'뉴질랜드',       cities:['nz'] },
   { key:'dubai',   flag:'🇦🇪', name:'두바이',         cities:['dubai'] },
-  { key:'india',   flag:'🇮🇳', name:'인도',           cities:['india'] },
-  { key:'turkey',  flag:'🇹🇷', name:'튀르키예',       cities:['istanbul'] },
-  { key:'cambodia',flag:'🇰🇭', name:'캄보디아·라오스',cities:['cambodia'] },
-  { key:'portugal',flag:'🇵🇹', name:'포르투갈',       cities:['lisbon'] },
-  { key:'canada',  flag:'🇨🇦', name:'캐나다',         cities:['canada'] },
-  { key:'mexico',  flag:'🇲🇽', name:'멕시코',         cities:['mexico'] },
-  { key:'morocco', flag:'🇲🇦', name:'모로코',         cities:['morocco'] },
-  { key:'peru',    flag:'🇵🇪', name:'페루',           cities:['peru'] },
-  { key:'greece',  flag:'🇬🇷', name:'그리스',         cities:['greece'] },
-];
+  { key:'india',   flag:'🇮🇳', name:'인도',           cities:['india'] }];
 
 /* ── 국제 여행지: 나라별 고정 드릴다운 (나라 → 도시 → 명소) ── */
 /* ── 해외 탭: A방식 (지역탭 → 나라카드 → 도시서브탭 → 명소) ── */
@@ -4081,8 +3667,7 @@ function renderIntlSpotsList(city, elId) {
     shop:   {bg:'var(--sky50)',    border:'var(--sky100)',    txt:'var(--sky800)',    hdr:'var(--sky800)',    icon:'🛍️'},
     night:  {bg:'var(--purple50)',border:'var(--purple100)', txt:'var(--purple800)', hdr:'var(--purple800)', icon:'🌙'},
     nature: {bg:'var(--green50)', border:'var(--green100)',  txt:'var(--green800)',  hdr:'var(--green800)',  icon:'🌿'},
-    culture:{bg:'var(--amber50)', border:'var(--amber100)',  txt:'var(--amber800)',  hdr:'var(--amber800)',  icon:'🎭'},
-  };
+    culture:{bg:'var(--amber50)', border:'var(--amber100)',  txt:'var(--amber800)',  hdr:'var(--amber800)',  icon:'🎭'}};
 
   const ordered = [...(city.cats||[])].sort((a,b) => {
     const order = {sight:0, food:1, cafe:2, shop:3, night:4, nature:5, culture:6};
@@ -4181,8 +3766,7 @@ const TODAY_TIPS = [
   { ico:'🌐', bg:'var(--coral50)',  text:'파파고·구글 번역 앱을 미리 설치하고 오프라인 언어팩도 다운받아 두세요.' },
   { ico:'💳', bg:'var(--pink50)',   text:'해외에서는 현금을 여러 곳에 나눠 보관하고 비상용 카드도 따로 챙기세요.' },
   { ico:'🌤️', bg:'var(--sky50)',   text:'여행 전날 현지 날씨를 다시 한번 확인하고 옷차림을 조정하는 게 기본이에요.' },
-  { ico:'🔑', bg:'var(--green50)',  text:'숙소 체크인 시간보다 일찍 도착하면 짐 보관 서비스를 요청해 보세요.' },
-];
+  { ico:'🔑', bg:'var(--green50)',  text:'숙소 체크인 시간보다 일찍 도착하면 짐 보관 서비스를 요청해 보세요.' }];
 let tipIdx = Math.floor(Math.random() * TODAY_TIPS.length);
 function renderTodayTip() {
   const t = TODAY_TIPS[tipIdx];
@@ -4226,8 +3810,6 @@ renderDday();
 // 초기 홈 탭 표시 (DOM 로드 후)
 setTimeout(() => {
   sw(0);
-  renderRegionGrid();
-  initDomesticDests();
 }, 50);
 
 
