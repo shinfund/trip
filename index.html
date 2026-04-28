@@ -98,11 +98,7 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 .tc-title-txt { color:var(--tc-txt);font-size:17px;font-weight:800;margin-bottom:4px; }
 .tc-date-txt { color:var(--tc-txt);font-size:14px;font-weight:600;margin-bottom:8px;opacity:.85; }
 .tc-memo-txt { color:var(--tc-txt);font-size:14px;line-height:1.6;opacity:.8; }
-.tc-emoji-box { background:var(--tc-bg);border:1px solid var(--tc-border);transition:background .3s; }
 .tc-tag { background:var(--tc-bg);color:var(--tc-txt);border:1px solid var(--tc-border);font-size:13px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block; }
-.tc-dday-box { background:var(--tc-bg);border:1px solid var(--tc-border);transition:background .3s; }
-.tc-dday-num { color:var(--tc-txt);font-size:18px;font-weight:800;line-height:1; }
-.tc-dday-lbl { color:var(--tc-txt);font-size:13px;font-weight:700; }
 
 html,body{height:100%;overflow-x:clip;scrollbar-gutter:stable}
 body{
@@ -243,7 +239,6 @@ body{
 .gw-sl{font-size:13px;color:var(--txt2);font-weight:700;margin-top:1px}
 
 /* 강원 세부탭 */
-.gw-tabs-wrap{padding:10px 14px 0;background:var(--card);border-bottom:1px solid var(--border2)}
 .gw-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:0}
 .gw-tabs::-webkit-scrollbar{display:none}
 .gw-tab{
@@ -277,14 +272,6 @@ body{
 .spot-region{font-size:13px;color:var(--txt2);margin-bottom:4px;font-weight:600}
 .spot-tags{display:flex;gap:3px;flex-wrap:wrap}
 .sp-tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;display:inline-block}
-.sa-actions{
-  display:flex;flex-direction:column;gap:3px;justify-content:center;
-  flex-shrink:0;margin-left:4px
-}
-.sa-btn{
-  font-size:13px;font-weight:700;padding:4px 8px;border-radius:var(--r6);
-  border:1.5px solid;cursor:pointer;transition:all .15s;white-space:nowrap
-}
 .sa-edit:hover{background:var(--amber100)}
 
 /* 빈 상태 */
@@ -440,7 +427,6 @@ body{
 .place-row:hover{background:var(--sky50)}
 .place-row-top{display:flex;align-items:center;gap:10px}
 .place-time{font-size:14px;font-weight:700;color:var(--sky800);min-width:40px;flex-shrink:0}
-.place-ico{font-size:18px;flex-shrink:0;line-height:1}
 .place-info{flex:1;min-width:0}
 .place-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px;display:flex;align-items:center;flex-wrap:wrap;gap:3px;line-height:1.4}
 .place-type-badge{display:inline-flex;align-items:center;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;flex-shrink:0}
@@ -452,23 +438,15 @@ body{
 
 /* ── 선택지 카드 그룹 ── */
 .choice-group-row{border-bottom:none!important}
-.choice-card-name{font-size:14px;font-weight:800;color:var(--txt);line-height:1.35;word-break:keep-all}
-.choice-card-note{font-size:11px;color:var(--txt3);font-weight:600;line-height:1.4;word-break:keep-all;margin-top:2px}
 .place-note{font-size:14px;color:var(--txt2);margin-top:3px;line-height:1.65;font-weight:600}
 .place-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
 .place-meta-item{display:flex;align-items:center;gap:3px;font-size:13px;color:var(--txt2);font-weight:500}
 .place-meta-item a{color:var(--sky600);text-decoration:none;font-weight:600}
 .place-meta-item a:hover{text-decoration:underline}
 .place-stars{color:#1A2535;font-size:13px;font-weight:800}
-.place-actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 
 .no-places{font-size:14px;color:var(--txt2);padding:16px 14px;text-align:center}
 
-/* 여행 추가 모달 (trip modal) */
-.trip-modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,37,51,.45);z-index:998;
-  align-items:center;justify-content:center;padding:20px
-}
-.trip-modal-overlay.open{display:flex;animation:fadeOverlay .2s ease}
 
 /* ── 장소 정보 섹션 (하단) ── */
 .info-section{margin-bottom:16px}
@@ -664,7 +642,6 @@ body{
 .prep-body{flex:1}
 .prep-title{font-size:15px;font-weight:700;color:var(--txt)}
 .prep-sub{font-size:13px;color:var(--txt2);margin-top:1px;font-weight:600}
-.prep-arrow{font-size:17px;color:var(--txt2)}
 
 
 
@@ -735,7 +712,6 @@ body{
   .dest-name{font-size:15px}
   .dest-price{font-size:14px}
   .hscroll{gap:14px;padding-bottom:8px}
-  .b-title{font-size:18px}
   .rev{width:270px}
   .sec-t{font-size:19px}
   .upcoming-card{padding:14px 18px}
@@ -775,11 +751,8 @@ body{
 
 /* ── 모달 타이틀 공통 ── */
 .modal-title{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:-.3px;display:flex;align-items:center;gap:6px}
-.modal-sub{font-size:13px;font-weight:500;color:var(--txt2);margin-top:2px}
 
 /* ── 폼 레이블 공통 ── */
-.form-label{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:6px;display:block}
-.form-hint{font-size:12px;font-weight:500;color:var(--txt2);margin-top:4px}
 
 </style>
 <body>
@@ -800,7 +773,7 @@ body{
       <div class="theme-ftab on" data-theme="heal" onclick="switchThemeTab(this,'heal')">🌿 힐링</div>
       <div class="theme-ftab" data-theme="restaurant" onclick="switchThemeTab(this,'restaurant')">🍽️ 맛집</div>
       <div class="theme-ftab" data-theme="history" onclick="switchThemeTab(this,'history')">🏛️ 역사</div>
-      <div class="theme-ftab" data-theme="drive" onclick="switchThemeTab(this,'drive')">🚗 드라이브</div>
+
       <div class="theme-ftab" data-theme="cafe" onclick="switchThemeTab(this,'cafe')">☕ 카페</div>
     </div>
     <!-- 지역 필터 칩 바 -->
@@ -949,7 +922,8 @@ body{
     <div style="padding:10px 0 6px;border-top:1px solid var(--border2)">
       <!-- 지역 칩 (화살표 버튼 + 가로 스크롤) -->
       <div style="display:flex;align-items:center;gap:4px">
-        <div id="inlineRegionBarDom" style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;padding-top:2px;padding-right:32px;scroll-behavior:smooth"></div>
+        <button onclick="scrollRegion('Dom',-1)" class="arr-btn" style="flex-shrink:0;font-size:14px;line-height:1">‹</button>
+        <div id="inlineRegionBarDom" style="flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;padding-top:2px;scroll-behavior:smooth"></div>
         <button onclick="scrollRegion('Dom',1)" id="scrollBtnDomR" style="flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:14px;line-height:1">›</button>
       </div>
     </div>
@@ -967,15 +941,11 @@ body{
 <div class="panel" id="p5">
 
   <!-- 필터 탭 (뱃지 포함) -->
-  <div class="scroll-row-wrap">
-    <button class="arr-btn" onclick="scrollRow('tripFilter',-1)">‹</button>
-    <div class="trip-filter" id="tripFilter">
-      <div class="tf on" onclick="filterTrips('all',this)">전체 <span class="tf-badge" id="badge-all"></span></div>
-      <div class="tf" onclick="filterTrips('upcoming',this)">예정된 여행 <span class="tf-badge" id="badge-upcoming"></span></div>
-      <div class="tf" onclick="filterTrips('ongoing',this)">여행 중 <span class="tf-badge" id="badge-ongoing"></span></div>
-      <div class="tf" onclick="filterTrips('done',this)">다녀온 여행 <span class="tf-badge" id="badge-done"></span></div>
-    </div>
-    <button class="arr-btn" onclick="scrollRow('tripFilter',1)">›</button>
+  <div id="tripFilter" style="display:flex;gap:5px;margin-bottom:14px">
+    <div class="tf on" onclick="filterTrips('all',this)" style="flex:1;justify-content:center;padding:7px 4px">전체 <span class="tf-badge" id="badge-all"></span></div>
+    <div class="tf" onclick="filterTrips('upcoming',this)" style="flex:1;justify-content:center;padding:7px 4px">여행 예정 <span class="tf-badge" id="badge-upcoming"></span></div>
+    <div class="tf" onclick="filterTrips('ongoing',this)" style="flex:1;justify-content:center;padding:7px 4px">여행 중 <span class="tf-badge" id="badge-ongoing"></span></div>
+    <div class="tf" onclick="filterTrips('done',this)" style="flex:1;justify-content:center;padding:7px 4px">여행 완료 <span class="tf-badge" id="badge-done"></span></div>
   </div>
 
   <div id="tripList"></div>
@@ -990,6 +960,14 @@ body{
 
 <!-- 여행 상세 뷰 -->
 <div class="panel" id="p5-detail" style="display:none">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0 4px">
+    <button onclick="closeTripDetail()" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:700;color:var(--sky800);background:none;border:none;cursor:pointer;padding:8px 4px;min-height:44px">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> 목록으로
+    </button>
+    <button onclick="if(viewingTripId)deleteTrip(viewingTripId)" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--coral800);background:var(--coral50);border:1px solid var(--coral100);border-radius:var(--r8);cursor:pointer;padding:6px 12px;min-height:36px">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg> 삭제
+    </button>
+  </div>
   <div id="detailContent"></div>
 </div>
 <!-- ════ 국내 ════ -->
@@ -1067,7 +1045,7 @@ body{
 
 <!-- 지역 탭: 항상 상단 고정 (우측 화살표만) -->
 <div style="position:relative;border-bottom:1px solid var(--sky100);margin:0 calc(-1 * var(--cp));background:linear-gradient(180deg,var(--sky50) 0%,#EAF3FB 100%);padding:6px 0 4px">
-  <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp)" id="intlRegionTabs"></div>
+  <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp);gap:6px" id="intlRegionTabs"></div>
   <button onclick="scrollRow('intlRegionTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--sky100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sky800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
 </div>
 
@@ -1080,8 +1058,11 @@ body{
   <!-- 도시 카드 탭 (나라 선택 후) -->
   <div id="intlCountryCityWrap" style="display:none;background:var(--card)">
     <div style="position:relative;padding:6px 0 8px;overflow:visible;background:linear-gradient(180deg,var(--teal50) 0%,#E8F9F2 100%);border-bottom:1px solid var(--teal100);margin:0 calc(-1 * var(--cp))">
-      <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp);gap:6px" id="intlCityTabs2"></div>
-      <button onclick="scrollRow('intlCityTabs2',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
+      <div style="display:flex;align-items:center;gap:0;padding:0 4px">
+        <button onclick="scrollRow('intlCityTabs2',-1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">‹</button>
+        <div style="flex:1;overflow-x:auto;scrollbar-width:none;padding:0 4px;gap:6px;display:flex" id="intlCityTabs2"></div>
+        <button onclick="scrollRow('intlCityTabs2',1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
+      </div>
     </div>
     <div id="intlCityHeader2" style="padding:20px 16px 0"></div>
     <div id="intlSpotsList2" style="padding:0 16px"></div>
@@ -1090,10 +1071,13 @@ body{
 
 <!-- 콘텐츠 B: 도시 탭 + 명소 (나라 1개인 지역) -->
 <div id="intlCityLayer" style="display:none;background:var(--card)">
-  <!-- 도시 서브탭 카드형 (우측 화살표) -->
+  <!-- 도시 서브탭 카드형 (좌우 화살표) -->
   <div style="position:relative;padding:6px 0 8px;overflow:visible;background:linear-gradient(180deg,var(--teal50) 0%,#E8F9F2 100%);border-bottom:1px solid var(--teal100);margin:0 calc(-1 * var(--cp))">
-    <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp);gap:6px" id="intlCityTabs"></div>
-    <button onclick="scrollRow('intlCityTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
+    <div style="display:flex;align-items:center;gap:0;padding:0 4px">
+      <button onclick="scrollRow('intlCityTabs',-1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">‹</button>
+      <div style="flex:1;overflow-x:auto;scrollbar-width:none;padding:0 4px;gap:6px;display:flex" id="intlCityTabs"></div>
+      <button onclick="scrollRow('intlCityTabs',1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
+    </div>
   </div>
   <!-- 도시 헤더 -->
   <div id="intlCityHeader" style="padding:20px 16px 0"></div>
@@ -1223,7 +1207,7 @@ function sw(n, el) {
   const p5el = document.getElementById('p5');
   if (p5el && n === 1) p5el.style.display = 'block';
   // 테마 탭 진입 시 카운트 갱신
-  if (n === 2) initInlineTheme();
+  if (n === 2) { initThemeCounts(); initInlineTheme(); }
   // 국내 탭 진입 시 지역 그리드 렌더링
   if (n === 3) initDomesticDests();
 }
@@ -1540,20 +1524,23 @@ function pickRandomSpot() {
   body.style.opacity = '0';
   setTimeout(() => {
     body.innerHTML = picks.map((s, i) => `
-      <div style="display:flex;align-items:flex-start;gap:12px;${i>0?'margin-top:12px;padding-top:12px;border-top:1px solid var(--border2)':''}">
-        <div style="font-size:28px;flex-shrink:0;width:48px;height:48px;border-radius:var(--r12);background:var(--sky50);display:flex;align-items:center;justify-content:center">${s.emoji}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px">${s.name}</div>
-          <div style="font-size:13px;color:var(--txt3);margin-bottom:5px">${s.meta || ''}</div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:6px">
-            <span style="font-size:12px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--teal50);color:var(--teal800)">${s.regionName}</span>
-            ${(s.tags||[]).slice(0,2).map(t=>`<span style="font-size:12px;font-weight:600;padding:3px 8px;border-radius:10px;background:var(--sky50);color:var(--sky800)">${t}</span>`).join('')}
+      <div style="${i>0?'margin-top:14px;padding-top:14px;border-top:1px solid var(--border2)':''}">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px">
+          <div style="display:flex;align-items:center;gap:7px;min-width:0">
+            <span style="font-size:20px;line-height:1;flex-shrink:0">${s.emoji}</span>
+            <span style="font-size:16px;font-weight:800;color:var(--txt);letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.name}</span>
           </div>
           <button onclick="window.open('https://map.naver.com/search?query=${encodeURIComponent(s.mapQ||s.name)}','_blank')"
-            style="padding:6px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r8);font-size:12px;font-weight:700;color:var(--txt2);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
-            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            지도 보기
+            style="flex-shrink:0;padding:5px 11px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r8);font-size:12px;font-weight:700;color:var(--sky800);cursor:pointer;display:inline-flex;align-items:center;gap:4px;white-space:nowrap">
+            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            지도
           </button>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--txt2);margin-bottom:5px;padding-left:2px">${s.meta || ''}</div>
+        ${s.tip ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>` : ''}
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <span style="font-size:12px;font-weight:700;padding:3px 8px;border-radius:10px;background:var(--teal50);color:var(--teal600);border:1px solid var(--teal100)">${s.regionName}</span>
+          ${(s.tags||[]).slice(0,3).map(t=>`<span style="font-size:12px;font-weight:600;padding:3px 8px;border-radius:10px;background:var(--sky50);color:var(--sky600);border:1px solid var(--sky100)">${t}</span>`).join('')}
         </div>
       </div>`).join('');
     body.style.opacity = '1';
@@ -1899,7 +1886,7 @@ function renderThemeModal(key) {
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px">
           <span class="theme-spot-region" style="${regionStyle}">${s.isIntl?'🌏 ':' '}${s.regionName}</span>
           ${starHtml(s.rating)}
-          ${s.tip ? `<span style="font-size:13px;font-weight:600" class="spot-tip-text"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip.slice(0,20)}${s.tip.length>20?'…':''}</span>` : ''}
+          ${s.tip ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>` : ''}
         </div>
       </div>
     </div>`;
@@ -1919,6 +1906,7 @@ function renderThemeRegionBar() {
     {key:'busan',     label:'부산'},
     {key:'gangwon',   label:'강원'},
     {key:'gyeongju',  label:'경주'},
+    {key:'gyeongbuk', label:'경북'},
     {key:'jeonju',    label:'전주'},
     {key:'gyeongnam', label:'경남·통영'},
     {key:'jeonnam',   label:'전남·여수'},
@@ -2002,7 +1990,6 @@ const THEME_CARDS = [
   { key:'season',     emoji:'🌸', shortLabel:'봄꽃·단풍'},
   { key:'valley',     emoji:'🌊', shortLabel:'계곡·워터'},
   { key:'beach',      emoji:'🏖️', shortLabel:'바다·해변'},
-  { key:'drive',      emoji:'🚗', shortLabel:'드라이브' },
   { key:'restaurant', emoji:'🍽️', shortLabel:'맛집'    },
   { key:'cafe',       emoji:'☕', shortLabel:'카페'    },
 ];
@@ -2099,7 +2086,8 @@ function renderInlineRegionBar() {
     {key:'domestic',  label:'전체'},
     {key:'jeju',      label:'제주'},     {key:'seoul',    label:'서울'},
     {key:'busan',     label:'부산'},     {key:'gangwon',  label:'강원'},
-    {key:'gyeongju',  label:'경주'},     {key:'jeonju',   label:'전주'},
+    {key:'gyeongju',  label:'경주'},     {key:'gyeongbuk', label:'경북'},
+    {key:'jeonju',   label:'전주'},
     {key:'gyeongnam', label:'경남·통영'},{key:'jeonnam',  label:'전남·여수'},
     {key:'incheon',   label:'인천·경기'},{key:'daegu',    label:'대구'},
     {key:'jeonbuk',   label:'전북'},     {key:'gwangju',  label:'광주'},
@@ -2126,6 +2114,7 @@ function renderInlineTheme() {
   const regionLabelMap = {
     domestic:'국내전체',
     gangwon:'강원', jeju:'제주', busan:'부산', gyeongju:'경주',
+    gyeongbuk:'경북',
     jeonju:'전주', seoul:'서울', jeonnam:'전남·여수', gyeongnam:'경남·통영',
     chungbuk:'충북', chungnam:'충남', daejeon:'대전·세종', incheon:'인천·경기', daegu:'대구',
     jeonbuk:'전북', gwangju:'광주',
@@ -2152,7 +2141,7 @@ function renderInlineTheme() {
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px">
           <span class="theme-spot-region" style="${regionStyle}">${s.isIntl?'🌏 ':' '}${s.regionName}</span>
           ${starHtml(s.rating)}
-          ${s.tip ? `<span style="font-size:13px;font-weight:600" class="spot-tip-text"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip}</span>` : ''}
+          ${s.tip ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>` : ''}
         </div>
       </div>
     </div>`;
@@ -2480,7 +2469,7 @@ const REGIONS = [
       {emoji:'🥗',name:'임실 치즈피자',meta:'임실군 · 15,000원~',mapQ:'임실 치즈피자',rating:4.4,tags:['맛집','치즈','피자'],tip:'국내 치즈 발상지 임실 치즈, 공방 식당 직접 제조'},
     ]
   },
-  { key:'daegu', idx:10, name:'대구·대경', emoji:'🏙', grad:'linear-gradient(135deg,#e96c6c,#c0392b)', sub:'대구·경산·구미의 도심 여행',
+  { key:'daegu', idx:10, name:'대구', emoji:'🏙', grad:'linear-gradient(135deg,#e96c6c,#c0392b)', sub:'대구·경산·구미의 도심 여행',
     links:[{lbl:'대구관광',url:'https://www.daegutour.or.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
     spots:[
       {emoji:'🌸',name:'비슬산 참꽃군락',meta:'달성군 · 무료',mapQ:'비슬산 참꽃',rating:4.7,tags:['봄','진달래','등산','진달래','봄꽃'],tip:'4월 말 참꽃(진달래) 100만 평 군락, 케이블카 운영'},
@@ -2763,7 +2752,7 @@ function initDomesticDests() {
 }
 
 function renderRegionGrid() {
-  const el = document.getElementById('regionGrid');
+  const el = document.getElementById('domesticRegionGrid');
   if (!el) return;
   el.innerHTML = REGIONS.map(r => `
     <div class="ritem" onclick="swSub(${r.idx},null);highlightRegionCard('${r.key}')">
@@ -2790,7 +2779,7 @@ function updateRegionCounts() {
 
 /* ── 지역별 spots localStorage 키 ── */
 /* ── 지역 spots 버전 (데이터 변경 시 숫자 올리면 캐시 초기화) ── */
-const REGION_DATA_VERSION = 'v3';
+const REGION_DATA_VERSION = 'v4';
 const REGION_VER_KEY = 'travelon_region_ver';
 
 // 버전 불일치 시 region 캐시 전체 초기화
@@ -2895,7 +2884,7 @@ function renderRegionSpotList(key) {
           <div class="spot-name" style="margin-bottom:2px">${s.emoji} ${s.name}${_localStarHtml(s.rating) ? ' '+_localStarHtml(s.rating) : ''}</div>
           <div class="spot-region" style="margin-bottom:4px">${s.meta||''}</div>
           <div class="spot-tags">${tagsHtml}</div>
-          ${s.tip ? `<div style="font-size:13px;color:var(--teal800);margin-top:3px;font-weight:600;line-height:1.4"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 2.4-1.2 4.5-3 5.7V17a1 1 0 01-1 1H9a1 1 0 01-1-1v-2.3A7 7 0 0112 2z"/></svg> ${s.tip}</div>` : ''}
+          ${s.tip ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>` : ''}
         </div>
       </div>`;
     }).join('');
@@ -3580,6 +3569,168 @@ const INTL_DESTS = [
      ]},
    ],
    links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'📄 e-Visa',url:'https://indianvisaonline.gov.in'},{lbl:'🗺️ 관광정보',url:'https://www.incredibleindia.org/content/incredible-india-v2/en.html'}]},
+
+  // ── 튀르키예 ──
+  { country:'turkey', region:'mideast', flag:'🇹🇷',
+   name:'튀르키예 · 이스탄불·카파도키아', cityKey:'istanbul', cities:'블루모스크 · 그랜드바자르 · 카파도키아 열기구 · 에페소 · 파묵칼레', desc:'두 대륙에 걸친 문명의 교차로. 열기구와 석회대지 절경', rating:4.8,
+   tips:'이스탄불 카드 구매 권장, 카파도키아 열기구 새벽 4시 픽업 준비',
+   cats:[
+     {key:'sight', label:'🕌 관광·역사', items:[
+       {e:'🕌', name:'블루모스크 (술탄아흐메트)', loc:'이스탄불', price:'무료', tip:'예배 시간 외 관광 가능, 히잡 착용 필수'},
+       {e:'🏛️', name:'아야소피아', loc:'이스탄불', price:'무료', tip:'비잔틴·오스만 역사 교차, 내부 모자이크 필수 관람'},
+       {e:'🛒', name:'그랜드바자르', loc:'이스탄불', price:'무료', tip:'4,000개 상점 세계 최대 시장, 카펫·도자기·향신료'},
+       {e:'🎈', name:'카파도키아 열기구', loc:'괴레메', price:'200달러~', tip:'새벽 일출 시 운항, 3개월 전 예약 필수'},
+       {e:'🏖️', name:'파묵칼레 석회대지', loc:'파묵칼레', price:'$12~', tip:'흰 온천 계단식 지형, 히에라폴리스 고대 도시 인접'},
+       {e:'🏛️', name:'에페소 고대 도시', loc:'이즈미르 근교', price:'$18~', tip:'세계 7대 불가사의 아르테미스 신전, 셀수스 도서관'},
+       {e:'🕌', name:'톱카프 궁전', loc:'이스탄불', price:'$15~', tip:'오스만 제국 황실 궁전, 다이아몬드 전시 유명'},
+       {e:'🌊', name:'보스포러스 크루즈', loc:'이스탄불', price:'50리라~', tip:'유럽·아시아 두 대륙 바다 유람, 일몰 크루즈 추천'},
+     ]},
+     {key:'food', label:'🍢 맛집·먹거리', items:[
+       {e:'🥙', name:'케밥·되네르케밥', loc:'전역 식당', price:'100리라~', tip:'이스탄불 카라쾨이 시장 주변 유명 케밥집 밀집'},
+       {e:'🍮', name:'터키 아이스크림·바클라바', loc:'이스탄불', price:'50리라~', tip:'마라쉬 아이스크림 퍼포먼스, 바클라바 카라쾨이 최고'},
+       {e:'☕', name:'터키 차이·커피', loc:'전역 카페', price:'30리라~', tip:'사모바르 터키차이는 공짜 제공하는 곳 多, 점치기 커피도'},
+       {e:'🐟', name:'고등어 케밥·발릭 에크메크', loc:'이스탄불 에미뇌뉘', price:'80리라~', tip:'갈라타다리 아래 생선 샌드위치, 이스탄불 대표 길거리 음식'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.goturkey.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
+
+  // ── 캄보디아·라오스 ──
+  { country:'cambodia', region:'sea', flag:'🇰🇭',
+   name:'캄보디아·라오스 · 앙코르왓·루앙프라방', cityKey:'cambodia', cities:'앙코르왓 · 씨엠립 · 루앙프라방 · 비엔티안 · 방비엥', desc:'동남아 최대 유산 앙코르왓과 메콩강의 전통 도시', rating:4.7,
+   tips:'앙코르왓 일출 투어 새벽 4시 출발, 루앙프라방 탁발 의식은 조용히 관람',
+   cats:[
+     {key:'sight', label:'🏛️ 관광·역사', items:[
+       {e:'🏛️', name:'앙코르왓', loc:'씨엠립', price:'$37~', tip:'1일권·3일권 선택, 일출 시 반영 사진 포인트 서쪽 연못'},
+       {e:'🌿', name:'따프롬 사원 (나무 뿌리)', loc:'씨엠립', price:'앙코르 패스 포함', tip:'나무 뿌리가 사원을 감싼 신비 절경, 라라크로프트 촬영지'},
+       {e:'🎎', name:'루앙프라방 탁발 의식', loc:'루앙프라방', price:'무료 관람', tip:'새벽 6시, 스님들 줄지어 걷는 장관, 관람 거리 유지'},
+       {e:'🌊', name:'방비엥 카약·블루라군', loc:'방비엥', price:'$10~', tip:'메콩강 카약·튜빙 액티비티, 블루라군 수영 필수'},
+       {e:'🏯', name:'비엔티안 탓루앙', loc:'비엔티안', price:'10,000낍~', tip:'라오스 국보 불탑, 황금빛 전경 일몰 포토존'},
+     ]},
+     {key:'food', label:'🍜 맛집·먹거리', items:[
+       {e:'🍜', name:'쌀국수·아모크 (캄보디아)', loc:'씨엠립 나이트마켓', price:'$3~', tip:'아모크는 코코넛 카레 생선찜, 캄보디아 대표 음식'},
+       {e:'🍱', name:'카오니아오·러프(라오스)', loc:'루앙프라방', price:'$2~', tip:'찹쌀밥+허브 쌈, 라오스 길거리 대표 한 끼'},
+       {e:'🥘', name:'라오스 커피·아이스커피', loc:'루앙프라방 카페', price:'$2~', tip:'볼라벤 고원 원두 라오스 커피, 진하고 달달한 맛'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 앙코르패스',url:'https://www.angkorwatticket.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
+
+  // ── 포르투갈 ──
+  { country:'portugal', region:'europe', flag:'🇵🇹',
+   name:'포르투갈 · 리스본·포르투', cityKey:'lisbon', cities:'벨렘탑 · 알파마 · 파두 · 포르투 와인 · 신트라 궁전', desc:'서유럽 가성비 1위. 파두 음악과 타일 벽화의 나라', rating:4.7,
+   tips:'리스본 28번 트램 반드시 탑승, 파두 공연은 저녁 9시 이후 식당 공연 추천',
+   cats:[
+     {key:'sight', label:'🏰 관광·역사', items:[
+       {e:'🏰', name:'벨렘탑', loc:'리스본', price:'€6~', tip:'대항해시대 상징 탑, 조에로니모스 수도원 통합권 추천'},
+       {e:'🚃', name:'리스본 28번 트램', loc:'리스본 알파마', price:'€3~', tip:'알파마 구시가 언덕 구불구불 코스, 창문으로 빨래 흔들'},
+       {e:'🏯', name:'신트라 궁전·페나성', loc:'신트라', price:'€14~', tip:'리스본에서 40분, 동화 같은 알록달록 궁전'},
+       {e:'🌉', name:'포르투 동루이스 다리', loc:'포르투', price:'무료', tip:'구스타브 에펠 설계, 두 층 모두 걸어서 도우루 강 전망'},
+       {e:'🏺', name:'아줄레주 타일 박물관', loc:'리스본', price:'€5~', tip:'포르투갈 특유 파란 타일 아줄레주 역사 전시'},
+     ]},
+     {key:'food', label:'🍷 맛집·먹거리', items:[
+       {e:'🥐', name:'파스텔드나타 에그타르트', loc:'벨렘·전역 카페', price:'€1.5~', tip:'벨렘 원조 파스티스드벨렘 본점이 가장 맛있음, 줄 필수'},
+       {e:'🐟', name:'바칼랴우 (소금대구 요리)', loc:'포르투갈 전역', price:'€12~', tip:'365가지 조리법, 그릴·크로켓·리조토 형태 다양'},
+       {e:'🍷', name:'포르투 와인 투어', loc:'포르투 와이너리', price:'€20~', tip:'빌라노바 강 건너편 와이너리, 포트와인·화이트 테이스팅'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitportugal.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
+
+  // ── 캐나다 ──
+  { country:'canada', region:'usa', flag:'🇨🇦',
+   name:'캐나다 · 밴쿠버·퀘벡', cityKey:'canada', cities:'밴쿠버 · 토론토 · 나이아가라 · 밴프 · 퀘벡시티', desc:'대자연과 다문화 도시. 북미 여행의 안전한 선택', rating:4.7,
+   tips:'밴프 국립공원 숙소 6개월 전 예약, 나이아가라는 저녁 조명이 2배 아름다움',
+   cats:[
+     {key:'sight', label:'🏔️ 관광·자연', items:[
+       {e:'🏔️', name:'밴프 국립공원', loc:'앨버타주', price:'C$11~', tip:'루이즈 호수·에메랄드 레이크 빙하 호수, 가을 단풍 절경'},
+       {e:'💧', name:'나이아가라 폭포', loc:'온타리오주', price:'무료~', tip:'미국 측보다 캐나다 측 전망이 훨씬 좋음, 저녁 조명 쇼 추천'},
+       {e:'🌉', name:'밴쿠버 스탠리파크', loc:'밴쿠버', price:'무료', tip:'1,000에이커 도심 속 숲 공원, 자전거 코스 8km'},
+       {e:'🏙️', name:'퀘벡 올드타운', loc:'퀘벡시티', price:'무료', tip:'유네스코 세계유산 북미 유일 성곽도시, 유럽 감성 100%'},
+       {e:'🌊', name:'토론토 CN타워', loc:'토론토', price:'C$43~', tip:'유리 바닥 에지워크 체험, 나이아가라 방문과 당일 코스'},
+     ]},
+     {key:'food', label:'🍁 맛집·먹거리', items:[
+       {e:'🍟', name:'푸틴 (감자튀김+그레이비+치즈)', loc:'전역', price:'C$12~', tip:'캐나다 국민 음식, 몬트리올 오리지널 레스토랑 La Banquise'},
+       {e:'🦞', name:'랍스터·연어 요리', loc:'밴쿠버·해안도시', price:'C$30~', tip:'밴쿠버 그랜빌 아일랜드 수산시장, 생연어·훈제연어 저렴'},
+       {e:'🍁', name:'메이플 시럽·BeaverTail', loc:'퀘벡·전역', price:'C$5~', tip:'비버테일 튀긴 빵 + 메이플 시럽 조합이 캐나다 대표 디저트'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.destinationcanada.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
+
+  // ── 멕시코 ──
+  { country:'mexico', region:'usa', flag:'🇲🇽',
+   name:'멕시코 · 칸쿤·멕시코시티', cityKey:'mexico', cities:'칸쿤 · 치첸이사 · 멕시코시티 · 과나후아토 · 오악사카', desc:'마야 문명과 열대 카리브해. 컬러풀 문화의 나라', rating:4.5,
+   tips:'칸쿤 올인클루시브 리조트 가성비 최고, 치첸이사 방문 전날 숙소 예약 필수',
+   cats:[
+     {key:'sight', label:'🏛️ 관광·역사', items:[
+       {e:'🌊', name:'칸쿤 카리브해 해변', loc:'칸쿤', price:'무료~', tip:'에메랄드 투명한 카리브해, 세노테(지하 샘) 스노클링 필수'},
+       {e:'🏛️', name:'치첸이사 마야 피라미드', loc:'유카탄주', price:'$20~', tip:'유네스코 세계유산, 낮 12시 피라미드 그림자 뱀 모양 현상'},
+       {e:'🎨', name:'과나후아토 골목 도시', loc:'과나후아토', price:'무료', tip:'형형색색 언덕 마을, 코코 배경지, 미이라 박물관 이색'},
+       {e:'🗿', name:'멕시코시티 아즈텍 유적', loc:'멕시코시티', price:'$5~', tip:'테오티우아칸 피라미드 당일 투어 권장'},
+       {e:'🌮', name:'오악사카 전통 시장', loc:'오악사카', price:'무료', tip:'멕시코 최고 음식 도시, 베니토 후아레스 시장 먹거리 탐방'},
+     ]},
+     {key:'food', label:'🌮 맛집·먹거리', items:[
+       {e:'🌮', name:'타코 알파스토르', loc:'멕시코시티', price:'30페소~', tip:'회전 꼬치 돼지고기 타코, 멕시코 대표 길거리 음식'},
+       {e:'🥑', name:'과카몰리·세비체', loc:'전역 레스토랑', price:'50페소~', tip:'신선 아보카도 과카몰리, 해산물 세비체는 칸쿤 추천'},
+       {e:'🍫', name:'오악사카 초콜릿·모레', loc:'오악사카', price:'50페소~', tip:'초콜릿 원산지 오악사카, 모레 소스(초콜릿 기반 치킨 요리) 별미'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitmexico.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
+
+  // ── 모로코 ──
+  { country:'morocco', region:'mideast', flag:'🇲🇦',
+   name:'모로코 · 마라케시·사하라', cityKey:'morocco', cities:'마라케시 메디나 · 사하라 사막 · 페스 · 쉐프샤우엔 · 카사블랑카', desc:'사막과 메디나. 1001야화의 나라, 아프리카와 아랍의 조화', rating:4.6,
+   tips:'마라케시 제마엘프나 광장 저녁 필수, 사하라 1박 텐트 캠핑 경험 강추',
+   cats:[
+     {key:'sight', label:'🏰 관광·자연', items:[
+       {e:'🕌', name:'마라케시 메디나', loc:'마라케시', price:'무료', tip:'제마엘프나 광장 저녁 뱀 부리기·마술사·먹거리 시장'},
+       {e:'🏜️', name:'사하라 사막 낙타 투어', loc:'메르주가', price:'$60~', tip:'1박 2일 낙타 트레킹+텐트 캠핑, 별이 가득한 사막 하늘'},
+       {e:'💙', name:'쉐프샤우엔 블루시티', loc:'쉐프샤우엔', price:'무료', tip:'온 마을이 파란색, 포토그래퍼들의 성지'},
+       {e:'🏛️', name:'페스 메디나 (유네스코)', loc:'페스', price:'무료', tip:'세계에서 가장 복잡한 미로 도시, 가이드 동행 권장'},
+       {e:'🌅', name:'아이트벤하두 카스바', loc:'와르자자트', price:'$2~', tip:'글래디에이터 등 수백 편 영화 촬영지, 일출 절경'},
+     ]},
+     {key:'food', label:'🫖 맛집·먹거리', items:[
+       {e:'🥘', name:'타진·쿠스쿠스', loc:'전역 식당', price:'60디르함~', tip:'타진은 원뿔 토기 찜 요리, 쿠스쿠스는 금요일 특식'},
+       {e:'🫖', name:'모로칸 민트차', loc:'전역 카페', price:'10디르함~', tip:'달달한 설탕+민트 넣은 녹차, 모로코 환대 문화 상징'},
+       {e:'🥪', name:'모로코 빵·바스티야', loc:'마라케시 시장', price:'30디르함~', tip:'바스티야는 비둘기고기 파이 모로코 전통 요리, 고급 레스토랑'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitmorocco.com'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
+
+  // ── 페루 ──
+  { country:'peru', region:'usa', flag:'🇵🇪',
+   name:'페루 · 마추픽추·쿠스코', cityKey:'peru', cities:'마추픽추 · 쿠스코 · 나스카 · 티티카카 호수 · 리마', desc:'잉카 문명의 성지. 하늘 위 공중도시 마추픽추', rating:4.8,
+   tips:'고산병 예방 쿠스코 1~2일 적응 필수, 마추픽추 입장권 2~3개월 전 예약',
+   cats:[
+     {key:'sight', label:'🏔️ 관광·역사', items:[
+       {e:'🏔️', name:'마추픽추', loc:'아구아스칼리엔테스', price:'$25~', tip:'선라이즈 게이트 오전 6시 입장, 와이나픽추 정상 등반 추천'},
+       {e:'🏯', name:'쿠스코 구시가지', loc:'쿠스코', price:'무료~', tip:'유네스코 세계유산, 잉카 석벽 위 스페인 건물 공존'},
+       {e:'🌊', name:'티티카카 호수 우로스섬', loc:'푸노', price:'$10~', tip:'갈대로 만든 떠 있는 인공섬 마을, 원주민 체험'},
+       {e:'🌵', name:'나스카 지상화 비행 투어', loc:'나스카', price:'$90~', tip:'경비행기로 30분, 나스카 라인 전체 조망'},
+     ]},
+     {key:'food', label:'🍽️ 맛집·먹거리', items:[
+       {e:'🐟', name:'세비체 (리마)', loc:'리마 미라플로레스', price:'30솔~', tip:'페루 국민 음식, 신선 생선 레몬 마리네이드, 리마 최고'},
+       {e:'🦙', name:'알파카 스테이크·쿠이 (기니피그)', loc:'쿠스코', price:'40솔~', tip:'쿠스코 전통 식사, 잉카 원주민 음식 체험'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🎫 마추픽추',url:'https://www.machupicchu.gob.pe'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
+
+  // ── 그리스 ──
+  { country:'greece', region:'europe', flag:'🇬🇷',
+   name:'그리스 · 아테네·산토리니', cityKey:'greece', cities:'산토리니 · 아크로폴리스 · 미코노스 · 크레타 · 메테오라', desc:'신화와 에게해의 나라. 새하얀 집과 파란 돔 세계 최고 절경', rating:4.9,
+   tips:'산토리니 이아 마을 일몰 1시간 전 자리 잡기 필수, 7~8월 극성수기 숙소 6개월 전',
+   cats:[
+     {key:'sight', label:'🏛️ 관광·자연', items:[
+       {e:'🌅', name:'산토리니 이아 마을', loc:'산토리니', price:'무료', tip:'세계 최고 일몰, 파란 돔·하얀 벽 골목 미로 탐방'},
+       {e:'🏛️', name:'아테네 아크로폴리스', loc:'아테네', price:'€20~', tip:'파르테논 신전·에렉테이온, 이른 오전 방문으로 인파 피하기'},
+       {e:'🏖️', name:'미코노스 리틀베니스', loc:'미코노스', price:'무료', tip:'파라포르티아니 교회·리틀베니스 골목, 바 거리'},
+       {e:'⛪', name:'메테오라 수도원', loc:'칼람바카', price:'€3~', tip:'바위산 위 중세 수도원, UNESCO 세계유산, 일출 절경'},
+       {e:'🌊', name:'크레타 바로스 해변', loc:'크레타', price:'무료', tip:'그리스 최고 투명 해변, 세계 Top10 해변 선정'},
+     ]},
+     {key:'food', label:'🫒 맛집·먹거리', items:[
+       {e:'🫒', name:'그리스 샐러드·무사카', loc:'전역 타베르나', price:'€8~', tip:'페타치즈·올리브 듬뿍 그리스 샐러드, 무사카 가지 요리'},
+       {e:'🐟', name:'그릴 문어·생선구이', loc:'산토리니·미코노스', price:'€20~', tip:'에게해 직배 문어 그릴, 항구 레스토랑이 최고'},
+       {e:'🍯', name:'그리스 요거트·꿀', loc:'전역', price:'€5~', tip:'진하고 부드러운 그릭 요거트+타임꿀, 아침 식사 최고'},
+     ]},
+   ],
+   links:[{lbl:'✈️ 항공권',url:'https://flight.naver.com'},{lbl:'🏨 숙소',url:'https://www.booking.com'},{lbl:'🌍 관광청',url:'https://www.visitgreece.gr'},{lbl:'🗺️ 지도',url:'https://maps.google.com'}]},
 ];
 
 
@@ -3749,6 +3900,14 @@ const INTL_COUNTRIES = [
   { key:'nz',      flag:'🇳🇿', name:'뉴질랜드',       cities:['nz'] },
   { key:'dubai',   flag:'🇦🇪', name:'두바이',         cities:['dubai'] },
   { key:'india',   flag:'🇮🇳', name:'인도',           cities:['india'] },
+  { key:'turkey',  flag:'🇹🇷', name:'튀르키예',       cities:['istanbul'] },
+  { key:'cambodia',flag:'🇰🇭', name:'캄보디아·라오스',cities:['cambodia'] },
+  { key:'portugal',flag:'🇵🇹', name:'포르투갈',       cities:['lisbon'] },
+  { key:'canada',  flag:'🇨🇦', name:'캐나다',         cities:['canada'] },
+  { key:'mexico',  flag:'🇲🇽', name:'멕시코',         cities:['mexico'] },
+  { key:'morocco', flag:'🇲🇦', name:'모로코',         cities:['morocco'] },
+  { key:'peru',    flag:'🇵🇪', name:'페루',           cities:['peru'] },
+  { key:'greece',  flag:'🇬🇷', name:'그리스',         cities:['greece'] },
 ];
 
 /* ── 국제 여행지: 나라별 고정 드릴다운 (나라 → 도시 → 명소) ── */
@@ -3945,7 +4104,7 @@ function renderIntlSpotsList(city, elId) {
           ? `<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:${th.bg};border:1.5px solid ${th.border};color:${th.txt};flex-shrink:0">${item.price}</span>`
           : '';
         const tipLine = item.tip
-          ? `<div style="font-size:13px;font-weight:600;color:var(--txt2);margin-top:4px;line-height:1.5;padding:4px 8px;background:var(--bg);border-radius:var(--r8);word-break:keep-all">💡 ${item.tip}</div>`
+          ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5;margin-top:4px;word-break:keep-all">💡 ${item.tip}</div>`
           : '';
         return `<div class="spot" style="cursor:default;margin-bottom:6px;padding:9px 12px">
           <div class="spot-body">
@@ -4071,29 +4230,7 @@ setTimeout(() => {
   initDomesticDests();
 }, 50);
 
-/* ── 여행 검색 + renderTripsFull ── */
-let tripSearchQuery='';
-function filterTripsBySearch(q){tripSearchQuery=(q||'').trim().toLowerCase();renderTripsFull();}
-function renderTripsFull(){
-  let list=trips.filter(t=>{
-    if(currentTripFilter!=='all'&&getTripStatus(t)!==currentTripFilter)return false;
-    if(!tripSearchQuery)return true;
-    const txt=[t.title,t.companions,t.memo,...(t.tags||[]),...t.days.flatMap(d=>d.places.map(p=>p.name))].join(' ').toLowerCase();
-    return txt.includes(tripSearchQuery);
-  });
-  const el=document.getElementById('tripList'),empty=document.getElementById('tripEmpty');
-  if(!el)return;
-  if(!list.length){el.innerHTML='';if(empty)empty.style.display='block';return;}
-  if(empty)empty.style.display='none';
-  el.innerHTML=list.map(t=>{
-    const st=getTripStatus(t),dd=getDday(t.startDate);
-    const stLabel=st==='upcoming'?'예정':st==='ongoing'?'여행 중 <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;flex-shrink:0"></span>':'완료';
-    const stCls=st==='upcoming'?'st-upcoming':st==='ongoing'?'st-ongoing':'st-done';
-    const tp=t.days.reduce((s,d)=>s+d.places.length,0);
-    const tagsH=(t.tags||[]).map(tag=>`<span class="uc-tag tc-tag">${tag}</span>`).join('');
-    return `<div class="trip-card" onclick="openTripDetail(${t.id})"><div class="tc-head"><div class="tc-info"><div class="tc-title">${t.emoji} ${t.title}</div><div class="tc-date"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ${formatDate(t.startDate)} ~ ${formatDate(t.endDate)} · ${getTripNights(t)}</div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:4px"><span class="tc-status ${stCls}">${stLabel}</span>${tagsH}</div></div></div><div class="tc-foot"><div class="tc-places">📍 ${tp}개 장소 · 👥 ${t.companions||'미정'}</div></div></div>`;
-  }).join('');
-}
+
 
 /* ── 장소 타입 아이콘 ── */
 function placeIconSvg(placeType, emoji, size) {
