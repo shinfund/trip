@@ -550,17 +550,16 @@ body{
 .city-ftab{
   flex-shrink:0;display:flex;align-items:center;justify-content:center;
   padding:7px 14px;
-  background:rgba(255,255,255,.65);
-  border:1.5px solid rgba(255,255,255,.9);
+  background:var(--card);
+  border:1.5px solid var(--border);
   border-radius:20px;
   cursor:pointer;transition:all .18s;
   white-space:nowrap;
-  backdrop-filter:blur(4px)
 }
-.city-ftab:hover{background:rgba(255,255,255,.85)}
+.city-ftab:hover{background:var(--sky50)}
 .city-ftab.on{
-  border-color:var(--teal);background:var(--card);
-  box-shadow:0 2px 8px rgba(29,158,117,.2)
+  border-color:var(--teal);background:var(--teal50);color:var(--teal800);
+  box-shadow:0 2px 8px rgba(29,158,117,.12)
 }
 .city-ftab-name{font-size:13px;font-weight:700;color:var(--txt);line-height:1;letter-spacing:-0.01em}
 
@@ -948,14 +947,7 @@ body{
 
 <!-- 여행 상세 뷰 -->
 <div class="panel" id="p5-detail" style="display:none">
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0 4px">
-    <button onclick="closeTripDetail()" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;font-weight:700;color:var(--sky800);background:none;border:none;cursor:pointer;padding:8px 4px;min-height:44px">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> 목록으로
-    </button>
-    <button onclick="if(viewingTripId)deleteTrip(viewingTripId)" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;font-weight:600;color:var(--coral800);background:var(--coral50);border:1px solid var(--coral100);border-radius:var(--r8);cursor:pointer;padding:6px 12px;min-height:36px">
-      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg> 삭제
-    </button>
-  </div>
+
   <div id="detailContent"></div>
 </div>
 <!-- ════ 국내 ════ -->
@@ -965,64 +957,7 @@ body{
   <div class="sub-panel on" id="sp0">
     <div id="domesticRegionGrid" class="theme-icon-grid" style="margin-bottom:12px"></div>
     <div id="domesticDestList"></div>
-    <div class="sec"><div class="sec-t">국내 여행 예약 사이트</div></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
 
-      <!-- 여기어때 -->
-      <button class="prep-card" onclick="window.open('https://www.yeogi.com','_blank')">
-        <div class="prep-ico" style="background:#FF2C55;padding:0;overflow:hidden">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-            <rect width="44" height="44" fill="#FF2C55"/>
-            <path d="M22 12C18.13 12 15 15.13 15 19c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="white"/>
-          </svg>
-        </div>
-        <div class="prep-body"><div class="prep-title">여기어때</div><div class="prep-sub">숙소·레저·맛집</div></div>
-
-      </button>
-
-      <!-- 야놀자 -->
-      <button class="prep-card" onclick="window.open('https://www.yanolja.com','_blank')">
-        <div class="prep-ico" style="background:#FF5B00;padding:0;overflow:hidden">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-            <rect width="44" height="44" fill="#FF5B00"/>
-            <text x="22" y="29" font-size="22" font-weight="900" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif">Y</text>
-          </svg>
-        </div>
-        <div class="prep-body"><div class="prep-title">야놀자</div><div class="prep-sub">숙소·항공·레저</div></div>
-
-      </button>
-
-      <!-- 네이버 호텔 -->
-      <button class="prep-card" onclick="window.open('https://hotels.naver.com','_blank')">
-        <div class="prep-ico" style="background:#03C75A;padding:0;overflow:hidden">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-            <rect width="44" height="44" fill="#03C75A"/>
-            <path d="M13 30V14h4.2l8.4 10.4V14H30v16h-4.2L17.4 19.6V30H13z" fill="white"/>
-          </svg>
-        </div>
-        <div class="prep-body"><div class="prep-title">네이버 호텔</div><div class="prep-sub">최저가 비교</div></div>
-
-      </button>
-
-      <!-- 코레일 -->
-      <button class="prep-card" onclick="window.open('https://www.korail.com','_blank')">
-        <div class="prep-ico" style="background:#E8291A;padding:0;overflow:hidden">
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block">
-            <rect width="44" height="44" fill="#E8291A"/>
-            <!-- 기차 모양 -->
-            <rect x="9" y="16" width="26" height="14" rx="4" fill="white"/>
-            <rect x="11" y="18" width="9" height="7" rx="1.5" fill="#E8291A"/>
-            <rect x="24" y="18" width="9" height="7" rx="1.5" fill="#E8291A"/>
-            <rect x="8" y="27" width="28" height="3" rx="1" fill="white" opacity=".5"/>
-            <circle cx="15" cy="32" r="2.5" fill="white"/>
-            <circle cx="29" cy="32" r="2.5" fill="white"/>
-          </svg>
-        </div>
-        <div class="prep-body"><div class="prep-title">코레일 KTX</div><div class="prep-sub">기차 예약</div></div>
-
-      </button>
-
-    </div>
   </div>
 
 
@@ -1031,51 +966,26 @@ body{
 <!-- ════ 해외 ════ -->
 <div class="panel" id="p2">
 
-<!-- 지역 탭: 항상 상단 고정 (우측 화살표만) -->
-<div style="position:relative;border-bottom:1px solid var(--sky100);margin:0 calc(-1 * var(--cp));background:linear-gradient(180deg,var(--sky50) 0%,#EAF3FB 100%);padding:6px 0 4px">
-  <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp);gap:6px" id="intlRegionTabs"></div>
-  <button onclick="scrollRow('intlRegionTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--sky100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sky800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
-</div>
+<!-- 지역 그리드 -->
+<div id="intlRegionTabs" class="theme-icon-grid" style="margin-bottom:12px"></div>
 
-<!-- 콘텐츠 A: 나라 탭 (나라 여러개인 지역) -->
+<!-- 나라 탭 (나라 여러개인 지역) -->
 <div id="intlCountryLayer" style="display:none">
-  <div style="position:relative;border-bottom:1px solid var(--sky100);margin:0 calc(-1 * var(--cp));background:linear-gradient(180deg,#EAF3FB 0%,var(--sky50) 100%);padding:6px 0 4px">
-    <div style="display:flex;overflow-x:auto;scrollbar-width:none;padding:0 36px 0 var(--cp)" id="intlCountryTabs"></div>
-    <button onclick="scrollRow('intlCountryTabs',1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid var(--sky100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--sky800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
-  </div>
-  <!-- 도시 카드 탭 (나라 선택 후) -->
-  <div id="intlCountryCityWrap" style="display:none;background:var(--card)">
-    <div style="position:relative;padding:6px 0 8px;overflow:visible;background:linear-gradient(180deg,var(--teal50) 0%,#E8F9F2 100%);border-bottom:1px solid var(--teal100);margin:0 calc(-1 * var(--cp))">
-      <div style="display:flex;align-items:center;gap:0;padding:0 4px">
-        <button onclick="scrollRow('intlCityTabs2',-1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">‹</button>
-        <div style="flex:1;overflow-x:auto;scrollbar-width:none;padding:0 4px;gap:6px;display:flex" id="intlCityTabs2"></div>
-        <button onclick="scrollRow('intlCityTabs2',1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
-      </div>
-    </div>
-    <div id="intlCityHeader2" style="padding:20px 16px 0"></div>
-    <div id="intlSpotsList2" style="padding:0 16px"></div>
+  <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px;-webkit-overflow-scrolling:touch" id="intlCountryTabs"></div>
+  <!-- 도시 서브탭 (나라 선택 후) -->
+  <div id="intlCountryCityWrap" style="display:none">
+    <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px;-webkit-overflow-scrolling:touch" id="intlCityTabs2"></div>
+    <div id="intlCityHeader2"></div>
+    <div id="intlSpotsList2"></div>
   </div>
 </div>
 
-<!-- 콘텐츠 B: 도시 탭 + 명소 (나라 1개인 지역) -->
-<div id="intlCityLayer" style="display:none;background:var(--card)">
-  <!-- 도시 서브탭 카드형 (좌우 화살표) -->
-  <div style="position:relative;padding:6px 0 8px;overflow:visible;background:linear-gradient(180deg,var(--teal50) 0%,#E8F9F2 100%);border-bottom:1px solid var(--teal100);margin:0 calc(-1 * var(--cp))">
-    <div style="display:flex;align-items:center;gap:0;padding:0 4px">
-      <button onclick="scrollRow('intlCityTabs',-1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">‹</button>
-      <div style="flex:1;overflow-x:auto;scrollbar-width:none;padding:0 4px;gap:6px;display:flex" id="intlCityTabs"></div>
-      <button onclick="scrollRow('intlCityTabs',1)" style="flex-shrink:0;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--teal100);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--teal800);font-size:15px;line-height:1;padding:0;box-shadow:var(--shadow)">›</button>
-    </div>
-  </div>
-  <!-- 도시 헤더 -->
-  <div id="intlCityHeader" style="padding:20px 16px 0"></div>
-  <!-- 명소 리스트 -->
-  <div id="intlSpotsList" style="padding:0 16px"></div>
+<!-- 도시 탭 + 명소 (나라 1개인 지역) -->
+<div id="intlCityLayer" style="display:none">
+  <div style="display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px;-webkit-overflow-scrolling:touch" id="intlCityTabs"></div>
+  <div id="intlCityHeader"></div>
+  <div id="intlSpotsList"></div>
 </div>
-
-
-
-<!-- ════ AI 여행 추천 ════ -->
 
 </div><!-- /p2 해외 패널 -->
 </div><!-- /content -->
@@ -1796,7 +1706,7 @@ function getThemeSpots(themeKey) {
       let match;
       if (themeKey === 'all') {
         match = true;
-      } else if (['restaurant','season','valley','beach'].includes(themeKey)) {
+      } else if (['restaurant','season','valley','beach','cafe'].includes(themeKey)) {
         // tags 배열 정확 매칭만 사용 (tip·name 텍스트 검색 제외)
         match = meta.keys.some(k => (spot.tags||[]).some(t => t.toLowerCase() === k.toLowerCase()));
       } else {
@@ -1857,13 +1767,19 @@ function renderThemeModal(key) {
       : 'background:var(--sky50);color:var(--sky800)';
     return `<div class="theme-spot-card">
       <div class="theme-spot-info">
-        <div class="theme-spot-name">${s.emoji} ${s.name}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <div class="theme-spot-name">${s.emoji} ${s.name}</div>
+          <button onclick="event.stopPropagation();window.open('${mapUrl}','_blank')" style="flex-shrink:0;display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--sky700);background:var(--sky50);border:1.5px solid var(--sky100);border-radius:var(--r8);padding:4px 10px;cursor:pointer;white-space:nowrap">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 지도 보기
+          </button>
+        </div>
         <div class="theme-spot-meta">${s.meta||''}</div>
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px">
           <span class="theme-spot-region" style="${regionStyle}">${s.isIntl?'🌏 ':' '}${s.regionName}</span>
           ${starHtml(s.rating)}
           ${s.tip ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>` : ''}
         </div>
+
       </div>
     </div>`;
   }).join('');
@@ -2098,13 +2014,19 @@ function renderInlineTheme() {
       : 'background:var(--sky50);color:var(--sky800)';
     return `<div class="theme-spot-card">
       <div class="theme-spot-info">
-        <div class="theme-spot-name">${s.emoji} ${s.name}</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <div class="theme-spot-name">${s.emoji} ${s.name}</div>
+          <button onclick="event.stopPropagation();window.open('${mapUrl}','_blank')" style="flex-shrink:0;display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--sky700);background:var(--sky50);border:1.5px solid var(--sky100);border-radius:var(--r8);padding:4px 10px;cursor:pointer;white-space:nowrap">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 지도 보기
+          </button>
+        </div>
         <div class="theme-spot-meta">${s.meta||''}</div>
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:2px">
           <span class="theme-spot-region" style="${regionStyle}">${s.isIntl?'🌏 ':' '}${s.regionName}</span>
           ${starHtml(s.rating)}
           ${s.tip ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>` : ''}
         </div>
+
       </div>
     </div>`;
   }).join('');
@@ -2147,7 +2069,15 @@ const REGIONS = [
       {emoji:'🌿',name:'오대산 선재길',meta:'강원 평창군 · 무료',mapQ:'오대산 선재길',rating:4.5,tags:['트레킹','숲길','무료'],tip:'9km 평탄한 숲길, 가을 단풍이 압도적'},
       {emoji:'🌊',name:'삼척 해상케이블카',meta:'강원 삼척시 · 12,000원',mapQ:'삼척 해상케이블카',rating:4.3,tags:['바다뷰','케이블카'],tip:'국내 최장 해상케이블카 1.8km'},
       {emoji:'🏕️',name:'내린천 래프팅',meta:'강원 인제군 · 35,000원~',mapQ:'내린천 래프팅',rating:4.6,tags:['액티비티','래프팅','여름','계곡'],tip:'여름 최고 인기 액티비티, 7~8월 예약 필수'},
-      {emoji:'🍁',name:'설악 오색약수터',meta:'강원 양양군 · 무료',mapQ:'오색약수터 양양',rating:4.1,tags:['약수터','트레킹','무료'],tip:'철분 풍부 탄산수, 주전골 단풍길과 연계'}]
+      {emoji:'🌊',name:'한탄강 래프팅·협곡',meta:'강원 철원군 · 25,000원~',mapQ:'한탄강 래프팅 철원',rating:4.6,tags:['계곡','래프팅','협곡','액티비티'],tip:'주상절리 협곡 래프팅, 국내 유일 현무암 협곡 장관'},
+      {emoji:'💦',name:'오대산 소금강 계곡',meta:'강원 강릉시 · 무료',mapQ:'소금강 계곡 오대산',rating:4.7,tags:['계곡','폭포','트레킹','무료'],tip:'구룡폭포·식당암 절경, 여름 피서지 1순위 청정계곡'},
+      {emoji:'🌿',name:'인제 아침가리 계곡',meta:'강원 인제군 · 무료',mapQ:'아침가리 계곡 인제',rating:4.6,tags:['계곡','트레킹','무료','청정'],tip:'비경 청정계곡, 물이 맑고 깊어 여름 최고 피서지'},
+      {emoji:'🏞️',name:'양양 법수치 계곡',meta:'강원 양양군 · 무료',mapQ:'법수치 계곡 양양',rating:4.5,tags:['계곡','캠핑','무료','물놀이'],tip:'설악산 기슭 청정계곡, 수심 얕아 어린이 물놀이 적합'},
+      {emoji:'🍁',name:'설악 오색약수터',meta:'강원 양양군 · 무료',mapQ:'오색약수터 양양',rating:4.1,tags:['약수터','트레킹','무료'],tip:'철분 풍부 탄산수, 주전골 단풍길과 연계'},
+      {emoji:'☕',name:'강릉 테라로사 본점',meta:'강릉시 · 6,000원~',mapQ:'테라로사 강릉 본점',rating:4.7,tags:['카페','커피','로스터리'],tip:'국내 최고 스페셜티 로스터리 본점, 공장형 창고 카페 분위기'},
+      {emoji:'🌊',name:'양양 서피비치 카페거리',meta:'양양군 · 5,000원~',mapQ:'서피비치 카페 양양',rating:4.5,tags:['카페','바다뷰','서핑'],tip:'서핑 성지 서피비치 인근 힙한 카페·바 밀집'},
+      {emoji:'🏔️',name:'속초 영랑호 카페거리',meta:'속초시 · 6,000원~',mapQ:'영랑호 카페 속초',rating:4.4,tags:['카페','호수뷰','드라이브'],tip:'설악산·영랑호 뷰 카페 밀집, 조용하고 여유로운 분위기'},
+      {emoji:'🌿',name:'춘천 소양강 카페',meta:'춘천시 · 5,000원~',mapQ:'소양강 카페 춘천',rating:4.4,tags:['카페','강뷰','힐링'],tip:'소양강 강변 뷰 카페 다수, 닭갈비 식후 커피 코스'}]
   },
   { key:'jeju', idx:2, name:'제주', emoji:'🌸', grad:'linear-gradient(135deg,#e84f4f,#e07b2a)', sub:'사계절 아름다운 화산섬 여행',
     links:[{lbl:'제주관광',url:'https://www.visitjeju.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'클룩투어',url:'https://www.klook.com/ko'}],
@@ -2156,6 +2086,10 @@ const REGIONS = [
       {emoji:'🌅',name:'성산일출봉',meta:'서귀포시 · 5,000원',mapQ:'성산일출봉',rating:4.8,tags:['일출','유네스코','뷰맛집'],tip:'일출 30분 전 정상 도착 권장, 우도 선착장 인접'},
       {emoji:'🌿',name:'협재·금능해수욕장',meta:'제주시 · 무료',mapQ:'협재해수욕장',rating:4.7,tags:['해변','에메랄드','무료'],tip:'제주 서쪽 최고 해변, 에메랄드빛 물색이 인상적'},
       {emoji:'💧',name:'천지연폭포',meta:'서귀포시 · 2,000원',mapQ:'천지연폭포',rating:4.6,tags:['폭포','야경','야간개장'],tip:'야간 조명 연출 시 더 아름다움, 6~10월 야간개장'},
+      {emoji:'🌊',name:'정방폭포',meta:'서귀포시 · 2,000원',mapQ:'정방폭포 제주',rating:4.5,tags:['폭포','바다뷰','계곡'],tip:'동양 유일 바다로 직접 떨어지는 폭포, 웅장한 절경'},
+      {emoji:'💦',name:'천제연폭포',meta:'서귀포 중문 · 2,500원',mapQ:'천제연폭포 제주',rating:4.5,tags:['폭포','계곡','야간개장'],tip:'3단 폭포, 선녀탕 에메랄드빛 물색 압도적'},
+      {emoji:'🏊',name:'제주 협재 에메랄드 바다',meta:'제주시 한림 · 무료',mapQ:'협재해변 제주',rating:4.7,tags:['수영','바다뷰','스노클링','무료'],tip:'제주 최고 투명도 바다, 비양도 조망 스노클링 명소'},
+      {emoji:'🌿',name:'제주 효돈천 계곡',meta:'서귀포시 · 무료',mapQ:'효돈천 계곡 제주',rating:4.4,tags:['계곡','트레킹','무료','청정'],tip:'한라산 용암지형 청정계곡, 하류 구간 비경'},
       {emoji:'🍊',name:'오설록 티뮤지엄',meta:'서귀포시 · 무료',mapQ:'오설록 티뮤지엄',rating:4.5,tags:['카페','녹차','포토존'],tip:'녹차밭 포토존 무료 개방, 내부 카페 아이스크림 인기'},
       {emoji:'🌺',name:'섭지코지',meta:'서귀포시 · 무료',mapQ:'섭지코지',rating:4.6,tags:['드라이브','뷰맛집','무료'],tip:'영화 촬영지, 유채꽃 철(3~4월)에 최고'},
       {emoji:'🗿',name:'만장굴',meta:'제주시 · 4,000원',mapQ:'만장굴',rating:4.4,tags:['동굴','유네스코'],tip:'세계 최장 용암동굴, 내부 온도 11°C로 여름에 시원'},
@@ -2179,7 +2113,11 @@ const REGIONS = [
       {emoji:'🍖',name:'제주 돔베고기',meta:'제주시 · 18,000원~',mapQ:'제주 돔베고기',rating:4.5,tags:['맛집','향토','돼지고기'],tip:'삶은 돼지고기 제주 향토 음식, 제주몸국과 함께'},
       {emoji:'🥩',name:'서귀포 은갈치 구이',meta:'서귀포시 · 25,000원~',mapQ:'서귀포 갈치구이',rating:4.6,tags:['맛집','갈치','생선구이'],tip:'매일올레시장 인근 갈치 전문점, 제주 은갈치 최고'},
       {emoji:'🦐',name:'제주 전복뚝배기',meta:'서귀포시 · 20,000원~',mapQ:'제주 전복뚝배기',rating:4.5,tags:['맛집','전복','해산물'],tip:'제주 전복 산지 직구매, 전복죽·전복뚝배기 추천'},
-      {emoji:'🍰',name:'제주 오메기·흑임자 빙수',meta:'제주시 · 12,000원~',mapQ:'제주 빙수 카페',rating:4.4,tags:['맛집','빙수','디저트'],tip:'제주 카페거리 특산 빙수, 오메기술 전통 카페 추천'}]
+      {emoji:'🍰',name:'제주 오메기·흑임자 빙수',meta:'제주시 · 12,000원~',mapQ:'제주 빙수 카페',rating:4.4,tags:['맛집','빙수','디저트'],tip:'제주 카페거리 특산 빙수, 오메기술 전통 카페 추천'},
+      {emoji:'☕',name:'제주 카멜리아힐 카페',meta:'서귀포시 · 8,000원~',mapQ:'카멜리아힐 카페',rating:4.6,tags:['카페','정원','동백'],tip:'동백꽃 정원 카페, 인생샷 명소·드라마 촬영지'},
+      {emoji:'🌊',name:'애월 한담해변 카페거리',meta:'제주 애월읍 · 6,000원~',mapQ:'애월 한담해변 카페',rating:4.7,tags:['카페','바다뷰','드라이브'],tip:'제주 최고 오션뷰 카페 밀집, 일몰 감상 명소'},
+      {emoji:'🍊',name:'성산 일출봉 카페',meta:'서귀포 성산읍 · 6,000원~',mapQ:'성산일출봉 카페',rating:4.4,tags:['카페','뷰','일출봉'],tip:'일출봉 조망 카페, 오메기떡·한라봉 음료 추천'},
+      {emoji:'🌺',name:'제주 사계리 카페 산방산',meta:'서귀포 안덕면 · 6,000원~',mapQ:'사계리 카페 산방산',rating:4.5,tags:['카페','산방산뷰','힐링'],tip:'산방산·형제섬 조망 감성 카페거리, 조용한 힐링 명소'}]
   },
   { key:'seoul', idx:3, name:'서울', emoji:'🏙️', grad:'linear-gradient(135deg,#667eea,#764ba2)', sub:'전통과 현대가 공존하는 수도',
     links:[{lbl:'서울관광',url:'https://www.visitseoul.net'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'클룩투어',url:'https://www.klook.com/ko'}],
@@ -2221,7 +2159,14 @@ const REGIONS = [
       {emoji:'🍖',name:'망원동 곱창골목',meta:'마포구 · 15,000원~',mapQ:'망원동 곱창',rating:4.5,tags:['맛집','곱창','야식'],tip:'홍대 인근 망원동 곱창 밀집, 막창·대창 함께 주문'},
       {emoji:'🦑',name:'인사동 전통 음식거리',meta:'종로구 · 8,000원~',mapQ:'인사동 음식',rating:4.3,tags:['맛집','전통음식','골목'],tip:'쌈지길 주변 전통주·녹두전·비빔밥 골목'},
       {emoji:'🐄',name:'서울 삼각지 해장국거리',meta:'용산구 · 9,000원~',mapQ:'삼각지 해장국',rating:4.4,tags:['맛집','해장','해장국'],tip:'새벽부터 운영, 선지·내장·뼈다귀 해장국 원조 거리'},
-      {emoji:'🍱',name:'청담·압구정 오마카세',meta:'강남구 · 50,000원~',mapQ:'청담동 오마카세',rating:4.6,tags:['맛집','고급','일식'],tip:'미슐랭·블루리본 식당 밀집, 스시·한식 코스 다수'}]
+      {emoji:'🍱',name:'청담·압구정 오마카세',meta:'강남구 · 50,000원~',mapQ:'청담동 오마카세',rating:4.6,tags:['맛집','고급','일식'],tip:'미슐랭·블루리본 식당 밀집, 스시·한식 코스 다수'},
+      {emoji:'☕',name:'을지로 힙 카페거리',meta:'중구 · 5,000원~',mapQ:'을지로 카페 힙스터',rating:4.6,tags:['카페','힙플','레트로'],tip:'인쇄골목 사이 레트로 감성 카페, 오래된 건물 개조 인테리어'},
+      {emoji:'🌸',name:'북촌 한옥마을 카페',meta:'종로구 · 6,000원~',mapQ:'북촌 한옥 카페',rating:4.5,tags:['카페','한옥','전통'],tip:'한옥 개조 카페, 전통차·수제 떡 디저트 분위기 최고'},
+      {emoji:'🏙️',name:'뚝섬 한강공원 카페',meta:'광진구 · 5,000원~',mapQ:'뚝섬 한강 카페',rating:4.4,tags:['카페','한강뷰','야경'],tip:'한강 조망 야외 카페, 선셋·야경 감상 명소'},
+      {emoji:'🎨',name:'망원동 카페 골목',meta:'마포구 · 5,000원~',mapQ:'망원동 카페',rating:4.5,tags:['카페','동네','트렌드'],tip:'망리단길 로컬 감성 카페·빵집 밀집, 홍대보다 여유로움'},
+      {emoji:'🌊',name:'한강 수상레저',meta:'서울 전역 · 20,000원~',mapQ:'한강 수상레저 서울',rating:4.4,tags:['수상','보트','카약','여름'],tip:'뚝섬·잠원·여의도 한강공원 카약·수상자전거·보트 렌탈'},
+      {emoji:'💦',name:'청계천 도심 물길',meta:'종로구·중구 · 무료',mapQ:'청계천 서울',rating:4.3,tags:['계곡','산책','무료','도심'],tip:'도심 속 청량한 물길, 야간 조명 산책 코스 인기'},
+      {emoji:'🏊',name:'뚝섬 한강 수영장',meta:'광진구 · 5,000원~',mapQ:'뚝섬 한강 수영장',rating:4.3,tags:['수영','물놀이','여름'],tip:'여름 한강 야외 수영장, 강변 피크닉과 함께 즐기기'}]
   },
 
   { key:'gyeongbuk', idx:5, name:'경북', emoji:'🏯', grad:'linear-gradient(135deg,#c87d2f,#a85e10)', sub:'신라·팔공산·안동·포항의 경상북도',
@@ -2287,7 +2232,14 @@ const REGIONS = [
       {emoji:'🍰',name:'황리단길 디저트·빵집',meta:'황남동 · 5,000원~',mapQ:'황리단길 카페 디저트',rating:4.5,tags:['맛집','디저트','카페'],tip:'한옥 개조 카페 수제 디저트, 경주빵·약과 맛집'},
       {emoji:'🛕',name:'분황사',meta:'경주시 · 1,000원',mapQ:'분황사 경주',rating:4.3,tags:['사찰','산사','신라'],tip:'신라 최초 황룡사 인근, 모전석탑 국보 보유'},
       {emoji:'⛩️',name:'경주 기림사',meta:'양북면 · 4,000원',mapQ:'기림사 경주',rating:4.4,tags:['사찰','산사','숲'],tip:'경주 북쪽 깊은 산속 천년 사찰, 단풍 명소'},
-      {emoji:'🌿',name:'감은사지',meta:'경주시 · 무료',mapQ:'감은사지 경주',rating:4.2,tags:['사찰','산사','역사'],tip:'삼층석탑 2기 국보, 문무왕 추모 동해안 위치'}]
+      {emoji:'🌿',name:'감은사지',meta:'경주시 · 무료',mapQ:'감은사지 경주',rating:4.2,tags:['사찰','산사','역사'],tip:'삼층석탑 2기 국보, 문무왕 추모 동해안 위치'},
+      {emoji:'☕',name:'안동 카페 구시장 골목',meta:'안동시 · 5,000원~',mapQ:'안동 카페 구시장',rating:4.4,tags:['카페','레트로','힙플'],tip:'안동 구시장 주변 근대건물 개조 감성 카페 밀집'},
+      {emoji:'🌸',name:'경주 대릉원 카페거리',meta:'경주시 · 5,000원~',mapQ:'경주 대릉원 카페',rating:4.5,tags:['카페','고분뷰','역사'],tip:'고분 조망 루프탑 카페, 황리단길 인근 야경 명소'},
+      {emoji:'🏔️',name:'포항 구룡포 일본인 거리 카페',meta:'포항시 · 5,000원~',mapQ:'구룡포 카페 포항',rating:4.3,tags:['카페','레트로','근대'],tip:'일제강점기 건물 개조 감성 카페, 과메기 투어와 연계'},
+      {emoji:'💦',name:'청송 주왕산 계곡',meta:'청송군 · 무료',mapQ:'주왕산 계곡 청송',rating:4.8,tags:['계곡','폭포','트레킹','무료'],tip:'3폭포 코스 비경, 주왕계곡 에메랄드빛 소 국내 최고'},
+      {emoji:'🌊',name:'울진 왕피천 계곡',meta:'울진군 · 무료',mapQ:'왕피천 계곡 울진',rating:4.6,tags:['계곡','청정','트레킹','무료'],tip:'국내 최대 생태경관보전지역, 오염되지 않은 원시 청정계곡'},
+      {emoji:'🏞️',name:'봉화 청옥산 계곡',meta:'봉화군 · 무료',mapQ:'청옥산 계곡 봉화',rating:4.5,tags:['계곡','캠핑','무료','물놀이'],tip:'경북 최고 청정계곡, 수심 얕고 바위 경관 아름다움'},
+      {emoji:'🌿',name:'영양 일월산 계곡',meta:'영양군 · 무료',mapQ:'일월산 계곡 영양',rating:4.4,tags:['계곡','무료','청정','힐링'],tip:'오지 청정계곡, 여름 최고 피서지 낚시·물놀이'}]
   },
   { key:'gyeongnam', idx:6, name:'경남', emoji:'🌊', grad:'linear-gradient(135deg,#00b4db,#0083b0)', sub:'경남·부산·남해·통영의 바다와 도시',
     links:[{lbl:'경남관광',url:'https://www.gyeongnam.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
@@ -2349,7 +2301,14 @@ const REGIONS = [
       {emoji:'🏖️',name:'송정해수욕장',meta:'해운대구 · 무료',mapQ:'송정해수욕장',rating:4.5,tags:['서핑','해변','여유'],tip:'해운대보다 한적, 서핑 명소·게스트하우스 밀집'},
       {emoji:'🍢',name:'부산 어묵·튀김 골목',meta:'남포동 · 2,000원~',mapQ:'부산 어묵 남포동',rating:4.6,tags:['맛집','어묵','분식'],tip:'삼진어묵·고래사어묵 직영점, 고로케·어묵탕 인기'},
       {emoji:'🦞',name:'해운대 암남공원 해산물',meta:'해운대구 · 시가',mapQ:'해운대 횟집',rating:4.5,tags:['맛집','해산물','횟집'],tip:'미포 오른쪽 해안 횟집 밀집, 살아있는 물회 추천'},
-      {emoji:'🍜',name:'초량 이바구길 밀면',meta:'동구 · 8,000원~',mapQ:'부산 밀면 초량',rating:4.5,tags:['맛집','밀면','전통음식'],tip:'부산 향토음식 밀면 원조 골목, 개금밀면도 유명'}]
+      {emoji:'🍜',name:'초량 이바구길 밀면',meta:'동구 · 8,000원~',mapQ:'부산 밀면 초량',rating:4.5,tags:['맛집','밀면','전통음식'],tip:'부산 향토음식 밀면 원조 골목, 개금밀면도 유명'},
+      {emoji:'☕',name:'부산 전포 카페거리',meta:'부산진구 · 5,000원~',mapQ:'전포 카페거리 부산',rating:4.6,tags:['카페','힙플','트렌드'],tip:'부산 MZ 성지, 독립 카페·로스터리 밀집 골목'},
+      {emoji:'🌊',name:'통영 동피랑 카페',meta:'통영시 · 5,000원~',mapQ:'동피랑 카페 통영',rating:4.5,tags:['카페','바다뷰','벽화'],tip:'벽화마을 옥상 뷰 카페, 통영 항구 파노라마 조망'},
+      {emoji:'🏖️',name:'거제 학동 흑진주 카페',meta:'거제시 · 6,000원~',mapQ:'거제 카페 학동',rating:4.4,tags:['카페','바다뷰','드라이브'],tip:'학동 몽돌해변 인근 오션뷰 카페, 거제 드라이브 코스'},
+      {emoji:'💦',name:'밀양 얼음골 계곡',meta:'밀양시 · 무료',mapQ:'얼음골 계곡 밀양',rating:4.6,tags:['계곡','폭포','무료','청정'],tip:'여름에도 얼음 어는 신비 지형, 재약산 표충사 연계 코스'},
+      {emoji:'🌊',name:'함양 용추폭포·계곡',meta:'함양군 · 무료',mapQ:'용추폭포 함양',rating:4.7,tags:['계곡','폭포','무료','물놀이'],tip:'경남 최고 비경 폭포, 지리산 기슭 청정 계곡 여름 피서 1위'},
+      {emoji:'🏞️',name:'하동 쌍계사 십리벚꽃 계곡',meta:'하동군 · 무료',mapQ:'쌍계사 계곡 하동',rating:4.6,tags:['계곡','청정','벚꽃','트레킹'],tip:'화개장터~쌍계사 섬진강 지류 청정계곡, 봄 벚꽃과 함께'},
+      {emoji:'🌿',name:'산청 중산리 계곡',meta:'산청군 · 무료',mapQ:'중산리 계곡 산청',rating:4.5,tags:['계곡','트레킹','무료','물놀이'],tip:'지리산 천왕봉 등산 기점, 계곡 물이 맑고 차가워 피서 최적'}]
   },
   { key:'chungnam', idx:7, name:'충남', emoji:'🌾', grad:'linear-gradient(135deg,#2d7a1f,#4a9e2f)', sub:'충남·대전·세종의 백제 역사와 자연',
     links:[{lbl:'충북관광',url:'https://www.chungbuk.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
@@ -2398,7 +2357,14 @@ const REGIONS = [
       {emoji:'🌊',name:'금강 로하스길',meta:'세종·공주 · 무료',mapQ:'금강 로하스길',rating:4.3,tags:['자전거','강변','무료'],tip:'세종~공주 자전거길 43km, 경치 아름다움'},
       {emoji:'🔭',name:'대전 천문대',meta:'유성구 · 5,000원',mapQ:'대전 천문대',rating:4.3,tags:['별보기','가족','야간'],tip:'주말 야간 천체 관측, 사전 예약 필수'},
       {emoji:'🌸',name:'세종 방축천 벚꽃',meta:'세종 · 무료',mapQ:'세종 방축천 벚꽃',rating:4.5,tags:['벚꽃','봄','무료'],tip:'4월 초 1.5km 벚꽃 터널, 세종 최고 봄 명소'},
-      {emoji:'🎠',name:'대전 오월드',meta:'중구 · 25,000원~',mapQ:'대전 오월드',rating:4.2,tags:['동물원','놀이공원','가족'],tip:'동물원+플라워랜드 복합, 주말 동물쇼 운영'}]
+      {emoji:'🎠',name:'대전 오월드',meta:'중구 · 25,000원~',mapQ:'대전 오월드',rating:4.2,tags:['동물원','놀이공원','가족'],tip:'동물원+플라워랜드 복합, 주말 동물쇼 운영'},
+      {emoji:'☕',name:'대전 성심당 카페 & 베이커리',meta:'중구 · 3,000원~',mapQ:'성심당 대전 본점',rating:4.8,tags:['카페','빵','베이커리'],tip:'대전 필수 코스, 튀김소보로·부추빵 줄서서 먹는 빵집 카페'},
+      {emoji:'🌿',name:'공주 공산성 카페거리',meta:'공주시 · 5,000원~',mapQ:'공주 카페 공산성',rating:4.4,tags:['카페','역사','강뷰'],tip:'금강 조망 카페, 백제 유적 공산성 인근 힐링 카페'},
+      {emoji:'🌊',name:'서산 해미읍성 카페',meta:'서산시 · 5,000원~',mapQ:'해미읍성 카페 서산',rating:4.3,tags:['카페','역사','한옥'],tip:'조선 읍성 인근 감성 카페, 한옥 개조 디저트 카페'},
+      {emoji:'💦',name:'태안 백화산 계곡',meta:'태안군 · 무료',mapQ:'백화산 계곡 태안',rating:4.3,tags:['계곡','무료','물놀이','힐링'],tip:'서해안 유일 내륙 청정계곡, 가족 물놀이 피서지'},
+      {emoji:'🌊',name:'공주 마곡사 계곡',meta:'공주시 · 무료',mapQ:'마곡사 계곡 공주',rating:4.5,tags:['계곡','사찰','무료','트레킹'],tip:'유네스코 사찰 마곡사 인근 태화천 계곡, 산책로 일품'},
+      {emoji:'🏞️',name:'금산 적벽강 계곡',meta:'금산군 · 무료',mapQ:'적벽강 금산',rating:4.4,tags:['계곡','강','드라이브','무료'],tip:'금강 지류 적벽 절경, 여름 래프팅·카약 체험 가능'},
+      {emoji:'🌿',name:'충남 예산 수덕사 계곡',meta:'예산군 · 무료',mapQ:'수덕사 계곡 예산',rating:4.3,tags:['계곡','사찰','무료','힐링'],tip:'덕숭산 수덕사 계곡, 가을 단풍과 어우러진 청정 계류'}]
   },
   { key:'jeonnam', idx:8, name:'전남', emoji:'🍃', grad:'linear-gradient(135deg,#1a6b3c,#4caf50)', sub:'전남·광주·남도의 풍요로운 문화와 미식',
     links:[{lbl:'전남관광',url:'https://tour.jeonnam.go.kr'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버맛집',url:'https://map.naver.com'}],
@@ -2450,7 +2416,14 @@ const REGIONS = [
       {emoji:'🐄',name:'광주 일곡동 한우거리',meta:'북구 · 50,000원~',mapQ:'광주 한우 맛집',rating:4.5,tags:['맛집','한우','고기'],tip:'광주 한우 직판 단지, 등심·갈비·육회 현지 가격'},
       {emoji:'🦑',name:'광주 남광주 수산시장',meta:'남구 · 시가',mapQ:'남광주 시장 해산물',rating:4.4,tags:['맛집','해산물','시장'],tip:'남도 수산물 집결지, 낙지·꼴뚜기·굴 직거래'},
       {emoji:'🍡',name:'광주 떡·한과',meta:'동구 · 3,000원~',mapQ:'광주 전통 떡집',rating:4.3,tags:['맛집','전통','디저트'],tip:'남도식 떡·한과, 시루떡·꿀떡 명인 가게 다수'},
-      {emoji:'🥘',name:'담양 순창 고추장 요리',meta:'담양·순창 · 15,000원~',mapQ:'순창 고추장 맛집',rating:4.5,tags:['맛집','고추장','향토'],tip:'순창 고추장 원산지, 고추장 불고기·된장찌개 정식'}]
+      {emoji:'🥘',name:'담양 순창 고추장 요리',meta:'담양·순창 · 15,000원~',mapQ:'순창 고추장 맛집',rating:4.5,tags:['맛집','고추장','향토'],tip:'순창 고추장 원산지, 고추장 불고기·된장찌개 정식'},
+      {emoji:'☕',name:'담양 죽녹원 카페거리',meta:'담양군 · 5,000원~',mapQ:'담양 죽녹원 카페',rating:4.6,tags:['카페','대나무','힐링'],tip:'대나무숲 죽녹원 인근 감성 카페, 대통밥·대나무 라떼 특산'},
+      {emoji:'🌊',name:'여수 이순신광장 카페',meta:'여수시 · 6,000원~',mapQ:'여수 이순신광장 카페',rating:4.5,tags:['카페','바다뷰','야경'],tip:'여수 밤바다 조망 루프탑 카페, 야경 명소 1순위'},
+      {emoji:'🌿',name:'순천만 갈대밭 카페',meta:'순천시 · 5,000원~',mapQ:'순천만 카페',rating:4.4,tags:['카페','갈대','자연뷰'],tip:'순천만 생태공원 인근 힐링 카페, 억새·갈대 풍경'},
+      {emoji:'💦',name:'구례 피아골 계곡',meta:'구례군 · 무료',mapQ:'피아골 계곡 구례',rating:4.8,tags:['계곡','폭포','단풍','무료'],tip:'지리산 최고 단풍+계곡, 직전마을~삼홍소 코스 비경'},
+      {emoji:'🌊',name:'장성 병풍산 백암사 계곡',meta:'장성군 · 무료',mapQ:'백암사 계곡 장성',rating:4.5,tags:['계곡','사찰','무료','트레킹'],tip:'내장산 자락 청정계곡, 단풍 명소 내장사와 연계'},
+      {emoji:'🏞️',name:'화순 적벽 동복호',meta:'화순군 · 무료',mapQ:'적벽 동복호 화순',rating:4.6,tags:['호수','계곡','드라이브','무료'],tip:'한국의 적벽, 동복호 붉은 절벽 절경 드라이브 코스'},
+      {emoji:'🌿',name:'보성 득량만 녹차밭 계류',meta:'보성군 · 무료',mapQ:'보성 녹차밭 계곡',rating:4.4,tags:['계곡','녹차','힐링','무료'],tip:'녹차밭 사이 흐르는 맑은 계류, 여름 힐링 피서지'}]
   },
   { key:'jeonbuk', idx:9, name:'전북', emoji:'🌻', grad:'linear-gradient(135deg,#d4820a,#c05a1f)', sub:'전주 한옥마을·내장산·변산반도의 고장',
     links:[{lbl:'전북관광',url:'https://www.jeonbuk.go.kr/tour'},{lbl:'야놀자',url:'https://www.yanolja.com'},{lbl:'여기어때',url:'https://www.yeogi.com'},{lbl:'네이버지도',url:'https://map.naver.com'}],
@@ -2497,7 +2470,12 @@ const REGIONS = [
       {emoji:'🍜',name:'전주 피순대',meta:'완산구 · 7,000원~',mapQ:'전주 피순대',rating:4.5,tags:['맛집','순대','향토'],tip:'남부시장 피순대 골목, 당면 없이 찹쌀+선지 전통방식'},
       {emoji:'🍱',name:'전주 막걸리 골목',meta:'완산구 · 5,000원~',mapQ:'전주 막걸리 골목',rating:4.5,tags:['맛집','막걸리','향토'],tip:'삼천동·한옥마을 막걸리골목, 안주 무한리필 전통'},
       {emoji:'🍰',name:'전주 베이커리·한과',meta:'완산구 · 3,000원~',mapQ:'전주 한과 베이커리',rating:4.4,tags:['맛집','한과','디저트'],tip:'한옥마을 내 전통 한과·수제 빵, 약과·강정 쇼핑'},
-      {emoji:'🌿',name:'전주 객리단길 음식점',meta:'완산구 · 10,000원~',mapQ:'객리단길 맛집',rating:4.5,tags:['맛집','트렌드','카페'],tip:'트렌디한 퓨전 한식·카페, 인스타 맛집 밀집'}]
+      {emoji:'🌿',name:'전주 객리단길 음식점',meta:'완산구 · 10,000원~',mapQ:'객리단길 맛집',rating:4.5,tags:['맛집','트렌드','카페'],tip:'트렌디한 퓨전 한식·카페, 인스타 맛집 밀집'},
+      {emoji:'☕',name:'전주 한옥마을 전통 다원',meta:'완산구 · 6,000원~',mapQ:'전주 한옥마을 다원 카페',rating:4.6,tags:['카페','전통차','한옥'],tip:'한옥 개조 전통 다원, 쌍화차·오미자차·수제 한과 세트'},
+      {emoji:'🌸',name:'군산 근대역사 카페거리',meta:'군산시 · 5,000원~',mapQ:'군산 근대 카페',rating:4.5,tags:['카페','레트로','근대'],tip:'일제강점기 근대건물 개조 카페, 이성당 빵집 인근 코스'},
+      {emoji:'💦',name:'무주 구천동 계곡',meta:'무주군 · 무료',mapQ:'구천동 계곡 무주',rating:4.8,tags:['계곡','폭포','트레킹','무료'],tip:'덕유산 33경 계곡, 나제통문~인월담 구간 비경 최고'},
+      {emoji:'🌊',name:'진안 마이산 계곡',meta:'진안군 · 무료',mapQ:'마이산 계곡 진안',rating:4.5,tags:['계곡','기암','무료','트레킹'],tip:'말귀 모양 두 봉우리 사이 계곡, 봄 벚꽃·가을 단풍 절경'},
+      {emoji:'🏞️',name:'순창 강천산 계곡',meta:'순창군 · 3,000원',mapQ:'강천산 계곡 순창',rating:4.6,tags:['계곡','폭포','단풍','현수교'],tip:'호남의 소금강, 구장군폭포·현수교 코스 가족 피서 명소'}]
   },
 
   { key:'incheon', idx:12, name:'수도권', emoji:'🌁', grad:'linear-gradient(135deg,#2a7bbf,#1a4fa0)', sub:'서울 근교·인천 항구·수원화성',
@@ -2528,7 +2506,14 @@ const REGIONS = [
       {emoji:'🍡',name:'파주 통일동산 장단콩 두부',meta:'파주시 · 10,000원~',mapQ:'파주 장단콩 두부',rating:4.4,tags:['맛집','두부','향토'],tip:'장단콩 원산지 파주, 순두부·두부구이 정식 추천'},
       {emoji:'🦑',name:'포천 이동갈비',meta:'포천시 · 30,000원~',mapQ:'포천 이동갈비',rating:4.6,tags:['맛집','갈비','명물'],tip:'포천 이동 갈비 원조, 숯불 양념갈비 전국 3대 갈비'},
       {emoji:'🥩',name:'용인 백암순대',meta:'용인시 · 8,000원~',mapQ:'백암순대 용인',rating:4.5,tags:['맛집','순대','향토'],tip:'백암 시장 순대 원조, 국밥+순대 세트 저렴'},
-      {emoji:'🍰',name:'가평 카페·베이커리거리',meta:'가평군 · 6,000원~',mapQ:'가평 카페거리',rating:4.4,tags:['맛집','카페','디저트'],tip:'남이섬 인근 카페 밀집, 강변 뷰 베이커리 인기'}]
+      {emoji:'🍰',name:'가평 카페·베이커리거리',meta:'가평군 · 6,000원~',mapQ:'가평 카페거리',rating:4.4,tags:['맛집','카페','디저트'],tip:'남이섬 인근 카페 밀집, 강변 뷰 베이커리 인기'},
+      {emoji:'☕',name:'인천 개항장 카페거리',meta:'중구 · 5,000원~',mapQ:'개항장 카페 인천',rating:4.5,tags:['카페','레트로','근대'],tip:'개항기 근대건물 개조 카페, 차이나타운 인근 이색 코스'},
+      {emoji:'🌸',name:'수원 행리단길 카페',meta:'수원시 · 5,000원~',mapQ:'행리단길 카페 수원',rating:4.4,tags:['카페','성곽뷰','힙플'],tip:'화성 성곽 인근 감성 카페거리, 경리단길 수원 버전'},
+      {emoji:'🎨',name:'양평 두물머리 카페',meta:'양평군 · 5,000원~',mapQ:'두물머리 카페 양평',rating:4.5,tags:['카페','강뷰','드라이브'],tip:'북한강·남한강 합류 지점 조망 카페, 일출 명소'},
+      {emoji:'💦',name:'가평 용추계곡',meta:'가평군 · 무료',mapQ:'용추계곡 가평',rating:4.7,tags:['계곡','폭포','무료','물놀이'],tip:'수도권 최고 청정계곡, 용추폭포 에메랄드빛 소 절경'},
+      {emoji:'🌊',name:'포천 한탄강 주상절리',meta:'포천시 · 5,000원',mapQ:'한탄강 주상절리 포천',rating:4.7,tags:['계곡','협곡','래프팅','주상절리'],tip:'국가지질공원, 비둘기낭폭포·멍우리협곡 래프팅 코스'},
+      {emoji:'🏞️',name:'양평 용문산 계곡',meta:'양평군 · 무료',mapQ:'용문산 계곡 양평',rating:4.5,tags:['계곡','무료','트레킹','물놀이'],tip:'용문사 은행나무 연계 코스, 서울 근교 가족 피서지'},
+      {emoji:'🌿',name:'인천 계양산 계곡',meta:'인천 계양구 · 무료',mapQ:'계양산 계곡 인천',rating:4.2,tags:['계곡','무료','도심','물놀이'],tip:'인천 시내 도심형 계곡 피서지, 대중교통 접근 편리'}]
   },
 
 
@@ -2562,7 +2547,16 @@ const REGIONS = [
       {emoji:'🌾',name:'단양 마늘 순대·소시지',meta:'단양군 · 5,000원~',mapQ:'단양 시장 마늘소시지',rating:4.5,tags:['맛집','시장','마늘'],tip:'단양 구경시장 마늘 소시지, 기념품으로도 인기'},
       {emoji:'🍎',name:'충주 사과 음식·주스',meta:'충주시 · 5,000원~',mapQ:'충주 사과 음식',rating:4.4,tags:['맛집','사과','음료'],tip:'충주 사과 직거래 시장, 사과 주스·사과 막걸리 추천'},
       {emoji:'🦑',name:'제천 약채락 건강 정식',meta:'제천시 · 15,000원~',mapQ:'제천 약채락',rating:4.4,tags:['맛집','건강식','한식'],tip:'제천 한방 건강 식재료 요리, 약초 비빔밥 별미'},
-      {emoji:'🥘',name:'보은 대추 요리',meta:'보은군 · 12,000원~',mapQ:'보은 대추 음식',rating:4.3,tags:['맛집','대추','향토'],tip:'속리산 인근 보은 대추 특산, 대추 갈비찜·대추차'}]
+      {emoji:'🥘',name:'보은 대추 요리',meta:'보은군 · 12,000원~',mapQ:'보은 대추 음식',rating:4.3,tags:['맛집','대추','향토'],tip:'속리산 인근 보은 대추 특산, 대추 갈비찜·대추차'},
+      {emoji:'☕',name:'청주 카페거리 (성안길)',meta:'청주시 · 5,000원~',mapQ:'청주 성안길 카페',rating:4.4,tags:['카페','도심','트렌드'],tip:'청주 구도심 감성 카페 밀집, 청주만의 로컬 로스터리 카페'},
+      {emoji:'🌿',name:'괴산 트리하우스가든',meta:'괴산군 · 6,000원~',mapQ:'트리하우스가든 괴산',rating:4.6,tags:['카페','정원','힐링'],tip:'산림청 선정 민간정원 1호, 정원 산책+카페 1인1음료 필수'},
+      {emoji:'💐',name:'괴산 이드니크',meta:'괴산군 · 5,500원~',mapQ:'이드니크 괴산',rating:4.4,tags:['카페','정원','감성'],tip:'유럽수국 감성 정원카페, 모던 인테리어 인스타 핫플'},
+      {emoji:'🏞️',name:'단양 도담삼봉 뷰 카페',meta:'단양군 · 5,000원~',mapQ:'도담삼봉 카페 단양',rating:4.4,tags:['카페','강뷰','드라이브'],tip:'남한강 도담삼봉 조망 카페, 드라이브 코스 중간 휴식 명소'},
+      {emoji:'🌊',name:'충주호 카페',meta:'충주시 · 5,000원~',mapQ:'충주호 카페',rating:4.3,tags:['카페','호수뷰','힐링'],tip:'충주호 수변 감성 카페, 잔잔한 호수뷰와 여유로운 힐링'},
+      {emoji:'💦',name:'괴산 쌍곡계곡',meta:'괴산군 · 무료',mapQ:'쌍곡계곡 괴산',rating:4.7,tags:['계곡','폭포','무료','물놀이'],tip:'쌍곡폭포·쌍곡소 등 9경, 수도권에서 2시간 청정 피서지'},
+      {emoji:'🌊',name:'단양 남한강 래프팅',meta:'단양군 · 30,000원~',mapQ:'단양 래프팅',rating:4.5,tags:['래프팅','강','액티비티','계곡'],tip:'도담삼봉 인근 남한강 래프팅, 기암절벽 뷰 짜릿한 코스'},
+      {emoji:'🏞️',name:'제천 월악산 계곡',meta:'제천시 · 무료',mapQ:'월악산 계곡 제천',rating:4.5,tags:['계곡','트레킹','무료','물놀이'],tip:'덕주골·송계계곡 청정 계곡, 여름 가족 피서지로 유명'},
+      {emoji:'🌿',name:'보은 속리산 계곡',meta:'보은군 · 무료',mapQ:'속리산 계곡 보은',rating:4.6,tags:['계곡','폭포','무료','국립공원'],tip:'법주사 인근 달천 상류 계곡, 문장대 코스 연계 청정 피서지'}]
   }];
 /* ── 국내 지역 인기순 배열 ── */
 const DOMESTIC_ORDER = ['jeju','seoul','gyeongnam','gyeongbuk','jeonnam','jeonbuk','chungnam','chungbuk','gangwon','incheon'];
@@ -2603,6 +2597,55 @@ function selectDomesticRegion(key) {
   renderDomesticDests();
 }
 
+/* ── 카테고리 분류 정의 ── */
+const SPOT_CATEGORIES = [
+  { key:'attraction', label:'🏛 명소·자연', color:'var(--teal800)', bg:'var(--teal50)', border:'var(--teal100)',
+    tags:['사찰','산사','국립공원','역사','계곡','폭포','등산','트레킹','자연','공원','유네스코','국보','문화재','전통','한옥','궁궐','능묘','박물관','갤러리','예술','수목원','정원','해변','바다뷰','섬여행','드라이브','야경','일출','일몰','뷰맛집','케이블카','동굴','기암','협곡','호수','유람선','오름','성곽','벚꽃','봄꽃','단풍','억새','철새','갈대','동백','은행나무','장미','연꽃'] },
+  { key:'food', label:'🍽 맛집·식당', color:'var(--coral800)', bg:'var(--coral50)', border:'var(--coral100)',
+    tags:['맛집','향토','해산물','한식','시장','야식','전통음식','전통시장','야시장','해장','분식','갈비','한우','고기','한정식','횟집','국밥','냉면','밀면','칼국수','순대','국수','막국수','닭갈비','흑돼지','갈치','생선구이','전복','대게','굴','물회','어묵','재첩','족발','곱창','불고기','게장','홍어','곰탕','아귀찜','장어','추어탕','짜장면','짬뽕','만두','피자','먹거리','맛','남도음식','기념품'] },
+  { key:'cafe', label:'☕ 카페·디저트', color:'var(--amber800)', bg:'var(--amber50)', border:'var(--amber100)',
+    tags:['카페','빵','디저트','커피','티','녹차','베이커리','감성','힙플','레트로','트렌드'] },
+  { key:'activity', label:'🎯 액티비티·체험', color:'var(--sky800)', bg:'var(--sky50)', border:'var(--sky100)',
+    tags:['래프팅','서핑','캠핑','스키','액티비티','수영','물놀이','수상','보트','카약','다이빙','스노클링','짚라인','체험','자전거','온천','놀이공원','테마파크'] }
+];
+
+function classifySpot(s) {
+  const tags = s.tags || [];
+  for (const cat of SPOT_CATEGORIES) {
+    if (tags.some(t => cat.tags.includes(t))) return cat.key;
+  }
+  return 'attraction';
+}
+
+function renderSpotItem(s) {
+  const stars = s.rating ? '⭐'.repeat(Math.floor(s.rating)) + `<span style="font-size:12px;color:#1A2535;font-weight:800;margin-left:2px">${s.rating}</span>` : '';
+  const tagsHtml = (s.tags||[]).map(t=>{ const {bg,c}=tagColor(t); return `<span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;background:${bg};color:${c}">${t}</span>`; }).join('');
+  const mapUrl = `https://map.naver.com/search?query=${encodeURIComponent(s.mapQ||s.name)}`;
+  return `<div style="padding:12px 0;border-top:1px solid var(--border2)">
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px">
+        <div style="font-size:15px;font-weight:700;color:var(--txt);display:flex;align-items:center;flex-wrap:wrap;gap:3px">${s.emoji} ${s.name}</div>
+        <button onclick="window.open('${mapUrl}','_blank')" style="flex-shrink:0;padding:4px 10px;background:var(--sky50);border:1.5px solid var(--sky100);border-radius:var(--r8);font-size:12px;font-weight:700;color:var(--sky700);cursor:pointer;display:inline-flex;align-items:center;gap:4px;white-space:nowrap">
+          <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          지도 보기
+        </button>
+      </div>
+      <div style="font-size:13px;color:var(--txt2);font-weight:600;margin-bottom:4px">${s.meta||''} ${stars}</div>
+      <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px">${tagsHtml}</div>
+      ${s.tip?`<div style="font-size:13px;color:var(--teal800);font-weight:600;margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>`:''}
+    </div>
+  </div>`;
+}
+
+function toggleDomesticAccordion(regionKey, catKey) {
+  const body = document.getElementById(`acc-${regionKey}-${catKey}`);
+  const arrow = document.getElementById(`arr-${regionKey}-${catKey}`);
+  if (!body) return;
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  if (arrow) arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+}
+
 function renderDomesticDests() {
   const el = document.getElementById('domesticDestList');
   if (!el) return;
@@ -2613,20 +2656,31 @@ function renderDomesticDests() {
   el.innerHTML = list.map(r => {
     const spots = getRegionSpots(r.key);
     const freeCount = spots.filter(s => s.meta && s.meta.includes('무료')).length;
-    const spotsHtml = spots.slice(0,10).map((s,i) => {
-      const stars = s.rating ? '⭐'.repeat(Math.floor(s.rating)) + `<span style="font-size:12px;color:#1A2535;font-weight:800;margin-left:2px">${s.rating}</span>` : '';
-      const tagsHtml = (s.tags||[]).map(t=>{ const {bg,c}=tagColor(t); return `<span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;background:${bg};color:${c}">${t}</span>`; }).join('');
-      const mapUrl = `https://map.naver.com/search?query=${encodeURIComponent(s.mapQ||s.name)}`;
-      return `<div style="padding:12px 0;${i>0?'border-top:1px solid var(--border2)':''}">
-        <div style="flex:1;min-width:0">
-          <div style="font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px;display:flex;align-items:center;flex-wrap:wrap;gap:3px">${s.emoji} ${s.name}</div>
-          <div style="font-size:13px;color:var(--txt2);font-weight:600;margin-bottom:4px">${s.meta||''} ${stars}</div>
-          <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px">${tagsHtml}</div>
-          ${s.tip?`<div style="font-size:13px;color:var(--teal800);font-weight:600;margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>`:''}
-          <button onclick="window.open('${mapUrl}','_blank')" style="padding:5px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r8);font-size:12px;font-weight:700;color:var(--txt2);cursor:pointer;display:inline-flex;align-items:center;gap:4px">
-            <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            지도 보기
-          </button>
+
+    // 카테고리별 분류
+    const grouped = {};
+    SPOT_CATEGORIES.forEach(c => { grouped[c.key] = []; });
+    spots.forEach(s => { const k = classifySpot(s); grouped[k].push(s); });
+
+    const accordionsHtml = SPOT_CATEGORIES.map(cat => {
+      const items = grouped[cat.key];
+      if (!items.length) return '';
+      const accId = `acc-${r.key}-${cat.key}`;
+      const arrId = `arr-${r.key}-${cat.key}`;
+      const itemsHtml = items.map(s => renderSpotItem(s)).join('');
+      return `<div style="border-top:1.5px solid var(--border2)">
+        <button onclick="toggleDomesticAccordion('${r.key}','${cat.key}')"
+          style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:none;border:none;cursor:pointer;text-align:left">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:13px;font-weight:700;color:${cat.color}">${cat.label}</span>
+            <span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;background:${cat.bg};color:${cat.color};border:1px solid ${cat.border}">${items.length}곳</span>
+          </div>
+          <svg id="${arrId}" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div id="${accId}" style="display:none;padding:0 14px 4px">
+          ${itemsHtml}
         </div>
       </div>`;
     }).join('');
@@ -2650,7 +2704,7 @@ function renderDomesticDests() {
           ${r.links.slice(0,4).map(l=>`<button onclick="window.open('${l.url}','_blank')" style="font-size:12px;font-weight:700;padding:4px 10px;border-radius:20px;background:var(--card);border:1.5px solid var(--border);color:var(--txt2);cursor:pointer">${l.lbl}</button>`).join('')}
         </div>
       </div>
-      <div style="padding:0 14px;background:var(--card)">${spotsHtml}</div>
+      <div style="background:var(--card)">${accordionsHtml}</div>
     </div>`;
   }).join('');
 }
@@ -3507,13 +3561,24 @@ function initIntlDests() {
   selectIntlRegion('japan');
 }
 
-/* 지역 탭 렌더링 */
+/* 지역 그리드 렌더링 (국내 탭과 동일한 카드 그리드) */
 function renderIntlRegionTabs() {
   const el = document.getElementById('intlRegionTabs');
   if (!el) return;
-  el.innerHTML = INTL_REGIONS.map(r =>
-    `<div class="theme-ftab" id="intlRTab_${r.key}" onclick="selectIntlRegion('${r.key}')">${r.name}</div>`
-  ).join('');
+  // 전체 도시 수 집계
+  const totalCities = INTL_DESTS.length;
+  const allIsOn = !currentIntlRegion;
+  el.innerHTML = INTL_REGIONS.map(r => {
+    const isOn = currentIntlRegion === r.key;
+    const cityCnt = INTL_DESTS.filter(d => d.region === r.key).length;
+    return `<div class="theme-ico-card${isOn?' on':''}" id="intlRTab_${r.key}"
+      style="background:${isOn?'var(--sky50)':'var(--card)'};border:${isOn?'2px solid var(--sky)':'1.5px solid var(--border)'}"
+      onclick="selectIntlRegion('${r.key}')">
+      <div style="font-size:22px;line-height:1;margin-bottom:2px">${r.icon}</div>
+      <div class="tic-label" style="color:${isOn?'var(--sky800)':'var(--txt)'}">${r.name}</div>
+      <div class="tic-cnt" style="color:${isOn?'var(--sky800)':'var(--txt2)'}">${cityCnt}곳</div>
+    </div>`;
+  }).join('');
 }
 
 /* 지역 탭 선택 */
@@ -3534,18 +3599,8 @@ function selectIntlRegion(regionKey) {
   currentIntlCountry = null;
   currentIntlCity = null;
 
-  // 지역 탭 활성화
-  document.querySelectorAll('[id^="intlRTab_"]').forEach(t => {
-    t.classList.remove('on');
-    t.style.color = '';
-    t.style.background = '';
-    t.style.boxShadow = '';
-  });
-  const activeTab = document.getElementById('intlRTab_' + regionKey);
-  if (activeTab) {
-    activeTab.classList.add('on');
-    activeTab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
-  }
+  // 지역 그리드 재렌더 (활성 카드 하이라이트)
+  renderIntlRegionTabs();
 
   // 해당 지역 나라 목록
   const countries = INTL_COUNTRIES.filter(c =>
@@ -3592,7 +3647,8 @@ function selectIntlCountry(countryKey) {
   const activeTab = document.getElementById('intlCTab_' + countryKey);
   if (activeTab) {
     activeTab.classList.add('on');
-    activeTab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    const p1 = activeTab.parentElement;
+    if (p1) p1.scrollLeft = activeTab.offsetLeft - p1.offsetWidth/2 + activeTab.offsetWidth/2;
   }
 
   const country = INTL_COUNTRIES.find(c => c.key === countryKey);
@@ -3629,7 +3685,8 @@ function selectIntlCity(cityKey, headerId, spotsId, tabsId) {
   const activeTab = document.getElementById(`intlTab_${tabsId}_${cityKey}`);
   if (activeTab) {
     activeTab.classList.add('on');
-    activeTab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    const p2 = activeTab.parentElement;
+    if (p2) p2.scrollLeft = activeTab.offsetLeft - p2.offsetWidth/2 + activeTab.offsetWidth/2;
   }
 
   const city = INTL_DESTS.find(d => d.cityKey === cityKey);
@@ -3642,14 +3699,14 @@ function selectIntlCity(cityKey, headerId, spotsId, tabsId) {
 function renderIntlCityHeader(city, elId) {
   const el = document.getElementById(elId || 'intlCityHeader');
   if (!el) return;
-  el.innerHTML = `<div style="background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r14);margin-top:4px;margin-bottom:14px;box-shadow:0 4px 16px rgba(55,138,221,.10)">
-    <div style="background:linear-gradient(135deg,var(--sky50),var(--teal50));padding:14px 16px;border-bottom:1.5px solid var(--border);border-radius:var(--r14) var(--r14) 0 0">
+  el.innerHTML = `<div style="background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r14);margin-top:4px;margin-bottom:8px;overflow:hidden">
+    <div style="background:linear-gradient(135deg,var(--sky50),var(--teal50));padding:14px 16px;border-bottom:1.5px solid var(--border)">
       <div style="font-size:16px;font-weight:800;color:var(--sky800);margin-bottom:4px">${city.flag} ${city.name}</div>
       <div style="font-size:13px;color:var(--txt2);font-weight:600;margin-bottom:6px">${city.cities}</div>
       <div style="font-size:13px;color:var(--txt);margin-bottom:6px">${city.desc}</div>
       <div style="font-size:12px;color:var(--txt2);font-weight:600;line-height:1.5">💡 ${city.tips}</div>
     </div>
-    <div style="padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap;background:var(--card);border-radius:0 0 var(--r14) var(--r14)">
+    <div style="padding:10px 14px;display:flex;gap:8px;flex-wrap:wrap;background:var(--card)">
       ${city.links.map(l => `<button onclick="window.open('${l.url}','_blank')" style="font-size:12px;font-weight:700;padding:5px 10px;border-radius:20px;background:var(--sky50);border:1.5px solid var(--sky100);color:var(--sky800);cursor:pointer">${l.lbl}</button>`).join('')}
     </div>
   </div>`;
@@ -3683,7 +3740,7 @@ function renderIntlSpotsList(city, elId) {
     const itemsHtml = cat.items.map(item => {
       if (typeof item === 'object') {
         const mapBtn = item.map
-          ? `<button onclick="window.open('${item.map}','_blank')" style="display:inline-flex;align-items:center;gap:2px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--sky50);border:1.5px solid var(--sky100);color:var(--sky800);cursor:pointer;font-family:inherit;flex-shrink:0">🗺️ 지도</button>`
+          ? `<button onclick="window.open('${item.map}','_blank')" style="flex-shrink:0;padding:4px 10px;background:var(--sky50);border:1.5px solid var(--sky100);border-radius:var(--r8);font-size:12px;font-weight:700;color:var(--sky700);cursor:pointer;display:inline-flex;align-items:center;gap:4px;white-space:nowrap"><svg viewBox='0 0 24 24' width='11' height='11' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg> 지도 보기</button>`
           : '';
         const priceBadge = item.price
           ? `<span style="font-size:12px;font-weight:700;padding:3px 9px;border-radius:20px;background:${th.bg};border:1.5px solid ${th.border};color:${th.txt};flex-shrink:0">${item.price}</span>`
@@ -3691,16 +3748,13 @@ function renderIntlSpotsList(city, elId) {
         const tipLine = item.tip
           ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5;margin-top:4px;word-break:keep-all">💡 ${item.tip}</div>`
           : '';
-        return `<div class="spot" style="cursor:default;margin-bottom:6px;padding:9px 12px">
-          <div class="spot-body">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px">
-              <div class="spot-name" style="margin-bottom:0;flex:1;min-width:0;font-size:15px;font-weight:700;color:var(--txt);word-break:keep-all;line-height:1.4">${item.name}</div>
-              ${priceBadge}
-            </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-              <div class="spot-region" style="margin-bottom:0;font-size:13px;font-weight:600;color:var(--txt2)">📍 ${item.loc}</div>
+        return `<div style="padding:12px 0;border-top:1px solid var(--border2)">
+          <div>
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:2px">
+              <div style="font-size:15px;font-weight:700;color:var(--txt);word-break:keep-all;line-height:1.4;flex:1">${item.name}</div>
               ${mapBtn}
             </div>
+            <div style="font-size:13px;color:var(--txt2);font-weight:600;margin-bottom:4px">📍 ${item.loc} ${priceBadge}</div>
             ${tipLine}
           </div>
         </div>`;
@@ -3722,16 +3776,18 @@ function renderIntlSpotsList(city, elId) {
     }).join('');
 
     html += `
-    <div style="margin-bottom:10px;border:1.5px solid ${th.border};border-radius:var(--r14);overflow:hidden;box-shadow:var(--shadow)">
-      <button onclick="(function(btn){const body=document.getElementById('${catId}');const arr=btn.querySelector('.acc-arr');const open=body.style.display==='none';body.style.display=open?'block':'none';arr.style.transform=open?'rotate(0deg)':'rotate(-90deg)'})(this)"
-        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:${th.bg};border:none;cursor:pointer;font-family:inherit">
+    <div style="border-top:1.5px solid var(--border2)">
+      <button onclick="(function(btn){const body=document.getElementById('${catId}');const arr=btn.querySelector('.acc-arr');const open=body.style.display==='none';body.style.display=open?'block':'none';arr.style.transform=open?'rotate(180deg)':'rotate(0deg)'})(this)"
+        style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:11px 14px;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left">
         <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:15px;font-weight:700;color:${th.hdr}">${cat.label}</span>
-          <span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--card);border:1.5px solid ${th.border};color:${th.hdr}">${cat.items.length}곳</span>
+          <span style="font-size:13px;font-weight:700;color:${th.hdr}">${cat.label}</span>
+          <span style="font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;background:${th.bg};border:1px solid ${th.border};color:${th.hdr}">${cat.items.length}곳</span>
         </div>
-        <span class="acc-arr" style="font-size:16px;color:${th.hdr};transition:transform .2s;transform:${isOpen?'rotate(0deg)':'rotate(-90deg)'}">▾</span>
+        <svg class="acc-arr" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="${th.hdr}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s;flex-shrink:0;transform:${isOpen?'rotate(180deg)':'rotate(0deg)'}">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
       </button>
-      <div id="${catId}" style="display:${isOpen?'block':'none'};padding:8px;background:var(--bg)">
+      <div id="${catId}" style="display:${isOpen?'block':'none'};padding:0 8px 4px">
         ${itemsHtml}
       </div>
     </div>`;
