@@ -1181,6 +1181,27 @@ const DEFAULT_TRIPS = [
         { id:26, time:'17:30', emoji:'🏠', placeType:'move',       name:'증평 도착', shopName:'', note:'저녁 전 귀가', address:'', phone:'', rating:'', cost:'', hours:'' }]}]
   },
   {
+    id: 3,
+    title: '괴산 공림사 당일 사찰 나드리',
+    emoji: '🛕',
+    color: 'teal',
+    startDate: '2026-05-16',
+    endDate: '2026-05-16',
+    companions: '당일치기',
+    memo: '증평 출발 → 공림사 탐방 → 사담계곡·갈은구곡 → 트리하우스가든 카페 → 증평 귀가',
+    tags: ['국내', '당일치기', '사찰', '힐링', '괴산'],
+    days: [
+      { date: '2026-05-16', places: [
+        { id:50, time:'13:00', emoji:'🚗', placeType:'move',    name:'증평 출발',               shopName:'',                note:'점심 후 출발 · 자가용 이동', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:51, time:'',     emoji:'🚗', placeType:'move',    name:'증평 → 공림사 이동',       shopName:'',                note:'약 33km / 40분 · 중부내륙고속도로 괴산IC', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:52, time:'13:45', emoji:'🛕', placeType:'sight',  name:'공림사 탐방',              shopName:'공림사',           note:'신라 경문왕 창건 천년 고찰 · 낙영산 자락 · 천년 느티나무 20그루 · 공림사 동종(1776년) · 대웅전·관음전·범종루 관람', address:'충청북도 괴산군 청천면 사담리 산11', phone:'043-833-1029', rating:'4.3', cost:'무료', hours:'24시간' },
+        { id:53, time:'15:00', emoji:'🌊', placeType:'sight',  name:'사담계곡 산책',            shopName:'사담계곡',         note:'공림사 바로 옆 청정계곡 · 5월 신록 속 계곡 산책 · 도보 이동', address:'충청북도 괴산군 청천면 사담리', phone:'', rating:'4.3', cost:'무료', hours:'상시' },
+        { id:54, time:'15:45', emoji:'🌿', placeType:'sight',  name:'갈은구곡 (선택)',          shopName:'갈은구곡',         note:'자연보호구역 맑은 계곡 9경 · 공림사에서 차로 10분 · 시간 여유 있을 때 추천', address:'충청북도 괴산군 칠성면 사은리', phone:'043-832-5550', rating:'4.3', cost:'무료', hours:'상시' },
+        { id:55, time:'17:00', emoji:'☕', placeType:'cafe',   name:'트리하우스가든',           shopName:'트리하우스가든',    note:'산림청 선정 민간정원 1호 · 정원 산책+카페 · 귀가 전 휴식 ★4.6 · 화·수 휴무 확인', address:'충북 괴산군 불정면 한불로 1216', phone:'', rating:'4.6', cost:'6,000원~', hours:'10:00-19:00 (화·수 휴무)' },
+        { id:56, time:'18:00', emoji:'🚗', placeType:'move',   name:'괴산 → 증평 귀가',        shopName:'',                note:'약 30km / 35분', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:57, time:'18:40', emoji:'🏠', placeType:'move',   name:'증평 도착',               shopName:'',                note:'저녁 시간 맞춰 귀가', address:'', phone:'', rating:'', cost:'', hours:'' }]}]
+  },
+  {
     id: 1,
     title: '강원도 힐링 로드트립',
     emoji: '🌿',
@@ -1222,10 +1243,10 @@ function loadFromStorage() {
     const savedIds     = localStorage.getItem(STORAGE_KEY_IDS);
     return {
       trips:   savedTrips   ? JSON.parse(savedTrips)   : DEFAULT_TRIPS,
-      ids:     savedIds     ? JSON.parse(savedIds)     : { nextTripId: 3, nextPlaceId: 31 }
+      ids:     savedIds     ? JSON.parse(savedIds)     : { nextTripId: 4, nextPlaceId: 31 }
     };
   } catch(e) {
-    return { trips: DEFAULT_TRIPS, ids: { nextTripId: 3, nextPlaceId: 31 } };
+    return { trips: DEFAULT_TRIPS, ids: { nextTripId: 4, nextPlaceId: 31 } };
   }
 }
 
@@ -1242,7 +1263,7 @@ function saveToStorage() {
 // 초기 데이터 로드
 const _stored = loadFromStorage();
 let trips     = _stored.trips && _stored.trips.length > 0 ? _stored.trips : DEFAULT_TRIPS;
-let nextTripId  = _stored.ids.nextTripId  || 3;
+let nextTripId  = _stored.ids.nextTripId  || 4;
 let nextPlaceId = _stored.ids.nextPlaceId || 31;
 let editingTripId = null;
 let deletingTripId = null;
@@ -2556,7 +2577,20 @@ const REGIONS = [
       {emoji:'💦',name:'괴산 쌍곡계곡',meta:'괴산군 · 무료',mapQ:'쌍곡계곡 괴산',rating:4.7,tags:['계곡','폭포','무료','물놀이'],tip:'쌍곡폭포·쌍곡소 등 9경, 수도권에서 2시간 청정 피서지'},
       {emoji:'🌊',name:'단양 남한강 래프팅',meta:'단양군 · 30,000원~',mapQ:'단양 래프팅',rating:4.5,tags:['래프팅','강','액티비티','계곡'],tip:'도담삼봉 인근 남한강 래프팅, 기암절벽 뷰 짜릿한 코스'},
       {emoji:'🏞️',name:'제천 월악산 계곡',meta:'제천시 · 무료',mapQ:'월악산 계곡 제천',rating:4.5,tags:['계곡','트레킹','무료','물놀이'],tip:'덕주골·송계계곡 청정 계곡, 여름 가족 피서지로 유명'},
-      {emoji:'🌿',name:'보은 속리산 계곡',meta:'보은군 · 무료',mapQ:'속리산 계곡 보은',rating:4.6,tags:['계곡','폭포','무료','국립공원'],tip:'법주사 인근 달천 상류 계곡, 문장대 코스 연계 청정 피서지'}]
+      {emoji:'🌿',name:'보은 속리산 계곡',meta:'보은군 · 무료',mapQ:'속리산 계곡 보은',rating:4.6,tags:['계곡','폭포','무료','국립공원'],tip:'법주사 인근 달천 상류 계곡, 문장대 코스 연계 청정 피서지'},
+      // ── 증평·괴산·충주·제천·진천·문경 권역 추가 명소 ──
+      {emoji:'🏯',name:'공림사',meta:'괴산군 청천면 · 무료 / 24시간',mapQ:'공림사 괴산',rating:4.3,tags:['사찰','산사','힐링','템플스테이'],tip:'신라 경문왕(861~874년) 창건 천년 고찰. 낙영산 자락, 천년 느티나무 20그루, 공림사 동종(1776년) 보유. 24시간 개방·템플스테이 가능. 사담계곡과 세트 추천'},
+      {emoji:'🌿',name:'갈은구곡',meta:'괴산군 칠성면 · 무료',mapQ:'갈은구곡 괴산',rating:4.3,tags:['계곡','힐링','무료','청정'],tip:'자연보호구역 맑은 계곡수, 9가지 절경 코스. 여름 피서 최적지'},
+      {emoji:'💦',name:'수옥폭포',meta:'괴산군 연풍면 · 무료',mapQ:'수옥폭포 괴산',rating:4.4,tags:['폭포','트레킹','무료'],tip:'폭포 뒤로 직접 걸어 들어갈 수 있는 비경. 주차장서 200m 거리'},
+      {emoji:'🔭',name:'좌구산 천문대',meta:'증평군 · 유료',mapQ:'좌구산 천문대 증평',rating:4.6,tags:['천문','체험','야간','뷰맛집'],tip:'별 관측 1.5시간 가이드 프로그램 운영, 사전 예약 필수. 화~일 10:00~22:00'},
+      {emoji:'🌁',name:'좌구산 명상구름다리',meta:'증평군 · 무료',mapQ:'좌구산 구름다리 증평',rating:4.5,tags:['뷰맛집','산책','드라이브'],tip:'증평 최고 인기 명소(리뷰 1,037개). 탁 트인 산 전망, 구름다리 포토존'},
+      {emoji:'🌿',name:'미동산수목원',meta:'청주시 미원면 · 무료(월 휴무)',mapQ:'미동산수목원 청주',rating:4.5,tags:['수목원','산책','힐링','무료'],tip:'메타세쿼이아 숲길 무료 개방. 5월 봄꽃·가을 단풍 특히 아름다움'},
+      {emoji:'🦇',name:'활옥동굴',meta:'충주시 · 입장료 있음',mapQ:'활옥동굴 충주',rating:4.3,tags:['동굴','카약','체험','가족'],tip:'동굴 카약 체험 가능한 희귀 명소(리뷰 3,894개). 여름 피서지 최고, 화~일 09~18시'},
+      {emoji:'🏔️',name:'월악산 영봉',meta:'제천시 덕산면 · 무료',mapQ:'월악산 영봉 제천',rating:4.6,tags:['등산','국립공원','뷰맛집'],tip:'충주호 조망, 소백산맥 파노라마 뷰. 왕복 4~5시간, 해발 1,097m'},
+      {emoji:'🌉',name:'진천 농다리',meta:'진천군 초평면 · 무료',mapQ:'진천 농다리',rating:4.3,tags:['역사','드라이브','무료'],tip:'천년 역사 돌다리(리뷰 3,293개 전국 유명). 출렁다리·산책로 세트, 농다리 옆 미호천 절경'},
+      {emoji:'🌸',name:'진천 이팝나무길',meta:'진천군 · 무료',mapQ:'진천 이팝나무길',rating:4.2,tags:['봄꽃','산책','드라이브','무료'],tip:'5월 이팝나무 꽃터널 장관. 지금 방문하기 딱 좋은 시즌!'},
+      {emoji:'🏯',name:'문경새재 도립공원',meta:'경북 문경시 · 무료',mapQ:'문경새재 도립공원',rating:4.5,tags:['역사','트레킹','드라이브'],tip:'리뷰 5,378개. 맨발 산책·역사 탐방, 셔틀버스 운행. 드라마 왕국 촬영지'},
+      {emoji:'🎬',name:'문경새재 오픈세트',meta:'경북 문경시 · 입장료 있음',mapQ:'문경새재 오픈세트',rating:4.2,tags:['역사','드라이브','체험'],tip:'넷플릭스 킹덤·각종 사극 촬영지. 주말 한복 무료 대여 가능'}]
   }];
 /* ── 국내 지역 인기순 배열 ── */
 const DOMESTIC_ORDER = ['jeju','seoul','gyeongnam','gyeongbuk','jeonnam','jeonbuk','chungnam','chungbuk','gangwon','incheon'];
