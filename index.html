@@ -1147,12 +1147,34 @@ const TRIP_COLORS = {
   purple: {bg:'#EEEDFE',border:'#CECBF6',txt:'#3C3489'},
   green:  {bg:'#EAF3DE',border:'#C0DD97',txt:'#27500A'}};
 /* ── localStorage 저장·불러오기 ── */
-const STORAGE_KEY_TRIPS  = 'travelon_trips_v5';
-const STORAGE_KEY_IDS    = 'travelon_ids_v5';
+const STORAGE_KEY_TRIPS  = 'travelon_trips_v6';
+const STORAGE_KEY_IDS    = 'travelon_ids_v6';
 
 
 // 기본 데이터 (처음 실행 시 1회만 사용)
 const DEFAULT_TRIPS = [
+  {
+    id: 5,
+    title: '괴산 트리하우스가든 나드리',
+    emoji: '🌳',
+    color: 'teal',
+    startDate: '2026-05-17',
+    endDate: '2026-05-17',
+    companions: '당일치기',
+    memo: '증평 출발 → 괴산 트리하우스가든 → 주변 명소 탐방 → 증평 귀가',
+    tags: ['국내', '당일치기', '카페', '정원', '괴산'],
+    days: [
+      { date: '2026-05-17', places: [
+        { id:60, time:'14:00', emoji:'🚗', placeType:'move',    name:'증평 출발',                   shopName:'',                    note:'오후 출발 · 자가용 이동', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:61, time:'',     emoji:'🚗', placeType:'move',    name:'증평 → 트리하우스가든 이동',   shopName:'',                    note:'약 28km / 35분 · 중부내륙고속도로 괴산IC', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:62, time:'14:40', emoji:'🌳', placeType:'cafe',   name:'트리하우스가든',               shopName:'트리하우스가든',       note:'산림청 선정 민간정원 1호 · 정원 산책+카페 · 1인1음료 필수 ★4.6 · 화·수 휴무', address:'충북 괴산군 불정면 한불로 1216', phone:'', rating:'4.6', cost:'6,000원~', hours:'10:00-19:00 (화·수 휴무)' },
+        { id:63, time:'16:00', emoji:'🌊', placeType:'sight',  name:'[주변①] 산막이옛길',           shopName:'산막이옛길',           note:'괴산호 호숫가 따라 4km 평탄한 산책로 · 가족 나들이 최적 ★4.6 · 무료', address:'충북 괴산군 칠성면 사은리', phone:'043-830-3903', rating:'4.6', cost:'무료', hours:'상시' },
+        { id:64, time:'16:00', emoji:'💐', placeType:'cafe',   name:'[주변②] 이드니크',             shopName:'이드니크',             note:'유럽수국 감성 정원카페 · 인스타 핫플 ★4.4 · 일 휴무 주의', address:'충북 괴산군 청안면 청안읍내로 300-12', phone:'', rating:'4.4', cost:'5,500원~', hours:'10:00-19:00 (일 휴무)' },
+        { id:65, time:'16:00', emoji:'💦', placeType:'sight',  name:'[주변③] 수옥폭포',             shopName:'수옥폭포',             note:'폭포 뒤로 직접 걸어 들어갈 수 있는 비경 · 주차장서 200m ★4.4 · 무료', address:'충북 괴산군 연풍면', phone:'', rating:'4.4', cost:'무료', hours:'상시' },
+        { id:66, time:'16:00', emoji:'🌿', placeType:'sight',  name:'[주변④] 갈은구곡',             shopName:'갈은구곡',             note:'자연보호구역 맑은 계곡 9경 · 5월 신록 절경 ★4.3 · 무료', address:'충북 괴산군 칠성면 사은리', phone:'043-832-5550', rating:'4.3', cost:'무료', hours:'상시' },
+        { id:67, time:'17:30', emoji:'🚗', placeType:'move',   name:'괴산 → 증평 귀가',             shopName:'',                    note:'약 30km / 35분', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:68, time:'18:10', emoji:'🏠', placeType:'move',   name:'증평 도착',                    shopName:'',                    note:'저녁 시간 맞춰 귀가', address:'', phone:'', rating:'', cost:'', hours:'' }]}]
+  },
   {
     id: 2,
     title: '충북 괴산 쌍곡계곡 펜션 힐링',
@@ -1243,10 +1265,10 @@ function loadFromStorage() {
     const savedIds     = localStorage.getItem(STORAGE_KEY_IDS);
     return {
       trips:   savedTrips   ? JSON.parse(savedTrips)   : DEFAULT_TRIPS,
-      ids:     savedIds     ? JSON.parse(savedIds)     : { nextTripId: 4, nextPlaceId: 31 }
+      ids:     savedIds     ? JSON.parse(savedIds)     : { nextTripId: 6, nextPlaceId: 70 }
     };
   } catch(e) {
-    return { trips: DEFAULT_TRIPS, ids: { nextTripId: 4, nextPlaceId: 31 } };
+    return { trips: DEFAULT_TRIPS, ids: { nextTripId: 6, nextPlaceId: 70 } };
   }
 }
 
@@ -1308,6 +1330,13 @@ function renderTrips() {
   const list = trips.filter(t => {
     if (currentTripFilter === 'all') return true;
     return getTripStatus(t) === currentTripFilter;
+  }).sort((a, b) => {
+    const sa = getTripStatus(a), sb = getTripStatus(b);
+    // 정렬 우선순위: 여행중 → 예정(날짜 오름차순) → 완료(날짜 내림차순·최근 먼저)
+    const order = { ongoing: 0, upcoming: 1, done: 2 };
+    if (order[sa] !== order[sb]) return order[sa] - order[sb];
+    if (sa === 'done') return new Date(b.startDate) - new Date(a.startDate); // 완료: 최근순
+    return new Date(a.startDate) - new Date(b.startDate); // 예정/진행: 날짜순
   });
   const el = document.getElementById('tripList');
   const empty = document.getElementById('tripEmpty');
