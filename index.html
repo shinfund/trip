@@ -63,13 +63,7 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
   /* 여행 카드 테마 기본값 */
   --tc-bg:#E6F1FB;--tc-border:#B5D4F4;--tc-txt:#0C447C;--tc-txt2:#185FA5
 }
-.form-inp,.form-select{
-  width:100%;padding:10px 13px;
-  border:1.5px solid var(--border);border-radius:var(--r8);
-  font-size:17px;font-family:inherit;color:var(--txt);
-  background:var(--bg);transition:border-color .15s;min-height:44px
-}
-.spot-tip-text { color:var(--teal800);font-weight:600;font-size:13px; }
+
 
 
 
@@ -79,8 +73,8 @@ input,textarea,select{-webkit-appearance:none;appearance:none}
 /* ── 검색바 (일정) ── */
 
 /* ── 일정 복제 버튼 ── */
-.tc-btn-clone { background:var(--teal50);border-color:var(--teal100);color:var(--teal800); }
-.tc-btn-clone:hover { background:var(--teal100); }
+
+
 
 :focus-visible{outline:2px solid var(--sky);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -114,7 +108,7 @@ body{
   background:var(--card);border-bottom:1.5px solid var(--border);
   padding:12px 20px 0;
   padding-top:max(12px,env(safe-area-inset-top));
-  position:sticky;top:0;z-index:100;
+  position:fixed;top:0;left:0;right:0;z-index:100;
   box-shadow:0 2px 12px rgba(55,138,221,.06)
 }
 .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
@@ -154,56 +148,43 @@ body{
 
 
 /* 퀵 메뉴 */
-.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
-.quick-5{grid-template-columns:repeat(5,1fr)}
-.q-item{
-  background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);
-  padding:14px 6px 12px;text-align:center;cursor:pointer;transition:all .18s;
-  box-shadow:var(--shadow)
-}
-.q-item:hover{border-color:var(--sky100);transform:translateY(-3px);box-shadow:var(--shadow-hover)}
-.q-ico{font-size:24px;margin-bottom:6px}
-.q-lbl{font-size:13px;font-weight:700;color:var(--txt)}
+
+
+
+
+
+
 
 /* 가로 스크롤 */
-.hscroll{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px;margin-bottom:16px}
-.hscroll::-webkit-scrollbar{display:none}
+
+
 
 /* 여행지 카드 */
-.dest{
-  flex-shrink:0;width:152px;background:var(--card);
-  border:1.5px solid var(--border);border-radius:var(--r16);
-  overflow:hidden;cursor:pointer;transition:all .2s;
-  box-shadow:var(--shadow)
-}
-.dest:hover{border-color:var(--sky100);transform:translateY(-4px);box-shadow:var(--shadow-hover)}
-.dest-img{height:100px;display:flex;align-items:flex-end;padding:8px;position:relative;font-size:36px;align-items:center;justify-content:center}
 
-.dest-body{padding:10px 11px}
-.dest-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:2px}
-.dest-loc{font-size:13px;color:var(--txt2);margin-bottom:5px;font-weight:500}
-.dest-price{font-size:14px;font-weight:800;color:var(--sky800)}
-.dest-price span{font-size:12px;font-weight:500;color:var(--txt3)}
 
-.theme-card{
-  border-radius:var(--r14);padding:16px;cursor:pointer;
-  border:1.5px solid transparent;transition:all .18s;
-  box-shadow:var(--shadow)
-}
-.theme-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
-.th-ico{font-size:24px;margin-bottom:7px}
-.th-name{font-size:14px;font-weight:700;color:var(--txt);margin-bottom:2px}
-.th-cnt{font-size:13px;font-weight:600;color:var(--txt2)}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 /* 국가 필터 */
-.country-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:14px;padding-bottom:2px}
-.country-row::-webkit-scrollbar{display:none}
+
+
 
 /* 지역 그리드 */
-.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:18px}
+
 
 
 /* ── 강원도 내장 앱 ── */
@@ -214,28 +195,19 @@ body{
 .gw-mark{width:40px;height:40px;background:var(--teal100);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;border:1.5px solid rgba(29,158,117,.2)}
 .gw-name{font-size:17px;font-weight:800;color:var(--teal800);font-family:'Sunflower','Noto Sans KR',sans-serif}
 .gw-sub{font-size:13px;color:var(--teal600);font-weight:600;margin-top:1px}
-.gw-add-btn{
-  display:flex;align-items:center;gap:5px;
-  font-size:13px;font-weight:700;padding:8px 14px;
-  background:var(--teal600);color:#fff;border:none;border-radius:var(--r12);
-  cursor:pointer;transition:all .15s;border-radius:var(--r12)
-}
-.gw-add-btn:hover{background:var(--teal800)}
+
+
 .gw-stats{display:flex;gap:8px}
 .gw-stat{text-align:center;background:var(--card);border-radius:var(--r8);padding:8px 12px;flex:1;border:1px solid var(--teal100)}
 .gw-sv{font-size:17px;font-weight:800;color:var(--teal800)}
 .gw-sl{font-size:13px;color:var(--txt2);font-weight:700;margin-top:1px}
 
 /* 강원 세부탭 */
-.gw-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:0}
-.gw-tabs::-webkit-scrollbar{display:none}
-.gw-tab{
-  flex-shrink:0;padding:8px 14px;font-size:14px;font-weight:700;
-  color:var(--txt2);border-bottom:2.5px solid transparent;
-  cursor:pointer;transition:all .15s;white-space:nowrap
-}
-.gw-tab.on{color:var(--teal800);border-bottom-color:var(--teal);font-weight:800}
-.gw-tab:hover:not(.on){color:var(--txt)}
+
+
+
+
+
 
 /* 강원 목록 */
 .gw-list{padding:12px 14px}
@@ -260,7 +232,7 @@ body{
 .spot-region{font-size:13px;color:var(--txt2);margin-bottom:4px;font-weight:600}
 .spot-tags{display:flex;gap:3px;flex-wrap:wrap}
 .sp-tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:20px;display:inline-block}
-.sa-edit:hover{background:var(--amber100)}
+
 
 /* 빈 상태 */
 .empty-state{text-align:center;padding:40px 20px;color:var(--txt3)}
@@ -307,7 +279,7 @@ body{
 }
 .form-inp:focus{border-color:var(--teal);background:var(--card);box-shadow:0 0 0 3px rgba(29,158,117,.1)}
 .form-inp::placeholder{color:var(--txt3)}
-.form-select:focus{border-color:var(--teal);background-color:#fff}
+
 
 /* 알림 토스트 */
 .toast{
@@ -343,8 +315,8 @@ body{
 }
 
 /* 필터 */
-.trip-filter{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
-.trip-filter::-webkit-scrollbar{display:none}
+
+
 .tf{flex-shrink:0;font-size:14px;font-weight:700;padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
 .tf.on,.tf:hover{background:var(--sky50);border-color:var(--sky);color:var(--sky800)}
 .tf-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:20px;font-size:12px;font-weight:800;background:var(--sky100);color:var(--sky800);line-height:1}
@@ -371,26 +343,21 @@ body{
   background:var(--bg)
 }
 .tc-places{font-size:14px;color:var(--txt2);font-weight:600}
-.tc-btn-edit{background:var(--amber50);border-color:var(--amber100);color:var(--amber800)}
-.tc-btn-edit:hover{background:var(--amber100)}
-.tc-btn-share{background:var(--sky50);border-color:var(--sky100);color:var(--sky800)}
-.tc-btn-share:hover{background:var(--sky100)}
+
+
+
+
 
 /* 빈 상태 */
 .trip-empty{text-align:center;padding:48px 20px;background:var(--card);border:1.5px dashed var(--border);border-radius:var(--r16)}
 .te-ico{font-size:48px;margin-bottom:12px}
 .te-title{font-size:18px;font-weight:800;color:var(--txt);margin-bottom:6px}
 .te-sub{font-size:14px;color:var(--txt2);line-height:1.75;margin-bottom:18px}
-.te-btn{font-size:14px;font-weight:700;padding:11px 22px;background:var(--sky);color:#fff;border:none;border-radius:var(--r12);cursor:pointer;transition:all .15s}
-.te-btn:hover{background:var(--sky800)}
+
+
 
 /* 상세 뷰 */
-.detail-back{
-  font-size:14px;font-weight:700;color:var(--sky800);
-  padding:10px 0 14px;cursor:pointer;display:flex;align-items:center;gap:4px;
-  border-bottom:1px solid var(--border2);margin-bottom:14px
-}
-.detail-back:hover{color:var(--sky)}
+
 .detail-hero{
   border-radius:var(--r16);padding:18px;margin-bottom:14px;
   border:1.5px solid transparent
@@ -427,10 +394,10 @@ body{
 /* ── 선택지 카드 그룹 ── */
 .choice-group-row{border-bottom:none!important}
 .place-note{font-size:14px;color:var(--txt2);margin-top:3px;line-height:1.65;font-weight:600}
-.place-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
-.place-meta-item{display:flex;align-items:center;gap:3px;font-size:13px;color:var(--txt2);font-weight:500}
-.place-meta-item a{color:var(--sky600);text-decoration:none;font-weight:600}
-.place-meta-item a:hover{text-decoration:underline}
+
+
+
+
 .place-stars{color:#1A2535;font-size:13px;font-weight:800}
 
 .no-places{font-size:14px;color:var(--txt2);padding:16px 14px;text-align:center}
@@ -455,7 +422,7 @@ body{
   width:40px;height:40px;border-radius:var(--r12);
   background:var(--bg);border:1px solid var(--border2);
   display:flex;align-items:center;justify-content:center;
-  font-size:20px;flex-shrink:0;border-radius:var(--r12)
+  font-size:20px;flex-shrink:0
 }
 .info-body{flex:1;min-width:0}
 .info-name{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:3px}
@@ -476,28 +443,19 @@ body{
   padding:7px 13px;border-radius:var(--r12);
   border:1.5px solid;cursor:pointer;
   text-decoration:none;transition:all .15s;
-  white-space:nowrap;border-radius:var(--r12)
+  white-space:nowrap
 }
 .info-book{background:var(--teal50);border-color:#a5d6a7;color:var(--teal800)}
 .info-book:hover{background:var(--teal100)}
 .info-map{background:var(--sky50);border-color:var(--sky100);color:var(--sky800)}
 .info-map:hover{background:var(--sky100)}
 .info-naver{background:var(--teal50);border-color:var(--teal100);color:var(--teal800)}
-.info-naver:hover{background:var(--teal50)}
+.info-naver:hover{background:var(--teal100)}
 .info-call{background:var(--teal50);border-color:var(--teal100);color:var(--teal800)}
 .info-call:hover{background:var(--teal100)}
 
-/* 화살표 스크롤 공통 */
-.scroll-row-wrap{display:flex;align-items:center;gap:4px;margin-bottom:14px}
-.arr-btn{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:17px;line-height:1;transition:all .15s;padding:0}
-.arr-btn:hover{border-color:var(--sky);color:var(--sky800);background:var(--sky50)}
 
-/* 국내 서브탭 */
-.sub-tab-bar{
-  flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
-  padding-bottom:2px
-}
-.sub-tab-bar::-webkit-scrollbar{display:none}
+
 .stab{
   flex-shrink:0;font-size:14px;font-weight:700;
   padding:6px 14px;border-radius:20px;cursor:pointer;
@@ -606,33 +564,29 @@ body{
 .theme-spot-name{font-size:15px;font-weight:700;color:var(--txt);margin-bottom:3px}
 .theme-spot-meta{font-size:13px;font-weight:600;color:var(--txt2);margin-bottom:4px}
 .theme-spot-region{font-size:13px;font-weight:700;padding:3px 9px;border-radius:10px;background:var(--sky50);color:var(--sky800);display:inline-block}
-.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
 
-/* ── 예약 허브 ── */
 
 
 /* ── 해외 여행지 목록 ── */
-.intl-dest{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r14);padding:14px;margin-bottom:10px;display:flex;gap:12px;cursor:pointer;transition:all .18s;box-shadow:var(--shadow)}
-.intl-dest:hover{border-color:var(--sky100);box-shadow:var(--shadow-hover)}
-.intl-dest-body{flex:1;min-width:0}
-.intl-dest-name{font-size:16px;font-weight:700;color:var(--txt);margin-bottom:2px}
-.intl-dest-sub{font-size:14px;color:var(--txt2);margin-bottom:8px;font-weight:600}
-.intl-dest-btns{display:flex;gap:6px;flex-wrap:wrap}
-.intl-dest-btn{font-size:13px;font-weight:600;padding:5px 10px;border-radius:var(--r8);border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s}
-.intl-dest-btn:hover{background:var(--sky50);border-color:var(--sky);color:var(--sky800)}
+
+
+
+
+
+
+
+
 
 /* ── 준비 카드 ── */
-.prep-cards{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-.prep-card{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);cursor:pointer;transition:all .18s;box-shadow:var(--shadow)}
-.prep-card:hover{border-color:var(--sky);transform:translateX(4px);box-shadow:var(--shadow-hover)}
-.prep-ico{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--sky50);border-radius:var(--r12);flex-shrink:0;overflow:hidden}
-.prep-body{flex:1}
-.prep-title{font-size:15px;font-weight:700;color:var(--txt)}
-.prep-sub{font-size:13px;color:var(--txt2);margin-top:1px;font-weight:600}
 
 
 
-/* 외부링크 안내 모달 및 일정 추가 버튼 스타일은 동적 생성으로 처리 */
+
+
+
+
+
+
 
 /* ── 모바일 소형 (≤480px) ── */
 @media(max-width:480px){
@@ -643,20 +597,20 @@ body{
   .mtab{font-size:14px;padding:8px 4px 9px;min-width:44px}
   .main-tabs{padding:0 14px;margin:0 -14px}
   .content{padding:12px 14px max(80px,calc(64px + env(safe-area-inset-bottom)));overflow-x:clip;--cp:14px}
-  .dest{width:130px}
-  .dest-img{height:82px;font-size:30px}
-  .dest-name{font-size:14px}
-  .dest-loc{font-size:12px;color:var(--txt2)}
-  .dest-price{font-size:13px}
-  .quick{grid-template-columns:repeat(4,1fr);gap:5px}
-  .quick-5{grid-template-columns:repeat(5,1fr);gap:4px}
-  .q-item{padding:10px 3px 8px}
-  .q-ico{font-size:20px;margin-bottom:3px}
-  .q-lbl{font-size:12px}
-  .theme-grid{grid-template-columns:1fr 1fr;gap:6px}
-  .th-ico{font-size:22px;margin-bottom:5px}
-  .th-name{font-size:13px}
-  .rgrid{grid-template-columns:repeat(4,1fr);gap:6px}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   .upcoming-card{gap:10px;padding:11px 12px}
   .uc-title{font-size:15px}
   .uc-meta{font-size:13px;color:var(--txt2)}
@@ -666,13 +620,13 @@ body{
 @media(min-width:481px) and (max-width:768px){
   .content{padding:14px 18px 36px}
   .header{padding:12px 18px 0}
-  .quick{grid-template-columns:repeat(4,1fr)}
-  .theme-grid{grid-template-columns:repeat(4,1fr)}
-  .rgrid{grid-template-columns:repeat(4,1fr)}
-  .dest{width:144px}
+  
+  
+  
+  
   #intlDestList{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  #intlDestList .intl-dest{margin-bottom:0}
-  .prep-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  #intlDestList 
+  
   .modal,      .tc-places{flex-wrap:wrap;gap:3px}
 }
 
@@ -685,21 +639,21 @@ body{
   .logo-name{font-size:22px}
   .logo-mark{width:44px;height:44px;font-size:24px}
   .logo-en{font-size:12px}
-  .quick{grid-template-columns:repeat(4,1fr);gap:12px}
-  .q-item{padding:16px 8px 14px}
-  .q-ico{font-size:28px;margin-bottom:8px}
-  .q-lbl{font-size:14px}
-  .theme-grid{grid-template-columns:repeat(4,1fr);gap:10px}
-  .th-ico{font-size:28px;margin-bottom:8px}
-  .th-name{font-size:15px}
-  .th-cnt{font-size:13px}
-  .rgrid{grid-template-columns:repeat(8,1fr);gap:8px}
-  .dest{width:162px}
-  .dest-img{height:112px;font-size:42px}
-  .dest-name{font-size:15px}
-  .dest-price{font-size:14px}
-  .hscroll{gap:14px;padding-bottom:8px}
-  .rev{width:270px}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   .sec-t{font-size:19px}
   .upcoming-card{padding:14px 18px}
   .uc-title{font-size:17px}
@@ -710,18 +664,18 @@ body{
 @media(min-width:1100px){
   .content{max-width:1020px;padding:28px 40px 56px}
   .header{padding:16px 40px 0}
-  .dest{width:180px}
-  .dest-img{height:120px}
+  
+  
   .logo-name{font-size:24px}
   .logo-mark{width:48px;height:48px;font-size:26px}
   .mtab{font-size:15px;padding:12px 18px 13px}
   /* 3열 레이아웃 */
   #intlDestList{grid-template-columns:1fr 1fr 1fr}
-  .theme-grid{grid-template-columns:repeat(4,1fr);gap:12px}
-  .quick{gap:14px}
-  .q-item{padding:20px 10px 16px}
-  .q-ico{font-size:32px;margin-bottom:10px}
-  .q-lbl{font-size:14px}
+  
+  
+  
+  
+  
   /* 여행 카드 */
   .tc-title{font-size:17px}
 }
@@ -739,7 +693,6 @@ body{
 /* ── 모달 타이틀 공통 ── */
 .modal-title{font-size:17px;font-weight:800;color:var(--txt);letter-spacing:-.3px;display:flex;align-items:center;gap:6px}
 
-/* ── 폼 레이블 공통 ── */
 
 </style>
 <body>
@@ -947,7 +900,6 @@ body{
 
 <!-- 여행 상세 뷰 -->
 <div class="panel" id="p5-detail" style="display:none">
-
   <div id="detailContent"></div>
 </div>
 <!-- ════ 국내 ════ -->
@@ -1003,24 +955,6 @@ body{
     localStorage.setItem(APP_VER_KEY, APP_VER);
   }
 })();
-
-const COLOR_MAP = {
-  sky:    {bg:'#E6F1FB',border:'#B5D4F4',txt:'#0C447C'},
-  teal:   {bg:'#E1F5EE',border:'#9FE1CB',txt:'#085041'},
-  green:  {bg:'#EAF3DE',border:'#C0DD97',txt:'#27500A'},
-  amber:  {bg:'#FAEEDA',border:'#FAC775',txt:'#633806'},
-  coral:  {bg:'#FAECE7',border:'#F5C4B3',txt:'#712B13'},
-  purple: {bg:'#EEEDFE',border:'#CECBF6',txt:'#3C3489'},
-  pink:   {bg:'#FBEAF0',border:'#F4C0D1',txt:'#72243E'},
-  gray:   {bg:'#F1EFE8',border:'#D3D1C7',txt:'#5F5E5A'}};
-
-const TAG_COLORS = [
-  {bg:'#E6F1FB',txt:'#0C447C'},{bg:'#E1F5EE',txt:'#085041'},
-  {bg:'#FAEEDA',txt:'#633806'},{bg:'#FAECE7',txt:'#712B13'},
-  {bg:'#EAF3DE',txt:'#27500A'},{bg:'#EEEDFE',txt:'#3C3489'},
-  {bg:'#FBEAF0',txt:'#72243E'},{bg:'#F1EFE8',txt:'#5F5E5A'}];
-
-let currentArea = 'all';
 
 /* ── 토스트 ── */
 let toastTimer;
@@ -1116,39 +1050,14 @@ function swSub(n, el) {
   }
 }
 
-/* ── 강원도 세부탭 (레거시 — renderRegionPanel 내부에서 동적 생성) ── */
-document.querySelectorAll('.gw-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.gw-tab').forEach(t => t.classList.remove('on'));
-    tab.classList.add('on');
-    currentArea = tab.dataset.area;
-  });
-});
-
-/* ── 국가 필터 ── */
-document.querySelectorAll('.country-row').forEach(row => {
-  row.querySelectorAll('.c-chip').forEach(c => {
-    c.addEventListener('click', () => {
-      row.querySelectorAll('.c-chip').forEach(x => x.classList.remove('on'));
-      c.classList.add('on');
-    });
-  });
-});
 
 
 
 
-/* ── 여행 일정 데이터 ── */
-const TRIP_COLORS = {
-  sky:    {bg:'#E6F1FB',border:'#B5D4F4',txt:'#0C447C'},
-  teal:   {bg:'#E1F5EE',border:'#9FE1CB',txt:'#085041'},
-  coral:  {bg:'#FAECE7',border:'#F5C4B3',txt:'#712B13'},
-  amber:  {bg:'#FAEEDA',border:'#FAC775',txt:'#633806'},
-  purple: {bg:'#EEEDFE',border:'#CECBF6',txt:'#3C3489'},
-  green:  {bg:'#EAF3DE',border:'#C0DD97',txt:'#27500A'}};
+
 /* ── localStorage 저장·불러오기 ── */
-const STORAGE_KEY_TRIPS  = 'travelon_trips_v6';
-const STORAGE_KEY_IDS    = 'travelon_ids_v6';
+const STORAGE_KEY_TRIPS  = 'travelon_trips_v9';
+const STORAGE_KEY_IDS    = 'travelon_ids_v9';
 
 
 // 기본 데이터 (처음 실행 시 1회만 사용)
@@ -1161,19 +1070,19 @@ const DEFAULT_TRIPS = [
     startDate: '2026-05-17',
     endDate: '2026-05-17',
     companions: '당일치기',
-    memo: '증평 출발 → 괴산 트리하우스가든 → 주변 명소 탐방 → 증평 귀가',
+    memo: '',
     tags: ['국내', '당일치기', '카페', '정원', '괴산'],
     days: [
       { date: '2026-05-17', places: [
-        { id:60, time:'14:00', emoji:'🚗', placeType:'move',    name:'증평 출발',                   shopName:'',                    note:'오후 출발 · 자가용 이동', address:'', phone:'', rating:'', cost:'', hours:'' },
-        { id:61, time:'',     emoji:'🚗', placeType:'move',    name:'증평 → 트리하우스가든 이동',   shopName:'',                    note:'약 28km / 35분 · 중부내륙고속도로 괴산IC', address:'', phone:'', rating:'', cost:'', hours:'' },
-        { id:62, time:'14:40', emoji:'🌳', placeType:'cafe',   name:'트리하우스가든',               shopName:'트리하우스가든',       note:'산림청 선정 민간정원 1호 · 정원 산책+카페 · 1인1음료 필수 ★4.6 · 화·수 휴무', address:'충북 괴산군 불정면 한불로 1216', phone:'', rating:'4.6', cost:'6,000원~', hours:'10:00-19:00 (화·수 휴무)' },
+        { id:60, time:'14:00', emoji:'🚗', placeType:'move',    name:'증평 출발',                   shopName:'',                    note:'', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:61, time:'',     emoji:'🚗', placeType:'move',    name:'증평 → 트리하우스가든 이동',   shopName:'',                    note:'', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:62, time:'14:40', emoji:'🌳', placeType:'cafe',   name:'트리하우스가든',               shopName:'트리하우스가든',       note:'산림청 선정 민간정원 1호 · 정원 산책+카페 · 1인1음료 필수 ★4.6 · 화·수 휴무', address:'충북 괴산군 불정면 한불로 1216', phone:'043-832-5550', rating:'4.6', cost:'6,000원~', hours:'10:00-19:00 (화·수 휴무)' },
         { id:63, time:'16:00', emoji:'🌊', placeType:'sight',  name:'[주변①] 산막이옛길',           shopName:'산막이옛길',           note:'괴산호 호숫가 따라 4km 평탄한 산책로 · 가족 나들이 최적 ★4.6 · 무료', address:'충북 괴산군 칠성면 사은리', phone:'043-830-3903', rating:'4.6', cost:'무료', hours:'상시' },
         { id:64, time:'16:00', emoji:'💐', placeType:'cafe',   name:'[주변②] 이드니크',             shopName:'이드니크',             note:'유럽수국 감성 정원카페 · 인스타 핫플 ★4.4 · 일 휴무 주의', address:'충북 괴산군 청안면 청안읍내로 300-12', phone:'', rating:'4.4', cost:'5,500원~', hours:'10:00-19:00 (일 휴무)' },
         { id:65, time:'16:00', emoji:'💦', placeType:'sight',  name:'[주변③] 수옥폭포',             shopName:'수옥폭포',             note:'폭포 뒤로 직접 걸어 들어갈 수 있는 비경 · 주차장서 200m ★4.4 · 무료', address:'충북 괴산군 연풍면', phone:'', rating:'4.4', cost:'무료', hours:'상시' },
         { id:66, time:'16:00', emoji:'🌿', placeType:'sight',  name:'[주변④] 갈은구곡',             shopName:'갈은구곡',             note:'자연보호구역 맑은 계곡 9경 · 5월 신록 절경 ★4.3 · 무료', address:'충북 괴산군 칠성면 사은리', phone:'043-832-5550', rating:'4.3', cost:'무료', hours:'상시' },
-        { id:67, time:'17:30', emoji:'🚗', placeType:'move',   name:'괴산 → 증평 귀가',             shopName:'',                    note:'약 30km / 35분', address:'', phone:'', rating:'', cost:'', hours:'' },
-        { id:68, time:'18:10', emoji:'🏠', placeType:'move',   name:'증평 도착',                    shopName:'',                    note:'저녁 시간 맞춰 귀가', address:'', phone:'', rating:'', cost:'', hours:'' }]}]
+        { id:67, time:'17:30', emoji:'🚗', placeType:'move',   name:'괴산 → 증평 귀가',             shopName:'',                    note:'', address:'', phone:'', rating:'', cost:'', hours:'' },
+        { id:68, time:'18:10', emoji:'🏠', placeType:'move',   name:'증평 도착',                    shopName:'',                    note:'', address:'', phone:'', rating:'', cost:'', hours:'' }]}]
   },
   {
     id: 2,
@@ -1287,10 +1196,7 @@ const _stored = loadFromStorage();
 let trips     = _stored.trips && _stored.trips.length > 0 ? _stored.trips : DEFAULT_TRIPS;
 let nextTripId  = _stored.ids.nextTripId  || 4;
 let nextPlaceId = _stored.ids.nextPlaceId || 31;
-let editingTripId = null;
-let deletingTripId = null;
 let viewingTripId = null;
-let addingPlaceDayIdx = null;
 let currentTripFilter = 'all';
 
 /* ── 날짜 유틸 ── */
@@ -1345,7 +1251,6 @@ function renderTrips() {
   empty.style.display = 'none';
   el.innerHTML = list.map(t => {
     const st = getTripStatus(t);
-    const dd = getDday(t.startDate);
     const stLabel = st === 'upcoming' ? '예정' : st === 'ongoing' ? '여행 중 <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;flex-shrink:0"></span>' : '완료';
     const stCls = st === 'upcoming' ? 'st-upcoming' : st === 'ongoing' ? 'st-ongoing' : 'st-done';
     const totalPlaces = t.days.reduce((s,d) => s + d.places.length, 0);
@@ -1436,7 +1341,6 @@ function renderDday() {
 }
 
 /* ── 랜덤 여행지 추천 ── */
-let lastRandomIdx = -1;
 function pickRandomSpot() {
   const allSpots = [];
   if (typeof REGIONS !== 'undefined') {
@@ -1508,17 +1412,26 @@ function filterTrips(f, el) {
   renderTrips();
 }
 
+let _savedScrollY = 0;
+
 function openTripDetail(id) {
+  _savedScrollY = window.scrollY;
   viewingTripId = id;
   renderTripDetail();
   document.getElementById('p5').style.display = 'none';
   document.getElementById('p5-detail').style.display = 'block';
+  window.scrollTo(0, 0);
 }
 function closeTripDetail() {
   viewingTripId = null;
   document.getElementById('p5-detail').style.display = 'none';
   document.getElementById('p5').style.display = 'block';
+  renderTrips();
+  requestAnimationFrame(() => window.scrollTo(0, _savedScrollY));
 }
+
+/* ── 공통 렌더 헬퍼 ── */
+function refreshAll() { renderTrips(); renderUpcoming(); renderDday(); }
 function renderTripDetail() {
   const t = trips.find(x => x.id === viewingTripId);
   if (!t) return;
@@ -1630,6 +1543,7 @@ function renderTripDetail() {
 
   const restaurants = allPlaces.filter(p => p.placeType === 'restaurant' && p.name);
   const sights      = allPlaces.filter(p => p.placeType === 'sight'      && p.name);
+  const cafes       = allPlaces.filter(p => p.placeType === 'cafe'       && p.name);
 
   function infoCard(p, type) {
     // 검색어: shopName 있으면 shopName, 없으면 name에서 "체크인/체크아웃/이동/방문" 제거
@@ -1686,11 +1600,16 @@ function renderTripDetail() {
       <div class="info-sec-title"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> 관광지</div>
       ${sights.map(p => infoCard(p,'sight')).join('')}
     </div>` : '';
+  const cafeSec = cafes.length ? `
+    <div class="info-section">
+      <div class="info-sec-title">☕ 카페</div>
+      ${cafes.map(p => infoCard(p,'cafe')).join('')}
+    </div>` : '';
 
-  const hasInfo = lodgings.length || restaurants.length || sights.length;
+  const hasInfo = lodgings.length || restaurants.length || sights.length || cafes.length;
   const infoHtml = hasInfo ? `
     <div class="sec" style="margin-top:20px"><div class="sec-t">장소 정보</div></div>
-    ${lodgingSec}${restaurantSec}${sightSec}` : '';
+    ${lodgingSec}${restaurantSec}${sightSec}${cafeSec}` : '';
 
   const detailEl = document.getElementById('detailContent');
   detailEl.setAttribute('data-trip-color', t.color || 'sky');
@@ -1808,7 +1727,6 @@ function renderThemeModal(key) {
   }
 
   body.innerHTML = list.map((s, i) => {
-    const safeS = JSON.stringify({emoji:s.emoji,name:s.name,meta:s.meta||'',tags:s.tags||[]}).replace(/"/g,'&quot;');
     const mapUrl = s.isIntl
       ? `https://www.google.com/maps/search/${encodeURIComponent((s.mapQ||s.name))}`
       : `https://map.naver.com/p/search/${encodeURIComponent((s.mapQ||s.name)+' '+(s.regionName||''))}`;
@@ -1999,10 +1917,7 @@ function inlineSetRegion(key) {
 }
 
 /* ── 가로 스크롤 공통 함수 ── */
-function scrollRow(id, dir) {
-  const el = document.getElementById(id);
-  if (el) el.scrollBy({left: dir * 120, behavior: 'smooth'});
-}
+
 
 function scrollRegion(suffix, dir) {
   const row = document.getElementById('inlineRegionBarDom');
@@ -2845,24 +2760,14 @@ function renderRegionSpotList(key) {
   const filtered = query ? list.filter(s => s.name.toLowerCase().includes(query) || s.tags.some(t=>t.includes(query))) : list;
   const el = document.getElementById(`rlist-${key}`);
   if (!el) return;
-  const BGCOLORS = ['#E6F1FB','#E1F5EE','#FAEEDA','#FAECE7','#EEEDFE','#EAF3DE','#FBEAF0','#F1EFE8'];
-  function _localStarHtml(r) {
-    if (!r) return '';
-    const full = Math.floor(r), half = (r % 1) >= 0.5;
-    let s = '';
-    for(let i=0;i<full;i++) s+='⭐';
-    if(half) s+='✨';
-    return `<span style="font-size:13px">${s} <span style="font-size:13px;color:#1A2535;font-weight:800">${r.toFixed(1)}</span></span>`;
-  }
   if (!filtered.length) {
     el.innerHTML = `<div class="empty-state"><div class="empty-ico">🗺️</div><div class="empty-msg">명소가 없습니다</div><div class="empty-sub">위의 + 명소 추가 버튼으로 추가해 보세요!</div></div>`;
   } else {
     el.innerHTML = filtered.map((s,i) => {
-      const safeS = JSON.stringify({emoji:s.emoji,name:s.name,meta:s.meta||'',tags:s.tags}).replace(/"/g,'&quot;');
       const tagsHtml = (s.tags||[]).map(t=>{ const {bg,c}=tagColor(t); return `<span class="sp-tag" style="background:${bg};color:${c}">${t}</span>`; }).join('');
       return `<div class="spot">
         <div class="spot-body">
-          <div class="spot-name" style="margin-bottom:2px">${s.emoji} ${s.name}${_localStarHtml(s.rating) ? ' '+_localStarHtml(s.rating) : ''}</div>
+          <div class="spot-name" style="margin-bottom:2px">${s.emoji} ${s.name}${starHtml(s.rating) ? ' '+starHtml(s.rating) : ''}</div>
           <div class="spot-region" style="margin-bottom:4px">${s.meta||''}</div>
           <div class="spot-tags">${tagsHtml}</div>
           ${s.tip ? `<div style="font-size:13px;font-weight:600;color:var(--teal800);margin-bottom:6px;line-height:1.5">💡 ${s.tip}</div>` : ''}
@@ -3863,9 +3768,7 @@ function deleteTrip(id) {
   if (!confirm('이 여행을 삭제할까요?')) return;
   trips = trips.filter(t => t.id !== id);
   saveToStorage();
-  renderTrips();
-  renderUpcoming();
-  renderDday();
+  refreshAll();
   showToast('🗑️ 여행이 삭제됐어요');
 }
 
@@ -3916,20 +3819,34 @@ renderTodayTip();
 initRegionSpots();
 initIntlDests();
 
-// trips 데이터 강제 초기화 (첫 로드)
-if (!trips || trips.length === 0) {
-  trips = DEFAULT_TRIPS;
-  saveToStorage();
-}
+// 현재 버전 외 travelon_* 키 일괄 삭제
+(function(){
+  const keep = [STORAGE_KEY_TRIPS, STORAGE_KEY_IDS];
+  Object.keys(localStorage).forEach(k => {
+    if (k.startsWith('travelon_') && !keep.includes(k)) {
+      try { localStorage.removeItem(k); } catch(e) {}
+    }
+  });
+})();
+trips = DEFAULT_TRIPS;
+saveToStorage();
 
-renderTrips();
-renderUpcoming();
-renderDday();
+refreshAll();
 
-// 초기 홈 탭 표시 (DOM 로드 후)
-setTimeout(() => {
+// 초기 홈 탭 표시
+document.addEventListener('DOMContentLoaded', () => {
   sw(0);
-}, 50);
+  const hdr = document.querySelector('.header');
+  const cnt = document.querySelector('.content');
+  if (hdr && cnt) cnt.style.paddingTop = (hdr.offsetHeight + 16) + 'px';
+});
+// DOMContentLoaded가 이미 지난 경우 fallback
+if (document.readyState !== 'loading') {
+  sw(0);
+  const hdr = document.querySelector('.header');
+  const cnt = document.querySelector('.content');
+  if (hdr && cnt) cnt.style.paddingTop = (hdr.offsetHeight + 16) + 'px';
+}
 
 
 
@@ -3952,7 +3869,7 @@ function placeIconSvg(placeType, emoji, size) {
 function scheduleDdayRefresh(){
   const now=new Date();
   const ms=(new Date(now.getFullYear(),now.getMonth(),now.getDate()+1)-now)+1000;
-  setTimeout(()=>{renderTrips();renderUpcoming();renderDday();scheduleDdayRefresh();},ms);
+  setTimeout(()=>{refreshAll();scheduleDdayRefresh();},ms);
 }
 scheduleDdayRefresh();
 </script>
