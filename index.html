@@ -1298,7 +1298,7 @@ function renderTrips() {
 /* ── 홈 upcoming 렌더 ── */
 function renderUpcoming() {
   const upcoming = trips
-    .filter(t => getTripStatus(t) !== 'done')
+    .filter(t => !['done','hold'].includes(getTripStatus(t)))
     .sort((a,b) => new Date(a.startDate) - new Date(b.startDate))
     .slice(0, 3);
   const el = document.getElementById('upcomingCards');
@@ -1332,7 +1332,7 @@ function renderDday() {
   if (!banner || !empty) return;
 
   const next = trips
-    .filter(t => getTripStatus(t) !== 'done')
+    .filter(t => !['done','hold'].includes(getTripStatus(t)))
     .sort((a,b) => new Date(a.startDate) - new Date(b.startDate))[0];
 
   if (!next) {
