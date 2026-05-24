@@ -317,7 +317,7 @@ body{
 /* 필터 */
 
 
-.tf{flex-shrink:0;font-size:14px;font-weight:700;padding:7px 14px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px}
+.tf{flex-shrink:0;font-size:12px;font-weight:700;padding:7px 6px;border-radius:20px;border:1.5px solid var(--border);background:var(--card);color:var(--txt2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .tf.on,.tf:hover{background:var(--sky50);border-color:var(--sky);color:var(--sky800)}
 .tf-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:20px;font-size:12px;font-weight:800;background:var(--sky100);color:var(--sky800);line-height:1}
 .tf.on .tf-badge{background:var(--sky);color:#fff}
@@ -337,6 +337,7 @@ body{
 .st-upcoming{background:var(--sky50);color:var(--sky800)}
 .st-ongoing{background:var(--teal50);color:var(--teal800)}
 .st-done{background:var(--gray50);color:var(--gray600)}
+.st-hold{background:var(--amber50);color:var(--amber800)}
 .tc-foot{
   border-top:1px solid var(--border2);padding:10px 16px;
   display:flex;align-items:center;justify-content:space-between;
@@ -883,9 +884,10 @@ body{
   <!-- 필터 탭 (뱃지 포함) -->
   <div id="tripFilter" style="display:flex;gap:5px;margin-bottom:14px">
     <div class="tf on" onclick="filterTrips('all',this)" style="flex:1;justify-content:center;padding:7px 4px">전체 <span class="tf-badge" id="badge-all"></span></div>
-    <div class="tf" onclick="filterTrips('upcoming',this)" style="flex:1;justify-content:center;padding:7px 4px">여행 예정 <span class="tf-badge" id="badge-upcoming"></span></div>
-    <div class="tf" onclick="filterTrips('ongoing',this)" style="flex:1;justify-content:center;padding:7px 4px">여행 중 <span class="tf-badge" id="badge-ongoing"></span></div>
-    <div class="tf" onclick="filterTrips('done',this)" style="flex:1;justify-content:center;padding:7px 4px">여행 완료 <span class="tf-badge" id="badge-done"></span></div>
+    <div class="tf" onclick="filterTrips('ongoing',this)" style="flex:1;justify-content:center;padding:7px 4px">진행 중 <span class="tf-badge" id="badge-ongoing"></span></div>
+    <div class="tf" onclick="filterTrips('upcoming',this)" style="flex:1;justify-content:center;padding:7px 4px">예정 <span class="tf-badge" id="badge-upcoming"></span></div>
+    <div class="tf" onclick="filterTrips('hold',this)" style="flex:1;justify-content:center;padding:7px 4px">보류 <span class="tf-badge" id="badge-hold"></span></div>
+    <div class="tf" onclick="filterTrips('done',this)" style="flex:1;justify-content:center;padding:7px 4px">완료 <span class="tf-badge" id="badge-done"></span></div>
   </div>
 
   <div id="tripList"></div>
@@ -1085,6 +1087,7 @@ const DEFAULT_TRIPS = [
   {
     id: 5,
     title: '괴산 트리하우스가든 나드리',
+    status: 'hold',
     emoji: '🌳',
     color: 'teal',
     startDate: '2026-05-17',
@@ -1237,6 +1240,7 @@ function formatDateKo(s) {
   return `${d.getMonth()+1}월 ${d.getDate()}일 (${days[d.getDay()]})`;
 }
 function getTripStatus(trip) {
+  if (trip.status === 'hold') return 'hold';
   const today = new Date(); today.setHours(0,0,0,0);
   const s = new Date(trip.startDate); s.setHours(0,0,0,0);
   const e = new Date(trip.endDate); e.setHours(0,0,0,0);
@@ -1259,7 +1263,7 @@ function renderTrips() {
   }).sort((a, b) => {
     const sa = getTripStatus(a), sb = getTripStatus(b);
     // 정렬 우선순위: 여행중 → 예정(날짜 오름차순) → 완료(날짜 내림차순·최근 먼저)
-    const order = { ongoing: 0, upcoming: 1, done: 2 };
+    const order = { ongoing: 0, upcoming: 1, hold: 2, done: 3 };
     if (order[sa] !== order[sb]) return order[sa] - order[sb];
     if (sa === 'done') return new Date(b.startDate) - new Date(a.startDate); // 완료: 최근순
     return new Date(a.startDate) - new Date(b.startDate); // 예정/진행: 날짜순
@@ -1271,8 +1275,8 @@ function renderTrips() {
   empty.style.display = 'none';
   el.innerHTML = list.map(t => {
     const st = getTripStatus(t);
-    const stLabel = st === 'upcoming' ? '예정' : st === 'ongoing' ? '여행 중 <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;flex-shrink:0"></span>' : '완료';
-    const stCls = st === 'upcoming' ? 'st-upcoming' : st === 'ongoing' ? 'st-ongoing' : 'st-done';
+    const stLabel = st === 'ongoing' ? '🚗 여행 중 <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;flex-shrink:0"></span>' : st === 'upcoming' ? '📅 예정' : st === 'hold' ? '⏸️ 보류' : '✅ 완료';
+    const stCls = st === 'upcoming' ? 'st-upcoming' : st === 'ongoing' ? 'st-ongoing' : st === 'hold' ? 'st-hold' : 'st-done';
     const totalPlaces = t.days.reduce((s,d) => s + d.places.length, 0);
     const tagsHtml = (t.tags||[]).map(tag =>
       `<span class="uc-tag tc-tag">${tag}</span>`).join('');
@@ -1411,12 +1415,13 @@ function pickRandomSpot() {
 
 /* ── 여행 필터 ── */
 function updateTripBadges() {
-  const counts = { all: 0, upcoming: 0, ongoing: 0, done: 0 };
+  const counts = { all: 0, upcoming: 0, ongoing: 0, hold: 0, done: 0 };
   trips.forEach(t => {
     const st = getTripStatus(t);
     counts.all++;
     if (st === 'upcoming') counts.upcoming++;
     else if (st === 'ongoing') counts.ongoing++;
+    else if (st === 'hold') counts.hold++;
     else if (st === 'done') counts.done++;
   });
   Object.entries(counts).forEach(([key, cnt]) => {
